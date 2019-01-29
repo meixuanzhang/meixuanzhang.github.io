@@ -1,3 +1,7 @@
 ---
 layout: default
 ---
+<div>
+{% capture categories %}{% for category in site.categories%}{{ category | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+{{categories}}
+</div>
