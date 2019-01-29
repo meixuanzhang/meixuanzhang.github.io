@@ -1,16 +1,21 @@
 ---
 layout: default
 ---
+
 <div>
-<div>
+{{site.categories}}
+开始
 {% capture categories %}{% for category in site.categories%}{{ category | first }}{% endfor %}{% endcapture %}
-{% assign category = categories | split:',' | sort %}
+{% assign category = categories | split:' '|sort %}
 {% for item in (0..site.categories.size) %}{% unless forloop.last %}
 {% capture word %}{{ category[item] | strip_newlines }}{% endcapture %}
 <h2>{{ word }}</h2>
 <ul>
 {% for post in site.categories[word] %}{% if post.title != null %}
 {% capture type %}{{post.dir|split: "/"}}{% endcapture %}
+第二
+{{type}}
+第三{{type[1]}}
 {%if type[1]=="PaperNote"%}
 <li><span>{{ post.date | date: "%b %d %Y" }}</span>» <a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
 {% else %}
@@ -20,6 +25,6 @@ layout: default
 </ul>
 {% endunless %}{% endfor %}
 <br/><br/>
+end6
 </div>
-end5
-</div>
+
