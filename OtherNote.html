@@ -6,6 +6,7 @@ layout: default
   {% for category in site.categories%}
   {{ category | first }}
 {% endfor %}{% endcapture %}
-{{categories}}
-end3
+{% assign category = categories | split:',' | sort %}
+{{category}}
+end4
 </div>
