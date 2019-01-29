@@ -6,7 +6,7 @@ layout: default
 {{site.categories}}
 开始
 {% capture categories %}{% for category in site.categories%}{{ category | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-{% assign category = categories | split:' '|sort %}
+{% assign category = categories | split:','|sort %}
 {% for item in (0..site.categories.size) %}{% unless forloop.last %}
 {% capture word %}{{ category[item] | strip_newlines }}{% endcapture %}
 <h2>{{ word }}</h2>
