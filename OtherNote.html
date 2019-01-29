@@ -2,11 +2,8 @@
 layout: default
 ---
 <div>
-{% capture categories %}
-  {% for category in site.categories%}
+{% for category in site.categories%}
   {{ category | first }}
-  
   {% endfor %}
-  {% endcapture %}
-end
+end1
 </div>
