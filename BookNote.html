@@ -1,15 +1,3 @@
 ---
 layout: default
 ---
-<div>
-{% for post in site.posts%}
-{{post.dir}}
-{% endfor %}
-  
-开始
-{% for post in site.posts%}
-{{post.dir}}
-{% assign type = post.dir|split: "/" %}
-{{type}}
-
-</div>
