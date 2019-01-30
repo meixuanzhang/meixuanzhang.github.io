@@ -2,8 +2,11 @@
 layout: default
 ---
 {% for post in site.posts %}
+post.path<br/>
 {% assign type = post.path | split: "/" %}
+-----------------<br/>
 {{type}}<br/>
+{{type[1]}}
 {% endfor %}
 
-end4
+end5
