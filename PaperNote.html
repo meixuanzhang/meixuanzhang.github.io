@@ -1,10 +1,12 @@
 ---
 layout: default
 ---
-{%for post in site.posts %}
-{{post.path}}
-{%assign type = post.path | split: "\" %}
+{% for post in site.posts %}
+{% assign type = post.path | split: "/" %}
 {{type}}
+{%if type[1] == "PaperNote"%}
+{% endif %}
+{{type[1}}
 {% endfor %}
 
-end2
+end3
