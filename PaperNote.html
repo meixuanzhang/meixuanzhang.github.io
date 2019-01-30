@@ -2,7 +2,9 @@
 layout: default
 ---
 {%for post in site.posts %}
-    {{post.dir}}
+{{post.path}}
+{%assign type = post.path | split: "\" %}
+{{type}}
 {% endfor %}
 
 end1
