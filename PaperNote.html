@@ -6,7 +6,7 @@ layout: default
 {% assign category = "机器学习,深度学习,强化学习"| split:',' %}
 {% for item in category %}
 {% capture word %}{{ item}}{% endcapture %}
-<h2 id="{{ word }}">{{ word }}</h2>
+<h1 id="{{ word }}">{{ word }}</h1>
 <ul>
 {% for post in site.categories[word] %}{% if post.title != null %}
 {% assign type = post.path | split: "/" %}
