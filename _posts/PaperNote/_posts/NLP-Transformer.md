@@ -9,11 +9,12 @@ categories:深度学习
 
 #模型架构
 模型由Encoder和Decoder两大部分组成
-模型输入：X 
+模型输入：$$X_{b*l*}$$
 模型输出：Y 
+
 ##Encoder
-Notation：
-d
+Notation:
+Embedding matrix: V  dim()
 ###Embeddings
 
 ##Decoder
