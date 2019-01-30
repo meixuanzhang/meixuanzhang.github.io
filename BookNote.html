@@ -1,3 +1,16 @@
 ---
 layout: default
 ---
+<div>
+{% assign category = "机器学习,深度学习,强化学习"| split:',' %}
+{% for item in category %}
+{% capture word %}{{ item}}{% endcapture %}
+<h2 id="{{ word }}">{{ word }}</h2>
+<ul>
+{% for post in site.categories[word] %}{% if post.title != null %}
+<li><span>{{ post.date | date: "%b %d %Y" }}</span>» <a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+{% endif %}{% endfor %}
+</ul>
+{% endfor %}
+<br/><br/>
+</div>
