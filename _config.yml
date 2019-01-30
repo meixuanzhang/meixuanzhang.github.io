@@ -84,3 +84,5 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+
+paper:机器学习,深度学习,强化学习
