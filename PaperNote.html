@@ -2,7 +2,7 @@
 layout: default
 ---
 {% for post in site.posts %}
-post.path<br/>
+{{post.path}}<br/>
 {% assign type = post.path | split: "/" %}
 -----------------<br/>
 {{type}}<br/>
