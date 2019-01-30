@@ -3,7 +3,6 @@ layout: default
 ---
 <div>
 {% for post in site.post %}{% if post.title != null %}
-{{post.dir}}
 {{%assign type =post.dir | split: "/" % }}
 {{type}}
 {% endfor %}
