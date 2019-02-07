@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 读《Attention Is All You Need》
+date:   2019-02-01
 categories:深度学习
 ---
 [Toc]
