@@ -12,7 +12,7 @@ categories:深度学习
 
 
 模型输入：$$X_{b*l*}$$
-模型输出：Y 
+模型输出：Y 1
 
 ##Encoder
 Notation:
