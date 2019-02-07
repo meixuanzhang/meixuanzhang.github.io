@@ -4,7 +4,6 @@ title: 《Attention Is All You Need》
 date:   2019-02-01
 categories:深度学习
 ---
-[Toc]
 #概述
 论文提出了Transformer网络架构,其完全基于注意力机制(attention mechanisms),免去了RNN和CNN
 
