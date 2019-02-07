@@ -5,7 +5,7 @@ date:   2019-01-24
 categories: 深度学习
 ---
 
-[Toc]
+[toc]
 # 概述
 论文提出了Transformer网络架构,其完全基于注意力机制(attention mechanisms),免去了RNN和CNN
 
