@@ -9,12 +9,9 @@ categories: 深度学习
 
 ## 模型架构
 模型由Encoder和Decoder两大部分组成,按模块可以分为五大模块分别是：Embeddings、(Masked)Multi-Head Atention、Add&Norm、FeedForward、Linear&Softmax
-
-
-
-
+![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image1.jpg)
 ### Encoder
-####
+#### Embeddings
 Notation:
 m:字的个数或句子的长度
 n:词汇量数
