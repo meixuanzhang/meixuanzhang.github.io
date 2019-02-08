@@ -18,7 +18,7 @@ m:句子的长度
 n:词汇量数  
 dmodel:Embedding后字向量的长度  
 Input: $$X_{m*n}$$  
-Embedding matrix: $$V_{n*dmodel}$$  
+Embedding matrix: $$S_{n*dmodel}$$  
 i:向量的第i维  
 pos: 字在句子中的位置,第pos个  
 由图可知X作为输入首先经过Embeddings，输出为$$A_{m*dmodel}$$,同时X作为输入经过Positional Encoding,输出为$$B_{m*dmodel}$$,A+B作为模块的最终输出，注意Positional Encoding 式子中i的取值范围是(0~dmodel/2-1)
@@ -32,10 +32,21 @@ $$where head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$
 $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$  
 
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
-PS:在代码实现中
-
+PS:源代码实现是对Q、K、V进行了一次线性变换，维度变为m*hiddensize，然后将Q、K、V分成h份,每份维度是m*hiddensize/h,每份进行Attention,再concat,而不是对其进行h次线性变换  
+注意hiddensize/h要能整除
+$$Q_{m*hiddensize}=QW_{Q}$$  
+$$K_{m*hiddensize}=KW_{K}$$  
+$$V=V{m*hiddensize}W_{V}$$ 
+![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image9.jpg) 
+源码和论文区别是
+源码是将一段话分为h个小块，每个小块会有自己对应attention，论文是一段话产生不同的attention
+例如：我喜欢吃苹果  
+假设h=2
+源码是分别对“我喜欢”，“吃苹果”，产生关注概率分布（0.1,0.1,0.8）、（0.2,0.3,0.5）
+论文是对“我喜欢吃苹果”，产生两个关注概率分布（0.1,0.2,0.1,...）、(0.5,0.1,0.1,...)
+目的都是起到关注不同的内容
 ###  Add&Norm  
-ADD指的是模块(Masked)Multi-Head Atention、FeedForward输入和输出相加，作为下一个步骤的输入  
+Add指的是模块(Masked)Multi-Head Atention、FeedForward输入和输出相加，作为下一个步骤的输入  
 Norm指的是，数据按层进行标准化
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image5.jpg)  
 ###  FeedForward
@@ -49,7 +60,7 @@ Decoder与Encoder有区别的地方主要是Multi-Head Attention
 在t时刻预测下一个字时，不应该出现t时刻后面的字，否则会有信息泄露，因此在训练时加入了masked
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image6.jpg) 
 测试时使用的是Multi-Head Atention  
-注意测试时K,V行维度是不断增加的，Q维度则是不变的，模块输出行维度是由Q决定的
+注意测试时K,V行维度是随着t不断增加的，Q维度则是不变的，模块输出行维度是由Q决定的
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image7.jpg) 
 ###  Linear&Softmax 
 训练时输出是$$m*n$$    
