@@ -21,7 +21,7 @@ Input: $$X_{m*n}$$
 Embedding matrix: $$S_{n*dmodel}$$  
 i:向量的第i维  
 pos: 字在句子中的位置,第pos个  
-由图可知X作为输入首先经过Embeddings，输出为$$A_{m*dmodel}$$,同时X作为输入经过Positional Encoding,输出为$$B_{m*dmodel}$$,A+B作为模块的最终输出(C)，注意Positional Encoding 式子中i的取值范围是(0~dmodel/2-1)
+由图可知X作为输入首先经过Embeddings，输出为$$A_{m*dmodel}$$,同时X作为输入经过Positional Encoding,输出为$$B_{m*dmodel}$$,A+B作为模块的最终输出(C)，注意Positional Encoding 式子中i的取值范围是(0~dmodel/2-1)，上下两个式子输出的维度是m*dmodel/2,需要进行concat
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image2.jpg)  
 dmodel取不同值时PE值:  
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image3.png) 
