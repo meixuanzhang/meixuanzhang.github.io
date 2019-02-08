@@ -33,7 +33,7 @@ $$where\quad head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$
 下面Q、K、V是经过线性变换后的Q、K、V  
 Scaled Dot-Dot Product Attention：  
 $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$  
-相关参数的维度$$QW^Q_{i}\in R^{dmodel*d_{k}},KW^K_{i}\in R^{dmodel*d_{k}},VW^V_{i}\in R^{dmodel*d_{v}},W^{o}\in R^{hd_{v}*d_{model}}$$
+相关参数的维度$$W^Q_{i}\in R^{d_{model}*d_{k}},W^K_{i}\in R^{d_{model}*d_{k}},W^V_{i}\in R^{d_{model}*d_{v}},W^{o}\in R^{hd_{v}*d_{model}}$$
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
 PS:源代码实现是对Q、K、V进行了一次线性变换，维度变为m*hiddensize，然后将Q、K、V分成h份,每份维度是$$m*hiddensize/h$$，每份进行Attention,再concat，而不是对其进行h次线性变换  
 注意hiddensize/h要能整除  
