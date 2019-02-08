@@ -11,7 +11,7 @@ categories: 深度学习
 《A STRUCTURED SELF - ATTENTIVE SENTENCE EMBEDDING》  
 以上论文提到了不同的Attention机制  
 
-##无Attention机制的MNT：    
+## 无Attention机制的MNT：    
 图中蓝色是Encoder，红色是Decoder    
 NMT使用了recurrent architecture  
 ## Global attention model&Local attention model  
