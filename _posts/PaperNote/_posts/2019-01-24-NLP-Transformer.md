@@ -9,7 +9,7 @@ categories: 深度学习
 
 # 模型架构
 模型由Encoder和Decoder两大部分组成，按模块可以分为五大模块分别是：Embeddings&Positional Encoding、(Masked)Multi-Head Atention、Add&Norm、FeedForward、Linear&Softmax  
-
+下图的N是代表框框里模块重复叠加数
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image1.jpg)
 ## Encoder
 ### Embeddings&Positional Encoding
@@ -57,8 +57,8 @@ Norm指的是，数据按层进行标准化
 假设输入为$$F_{m*model}$$,则输出为$$G_{m*dmodel}$$  
 $$F_{m*dmodel}W_{dmodel*dmodel}=G_{m*dmodel}$$
 ##  Decoder
-Decoder与Encoder有区别的地方主要是Multi-Head Attention  
-###  Multi-Head Atention
+Decoder与Encoder区别在于Decoder使用了两个Multi-Head Attention，第一个是带masked,第二个是不带masked，其中第二个的K，V来等于Encoder的输出
+###  第一个Multi-Head Atention
 训练时使用的是Masked-Multi-Head Atention  
 在t时刻预测下一个字时，不应该出现t时刻后面的字，否则会有信息泄露，因此在训练时加入了masked
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image6.jpg) 
