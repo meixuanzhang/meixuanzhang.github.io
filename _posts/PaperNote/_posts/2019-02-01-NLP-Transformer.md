@@ -29,7 +29,7 @@ dmodel取不同值时PE值:
 
 $$MultiHead(Q,K,V) = Concat(head_{1},...head_{h})W^{o}$$  
 $$where head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$  
-$$Attention(Q,K,V)=softmax(\frac{QK^T}{sqrt{d_{k}}}$$  
+$$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}}$$  
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
 ###  Add&Norm  
 ADD指的是模块(Masked)Multi-Head Atention、FeedForward输入和输出相加，作为下一个步骤的输入  
@@ -38,7 +38,7 @@ Norm指的是，在模型中数据按层进行标准化
 ###  FeedForward
 全连接模块输出和输入会保持相同的维度   
 假设输入为$$F_{m*model}$$,则输出为$$G_{dmodel}$$  
-$$F_{m*dmodel}}W_{dmodel*dmodel}=G_{m*dmodel}$$
+$$F_{m*dmodel}W_{dmodel*dmodel}=G_{m*dmodel}$$
 ##  Decoder
 Decoder与Encoder有区别的地方主要是Multi-Head Attention  
 ###  Multi-Head Atention
