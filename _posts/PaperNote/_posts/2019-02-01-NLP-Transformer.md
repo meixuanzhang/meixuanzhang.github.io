@@ -29,7 +29,7 @@ dmodel取不同值时PE值:
 
 $$MultiHead(Q,K,V) = Concat(head_{1},...head_{h})W^{o}$$  
 $$where head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$  
-$$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}}$$  
+$$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}})V$$  
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
 ###  Add&Norm  
 ADD指的是模块(Masked)Multi-Head Atention、FeedForward输入和输出相加，作为下一个步骤的输入  
@@ -46,9 +46,9 @@ Decoder与Encoder有区别的地方主要是Multi-Head Attention
 在t时刻预测下一个字时，不应该出现t时刻后面的字，否则会有信息泄露，因此在训练时加入了masked
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image6.jpg) 
 测试时使用的是Multi-Head Atention  
-注意测试时K,V行维度是不断增加的，Q维度则是不变的，模块输出维度是由Q决定的
+注意测试时K,V行维度是不断增加的，Q维度则是不变的，模块输出行维度是由Q决定的
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image7.jpg) 
 ###  Linear&Softmax 
-训练时输出是m*n  
-测试时输出维度是1*n  
+训练时输出是$$m*n$$    
+测试时输出维度是$$1*n$$    
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image8.jpg) 
