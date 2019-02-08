@@ -33,18 +33,18 @@ $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$
 
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
 PS:源代码实现是对Q、K、V进行了一次线性变换，维度变为m*hiddensize，然后将Q、K、V分成h份,每份维度是m*hiddensize/h,每份进行Attention,再concat,而不是对其进行h次线性变换  
-注意hiddensize/h要能整除
+注意hiddensize/h要能整除  
 $$Q_{m*hiddensize}=QW_{Q}$$  
 $$K_{m*hiddensize}=KW_{K}$$  
 $$V=V{m*hiddensize}W_{V}$$ 
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image9.jpg) 
-源码和论文区别是
-源码是将一段话分为h个小块，每个小块会有自己对应attention，论文是一段话产生不同的attention
+源码和论文区别是  
+源码是将一段话分为h个小块，每个小块会有自己对应attention，论文是一段话产生不同的attention  
 例如：我喜欢吃苹果  
-假设h=2
-源码是分别对“我喜欢”，“吃苹果”，产生关注概率分布（0.1,0.1,0.8）、（0.2,0.3,0.5）
-论文是对“我喜欢吃苹果”，产生两个关注概率分布（0.1,0.2,0.1,...）、(0.5,0.1,0.1,...)
-目的都是起到关注不同的内容
+假设h=2  
+源码是分别对“我喜欢”，“吃苹果”，产生关注概率分布(0.1,0.1,0.8)、(0.2,0.3,0.5)  
+论文是对“我喜欢吃苹果”，产生两个关注概率分布（0.1,0.2,0.1,...）、(0.5,0.1,0.1,...)  
+目的都是起到关注不同的内容  
 ###  Add&Norm  
 Add指的是模块(Masked)Multi-Head Atention、FeedForward输入和输出相加，作为下一个步骤的输入  
 Norm指的是，数据按层进行标准化
