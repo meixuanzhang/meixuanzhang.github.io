@@ -28,7 +28,7 @@ dmodel取不同值时PE值:
 ###  Multi-Head Atention
 原始Q=K=V=C  
 $$MultiHead(Q,K,V) = Concat(head_{1},...head_{h})W^{o}$$  
-$$where head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$  
+$$where\quad head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$  
 下面Q、K、V是经过线性变换后的Q、K、V  
 $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$  
 
