@@ -29,8 +29,11 @@ dmodel取不同值时PE值:
 
 $$MultiHead(Q,K,V) = Concat(head_{1},...head_{h})W^{o}$$  
 $$where head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$  
-$$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}})V$$  
+$$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$  
+
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
+PS:在代码实现中
+
 ###  Add&Norm  
 ADD指的是模块(Masked)Multi-Head Atention、FeedForward输入和输出相加，作为下一个步骤的输入  
 Norm指的是，在模型中数据按层进行标准化
