@@ -26,14 +26,16 @@ pos: 字在句子中的位置,第pos个
 dmodel取不同值时PE值:  
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image3.png) 
 ###  Multi-Head Atention
-原始Q=K=V=C  
+原本Q=K=V=C  
+Multi-Head Atention  
 $$MultiHead(Q,K,V) = Concat(head_{1},...head_{h})W^{o}$$  
 $$where\quad head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$  
 下面Q、K、V是经过线性变换后的Q、K、V  
+Scaled Dot-Dot Product Attention：  
 $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$  
 
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
-PS:源代码实现是对Q、K、V进行了一次线性变换，维度变为m*hiddensize，然后将Q、K、V分成h份,每份维度是m*hiddensize/h，每份进行Attention,再concat，而不是对其进行h次线性变换  
+PS:源代码实现是对Q、K、V进行了一次线性变换，维度变为m*hiddensize，然后将Q、K、V分成h份,每份维度是$$m*hiddensize/h$$，每份进行Attention,再concat，而不是对其进行h次线性变换  
 注意hiddensize/h要能整除  
 $$Q_{m*hiddensize}=QW_{Q}$$  
 $$K_{m*hiddensize}=KW_{K}$$  
