@@ -37,12 +37,18 @@ Norm指的是，在模型中数据按层进行标准化
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image5.jpg)  
 ###  FeedForward
 全连接模块输出和输入会保持相同的维度   
-假设输入为$$F_{m*model}$$,则输出为$$G_{dmodel}$$  
+假设输入为$$F_{m*model}$$,则输出为$$G_{m*dmodel}$$  
 $$F_{m*dmodel}W_{dmodel*dmodel}=G_{m*dmodel}$$
 ##  Decoder
 Decoder与Encoder有区别的地方主要是Multi-Head Attention  
 ###  Multi-Head Atention
-训练时是使用的是Masked-Multi-Head Atention
-
+训练时使用的是Masked-Multi-Head Atention  
+在t时刻预测下一个字时，不应该出现t时刻后面的字，否则会有信息泄露，因此在训练时加入了masked
+![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image6.jpg) 
+测试时使用的是Multi-Head Atention  
+注意测试时K,V行维度是不断增加的，Q维度则是不变的，模块输出维度是由Q决定的
+![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image7.jpg) 
 ###  Linear&Softmax 
-
+训练时输出是m*n  
+测试时输出维度是1*n  
+![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image8.jpg) 
