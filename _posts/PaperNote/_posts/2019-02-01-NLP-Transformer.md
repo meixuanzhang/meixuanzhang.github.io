@@ -36,7 +36,7 @@ PS:在代码实现中
 
 ###  Add&Norm  
 ADD指的是模块(Masked)Multi-Head Atention、FeedForward输入和输出相加，作为下一个步骤的输入  
-Norm指的是，在模型中数据按层进行标准化
+Norm指的是，数据按层进行标准化
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image5.jpg)  
 ###  FeedForward
 全连接模块输出和输入会保持相同的维度   
