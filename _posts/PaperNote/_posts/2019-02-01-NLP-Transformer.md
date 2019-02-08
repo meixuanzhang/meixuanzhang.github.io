@@ -18,10 +18,10 @@ m:句子的长度
 n:词汇量数  
 dmodel:Embedding后字向量的长度  
 Input: $$X_{m*n}$$  
-Embedding matrix: $$S_{n*dmodel}$$  
+Embedding matrix: $$S_{n*d_{model}}$$  
 i:向量的第i维  
 pos: 字在句子中的位置,第pos个  
-由图可知X作为输入首先经过Embeddings，输出为$$A_{m*dmodel}$$,同时X作为输入经过Positional Encoding,输出为$$B_{m*dmodel}$$,A+B作为模块的最终输出(C)，注意Positional Encoding 式子中i的取值范围是(0~dmodel/2-1)，上下两个式子输出的维度是m*dmodel/2,需要进行concat
+由图可知X作为输入首先经过Embeddings，输出为$$A_{m*d_{model}}$$,同时X作为输入经过Positional Encoding,输出为$$B_{m*d_{model}}$$,A+B作为模块的最终输出(C)，注意Positional Encoding 式子中i的取值范围是$$(0~d_{model}/2-1)$$，上下两个式子输出的维度是$$m*d_{model}/2$$,需要进行concat
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image2.jpg)  
 dmodel取不同值时PE值:  
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image3.png) 
@@ -33,7 +33,7 @@ $$where\quad head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$
 下面Q、K、V是经过线性变换后的Q、K、V  
 Scaled Dot-Dot Product Attention：  
 $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$  
-相关参数的维度$$QW^Q_{i}\in R^{dmodel*dk},KW^K_{i}\in R^{dmodel*dk},VW^V_{i}\in R^{dmodel*dv},W^{o}\in R^{hdv*dk}$$
+相关参数的维度$$QW^Q_{i}\in R^{dmodel*d_{k}},KW^K_{i}\in R^{dmodel*d_{k}},VW^V_{i}\in R^{dmodel*d_{v}},W^{o}\in R^{hd_{v}*d_{model}}$$
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
 PS:源代码实现是对Q、K、V进行了一次线性变换，维度变为m*hiddensize，然后将Q、K、V分成h份,每份维度是$$m*hiddensize/h$$，每份进行Attention,再concat，而不是对其进行h次线性变换  
 注意hiddensize/h要能整除  
