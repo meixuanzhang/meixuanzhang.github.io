@@ -26,10 +26,10 @@ pos: 字在句子中的位置,第pos个
 dmodel取不同值时PE值:  
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image3.png) 
 ###  Multi-Head Atention
-原始Q=K=V=C
+原始Q=K=V=C  
 $$MultiHead(Q,K,V) = Concat(head_{1},...head_{h})W^{o}$$  
 $$where head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$  
-下面Q、K、V是经过线性变换后的Q、K、V
+下面Q、K、V是经过线性变换后的Q、K、V  
 $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$  
 
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
