@@ -10,9 +10,10 @@ categories:
 蒙特卡罗方法主要用于三个问题类：优化，数值积分和从概率分布生成抽取。
 
 **优化问题Optimization problems**  
-就是求x使function f(x)达到极大值或极小值，用公式表达如下，
-Given: a function {\displaystyle f\colon A\to \mathbb {R} } {\displaystyle f\colon A\to \mathbb {R} } from some set {\displaystyle A} A to the real numbers
-Sought: an element {\displaystyle \mathbf {x} _{0}\in A} {\displaystyle \mathbf {x} _{0}\in A} such that {\displaystyle f\left(\mathbf {x} _{0}\right)\leq f\left(\mathbf {x} \right)} {\displaystyle f\left(\mathbf {x} _{0}\right)\leq f\left(\mathbf {x} \right)} for all {\displaystyle \mathbf {x} \in A} {\displaystyle \mathbf {x} \in A} ("minimization") or such that {\displaystyle f\left(\mathbf {x} _{0}\right)\geq f\left(\mathbf {x} \right)} {\displaystyle f\left(\mathbf {x} _{0}\right)\geq f\left(\mathbf {x} \right)} for all {\displaystyle \mathbf {x} \in A} {\displaystyle \mathbf {x} \in A} ("maximization").
+就是求x使函数f(x)达到极大值或极小值，用式子表达如下：  
+
+Given: a function $$\mathbf{f:A \to R}$$ from some set $$A$$ to the real numbers   
+Sought: an element $$\mathbf{(x_{0} \in A}$$ such that $$\mathbf(f(x_{0})\le f(x))$$ for all $$\mathbf{x \in A}$$ ("minimization") or such that $$\mathbf{f(x_{0}) \ge f(x)} for all $$\mathbf{x \in A}$$("maximization").
 
 
 参考：[Monte Carlo methodi](https://en.wikipedia.org/wiki/Monte_Carlo_method)
