@@ -35,7 +35,7 @@ Numerical integration is used to calculate a numerical approximation for the val
 
 令 z=F(x),其中F(x)为x的CDF(累积分布函数)    
 
-计算$$x=F^-1(z)$$（逆函数）       
+计算$$x^\ast=F^{-1}(z)$$（逆函数）       
 
 结果$$x^\ast$$为对f(x)的采样    
 
@@ -43,7 +43,7 @@ Numerical integration is used to calculate a numerical approximation for the val
 
 例(离散变量)：
 
-$$\xi$$均匀分布产生的样本
+$$\xi :$$均匀分布产生的样本
 
 
 # MC 接受——拒绝采样   
@@ -85,18 +85,22 @@ $$
 S = \int_{a}^b f(x)d_{x}\\
 =\int_{a}^b \frac{f(x)}{g(x)}g(x)d_{x} \\
 = \int_{a}^b\frac{f(x)}{g(x)}dG(x)
-$$
+$$  
+
 公式最后变换涉及了[分部积分法](https://baike.baidu.com/item/分部积分法/9478849?fr=aladdin)  
 
 $$
 G(x)=\int_{a}^x g(x)d_{x}
 $$
 
-令$$r = G(x),x=G^{-1}(r),(G^{-1}$$是你函数)则：  
+令$$r = G(x),x=G^{-1}(r),(G^{-1}(r)$$是逆函数)则：  
+
 $$
-S=\int_{G(a)}^{G(b)}\frac{G^{-1}(r)}{g(G^{-1}(r))}d_{r}
+S=\int_{G(a)}^{G(b)}\frac{f(G^{-1}(r))}{g(G^{-1}(r))}d_{r}//
+=\frac{1}{N}\sum_{i=1}^N\frac{f(G^{-1}(r_{i}))}{g(G^{-1}(r_{i}))}
 $$
 
+从公式看，需要计算$$G^{-1}$$，将
 
 在解决实际问题的时候应用蒙特卡罗方法主要有两部分工作：
 用蒙特卡罗方法模拟某一过程时，需要产生各种概率分布的随机变量。
