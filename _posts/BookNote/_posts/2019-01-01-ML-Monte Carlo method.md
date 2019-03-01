@@ -79,8 +79,13 @@ MC求解数值积分:在区间[a,b]随机选取N个点 ：
 
 $$S=\frac{b-a}{N}\sum_{i=1}^Nf(x_{i})$$  
 
-对于相对均匀分布估计准确性会比较好，但对于不均匀分布就不够精确  
+对于均匀分布估计准确性会比较好，但对于非均匀分布就不够精确 
 
+**Importance sampling**   
+
+求数值积分的概率密度函数为f(x) 
+
+g(x):将f(x)在积分区间[a,b]上进行归一化
 $$
 S = \int_{a}^b f(x)d_{x}\\
 =\int_{a}^b \frac{f(x)}{g(x)}g(x)d_{x} \\
@@ -96,18 +101,23 @@ $$
 令$$r = G(x),x=G^{-1}(r),(G^{-1}(r)$$是逆函数)则：  
 
 $$
-S=\int_{G(a)}^{G(b)}\frac{f(G^{-1}(r))}{g(G^{-1}(r))}d_{r}//
+S=\int_{G(a)}^{G(b)}\frac{f(G^{-1}(r))}{g(G^{-1}(r))}d_{r}\\
 =\frac{1}{N}\sum_{i=1}^N\frac{f(G^{-1}(r_{i}))}{g(G^{-1}(r_{i}))}
 $$
 
-从公式看，需要计算$$G^{-1}$$，将
+从公式看，需要计算$$G^{-1}$$，可以从g(x)分布采样$$x_{(g)}$$，则：  
+$$
+S = \frac{1}{N}\sum_{i=1}^N\frac{f(x_{i}^{(g)})}{g(x_{i}^{(g)})}
+$$
 
-在解决实际问题的时候应用蒙特卡罗方法主要有两部分工作：
-用蒙特卡罗方法模拟某一过程时，需要产生各种概率分布的随机变量。
- 用统计方法把模型的数字特征估计出来，从而得到实际问题的数值解。
+
+在解决实际问题的时候应用蒙特卡罗方法主要有两部分工作：  
+用蒙特卡罗方法模拟某一过程时，需要产生各种概率分布的随机变量。  
+用统计方法把模型的数字特征估计出来，从而得到实际问题的数值解。  
 
 参考：  
 [Monte Carlo methodi](https://en.wikipedia.org/wiki/Monte_Carlo_method)       
 [Mathematical optimization](https://en.wikipedia.org/wiki/Mathematical_optimization)    
 [Numerical integration](https://en.wikipedia.org/wiki/Numerical_integration)  
 [Monte Carlo Sampling Methods](http://web.tecnico.ulisboa.pt/~mcasquilho/acad/theo/simul/Vujic.pdf)  
+[Importance Sampling](http://astrostatistics.psu.edu/su14/lectures/cisewski_is.pdf)
