@@ -75,14 +75,14 @@ $$x_{i}$$是每个间距的中点
 
 $$S=\frac{b-a}{N}\sum_{i=1}^Nf(x_{i})$$   
 
-**MC求解数值积分:**
+**标准MC求解数值积分:**  
 
 $$
-S = \int_{a}^b f(x)dx = \int_{a}^b w(x)h(x)d_{x}=E_{f}(w(x))\\
+S = \int_{a}^b f(x)dx = \int_{a}^b w(x)h(x)d_{x}=E_{h}(w(x))\\
 where \ h(x) = \frac{1}{b-a} \ and \ w(x)=f(x)\centerdot(b-a)
 $$
 
-其中$$h(x)=\frac{1}{b-a}$$是概率密度函数为均匀分布U(a,b)的随机变量    
+其中$$h(x)=\frac{1}{b-a}$$是服从均匀分布U(a,b)随机变量的概率密度函数 
 
 从均匀分布U(a,b)生成N个样本，计算：    
 
@@ -93,9 +93,24 @@ $$S =\frac{\sum_{i=1}^Nw(x_{i})}{N}$$
 $$S=\frac{b-a}{N}\sum_{i=1}^Nf(x_{i})$$    
 
 
-**Importance sampling**   
+**Importance sampling求解数值积分**    
 
-求数值积分的概率密度函数为f(x) 
+$$S = \int w(x)h(x)d_{x}$$    
+
+w是一个函数，h是随机变量x的概率密度函数  
+当很难从h分布进行采样时，则使用Importance sampling，相比起从h采样，可以定义一个不同的概率密度函数g,从g进行采样
+
+$$
+S = \int w(x)h(x)d_{x}\\
+= \int w(x)\frac{h(x)}{g(x)}g(x)d_{x}\\
+=  \int \frac{h(x)w(x)}{g(x)}g(x)d_{x}\\
+E_{h}[w(x)] = \frac{h(x)w(x)}{g(x)}g(x)d_{x}=E_{g}[\frac{h(x)w(x)}{g(x)}]\\
+=\frac{\sum_{i=1}^N\frac{h(x_{i})w(x_{i})}{g(x_{i})}}{N}
+$$
+
+
+S = \int f(x)
+
 
 g(x):将f(x)在积分区间[a,b]上进行归一化,意思
 
@@ -105,24 +120,6 @@ S = \int_{a}^b f(x)d_{x}\\
 = \int_{a}^b\frac{f(x)}{g(x)}dG(x)
 $$  
 
-公式最后变换涉及了[分部积分法](https://baike.baidu.com/item/分部积分法/9478849?fr=aladdin)  
-
-$$
-G(x)=\int_{a}^x g(x)d_{x}
-$$
-
-令$$r = G(x),x=G^{-1}(r),(G^{-1}(r)$$是逆函数)则：  
-
-$$
-S=\int_{G(a)}^{G(b)}\frac{f(G^{-1}(r))}{g(G^{-1}(r))}d_{r}\\
-=\frac{1}{N}\sum_{i=1}^N\frac{f(G^{-1}(r_{i}))}{g(G^{-1}(r_{i}))}
-$$
-
-从公式看，需要计算$$G^{-1}$$，可以从g(x)分布采样$$x^{(g)}$$，则：  
-
-$$
-S = \frac{1}{N}\sum_{i=1}^N\frac{f(x_{i}^{(g)})}{g(x_{i}^{(g)})}
-$$
 
 
 在解决实际问题的时候应用蒙特卡罗方法主要有两部分工作：  
