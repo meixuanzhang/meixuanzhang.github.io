@@ -104,23 +104,16 @@ $$
 S = \int w(x)h(x)d_{x}\\
 = \int w(x)\frac{h(x)}{g(x)}g(x)d_{x}\\
 =  \int \frac{h(x)w(x)}{g(x)}g(x)d_{x}\\
-E_{h}[w(x)] = \frac{h(x)w(x)}{g(x)}g(x)d_{x}=E_{g}[\frac{h(x)w(x)}{g(x)}]\\
+$$  
+
+从g分布生成N个样本：  
+
+$$
+E_{h}[w(x)] = \int\frac{h(x)w(x)}{g(x)}g(x)d_{x}=E_{g}[\frac{h(x)w(x)}{g(x)}]\\
 =\frac{\sum_{i=1}^N\frac{h(x_{i})w(x_{i})}{g(x_{i})}}{N}
 $$
 
-
-S = \int f(x)
-
-
-g(x):将f(x)在积分区间[a,b]上进行归一化,意思
-
-$$
-S = \int_{a}^b f(x)d_{x}\\
-=\int_{a}^b \frac{f(x)}{g(x)}g(x)d_{x} \\
-= \int_{a}^b\frac{f(x)}{g(x)}dG(x)
-$$  
-
-
+$$r = \frac{h(x)}{g(x)}$$是importance weights，当$$h(x)>g(x)$$，比值会大于1,$$r \centerdot g>g$$
 
 在解决实际问题的时候应用蒙特卡罗方法主要有两部分工作：  
 用蒙特卡罗方法模拟某一过程时，需要产生各种概率分布的随机变量。  
