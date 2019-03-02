@@ -39,7 +39,7 @@ Numerical integration is used to calculate a numerical approximation for the val
 
 结果$$x^\ast$$为对f(x)的采样    
 
-不断循环产生符合f(x)分布的样本x  
+不断循环产生符合f(x)分布的样本$$x^\ast$$   
 
 例(离散变量)：
 
@@ -66,7 +66,7 @@ $$\xi :$$均匀分布产生的样本
 
 # MC求解数值积分问题   
 
-普通数值积分: 将区间[a,b]分为N份，每份等间距为$$\bigtriangleup x$$:     
+**普通数值积分:** 将区间[a,b]分为N份，每份等间距为$$\bigtriangleup x$$:     
 
 $$S=\sum_{i=1}^Nf(x_{i})\bigtriangleup x$$    
 
@@ -75,18 +75,22 @@ $$x_{i}$$是每个间距的中点
 
 $$S=\frac{b-a}{N}\sum_{i=1}^Nf(x_{i})$$   
 
-MC求解数值积分:
+**MC求解数值积分:**
 
 $$
 S = \int_{a}^b f(x)dx = \int_{a}^b w(x)h(x)d_{x}=E_{f}(w(x))\\
-where h(x) = \frac{1}{b-a} and w(x)=f(x)\centerdot(b-a)
+where,h(x) = \frac{1}{b-a}, and, w(x)=f(x)\centerdot(b-a)
 $$
 
 其中$$h(x)=\frac{1}{b-a}$$是概率密度函数为均匀分布U(a,b)的随机变量  
 从均匀分布U(a,b)生成N个样本，计算：  
-$$S =\frac{\sum_{i=1}^Nw(x_{i})}{N}$$  
+
+$$S =\frac{\sum_{i=1}^Nw(x_{i})}{N}$$    
+
 如果f(x)是均匀分布则：   
-$$S=\frac{b-a}{N}\sum_{i=1}^Nf(x_{i})$$  
+
+$$S=\frac{b-a}{N}\sum_{i=1}^Nf(x_{i})$$    
+
 
 **Importance sampling**   
 
