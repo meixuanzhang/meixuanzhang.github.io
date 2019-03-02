@@ -107,14 +107,14 @@ w是一个函数，h是随机变量x的概率密度函数
 $$
 S = \int w(x)h(x)d_{x}\\
 = \int w(x)\frac{h(x)}{g(x)}g(x)d_{x}\\
-=  \int \frac{h(x)w(x)}{g(x)}g(x)d_{x}\\
+=  \int \frac{w(x)h(x)}{g(x)}g(x)d_{x}\\
 $$  
 
 从g分布生成N个样本：  
 
 $$
-E_{h}[w(x)] = \int\frac{h(x)w(x)}{g(x)}g(x)d_{x}=E_{g}[\frac{h(x)w(x)}{g(x)}]\\
-=\frac{\sum_{i=1}^N\frac{h(x_{i})w(x_{i})}{g(x_{i})}}{N}
+E_{h}[w(x)] = \int\frac{w(x)h(x)}{g(x)}g(x)d_{x}=E_{g}[\frac{w(x)h(x)}{g(x)}]\\
+=\frac{\sum_{i=1}^N\frac{w(x_{i})h(x_{i})}{g(x_{i})}}{N}
 $$
 
 $$r = \frac{h(x)}{g(x)}$$是importance weights，当$$h(x)>g(x)$$，比值会大于1，$$r \centerdot g>g$$  
