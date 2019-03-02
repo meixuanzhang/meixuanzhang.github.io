@@ -79,11 +79,12 @@ $$S=\frac{b-a}{N}\sum_{i=1}^Nf(x_{i})$$
 
 $$
 S = \int_{a}^b f(x)dx = \int_{a}^b w(x)h(x)d_{x}=E_{f}(w(x))\\
-where,h(x) = \frac{1}{b-a}, and, w(x)=f(x)\centerdot(b-a)
+where \ h(x) = \frac{1}{b-a} \ and \ w(x)=f(x)\centerdot(b-a)
 $$
 
-其中$$h(x)=\frac{1}{b-a}$$是概率密度函数为均匀分布U(a,b)的随机变量  
-从均匀分布U(a,b)生成N个样本，计算：  
+其中$$h(x)=\frac{1}{b-a}$$是概率密度函数为均匀分布U(a,b)的随机变量    
+
+从均匀分布U(a,b)生成N个样本，计算：    
 
 $$S =\frac{\sum_{i=1}^Nw(x_{i})}{N}$$    
 
