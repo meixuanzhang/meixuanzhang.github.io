@@ -22,6 +22,8 @@ Sought: an element $$\mathbf{x_{0} \in A}$$ such that $$\mathbf{f(x_{0})\le f(x)
 Numerical integration is used to calculate a numerical approximation for the value $$S$$, the area under the curve defined by$$f(x)$$.  
 就是估计图中面积S   
 
+![_config.yml]({{ site.baseurl }}/images/Monte Carlo method/image1.png)
+
 **按概率分布生成样本**   
 
 # MC直接采样（按概率分布生成样本）   
@@ -45,6 +47,8 @@ Numerical integration is used to calculate a numerical approximation for the val
 
 $$\xi :$$均匀分布产生的样本
 
+![_config.yml]({{ site.baseurl }}/images/Monte Carlo method/image2.png)   
+![_config.yml]({{ site.baseurl }}/images/Monte Carlo method/image4.png) 
 
 # MC 接受——拒绝采样   
 
@@ -62,7 +66,7 @@ $$\xi :$$均匀分布产生的样本
 
 如果$$z\le f(x^\ast)$$,则接受$$x^\ast$$为对f(x)的采样,否则拒绝  
 
-
+![_config.yml]({{ site.baseurl }}/images/Monte Carlo method/image5.png)
 
 # MC求解数值积分问题   
 
@@ -86,7 +90,7 @@ $$
 
 从均匀分布U(a,b)生成N个样本，计算：    
 
-$$S =\frac{\sum_{i=1}^Nw(x_{i})}{N}$$    
+$$S =\frac{\sum_{i=1}^Nw(x_{i})}{N}$$      
 
 如果f(x)是均匀分布则：   
 
@@ -97,8 +101,8 @@ $$S=\frac{b-a}{N}\sum_{i=1}^Nf(x_{i})$$
 
 $$S = \int w(x)h(x)d_{x}$$    
 
-w是一个函数，h是随机变量x的概率密度函数  
-当很难从h分布进行采样时，则使用Importance sampling，相比起从h采样，可以定义一个不同的概率密度函数g,从g进行采样
+w是一个函数，h是随机变量x的概率密度函数    
+当很难从h分布进行采样时，则使用Importance sampling，相比起从h采样，可以定义一个不同的概率密度函数g，从g进行采样  
 
 $$
 S = \int w(x)h(x)d_{x}\\
@@ -113,7 +117,9 @@ E_{h}[w(x)] = \int\frac{h(x)w(x)}{g(x)}g(x)d_{x}=E_{g}[\frac{h(x)w(x)}{g(x)}]\\
 =\frac{\sum_{i=1}^N\frac{h(x_{i})w(x_{i})}{g(x_{i})}}{N}
 $$
 
-$$r = \frac{h(x)}{g(x)}$$是importance weights，当$$h(x)>g(x)$$，比值会大于1,$$r \centerdot g>g$$
+$$r = \frac{h(x)}{g(x)}$$是importance weights，当$$h(x)>g(x)$$，比值会大于1，$$r \centerdot g>g$$  
+
+![_config.yml]({{ site.baseurl }}/images/Monte Carlo method/image6.png)   
 
 在解决实际问题的时候应用蒙特卡罗方法主要有两部分工作：  
 用蒙特卡罗方法模拟某一过程时，需要产生各种概率分布的随机变量。  
