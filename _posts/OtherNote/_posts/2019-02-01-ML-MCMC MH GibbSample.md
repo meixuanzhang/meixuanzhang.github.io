@@ -14,7 +14,7 @@ $$P(x_{t+1}\mid x_{t})$$：$$P(x)$$作为平稳分布的马尔可夫链真实的
 $$g(x_{t+1}\mid x_{t})$$：建议的转移概率分布(proposal distribution)  
 $$A$$：接受率(acceptance ratio)  
 步骤：  
-1、Generate：从g(x'\mid x)分布中生成一个候选样本$$x'$$    
+1、Generate：从$$g(x'\mid x)$$分布中生成一个候选样本$$x'$$    
 2、Calculate:计算接受率$$A(x',x)=min(1,\frac{P(x')g(x \mid x')}{P(x)g(x' \mid x) })$$  
 因为P(x)是平稳分布所以$$P(x'\mid x)P(x)=P(x',x)=P(x|x')P(x')$$，即：   
 
@@ -36,8 +36,8 @@ $$A(x',x)=min(1,\frac{P(x')g(x \mid x')}{P(x)g(x' \mid x)})$$
 
 3、Accept or Reject：  
 + 从[0,1]均匀分布中生成样本u
-+ 如果$u \le A(x'x)$$,接受x_{t+1}=x'
-+ 如果$u \ge A(x'x)$$,拒绝x'，x_{t+1}=x_{x_{t}}=x
++ 如果$$u \le A(x'x)$$,接受$$x_{t+1}=x'$$
++ 如果$$u \ge A(x'x)$$,拒绝x'，$$x_{t+1}=x_{x_{t}}=x$$
 
 4,Increment：设t=t+1
 # Gibb Sample
