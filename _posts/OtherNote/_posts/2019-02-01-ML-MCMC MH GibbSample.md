@@ -24,51 +24,31 @@ $$P(y \mid x)P(x)=P(x|y)P(y)$$
 
 左边表示从 x 移动到 y 的非条件概率,x是从$$\pi$$生成的,右边表示从y 移动到 x的非条件概率（x'是从$$\pi$$生成的），两个概率相等   
 
-候选分布未必满足$$g(y\mid x)P(x)=g(x\mid y)P(y)$$，即x 移动到 y的频率与y 移动到 x频率不相等，因此引入A接受移动率。$$A \le 1$$,上极限是1。通过调节使两边相等：  
+候选分布未必满足$$g(y\mid x)P(x)=g(x\mid y)P(y)$$，即x 移动到 y的频率与y 移动到 x频率不相等，因此引入A接受移动率。$$A \le 1$$。通过调节使两边相等：  
 
 $$A(x,y)g(y \mid x)P(x)=A(y,x)g(x|y)P(y)$$
 
-A(x,y):x移动到y的接受率   
+A(x,y):x移动到y的接受率    
 A(y,x):y移动到x的接受率   
 
-当$$g(y \mid x)P(x)>g(x\midy)P(y)$$,A(y,x)=1,A(x,y)=$$\frac{P(y)g(x \mid y)}{P(x)g(y \mid x)}$$
-当$$g(y \mid x)P(x)<g(x\midy)P(y)$$,A(x,y)=1,A(y,x)=$$\frac{P(x)g(y \mid x)}{P(y)g(x \mid y)}$$
+当$$g(y \mid x)P(x)>g(x\mid y)P(y)$$,意味使A(y,x)尽量大，A最大值是1，所以：   
 
+$$A(y,x)=1,A(x,y)=\frac{P(y)g(x \mid y)}{P(x)g(y \mid x)}$$  
+
+当$$g(y \mid x)P(x)<g(x\mid y)P(y)$$,意味使A(x,y)尽量大，A最大值是1，所以：   
+
+$$A(x,y)=1,A(y,x)=\frac{P(x)g(y \mid x)}{P(y)g(x \mid y)}$$  
 
 $$A(x,y)=min(1,\frac{P(y)g(x \mid y)}{P(x)g(y \mid x)})$$
 
 
-
-
-
-
-
-
-
-
-$$
-\frac{P(x' \mid x)}{P(x|x')}=\frac{P(x')}{P(x)}
-$$    
-
-$$g(x'\mid x)$$是在条件x情况下生成x'的概率，$$A(x',x)$$是接受候选样本x'的概率。真实转移概率可以写成：   
-
-$$P(x' \mid x)=g(x' \mid x)A(x',x)$$   
-
-因此有：  
-
-$$\frac{A(x',x)}{A(x,x')}=\frac{P(x')g(x \mid x')}{P(x)g(x' \mid x) }$$    
-
-如果x'接受率高于或等于x（$$P(x')g(x \mid x') \ge P(x)g(x' \mid x)$$），我们总是接受x'，否则我们将以$$\frac{P(x')g(x \mid x')}{P(x)g(x' \mid x) }$$概率随机接受x',或拒绝x'。因此：  
-
-$$A(x',x)=min(1,\frac{P(x')g(x \mid x')}{P(x)g(x' \mid x)})$$
-
-步骤：  
-1、Generate：从$$g(y\mid x)$$分布中生成一个候选样本$$x'$$    
-2、Calculate:计算接受率$$A(y,x)=min(1,\frac{P(y)g(x \midy)}{P(x)g(y \mid x) })$$  
-3、Accept or Reject：  
+流程：  
+1、Generate：从$$g(y\mid x)$$分布中生成一个候选样本$$y$$    
+2、Calculate:计算接受率$$A(x,y)=min(1,\frac{P(y)g(x \midy)}{P(x)g(y \mid x) })$$  
+3、Accept or Reject：是否接受从x移动到y     
 + 从[0,1]均匀分布中生成样本u
-+ 如果$$u \le A(y,x)$$,接受$$x_{t+1}=y$$
-+ 如果$$u > A(y,x)$$,拒绝x'，$$x_{t+1}=x$$
++ 如果$$u \le A(x,y)$$,接受$$x_{t+1}=y$$
++ 如果$$u > A(x,y)$$,拒绝x'，$$x_{t+1}=x$$
 
 4,Increment：设t=t+1
 
