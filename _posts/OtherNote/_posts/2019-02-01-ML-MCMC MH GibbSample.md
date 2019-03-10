@@ -10,7 +10,7 @@ categories:
 这条马尔可夫链的平稳分布是知道的$$\pi$$，但是转移概率P是未知的，任意初始状态分布x经过n次迭代后会收敛于$$\pi$$,目前问题是我们需要找打合适的P。  
 目前常用MCMC采样方法有Metropolis-Hastings、Gibb Sample。
 # Metropolis-Hastings  
-Notation:  
+**Notation:**    
 $$P(x)=\pi_{x}$$：所需分布(要采样的概率分布)、马尔可夫链平稳分布  
 $$P(y \mid x)$$：$$P(x)$$作为平稳分布的马尔可夫链的转移概率分布  
 $$g(y \mid x)$$：候选的转移概率分布(proposal distribution)  
@@ -22,7 +22,7 @@ $$A$$：接受移动率(acceptance ratio)
 
 $$P(y \mid x)P(x)=P(x|y)P(y)$$   
 
-左边表示从 x 移动到 y 的非条件概率,x是从$$\pi$$生成的,右边表示从y 移动到 x的非条件概率（x'是从$$\pi$$生成的），两个概率相等   
+左边表示从 x 移动到 y 的非条件概率,x是从$$\pi$$生成的,右边表示从y 移动到 x的非条件概率（y是从$$\pi$$生成的），两个概率相等   
 
 候选分布未必满足$$g(y\mid x)P(x)=g(x\mid y)P(y)$$，即x 移动到 y的频率与y 移动到 x频率不相等，因此引入A接受移动率。$$A \le 1$$。通过调节使两边相等：  
 
@@ -39,26 +39,31 @@ $$A(y,x)=1,A(x,y)=\frac{P(y)g(x \mid y)}{P(x)g(y \mid x)}$$
 
 $$A(x,y)=1,A(y,x)=\frac{P(x)g(y \mid x)}{P(y)g(x \mid y)}$$  
 
-$$A(x,y)=min(1,\frac{P(y)g(x \mid y)}{P(x)g(y \mid x)})$$
+因此：  
+
+$$A(x,y)=min(1,\frac{P(y)g(x \mid y)}{P(x)g(y \mid x)})$$    
 
 
 流程：  
 1、Generate：从$$g(y\mid x)$$分布中生成一个候选样本$$y$$    
-2、Calculate:计算接受率$$A(x,y)=min(1,\frac{P(y)g(x \midy)}{P(x)g(y \mid x) })$$  
+2、Calculate:计算接受率$$A(x,y)=min(1,\frac{P(y)g(x \mid y)}{P(x)g(y \mid x) })$$  
 3、Accept or Reject：是否接受从x移动到y     
 + 从[0,1]均匀分布中生成样本u
-+ 如果$$u \le A(x,y)$$,接受$$x_{t+1}=y$$
-+ 如果$$u > A(x,y)$$,拒绝x'，$$x_{t+1}=x$$
++ 如果$$u \le A(x,y)$$,则接受$$x_{t+1}=y$$
++ 如果$$u > A(x,y)$$,则拒绝，$$x_{t+1}=x$$
 
 4,Increment：设t=t+1
 
-
-
-
-# Gibb Sample
-
-
-
-
 参考：    
-[](https://eml.berkeley.edu/reprints/misc/understanding.pdf)
+[Understanding the Metropolis-Hastings Algorithm](https://eml.berkeley.edu/reprints/misc/understanding.pdf)  
+
+# Gibbs Sample    
+Gibbs Sample 是从多元概率分布采样。
+假设我们想从多元概率分布$$P(x_{1}..x_{n})$$抽取k个$$X=(x_{1}...,x_{n})$$样本。将$$X_{i}=(x_{1}^{(i)}....x_{n}^{(i)})$$设为抽取第i个样本。  
+
+流程：  
+1、随机初始化样本$$X^{i}$$   
+2、想获得下一个样本$$X^{i+1}$$。由于$$X^(i+1)=(x_{1}^(i+1),x_{2}^(i+1),...x_{n}^(i+1))$$是一个向量，需要对每个元素$$x_{j}^(i+1)$$ 进行抽样。$$x_{j}^(i+1)$$ 基于$$X_{i+1}$$和$$X_{i}$$元素条件概率分布$$P(x_{j}^(i+1) \mid x_{1}^{(i+1)},...,x_{j-1}^{(i+1)},x_{j+1}^{(i)}..x_{n}^{(i)})$$。
+3、重复上述步骤k次
+
+
