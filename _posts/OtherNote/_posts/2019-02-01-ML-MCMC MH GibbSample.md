@@ -58,12 +58,36 @@ $$A(x,y)=min(1,\frac{P(y)g(x \mid y)}{P(x)g(y \mid x)})$$
 [Understanding the Metropolis-Hastings Algorithm](https://eml.berkeley.edu/reprints/misc/understanding.pdf)  
 
 # Gibbs Sample    
-Gibbs Sample 是从多元概率分布采样。
-假设我们想从多元概率分布$$P(x_{1}..x_{n})$$抽取k个$$X=(x_{1}...,x_{n})$$样本。将$$X_{i}=(x_{1}^{(i)}....x_{n}^{(i)})$$设为抽取第i个样本。  
-
+Gibbs Sample 是从多元概率分布采样。 假设我们想从多元概率分布$$P(x_{1}..x_{n})$$抽取k个$$X=(x_{1}...,x_{n})$$样本。将$$X_{(i)}=(x_{1}^{(i)}....x_{n}^{(i)})$$设为抽取第i个样本。     
 流程：  
-1、随机初始化样本$$X^{i}$$   
-2、想获得下一个样本$$X^{i+1}$$。由于$$X^(i+1)=(x_{1}^(i+1),x_{2}^(i+1),...x_{n}^(i+1))$$是一个向量，需要对每个元素$$x_{j}^(i+1)$$ 进行抽样。$$x_{j}^(i+1)$$ 基于$$X_{i+1}$$和$$X_{i}$$元素条件概率分布$$P(x_{j}^(i+1) \mid x_{1}^{(i+1)},...,x_{j-1}^{(i+1)},x_{j+1}^{(i)}..x_{n}^{(i)})$$。
+1、随机初始化样本$$X^{(i)}$$   
+2、想获得下一个样本$$X^{(i+1)}$$。由于$$X^{(i+1)}=(x_{1}^{(i+1)},x_{2}^{(i+1)},...x_{n}^{(i+1)})$$是一个向量，需要对每个元素$$x_{j}^{(i+1)}$$ 进行抽样。$$x_{j}^(i+1)$$ 基于$$X_{(i+1)}$$和$$X_{i}$$元素条件概率分布$$P(x_{j}^{(i+1)} \mid x_{1}^{(i+1)},...,x_{j-1}^{(i+1)},x_{j+1}^{(i)}..x_{n}^{(i)})$$。
 3、重复上述步骤k次
 
+**证明**    
+$$P(X)=\pi_{X}$$：所需分布(要采样的概率分布)、马尔可夫链平稳分布$X=(x_{1}...,x_{n}),X \in \theta$$   
+$$P_{XY}$$：$$P(X)$$作为平稳分布的马尔可夫链的转移概率分布  
 
+$$P(x_{j} \mid x_{1},..,x_{j-1},x_{j+1},..x_{n})=\frac{P(x_{1},...x_{n})}{P(x_{1},..,x_{j-1},x_{j+1},..x_{n})}\\
+=\frac{P(x_{1},...x_{n})}{\sum_{x_{j}}P(x_{1},..,x_{j-1},x_{j},x_{j+1},..x_{n})}\propto P(x_{1},...x_{n})$$
+
+1、随机选取index$$1 \le j \le n$$
+2、为$$X_{j}$$选择一个新的值,根据$$P(x_{1},..x_{j-1},\cdot ,x_{j+1},..x_{n})$$  
+
+这两步定义了可逆的马尔科夫链，平稳分布是P(X)。证明：  
+假设有两个变量$$X,Y,X \in \theta ,Y \in \theta , X \sim_{j}Y$$(X,Y向量里除了第j个元素不确定外，其他元素一定相等)，从X转移到Y有：
+
+$$
+P_{XY}= \left\{ \begin{array}{rl}
+\frac{1}{d}\frac{P(Y)}{\sum_{Z \in \theta:Z \sim_{j}X}P( Z)} & X \sim_{j}Y\\
+0 &\mbox{ otherwise}
+\end{array} \right.
+$$
+
+$$
+P(X)P_{XY}=\frac{1}{d}\frac{P(X)P(Y)}{\sum_{Z \in \theta:Z \sim_{j}X}P( Z)}\\
+=\frac{1}{d}\frac{P(Y)P(X)}{\sum_{Z \in \theta:Z \sim_{j}Y}P( Z)}\\
+=P(Y)P_{YX}
+$$
+
+In practice, the index j. is not chosen at random, and the chain cycles through the indexes in order. In general this gives a non-stationary Markov process, but each individual step will still be reversible, and the overall process will still have the desired stationary distribution (as long as the chain can access all states under the fixed ordering).
