@@ -7,8 +7,9 @@ categories:
 
 # MCMC方法(Markov Chain Monte Carlo)
 马尔可夫链蒙特卡罗（MCMC）方法包括一类用于从概率分布中采样的算法。通过构建一条马尔可夫链，它的平稳分布是所需分布(要采样的概率分布)，通过观察马尔可夫链随机过程，从而获得所需分布的样本。    
-这条马尔可夫链的平稳分布是知道的$$\pi$$，但是转移概率P是未知的，任意初始状态分布x经过n次迭代后会收敛于$$\pi$$,目前问题是我们需要找打合适的P。  
-目前常用MCMC采样方法有Metropolis-Hastings、Gibb Sample。
+这条马尔可夫链的平稳分布是$$\pi_{x}$$，平稳分布对应的转移概率为P，任意初始状态分布x经过n次迭代后会收敛于$$\pi_{x}$$,我们可以通过P进行采样，但是P未知,我们需要找打合适的P。  
+目前常用MCMC采样方法有Metropolis-Hastings、Gibb Sample。   
+
 # Metropolis-Hastings  
 **Notation:**    
 $$P(x)=\pi_{x}$$：所需分布(要采样的概率分布)、马尔可夫链平稳分布  
