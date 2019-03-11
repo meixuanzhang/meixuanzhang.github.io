@@ -100,3 +100,4 @@ In practice, the index j. is not chosen at random, and the chain cycles through 
 
 参考：  
 [Gibbs sampling-wiki](https://en.wikipedia.org/wiki/Gibbs_sampling#Variations_and_extensions)
+[MCMC](https://www.sheffield.ac.uk/polopoly_fs/1.60510!/file/MCMC.pdf)
