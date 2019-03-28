@@ -86,11 +86,6 @@ In other words, our main concern is not with designing the state signal, but wit
 
 这里估算的Value fuction 是对应固定的对手，换了对手需要重新训练另一个Value function。
 
-使用evolutionary 方法：   
-
-在移动前状态$$s$$下，选择移动策略$$p$$，有对应移动后状态$$s'$$    
-为了估计状态$$s'$$赢的概率，在移动前状态$$s$$下，固定选择移动策略$$p$$,玩多次游戏，赢的比例作为状态赢的概率。遍历所有移动策略，计算出所有状态赢的概率，选择能使状态赢的概率最大的作为移动，进入下一个状态，然后使用同样方法估计下一步移动下各状态赢的概率。  
-
 
 **Summary**   
 
