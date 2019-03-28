@@ -5,9 +5,11 @@ date:   2019-03-23
 categories: Reinforcement Learning:An Introduction
 ---
 
-当我们思考学习的本质时，首先会想到学习的本质是通过与环境互动学习，通过互动进行学习是学习与智能理论的基本理念。   
+当我们思考学习的本质时，首先会想到学习的本质是通过与环境互动学习，通过互动进行学习是学习与智能理论的基本理念。  
+
 本书探索了一种从互动中学习的计算方法。探索了理想化的学习情境和评估各种学习方法的有效性。探索了如何设计机器使其有效解决科学或经济方面学习问题，并通过数学分析和计算实验评估设计。     
-本书探索的方法叫reinforcement learning，是通过互动实现以目标为导向的学习。   
+
+本书探索的方法叫reinforcement learning，是通过互动实现以目标为导向的学习。    
 
 **1 Reinforcement Learning**   
 
@@ -20,7 +22,54 @@ action不仅影响immediate reward，也影响下一个情境，甚至所有subs
 
 4、Reinforcement learning考虑的是以目标为导向的agent和不确定的环境之间互动的整个问题，这与一些只考虑子问题方法不同。  
 
-5、All reinforcement learning agents have explicit goals, can sense aspects of their environments, and can choose actions to influence their environments    
+5、All reinforcement learning agents have explicit goals(明确目标), can sense aspects of their environments(感知环境), and can choose actions to influence their environments(通过行为影响环境)    
 
-**2、Examples**
+**2、Examples**  
 
+书里举的例子包含以下方面：  
+
+所有例子都包含目标，agent需要通过与不确定性环境互动去完成目标   
+
+agent行动会影响环境未来状态，进而友影响后面agent决策，agent应具有预判和计划能力。  
+
+行动造成的影响不能完全被预测，因此agent需要频繁监测环境做出相应的反应。   
+
+agent可以通过经验提升表现   
+
+
+**3、Elements of Reinforcement Learning**  
+
+reinforcement learning 系统主要4个元素：a policy, a reward signal, a value function, and, a model of the environment(可选).  
+
+1、A policy defines the learning agent's way of behaving at a given time. agent策略  
+
+2、A reward signal defines the goal in a reinforcement learning problem. On each time step, the environment
+sends to the reinforcement learning agent a single number called the reward .The agent's sole
+objective is to maximize the total reward it receives over the long run. The reward signal thus defines
+what are the good and bad events for the agent. 即时的奖励  
+
+3、A value function specifies what is good in the long run.the value of a state is the total amount of reward an agent can expect to accumulate over the future, starting from that state.  长远的回报  
+
+Whereas rewards determine the immediate, intrinsic desirability of environmental states, values indicate the long-term desirability
+of states after taking into account the states that are likely to follow, and the rewards available in those
+states.  
+
+Action choices are made based on value judgments. 行动选择取决于对value判断
+
+4、a model of the environment is something that mimics the behavior of the environment, that allows inferences
+to be made about how the environment will behave.  如，基于情境和行动，预测环境返回reward以及下一个情境状态
+
+5、Models are used for planning, by which we mean any way of deciding on a course of action by considering possible future situations before they are actually experienced. Methods for solving reinforcement learning problems that use models and planning are called model-based methods, as opposed to simpler model-free methods that are explicitly trial-anderror learners|viewed as almost the opposite of planning.model-based就是对环境建模，描述环境是如何工作，使用规划算法找到最优策略 
+
+
+**4、Limitations and Scope** 
+
+1、Reinforcement learning relies heavily on the concept of state ——as input to the policy and value function,
+and as both input to and output from the model(环境).
+
+2、we can think of the state as a signal conveying to the agent some sense of "how the environment is" at a particular time.We do not address the issues of constructing, changing, or learning the state signal in this book.本书将状态认为是一种信号传送给agent，让agent感知现在环境怎样，没有说到如果构建、改变、学习状态信号
+
+In other words, our main concern is not with designing the state signal, but with deciding what action to
+take as a function of whatever state signal is available.主要关注设计任何状态下应采取什么行动的函数
+
+3、本书大部分强化学习方法围绕value function的估计。
