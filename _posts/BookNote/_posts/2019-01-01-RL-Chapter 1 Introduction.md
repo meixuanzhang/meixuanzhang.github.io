@@ -61,7 +61,7 @@ to be made about how the environment will behave.  如，基于情境和行动�
 
 5、Models are used for planning, by which we mean any way of deciding on a course of action by considering possible future situations before they are actually experienced. 
 
-Methods for solving reinforcement learning problems that use models and planning are called model-based methods, as opposed to simpler model-free methods that are explicitly trial-anderror learners|viewed as almost the opposite of planning.model-based就是对环境建模，描述环境是如何工作，使用规划算法找到最优策略 
+Methods for solving reinforcement learning problems that use models and planning are called model-based methods, as opposed to simpler model-free methods that are explicitly trial-anderror learners viewed as almost the opposite of planning.model-based就是对环境建模，描述环境是如何工作，使用规划算法找到最优策略 
 
 
 **4、Limitations and Scope** 
@@ -76,12 +76,15 @@ In other words, our main concern is not with designing the state signal, but wit
 3、本书大部分强化学习方法围绕value function的估计。   
 
 **5、An Extended Example: Tic-Tac-Toe三连棋游戏**   
-使用value function 方法： 
-1、将游戏中所有可能的状态列举  
-2、假设我们使用$$X_{s}$$,所有$$X_{s}$$三连一线的state，赢的概率设为1，所有$$O_{s}$$三连一线的state，赢的概率设为0，其他state赢的概率设为0.5  
-3、检查每个可能的动作会产生的状态,在表中找到它们当前value。大多时候选择能达到赢的概率最大的状态的移动，有时会随机选择移动为了探索从没遇见的状态
 
-**Summary**
+使用value function 方法：  
+
+1、将游戏中所有可能的状态列举  
+2、假设我们使用$$X_{s}$$,所有$$X_{s}$$三连一线的state，赢的概率设为1，所有$$O_{s}$$三连一线的state，赢的概率设为0，其他state赢的概率设为0.5    
+3、检查每个可能的动作会产生的状态,在表中找到它们当前value。大多时候选择能达到赢的概率最大的状态的移动，有时会随机选择移动为了探索从没遇见的状态   
+
+**Summary**   
+
 强化学习是一种计算方法，理解和自动化目标导向的学习和决策。 它的重点在于区别于其他计算方法代理人从与环境的直接互动中学习，而不依赖于模范监督或完整的环境模型。   
 强化学习使用马尔可夫决策过程的框架来确定交互学习代理人与其环境之间的状态，行动和奖励。
 
