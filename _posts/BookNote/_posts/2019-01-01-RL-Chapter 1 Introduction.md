@@ -9,12 +9,12 @@ categories: Reinforcement Learning:An Introduction
 
 本书探索了一种从互动中学习的计算方法。探索了理想化的学习情境和评估各种学习方法的有效性。探索了如何设计机器使其有效解决科学或经济方面学习问题，并通过数学分析和计算实验评估设计。     
 
-本书探索的方法叫reinforcement learning，是通过互动实现以目标为导向的学习。    
+本书探索的方法叫reinforcement learning，是通过互动实现有目标的学习。    
 
 **1 Reinforcement Learning**   
 
 1、Reinforcement learning is learning what to do——how to map situations to actions——so as to maximize a numerical reward signal.  
-action不仅影响immediate reward，也影响下一个情境，甚至所有subsequent rewards，trial-and-error search(反复搜索) and delayed reward(延迟奖励)是Reinforcement learning 两个最重要的不同特征   
+action不仅影响immediate reward，也影响下一个情境，甚至所有subsequent rewards，trial-and-error search(反复搜索) and delayed reward(延迟奖励)是Reinforcement learning 两个最重要的两个不同特征   
 
 2、理解问题和解决方法之间的区别在学习强化学习中非常重要;   
 
@@ -82,11 +82,18 @@ In other words, our main concern is not with designing the state signal, but wit
 1、将游戏中所有可能的状态列举    
 2、假设我们使用$$X_{s}$$,所有$$X_{s}$$三连一线的state，赢的概率设为1，所有$$O_{s}$$三连一线的state，赢的概率设为0，其他state赢的概率设为0.5    
 3、检查每个可能的动作会产生的状态,在表中找到它们当前Value。大多时候选择能达到赢的概率最大的状态的移动(贪婪移动)，有时会随机选择移动为了探索从没遇见的状态     
-4、为了更准确估计状态赢的概率，将贪婪移动前的状态$$s$$的值更新为更接近移动后状态$$s'$$的值，即$$V(s) \gets V(s)+\alpha[V(s'-V(s))],\alpha$$是步长参数，影响学习率。这种更新方式是一种temporal-difference 学习方法。     
+4、为了更准确估计状态赢的概率，将贪婪移动前的状态$$s$$的值更新为更接近移动后状态$$s'$$的值，即$$V(s) \gets V(s)+\alpha[V(s'-V(s))],\alpha$$是步长参数，影响学习率。这种更新方式是一种temporal-difference 学习方法。      
+
+这里估算的Value fuction 是对应固定的对手，换了对手需要重新训练另一个Value function。
+
+使用evolutionary 方法：  
+
+在移动前状态$$s$$下，选择移动策略$$p$$，有对应移动后状态$$s'$$  
+为了估计状态$$s'$$赢的概率，在移动前状态$$s$$下，固定选择移动策略$$p$$,玩多次游戏，赢的比例作为状态赢的概率。遍历所有移动策略，计算出所有状态赢的概率，选择能使状态赢的概率最大的作为移动，进入下一个状态，然后使用同样方法估计下一步移动下各状态赢的概率。
 
 
 **Summary**   
 
-强化学习是一种计算方法，能理解并自动有目标的学习和决策。 它通过代理人从与环境的直接互动中学习，而不依赖于模范监督或完整的环境模型。    
+强化学习是一种计算方法，能理解并自动有目标的学习和决策。 它通过代理人从与环境的直接互动中学习，而不依赖于示范监督或完整的环境模型。    
 强化学习使用马尔可夫决策过程的框架来确定交互学习代理人与其环境之间的状态，行动和奖励。  
 
