@@ -17,7 +17,7 @@ $$Q_{t}(a):$$t时刻选action a,返回的value的估计
 
 $$q\ast (a)=E[R_{t}\mid A_{t}=a]$$    
 
-我们希望$$Q_{t}(a):$$近似$$q\ast (a):$$    
+我们希望$$Q_{t}(a)$$近似$$q\ast (a)$$    
 
 **1、greedy action、exploiting、exploring**  
 
@@ -30,7 +30,13 @@ Exploitation 可以获得当前估计的最大化期望reward，Exploration 在�
 因为选择action时不能同时实现Exploitation和Exploration，这里存在是一个矛盾，怎么均衡Exploitation和Exploration。  
 
 
+**2、Action-value Methods**  
 
+估计 action 的value,通过估计的value选择action。 
+
+sample -average method :
+
+$$Q_{t}(a)=\frac{sum \ of \ rewards\ when \ a \ taken \ prior \ to \ t}{number \  of \ times \ a \ taken \ prior \ to \ t}=\frac{\sum_{i=1}^{t-1}R_{i}\mathbb{1}_{A_{i}=a}}{\sum_{i=1}^{t-1}\mathbb{1}_{A_{i}=a}}$$  
 
 
 
