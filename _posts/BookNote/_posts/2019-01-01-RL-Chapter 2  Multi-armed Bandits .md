@@ -21,8 +21,10 @@ $$q\ast (a)=E[R_{t}\mid A_{t}=a]$$
 
 **1、greedy action、exploiting、exploring**  
 
-greedy action：在每个时间t,会有一个action使得估计$$Q_{t}(a)$$最大，这个action称为greedy action  
+greedy action：在每个时间t,会有一个action使得估计$$Q_{t}(a)$$最大，这个action称为greedy action   n
+
 当我们选择greedy action这个行为称为，you are exploiting your current knowledge of the values of the actions.(你正在运用了你目前对行动价值的了解。)   
+
 选择nongreedy action这个行为称为:you are exploring, because this enables you to improve your estimate of the nongreedy action's value.   
 
 Exploitation 可以获得当前估计的最大化期望reward，Exploration 在短期看reward可能是较低的，但长远看可能可以获得更大的total reward，通过探索一旦发现更好的action,可以在以后exploit它们。  
@@ -32,11 +34,15 @@ Exploitation 可以获得当前估计的最大化期望reward，Exploration 在�
 
 **2、Action-value Methods**  
 
-估计 action 的value,通过估计的value选择action。 
+估计action的Q,并根据Q选择action。
 
-sample -average method :
+sample -average method估计Q :
 
-$$Q_{t}(a)=\frac{sum \ of \ rewards\ when \ a \ taken \ prior \ to \ t}{number \  of \ times \ a \ taken \ prior \ to \ t}=\frac{\sum_{i=1}^{t-1}R_{i}\mathbb{1}_{A_{i}=a}}{\sum_{i=1}^{t-1}\mathbb{1}_{A_{i}=a}}$$  
+$$Q_{t}(a)=\frac{sum \ of \ rewards\ when \ a \ taken \ prior \ to \ t}{number \  of \ times \ a \ taken \ prior \ to \ t}=\frac{\sum_{i=1}^{t-1}R_{i}\mathbb{1}_{A_{i}=a}}{\sum_{i=1}^{t-1}\mathbb{1}_{A_{i}=a}}$$   
 
+greedy action selection method选择a:  
 
+$$A_{t}=\mathop{\arg\max}{a}Q_{t}(a) $$ 
+
+$$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概率选择greedy action，以$$\varepsilon$$概率随机选择action
 
