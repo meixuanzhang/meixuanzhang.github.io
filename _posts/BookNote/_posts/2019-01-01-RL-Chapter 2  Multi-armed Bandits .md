@@ -83,7 +83,10 @@ $$Q_{n+1}(a)=\frac{1}{n}\sum_{i=1}^nR_{i}\\
 =\frac{1}{n}(R_{n} +(nQ_{n}(a)-Q_{n}(a))\\
 =Q_{n}(a)+\frac{1}{n}[R_{n}-Q_{n}(a)]$$   
 
-$$R_{n}$$是第n次选择action a 产生的reward
+$$R_{n}$$是第n次选择action a 产生的reward  
+
+算法流程：  
+
 
 
 
