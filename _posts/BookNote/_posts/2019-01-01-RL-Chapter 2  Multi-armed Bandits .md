@@ -5,7 +5,7 @@ date:   2019-03-23
 categories: Reinforcement Learning:An Introduction
 ---
 
-多臂老虎机(Multi-armed Bandits)是一种用零钱赌博的机器，因为上面有老虎图案的筹码而得名。老虎机有三个玻璃框，里面有不同的图案，投币之后拉下拉杆(游戏会提供k个杆，选择其中一个)，就会开始转，如果出现特定的图形（比如三个相同）就会吐钱出来，出现相同图型越多奖金则越高,我们希望通过数次拉杆后，获得最大期望奖金。通过n次action后，获得最大期望total reward，这种类型问题称为"bandit problem"  
+多臂老虎机(Multi-armed Bandits)是一种用零钱赌博的机器，因为上面有老虎图案的筹码而得名。老虎机有三个玻璃框，里面有不同的图案，投币之后拉下拉杆(游戏会提供k个杆，选择其中一个)，就会开始转，如果出现特定的图形（比如三个相同）就会吐钱出来，出现相同图型越多奖金则越高,我们希望通过数次拉杆后，获得最大期望奖金。通过n次action后(每次action是玩一场游戏)，获得最大期望total reward，这种类型问题称为"bandit problem"  
  
 $$A_{t}:$$t时刻选的的action      
 
@@ -27,7 +27,7 @@ greedy action：在每个时间t,会有一个action使得估计$$Q_{t}(a)$$最�
 
 选择nongreedy action这个行为称为:you are exploring, because this enables you to improve your estimate of the nongreedy action's value.   
 
-Exploitation 可以获得当前估计的最大化期望reward，Exploration 在当前估计看reward可能是较低的，但长远看可能可以获得更大的total reward，通过探索一旦发现更好的action,可以在以后exploit它们。  
+Exploitation 可以获得当前估计的最大化期望reward，Exploration 在短期看reward可能是较低的（可能是当前估计不准确造成的），但长远看可能可以获得更大的total reward，通过探索一旦发现更好的action,可以在以后exploit它们。 
 
 因为选择action时不能同时实现Exploitation和Exploration，这里存在是一个矛盾，怎么均衡Exploitation和Exploration。  
 
@@ -42,7 +42,7 @@ $$Q_{t}(a)=\frac{sum \ of \ rewards\ when \ a \ taken \ prior \ to \ t}{number \
 
 greedy action selection method选择a:  
 
-$$A_{t}=\mathop{\arg\max}{a}Q_{t}(a) $$ 
+$$A_{t}=\mathop{\arg\max}_{a}Q_{t}(a) $$ 
 
 $$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概率选择greedy action，以$$\varepsilon$$概率随机选择action
 
@@ -50,15 +50,28 @@ $$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概�
 **3、Example: the 10-armed Testbed**  
 
 $$q\ast (a),a=1,.,10$$的值通过均值为0，方差为1的高斯分布产生  
-$$R_{t}$$的值通过均值为$$q\ast (A_{t}),方差为1的高斯分布产生  
+$$R_{t}$$的值通过均值为$$q\ast (A_{t}),方差为1的高斯分布产生   
 这个例子中真实value$$q\ast (a)$$是稳定的，不会变化
 结果如图： 
 
-使用sample -average估计Q，对比不同greedy method下，决策效果： 
-$$\varepsilon=0$$，action的选择困在了局部最优action，，从长远看表现比较差   
+使用sample -average估计Q，对比不同greedy method下，决策效果：   
+$$\varepsilon=0$$，action的选择困在了局部最优action，，从长远看表现比较差    
 $$\varepsilon=0.1$$，很快找到了最优action   
-$$\varepsilon=0.01$$,找到最优action速度较慢   
+$$\varepsilon=0.01$$,找到最优action速度较慢    
+reward方差越大，$$\varepsilon$$应越大，更多的取探索  
 
+3、**Incremental Implementation**  
 
+sample -average method估计Q :  
+$$Q_{t}(a)\frac{\sum_{i=1}^{t-1}R_{i}\mathbb{1}_{A_{i}=a}}{\sum_{i=1}^{t-1}\mathbb{1}_{A_{i}=a}}$$   
+现将$$R_{1},R_{2}..R_{n-1}$$定义为多次游戏中有n-1次选择了action a 返回的reward,则$$Q_{a}$$估计为：  
 
+$$
+Q_{n}(a)=\frac{R_{1},R_{2}..R_{n-1}}{n-1}
+$$
+
+上面式子需要记录所有游戏action以及返回的reward，才能不断更新Q
+
+$$Q_{n+1}(a)=\frac{1}{n}\sum_{i=1}^nR_{i}\\
+=\frac{1}{n}(R_{N} +\sum_{i=1}^{n-1}R_{i})$$
 
