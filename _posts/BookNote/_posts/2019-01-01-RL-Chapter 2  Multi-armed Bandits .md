@@ -65,21 +65,25 @@ reward方差越大，$$\varepsilon$$应越大，更多的取探索
 sample -average method估计Q :  
 
 $$Q_{t}(a)\frac{\sum_{i=1}^{t-1}R_{i}\mathbb{1}_{A_{i}=a}}{\sum_{i=1}^{t-1}\mathbb{1}_{A_{i}=a}}$$   
-现将$$R_{1},R_{2}..R_{n-1}$$定义为过去多次游戏中有n-1次选择了action a 返回的reward,则$$Q(a)$$估计为：  
+
+现将$$R_{1},R_{2}..R_{n-1}$$定义t-1次游戏中有n-1次选择了action a 返回的reward,则$$Q_{t}(a)$$估计为：  
 
 $$
-Q_{n}(a)=\frac{R_{1},R_{2}..R_{n-1}}{n-1}\\
-$Q_{a} = Q_{n}(a)
+Q_{n}(a)=\frac{R_{1}+R_{2}+..+R_{n-1}}{n-1}\\
+Q_{t}(a) = Q_{n}(a)
 $$
 
-$$A_{t}=\mathop{\arg\max}_{a}Q(a) $$ 
 
-上面式子需要记录游戏所有action以及返回的reward，每场游戏后才能重新计算Q   
+上面式子需要记录游戏所有action以及返回的reward，每场游戏后才能重新计算Q(a),为此提出incremental implementation:  
 
 $$Q_{n+1}(a)=\frac{1}{n}\sum_{i=1}^nR_{i}\\
 =\frac{1}{n}(R_{n} +\sum_{i=1}^{n-1}R_{i})\\
-=\frac{1}{n}(R_{n} +(n-1)/frac{1}{n-1}\sum_{i=1}^{n-1}R_{i})\\
+=\frac{1}{n}(R_{n} +(n-1) \frac{1}{n-1}\sum_{i=1}^{n-1}R_{i})\\
 =\frac{1}{n}(R_{n} +(n-1)Q_{n}(a))\\
 =\frac{1}{n}(R_{n} +(nQ_{n}(a)-Q_{n}(a))\\
-=Q_{n}(a)+\frac{1}{n}[R_{n}-Q_{n}]$$
+=Q_{n}(a)+\frac{1}{n}[R_{n}-Q_{n}(a)]$$   
+
+$$R_{n}$$是第n次选择action a 产生的reward
+
+
 
