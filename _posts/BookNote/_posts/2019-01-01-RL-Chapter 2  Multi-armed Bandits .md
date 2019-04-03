@@ -21,13 +21,13 @@ $$q\ast (a)=E[R_{t}\mid A_{t}=a]$$
 
 **1、greedy action、exploiting、exploring**  
 
-greedy action：在每个时间t,会有一个action使得估计$$Q_{t}(a)$$最大，这个action称为greedy action   n
+greedy action：在每个时间t,会有一个action使得估计$$Q_{t}(a)$$最大，这个action称为greedy action  
 
 当我们选择greedy action这个行为称为，you are exploiting your current knowledge of the values of the actions.(你正在运用了你目前对行动价值的了解。)   
 
 选择nongreedy action这个行为称为:you are exploring, because this enables you to improve your estimate of the nongreedy action's value.   
 
-Exploitation 可以获得当前估计的最大化期望reward，Exploration 在短期看reward可能是较低的，但长远看可能可以获得更大的total reward，通过探索一旦发现更好的action,可以在以后exploit它们。  
+Exploitation 可以获得当前估计的最大化期望reward，Exploration 在当前估计看reward可能是较低的，但长远看可能可以获得更大的total reward，通过探索一旦发现更好的action,可以在以后exploit它们。  
 
 因为选择action时不能同时实现Exploitation和Exploration，这里存在是一个矛盾，怎么均衡Exploitation和Exploration。  
 
@@ -45,4 +45,20 @@ greedy action selection method选择a:
 $$A_{t}=\mathop{\arg\max}{a}Q_{t}(a) $$ 
 
 $$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概率选择greedy action，以$$\varepsilon$$概率随机选择action
+
+
+**3、Example: the 10-armed Testbed**  
+
+$$q\ast (a),a=1,.,10$$的值通过均值为0，方差为1的高斯分布产生  
+$$R_{t}$$的值通过均值为$$q\ast (A_{t}),方差为1的高斯分布产生  
+这个例子中真实value$$q\ast (a)$$是稳定的，不会变化
+结果如图： 
+
+使用sample -average估计Q，对比不同greedy method下，决策效果： 
+$$\varepsilon=0$$，action的选择困在了局部最优action，，从长远看表现比较差   
+$$\varepsilon=0.1$$，很快找到了最优action   
+$$\varepsilon=0.01$$,找到最优action速度较慢   
+
+
+
 
