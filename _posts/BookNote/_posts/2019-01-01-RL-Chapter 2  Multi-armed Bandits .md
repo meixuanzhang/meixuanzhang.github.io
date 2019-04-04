@@ -84,17 +84,24 @@ $$Q_{n+1}(a)=\frac{1}{n}\sum_{i=1}^nR_{i}\\
 =\frac{1}{n}(R_{n} +(n-1) \frac{1}{n-1}\sum_{i=1}^{n-1}R_{i})\\
 =\frac{1}{n}(R_{n} +(n-1)Q_{n}(a))\\
 =\frac{1}{n}(R_{n} +(nQ_{n}(a)-Q_{n}(a))\\
-=Q_{n}(a)+\frac{1}{n}[R_{n}-Q_{n}(a)]$$                     (2.1)    
+=Q_{n}(a)+\frac{1}{n}[R_{n}-Q_{n}(a)]$$           (2.1)    
 
 $$R_{n}$$是第n次选择action a 产生的reward    
 对于任意的$$Q_{1},Q_{2}=R_{1}$$
-式子(2,1)一般形式是：NewEstimate $$\gets$$ OldEstimate + StepSize[Target-OldEstimate]    
+式子(2,1)一般形式是：   
+NewEstimate $$\gets$$ OldEstimate + StepSize[Target-OldEstimate]    
+
 算法流程：  
 ![_config.yml]({{ site.baseurl }}/images/12RL/image3.png)
 
 **5、Tracking a Nonstationary promble**  
-前面提到bandit promble是stationary的，即reward分布不随时间变化，任何时候产生的reward都是一样重要的，强化学习中问题往往是Nonstationary，相比起过去rewards,recent rewards应有更大的权重，因为提出常数的步长参数(step-size parameter)$$\alpha$$。
+前面提到bandit promble是stationary的，即reward分布不随时间变化，任何时候产生的reward都是一样重要的，强化学习中问题往往是Nonstationary，相比起过去rewards,recent rewards应有更大的权重，因为提出常数的步长参数(step-size parameter)$$\alpha$$。对(2.1)公式进行修改：  
 
-$$Q_{n+1}=Q_{n}+\alpha[R_{n}-Q_{n}]$$
+$$Q_{n+1}=Q_{n}+\alpha[R_{n}-Q_{n}]\\
+=\alpha R_{n}+(1-\alpha)Q_{n}\\
+=\alpha R_{n}+(1-\alpha)[\alpha R_{n-1}+(1-\alpha)Q_{n-1}]\\
+=\alpha R_{n}+(1-\alpha)\alpha R_{n-1}+(1-\alpha)^2 Q_{n-1}\\
+=\alpha R_{n}+(1-\alpha)\alpha R_{n-1}+(1-\alpha)^2 \alpha R_{n-2}+..+(1-\alpha)^{n-1}\alpha R_{1}+(1-\alpha)^n Q_{1}\\
+=(1-\alpha)^n Q_{1}+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}R_{i}$$  
 
-
+$$\alpha$$取值范围$$(0,1]$$  
