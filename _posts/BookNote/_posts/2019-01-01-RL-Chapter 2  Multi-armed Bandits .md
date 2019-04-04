@@ -51,7 +51,7 @@ $$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概�
 
 $$q\ast (a),a=1,.,10$$的值通过均值为0，方差为1的高斯分布产生  
 $$R_{t}$$的值通过均值为$$q\ast (A_{t})$$,方差为1的高斯分布产生   
-这个例子中真实value$$q\ast (a)$$是稳定的，不会变化
+这个例子中$R_{t}$$概率分布是稳定的，不会随时间变化
 结果如图： 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image1.png)
 
@@ -63,7 +63,7 @@ reward方差越大，$$\varepsilon$$应越大，更多的取探索
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image2.png)  
 
-3、**Incremental Implementation**  
+**4、Incremental Implementation**  
 
 sample -average method估计Q :  
 
@@ -77,20 +77,24 @@ Q_{t}(a) = Q_{n}(a)
 $$
 
 
-上面式子需要记录游戏所有action以及返回的reward，每场游戏后才能重新计算Q(a),为此提出incremental implementation:  
+上面式子需要记录游戏所有action以及返回的reward，每场游戏后才能重新计算Q(a),为此提出incremental implementation(只需要记录每个action最新的Q及已经action次数):  
 
 $$Q_{n+1}(a)=\frac{1}{n}\sum_{i=1}^nR_{i}\\
 =\frac{1}{n}(R_{n} +\sum_{i=1}^{n-1}R_{i})\\
 =\frac{1}{n}(R_{n} +(n-1) \frac{1}{n-1}\sum_{i=1}^{n-1}R_{i})\\
 =\frac{1}{n}(R_{n} +(n-1)Q_{n}(a))\\
 =\frac{1}{n}(R_{n} +(nQ_{n}(a)-Q_{n}(a))\\
-=Q_{n}(a)+\frac{1}{n}[R_{n}-Q_{n}(a)]$$   
+=Q_{n}(a)+\frac{1}{n}[R_{n}-Q_{n}(a)]$$                     (2.1)    
 
-$$R_{n}$$是第n次选择action a 产生的reward  
-
+$$R_{n}$$是第n次选择action a 产生的reward    
+对于任意的$$Q_{1},Q_{2}=R_{1}$$
+式子(2,1)一般形式是：NewEstimate $$\gets$$ OldEstimate + StepSize[Target-OldEstimate]    
 算法流程：  
 ![_config.yml]({{ site.baseurl }}/images/12RL/image3.png)
 
+**5、Tracking a Nonstationary promble**  
+前面提到bandit promble是stationary的，即reward分布不随时间变化，任何时候产生的reward都是一样重要的，强化学习中问题往往是Nonstationary，相比起过去rewards,recent rewards应有更大的权重，因为提出常数的步长参数(step-size parameter)$$\alpha$$。
 
+$$Q_{n+1}=Q_{n}+\alpha[R_{n}-Q_{n}]$$
 
 
