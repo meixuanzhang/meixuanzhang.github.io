@@ -84,7 +84,7 @@ $$Q_{n+1}(a)=\frac{1}{n}\sum_{i=1}^nR_{i}\\
 =\frac{1}{n}(R_{n} +(n-1) \frac{1}{n-1}\sum_{i=1}^{n-1}R_{i})\\
 =\frac{1}{n}(R_{n} +(n-1)Q_{n}(a))\\
 =\frac{1}{n}(R_{n} +(nQ_{n}(a)-Q_{n}(a))\\
-=Q_{n}(a)+\frac{1}{n}[R_{n}-Q_{n}(a)] \qquad \qquad (2.1) $$              
+=Q_{n}(a)+\frac{1}{n}[R_{n}-Q_{n}(a)] \qquad \qquad\qquad (2.1) $$              
 
 $$R_{n}$$是第n次选择action a 产生的reward    
 对于任意的$$Q_{1},Q_{2}=R_{1}$$
@@ -103,13 +103,13 @@ $$Q_{n+1}=Q_{n}+\alpha[R_{n}-Q_{n}]\\
 =\alpha R_{n}+(1-\alpha)[\alpha R_{n-1}+(1-\alpha)Q_{n-1}]\\
 =\alpha R_{n}+(1-\alpha)\alpha R_{n-1}+(1-\alpha)^2 Q_{n-1}\\
 =\alpha R_{n}+(1-\alpha)\alpha R_{n-1}+(1-\alpha)^2 \alpha R_{n-2}+..+(1-\alpha)^{n-1}\alpha R_{1}+(1-\alpha)^n Q_{1}\\
-=(1-\alpha)^n Q_{1}+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}R_{i}$$  
+=(1-\alpha)^n Q_{1}+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}R_{i} \qquad \qquad\qquad (2.2)$$  
 
 $$\alpha$$取值范围$$(0,1]$$   
 $$(1-\alpha)^n+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}=1$$   
-修改后式子称为：exponential recency-weighted average,$$R_{i}$$权重随着奖励次数增加而衰减  
+(2.2)式子称为：exponential recency-weighted average,$$R_{i}$$权重随着奖励次数增加而衰减  
 
-将$$\alpha_{n}(a)$$定义为步长参数，在sample -average method中$$\alpha_{n}(a)=\frac{1}{n}$$，根据大数定律保证其能收敛于真实的action values。但所有{$$\alpha_{n}(a)$$}序列都能保证收敛的，根据stochastic approximation theory以概率1收敛条件是：  
+将$$\alpha_{n}(a)$$定义为步长参数，在sample -average method中$$\alpha_{n}(a)=\frac{1}{n}$$，根据大数定律保证其能收敛于真实的action values。但不是所有{$$\alpha_{n}(a)$$}序列都能保证收敛的，根据stochastic approximation theory以概率1收敛条件是：  
 
 $$\sum_{n=1}^{\infty}\alpha_{n}(a)=\infty $$ 和 $$\sum_{n=1}^{\infty}\alpha_{n}^2(a)<\infty$$   
 
@@ -118,6 +118,25 @@ $$\alpha_{n}(a)=\frac{1}{n}$$满足这两个条件，设置为常数则不满足
 
 后面的案例中，通常不满足第二个条件，意味估计值不会收敛，往往会根据最近的reward不断变化，这对于Nonstationary情境是非常有用的，我们遇见的问题往往是Nonstationary，现实中很少要求{$$\alpha_{n}(a)$$}要符合收敛条件，更多在理论中使用，同时即使符合收敛过程也是非常慢的。  
 
-**Optimistic Initial Values**
+**5、Optimistic Initial Values**  
 
+ (2.2)更新方法估计的Q是永远存在bias的，因为会一直受到初始Q影响，(2.1)方法当所有action都被选过一次后，估计的Q则不再受初始Q的影响。初始状态Q作为参数需要人为确定，对初始Q设定可以根据人的先验知识。  
+ 
+ 初始Q可以作为一种方法鼓励exploration,上面案例中，若将所有action初始Q设为常数(如+5)，无论选择哪个action,reward很大可能会小于初始Q($$q\ast (a)$$是服从均值为0，方差为1的分布),意味被选取的action的Q更新后，会小于其他action的Q，根据learner会倾向于选择其他的action,所以最终在估计值Q收敛前所有的action可能都会被选择几次。尽管每次都是选择greedy actions,这种设置会使action有大量公平机会被选取。把这种方法称为：optimistic initial values  
+
+optimistic initial values对于stationary问题是非常有效的，但对于nonstationary问题没有效果，因为探索只发生在刚开始一段时间。如果任务发生变化，应该需要加入新的探索，这种方法没办法处理。
+
+Any method that focuses on the initial conditions in any special way is unlikely to help with the general nonstationary case.Because
+the beginning of time occurs only once.
+
+两种策略对比：
+$$Q_{1}=5,\varepsilon=0$$开始时候表现差些，因为开始更偏向探索，随着时间推移，探索不断减少，表现不断变好    
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image4.png)  
+
+**5、Optimistic Initial Values** 
+
+ 
+ 
+ 
 
