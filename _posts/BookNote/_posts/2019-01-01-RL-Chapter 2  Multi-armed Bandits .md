@@ -53,12 +53,15 @@ $$q\ast (a),a=1,.,10$$的值通过均值为0，方差为1的高斯分布产生
 $$R_{t}$$的值通过均值为$$q\ast (A_{t})$$,方差为1的高斯分布产生   
 这个例子中真实value$$q\ast (a)$$是稳定的，不会变化
 结果如图： 
+![_config.yml]({{ site.baseurl }}/images/12RL/image1.png)
 
 使用sample -average估计Q，对比不同greedy method下，决策效果：   
 $$\varepsilon=0$$，action的选择困在了局部最优action，，从长远看表现比较差    
 $$\varepsilon=0.1$$，很快找到了最优action   
 $$\varepsilon=0.01$$,找到最优action速度较慢    
 reward方差越大，$$\varepsilon$$应越大，更多的取探索  
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image2.png)  
 
 3、**Incremental Implementation**  
 
@@ -86,6 +89,7 @@ $$Q_{n+1}(a)=\frac{1}{n}\sum_{i=1}^nR_{i}\\
 $$R_{n}$$是第n次选择action a 产生的reward  
 
 算法流程：  
+![_config.yml]({{ site.baseurl }}/images/12RL/image3.png)
 
 
 
