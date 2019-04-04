@@ -95,6 +95,7 @@ NewEstimate $$\gets$$ OldEstimate + StepSize[Target-OldEstimate]
 ![_config.yml]({{ site.baseurl }}/images/12RL/image3.png)
 
 **5、Tracking a Nonstationary promble**  
+
 前面提到bandit promble是stationary的，即reward分布不随时间变化，任何时候产生的reward都是一样重要的，强化学习中问题往往是Nonstationary，相比起过去rewards,recent rewards应有更大的权重，因为提出常数的步长参数(step-size parameter)$$\alpha$$。对(2.1)公式进行修改：  
 
 $$Q_{n+1}=Q_{n}+\alpha[R_{n}-Q_{n}]\\
@@ -104,4 +105,13 @@ $$Q_{n+1}=Q_{n}+\alpha[R_{n}-Q_{n}]\\
 =\alpha R_{n}+(1-\alpha)\alpha R_{n-1}+(1-\alpha)^2 \alpha R_{n-2}+..+(1-\alpha)^{n-1}\alpha R_{1}+(1-\alpha)^n Q_{1}\\
 =(1-\alpha)^n Q_{1}+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}R_{i}$$  
 
-$$\alpha$$取值范围$$(0,1]$$  
+$$\alpha$$取值范围$$(0,1]$$, $$(1-\alpha)^n+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}=1$$  
+这个式子称为：exponential recency-weighted average,$$R_{i}$$权重随着奖励次数增加而衰减  
+
+将$$\alpha_{n}(a)$$定义为步长参数，在sample -average method中$$\alpha_{n}(a)=\frac{1}{n}$$，根据大数定律保证其能收敛于真实的action values。但所有{$$\alpha_{n}(a)$$}序列都能保证收敛的，根据stochastic approximation theory以概率1收敛条件是：  
+$$\sum_{n=1}^{\infty}\alpha_{n}(a)=\infty $$ 和 $$\sum_{n=1}^{\infty}\alpha_{n}^2(a)<\infty$$   
+第一个条件保证步伐足够大克服了任何初始状态(如任意$$Q_{1}$$)和随机波动影响，第二条保证最终步伐变得足够小确保收敛  
+$$\alpha_{n}(a)=\frac{1}{n}$$满足这两个条件，设置为常数则不满足。  
+后面的案例中，通常不满足第二个条件，意味估计值不会收敛，往往会根据最近的reward不断变化，这对于Nonstationary情境是非常有用的，我们遇见的问题往往是Nonstationary，现实中很少要求{$$\alpha_{n}(a)$$}要符合收敛条件，更多在理论中使用，同时即使符合收敛过程也是非常慢的。   
+
+
