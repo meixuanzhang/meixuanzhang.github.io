@@ -129,12 +129,35 @@ optimistic initial values对于stationary问题是非常有效的，但对于non
 Any method that focuses on the initial conditions in any special way is unlikely to help with the general nonstationary case.Because
 the beginning of time occurs only once.
 
-两种策略对比：
+两种策略对比：   
 $$Q_{1}=5,\varepsilon=0$$开始时候表现差些，因为开始更偏向探索，随着时间推移，探索不断减少，表现不断变好    
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image4.png)  
 
-**5、Optimistic Initial Values** 
+**6、Gradient Bandit Algorithms**  
+
+对每个action设置数值偏好(numerial preference)$$H_{t}(a)$$,偏好值越大的action，被选择次数更高，通过soft-max计算行动a在时间t被选概率$$\pi_{t}(a)$$为：  
+
+$$Pr\{A_{t}=a\}=\frac{e^{H_{t}(a)}}{\sum_{b=1}^k e^{H_{t}(b)}}=\pi_{t}(a)$$  
+
+设$$H_{1}(a)=0$$，开始时候每个action被选的概率相同  
+
+偏好值更新方法：  
+
+$$H_{t+1}(A_{t})=H_{t}(A_{t})+\alpha (R_{t}-\bar{R_{t}})(1-\pi_{t}(A_{t}))\\
+H_{t+1}(a)=H_{t}(a)-\alpha(R_{t}-\bar{R_{t}})\pi_{t}(a),for all \  a\ne A_{t}$$ 
+
+这里$$R_{t}$$是t时刻选择$$A_{t}$$返回的reward,$$\bar{R_{t}}$$则是估计的$$Q_{t}(A_{t})$$，估计方法参考前面。$$\bar{R_{t}}$$相当于基准(baseline),当$$R_{t}>\bar{R_{t}}$$,选择$$A_{t}$$的概率提升，当$$R_{t}<\bar{R_{t}}$$选择$$A_{t}$$的概率下降，在t时刻没有被选择的action则往相反方向更新。
+
+下图展示了游戏过程中有baseline和没有baseline，以不同$$\alpha$$下，选中最优action的比例：  
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image4.png)  
+
+meiy
+
+
+
+
 
  
  
