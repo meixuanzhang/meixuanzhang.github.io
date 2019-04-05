@@ -17,7 +17,7 @@ $$Q_{t}(a):$$t时刻选action a,返回的value的估计
 
 $$q\ast (a)=E[R_{t}\mid A_{t}=a]$$    
 
-我们希望$$Q_{t}(a)$$近似$$q\ast (a)$$    
+这里Multi-armed Bandits游戏目标是玩n场游戏，获得最大期望的total reward(Q)，对于这类情境单一，非序列决策的游戏即每次action获得最大的期望reward,我们希望$$Q_{t}(a)$$近似$$q\ast (a)$$，获得每个action的期望reward。
 
 **1、greedy action、exploiting、exploring**  
 
