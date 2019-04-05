@@ -23,7 +23,7 @@ environment:与agent 互动的对象
 
 
 
-agent和environment在离散时间序列(t=0,1,2..)每个时刻进行互动，在每个时刻t，agent收到environment's state($$S_{t}\in \widehat{S}$$)并据此选择action($$A_{t}\in \widehat{A(s)}$$),作为action结果，agent获得对应的reward($$R_{t+1}\in \widehat{R} \subset R$$实数)和新的state $$S_{t+1}$$  
+agent和environment在离散时间序列(t=0,1,2..)每个时刻进行互动，在每个时刻t，agent收到environment's state($$S_{t}\in \widehat{S}$$)并据此选择action($$A_{t}\in \widehat{A}(s)$$),作为action结果，agent获得对应的reward($$R_{t+1}\in \widehat{R} \subset R$$实数)和新的state $$S_{t+1}$$  
 
 MDP和agent结合会生成下列序列：  
 
@@ -33,13 +33,34 @@ finite MDP 下，states,actions,rewards($$\widehat{S},\widehat{A},\widehat{R}$$)
 
 $$P(s',r\mid s,a)=Pr\{S_{t}=s',R_{t}=r\mid S_{t-1}=s,A_{t-1}=a\}\qquad s',s \in\widehat{S},r \in \widehat{R},a\in\widehat{A} $$   
 
-$$\sum_{s'\in \widehat{S}}\sum_{r\in\widehat{R}}=1,for all s \in\widehat{S},a\in\widehat{A}$$
+$$\sum_{s'\in \widehat{S}}\sum_{r\in\widehat{R}}=1,for\ all \ s \in\widehat{S},a\in\widehat{A}(s)$$
 
-$$P(s'\mid s,a)=Pr{S_{t}=s'\mid S_{t-1}=s,A_{t-1}=a}=\sum_{r \in \widehat{R}}P(s',r\mid s,a)$$
+$$P(s'\mid s,a)=Pr\{S_{t}=s'\mid S_{t-1}=s,A_{t-1}=a\}=\sum_{r \in \widehat{R}}P(s',r\mid s,a)$$
 
 $$r(s,a)=E[R_{t}\mid S_{t-1}=a,A_{t-1}=a]=\sum_{r \in \widehat{R}}r\sum_{s'\in\widehat{S}}P(s',r\mid s,a)$$  
 
-$$r(s,a,s')=E[R_{t}\mid S_{t-1}=a,A_{t-1}=a,S_{t}=s']=\sum_{r \in \widehat{R}}r\frac{P(s',r\mid s,a)}{P(s'\mid s,a)}$$
+$$r(s,a,s')=E[R_{t}\mid S_{t-1}=a,A_{t-1}=a,S_{t}=s']=\sum_{r \in \widehat{R}}r\frac{P(s',r\mid s,a)}{P(s'\mid s,a)}$$  
+
+
+**2、Goals and Rewards**  
+
+agent 的目标是最大化the total amount of reward,意味并不是最大化imemediate reward而是长远的 cumulative reward。   
+
+选择提供reward方式时,应考虑agent获得最大化rewards同时应该完成目标，我们希望它完成的目标是什么。
+
+**3、Returns and Episodes**  
+
+我们希望最大化expected return($$G_{t}$$),$$G_{t}$$被定义为function of the reward sequence 
+
+$$G_{t}=R_{t+1}+R_{t+2}+R_{t+3}...R_{T}  \qquad  T is the final time step$$  
+
+将agent-enviroment 互动分解为一个个子序列，称为episodes，一个子序列是一个episode，每个episode的末尾状态称为termnal state。   
+每个episode会以termnal state为结束，并返回不同rewards  
+下一个episode开始跟前一个episode的结束是独立的    
+将nonterminal states 记为$$S$$，terminal states 记为$$S^+$$，time of termination(终止时间)记为T，T是一个随机变量，每个episode的T取值往往不一样。 
+这种跟episode有关的任务称为episodic tasks(类似任务会有结束的时候)
+
+在很多情况下，并不能将agent-enviroment 互动过程分解成一个个序列,因为这个互动是无限制继续下的(类似任务没有明确结束，要不断进行)，$$T=\infty$$，return也是无限的，为此引入了discounting,
 
 
 
