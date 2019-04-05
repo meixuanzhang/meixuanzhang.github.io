@@ -136,7 +136,7 @@ $$Q_{1}=5,\varepsilon=0$$开始时候表现差些，因为开始更偏向探索�
 
 **6、Upper-Confidence-Bound Action Selection**  
 
-$$\varepsilon-greedy$$以$$\varepsilon$$概率在non-greedy actions中随机选择action，没有选择偏好，没有考虑这些actions的好坏和不确定性，为此提出UCB(upper confidence bound),根据下面公式选择action:  
+$$\varepsilon-greedy$$对于non-greedy actions没有选择偏好的随机选择，没有考虑这些actions的好坏和不确定性，为此提出UCB(upper confidence bound),根据下面公式选择action:  
 
 $$A_{t}=\mathop{\arg\max}_{a}[Q_{t}(a)+c\sqrt{\frac{lnt}{N_{t}(a)}}]$$   
 
@@ -175,6 +175,15 @@ H_{t+1}(a)=H_{t}(a)-\alpha(R_{t}-\bar{R_{t}})\pi_{t}(a),for all \  a\ne A_{t}$$
 
  
 
+**8、Associative Search(Contextual Bandits)**  
+
+reinforcement learning 任务普遍不是单一情境的，需要学习的policy是根据不同情境(situations)选择对应最好的action。  
+
+nonassociative task: 情境(task)固定，选择最好的action   
+
+associative search task(Contextual Bandits)：情境(task)会变化，根据情境(task)，选择对应最好action  
+
+full reinforcement learning问题：action会影响next situations 和reward  
 
 
 
