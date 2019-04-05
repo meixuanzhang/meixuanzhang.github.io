@@ -44,7 +44,7 @@ greedy action selection method选择a:
 
 $$A_{t}=\mathop{\arg\max}_{a}Q_{t}(a) $$ 
 
-$$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概率选择greedy action，以$$\varepsilon$$概率随机选择action
+$$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概率选择greedy action，以$$\varepsilon$$概率在non-greedy actions随机选择一个action
 
 
 **3、Example: the 10-armed Testbed**  
@@ -96,7 +96,7 @@ NewEstimate $$\gets$$ OldEstimate + StepSize[Target-OldEstimate]
 
 **5、Tracking a Nonstationary promble**  
 
-前面提到bandit promble是stationary的，即reward分布不随时间变化，任何时候产生的reward都是一样重要的，强化学习中问题往往是Nonstationary，相比起过去rewards,recent rewards应有更大的权重，因为提出常数的步长参数(step-size parameter)$$\alpha$$。对(2.1)公式进行修改：  
+前面提到bandit promble是stationary的，情境单一，reward分布不随时间变化，任何时候产生的reward都是一样重要的，强化学习中问题往往是Nonstationary，相比起过去rewards,recent rewards应有更大的权重，因为提出常数的步长参数(step-size parameter)$$\alpha$$。对(2.1)公式进行修改：  
 
 $$Q_{n+1}=Q_{n}+\alpha[R_{n}-Q_{n}]\\
 =\alpha R_{n}+(1-\alpha)Q_{n}\\
@@ -134,7 +134,27 @@ $$Q_{1}=5,\varepsilon=0$$开始时候表现差些，因为开始更偏向探索�
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image4.png)  
 
-**6、Gradient Bandit Algorithms**  
+**6、Upper-Confidence-Bound Action Selection**  
+
+$$\varepsilon-greedy$$以$$\varepsilon$$概率在non-greedy actions中随机选择action，没有选择偏好，没有考虑这些actions的好坏和不确定性，为此提出UCB(upper confidence bound),根据下面公式选择action:  
+
+$$A_{t}=\mathop{\arg\max}_{a}[Q_{t}(a)+c\sqrt{\frac{lnt}{N_{t}(a)}}]$$   
+
+$$N_{t}(a):$$是action a在时间t以前被选择的次数    
+$$c>0:$$控制exploration程度   
+
+如果$$N_{t}(a)=0$$,action a 会被认为是获得式子最大值的action,根号里式子是对action value不确定性及方差的衡量    
+
+公式使每个action最终都会被选择到，对于value低或已经被频繁选择的action，会随着时间增加，减少被选择的频率，同时如果随着时间t增加，$$N_{t}(a)$$没有增长的action,其被估计的value会被认为不确定性会增加，被选择频率会增加  
+
+对比UCB和$$\varepsilon-greedy$$：  
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image5.png)  
+
+
+UCB相比$$\varepsilon-greedy$$更难推拓展到其他的强化学习问题上，对上述例子虽然有很好的表现，但比较难处理nonstationary及state空间大类型的强化学习。（state空间大，UCB在每个情境下都需要探索所有action）  
+
+**7、Gradient Bandit Algorithms**  
 
 对每个action设置数值偏好(numerial preference)$$H_{t}(a)$$,偏好值越大的action，被选择次数更高，通过soft-max计算行动a在时间t被选概率$$\pi_{t}(a)$$为：  
 
@@ -151,9 +171,9 @@ H_{t+1}(a)=H_{t}(a)-\alpha(R_{t}-\bar{R_{t}})\pi_{t}(a),for all \  a\ne A_{t}$$
 
 下图展示了游戏过程中有baseline和没有baseline，以不同$$\alpha$$下，选中最优action的比例：  
 
-![_config.yml]({{ site.baseurl }}/images/12RL/image4.png)  
+![_config.yml]({{ site.baseurl }}/images/12RL/image6.png)  
 
-meiy
+ 
 
 
 
