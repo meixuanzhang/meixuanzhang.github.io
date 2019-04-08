@@ -52,7 +52,7 @@ agent 的目标是最大化the total amount of reward,意味并不是最大化im
 
 我们希望最大化expected return($$G_{t}$$),$$G_{t}$$被定义为function of the reward sequence 
 
-$$G_{t}=R_{t+1}+R_{t+2}+R_{t+3}...R_{T}  \qquad  T \ is \ the \ final \ time \ step$$  
+$$G_{t}=R_{t+1}+R_{t+2}+R_{t+3}+...+R_{T}  \qquad  T \ is \ the \ final \ time \ step$$  
 
 将agent-enviroment 互动分解为一个个子序列，称为episodes，一个子序列是一个episode，每个episode的末尾状态称为terminal state。(会在有限步骤下终止的强化学习问题)    
 每个episode会以terminal state为结束，并返回不同rewards(子序列reward)。    
@@ -67,18 +67,24 @@ discounted return:
 
 $$G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\gamma^3 R_{t+4}...=\sum_{k=0}^{\infty}\gamma^kR_{t+k+1} \\
 =R_{t+1}+\gamma(R_{t+2}+\gamma R_{t+3}+\gamma^2 R_{t+4}...)\\
-==R_{t+1}+\gamma G_{t+1}  \ 0\le \gamma \le 1$$
+=R_{t+1}+\gamma G_{t+1}  \qquad  \qquad  0\le \gamma \le 1$$   
 
 式子中$$t<T$$,$$G_{T}=0$$
 
-$$ \gamma$$是disounting rate,如果$$ \gamma <1$$,只要序列$${R_{k}}$$是有界的，则$$G_{t}$$不是无限的。
+$$ \gamma$$是disounting rate,如果$$ \gamma <1$$,只要序列$${R_{k}}$$是有界的，则$$G_{t}$$不是无限的。   
 假设reward是非零常数,$$\gamma <1$$则：   
 
-$$G_{t}=constant \centerdot \sum_{k=0}{\infty}\gamma^k=constant \centerdot \frac{1}{1-\gamma} $$    
+$$G_{t}=constant \cdot \sum_{k=0}^{\infty}\gamma^k=constant \cdot \frac{1}{1-\gamma} $$    
 
 如果$$ \gamma =0$$，相当于只关注immediate rewards,当$$ \gamma$$越接近1说明越考虑未来的rewards,agent是有远见的    
 
+统一Episodic and Continuing Task标记：   
 
+$$G_{t}=\sum_{k=t+1}^{T}\gamma^{k-t-1}R_{k} $$  
+
+$$T$$可以等于$$\infty$$，$$\gamma$$可以等于1,但两个不能同时出现。
+
+**Policies and Value Function**
 
 
 
