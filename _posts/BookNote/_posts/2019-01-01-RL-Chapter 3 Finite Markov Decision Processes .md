@@ -54,16 +54,20 @@ agent 的目标是最大化the total amount of reward,意味并不是最大化im
 
 $$G_{t}=R_{t+1}+R_{t+2}+R_{t+3}...R_{T}  \qquad  T \ is \ the \ final \ time \ step$$  
 
-将agent-enviroment 互动分解为一个个子序列，称为episodes，一个子序列是一个episode，每个episode的末尾状态称为termnal state。    
-每个episode会以termnal state为结束，并返回不同rewards(整个子序列reward)。    
+将agent-enviroment 互动分解为一个个子序列，称为episodes，一个子序列是一个episode，每个episode的末尾状态称为terminal state。(会在有限步骤下终止的强化学习问题)    
+每个episode会以terminal state为结束，并返回不同rewards(子序列reward)。    
 下一个episode开始跟前一个episode的结束是独立的    
 
 将nonterminal states 记为$$S$$，terminal states 记为$$S^+$$，time of termination(终止时间)记为T，T是一个随机变量，每个episode的T取值往往不一样。   
-这种 episodic tasks(类似任务会有结束的时候)   
+这种涉及episodes任务称为episodic tasks   
 
-在很多情况下，并不能将agent-enviroment 互动分解成一个个子序列,因为互动是无限制继续下的(类似任务没有明确结束，会不断进行)，$$T=\infty$$，return也是无限的，为此引入了discounting,agent
+在很多情况下，并不能将agent-enviroment 互动分解成一个个子序列,因为互动是无限制继续下的(强化学习的问题有无限步骤)，$$T=\infty$$，return也是无限的   
 
-$$G_{t}=R_{t+1}+\gammaR_{t+2}+\gamma^2R_{t+3}...=\sum_{k=0}^{\infty}\gamma^kR_{t+k+1}  $$
+discounted return:    
+
+$$G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}...=\sum_{k=0}^{\infty}\gamma^kR_{t+k+1} \ 0\le \gamma \le 1$$
+
+$$ \gamma$$是disounting rate,如果$$ \gamma <1$$,只要序列$${R_{k}}$$是有界的，则$$G_{t}$$不是无限的，如果$$ \gamma =0$$，相当于值关注immediate rewards,当$$ \gamma$$越接近1说明越考虑未来的rewards,agent是有远见的
 
 
 
