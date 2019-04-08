@@ -65,9 +65,19 @@ $$G_{t}=R_{t+1}+R_{t+2}+R_{t+3}...R_{T}  \qquad  T \ is \ the \ final \ time \ s
 
 discounted return:    
 
-$$G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}...=\sum_{k=0}^{\infty}\gamma^kR_{t+k+1} \ 0\le \gamma \le 1$$
+$$G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\gamma^3 R_{t+4}...=\sum_{k=0}^{\infty}\gamma^kR_{t+k+1} \\
+=R_{t+1}+\gamma(R_{t+2}+\gamma R_{t+3}+\gamma^2 R_{t+4}...)\\
+==R_{t+1}+\gamma G_{t+1}  \ 0\le \gamma \le 1$$
 
-$$ \gamma$$是disounting rate,如果$$ \gamma <1$$,只要序列$${R_{k}}$$是有界的，则$$G_{t}$$不是无限的，如果$$ \gamma =0$$，相当于值关注immediate rewards,当$$ \gamma$$越接近1说明越考虑未来的rewards,agent是有远见的
+式子中$$t<T$$,$$G_{T}=0$$
+
+$$ \gamma$$是disounting rate,如果$$ \gamma <1$$,只要序列$${R_{k}}$$是有界的，则$$G_{t}$$不是无限的。
+假设reward是非零常数,$$\gamma <1$$则：   
+
+$$G_{t}=constant \centerdot \sum_{k=0}{\infty}\gamma^k=constant \centerdot \frac{1}{1-\gamma} $$    
+
+如果$$ \gamma =0$$，相当于只关注immediate rewards,当$$ \gamma$$越接近1说明越考虑未来的rewards,agent是有远见的    
+
 
 
 
