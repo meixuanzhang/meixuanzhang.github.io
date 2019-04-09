@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div>
-{% assign category = "机器学习,深度学习,强化学习,编程语言"| split:',' %}
+{% assign category = "随机,马尔可夫"| split:',' %}
 {% for item in category %}
 {% capture word %}{{ item}}{% endcapture %}
 <h1 id="{{ word }}">{{ word }}</h1>
