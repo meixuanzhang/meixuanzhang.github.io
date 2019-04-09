@@ -9,7 +9,7 @@ categories: Reinforcement Learning:An Introduction
 MDPs是序列决策的经典模型，actions不仅会影响immediate reward ,还会影响后面的situations或state,甚至是future reward。MDPs 需要平衡 immediate 和delayed reward。  
 
 bandit promble 是估计$$q\ast (a)$$   
-MDPs 是估计$$q_{\ast} (s,a)$$或$$V_{\ast) (s)$$(s情境，最优action下value）  
+MDPs 是估计$$q_{\ast} (s,a)$$或$$V_{\ast} (s)$$(s情境，最优action下value）  
 
 
 **1、The Agent-Environment Interface**  
