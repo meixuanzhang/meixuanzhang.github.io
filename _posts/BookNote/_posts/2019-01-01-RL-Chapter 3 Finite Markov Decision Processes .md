@@ -111,7 +111,9 @@ $$s'$$:是next states
 
 式子(3.1)是Bellman equation for $$V_{\pi}$$,它描述了当前state value和下一个state value 关系，并平均了所有的可能性。
 
-从图可知，agent处于状态s时，根据$$\pi$$有actions被选择的概率分布，根据概率分布随机选择action,因此$$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]$$，描述agent在状态s下，采取策略$$\pi$$value估计值等于策略$$\pi$$下处于状态$$s$$时value期望值。$$G_{t}=R_{t+1}+\gamma G_{t+1}$$,当agent确定$$S_{t},A_{t}$$后$$R_{t+1},S_{t+1}$$是随机变量，因为确定action后，根据函数p,会以不同的概率返回$$r,s'$$,所有$$R_{t+1}+\gamma G_{t+1}=E_{(R_{t+1},S_{t+1})}[R_{t+1}+[\gamma G_{t+1} \mid S_{t+1}=s']]$$,同样在确定$$S_{t+1}=s'$$后，$$G_{t+1}$$仍是随机变量，$$G_{t+1}=E_{\pi}[G_{t+1} \mid S_{t+1}=s']=V_{\pi}(s')$$        
+从图可知，agent处于状态s时，根据$$\pi$$有actions被选择的概率分布，根据概率分布随机选择action获得不同的$$G_{t}$$,因此$$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]$$，描述agent在状态s下，采取策略$$\pi$$下value估计值等于处于状态$$s$$时采取策略$$\pi$$下(actions 被选择概率分布下)value期望值。
+
+$$G_{t}=R_{t+1}+\gamma G_{t+1}$$,当agent确定$$S_{t},A_{t}$$后$$R_{t+1},S_{t+1}$$是随机变量，因为确定action后，根据函数p,会以不同的概率返回$$r,s'$$,所以$$R_{t+1}+\gamma G_{t+1}$$值估计为$$E_{(R_{t+1},S_{t+1})}[R_{t+1}+[\gamma G_{t+1} \mid S_{t+1}=s']]$$,同样在确定$$S_{t+1}=s'$$后，$$G_{t+1}$$仍是随机变量，$$G_{t+1}$$估计为$$E_{\pi}[G_{t+1} \mid S_{t+1}=s']=V_{\pi}(s')$$        
 
 
 
