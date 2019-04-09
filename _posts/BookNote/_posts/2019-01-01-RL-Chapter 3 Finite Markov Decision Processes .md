@@ -16,14 +16,14 @@ MDPs 是估计$$q\ast (s,a)$$或$$v\ast (s)$$(s情境，最优action下value）
 
 agent:leaner and decision maker(决策者)   
 environment:与agent 互动的对象   
-互动过程是连续的，agent选择action,environment 对选择action作出响应并向agent呈现新的situations。   
+互动过程是连续的，agent根据situation选择action,environment 对选择action作出响应并向agent呈现新的situation。   
 
 马尔可夫决策过程中agent和environment互动过程：
 
 
 
 
-agent和environment在离散时间序列(t=0,1,2..)每个时刻进行互动，在每个时刻t，agent收到environment's state($$S_{t}\in \widehat{S}$$)并据此选择action($$A_{t}\in \widehat{A}(s)$$),作为action结果，agent获得对应的reward($$R_{t+1}\in \widehat{R} \subset R$$实数)和新的state $$S_{t+1}$$  
+agent和environment在离散时间序列(t=0,1,2..)每个时刻进行互动，在每个时刻t，agent收到environment's state($$S_{t}\in \widehat{S}$$)并据此选择action($$A_{t}\in \widehat{A}(s)$$),作为action结果，agent获得对应的reward($$R_{t+1}\in \widehat{R} \subset R$$实数)和新的state ($$S_{t+1}$$)  
 
 MDP和agent结合会生成下列序列：  
 
@@ -87,13 +87,28 @@ $$T$$可以等于$$\infty$$，$$\gamma$$可以等于1,但两个不能同时出�
 **Policies and Value Function**
 
 value function 分为state-value function($$V_{\pi}(s)$$)和 action-value function($$q_{\pi}(s,a)$$)。
-policy($$\pi$$) 是将状态映射到每个action被选择的概率，如果在t时刻，agent的policy是$$\pi$$,则$$\pi(a\mid s)$$表示当$$\pi$$,$$S_{t}=s$$时$$A_{t}=a$$的概率     
+policy($$\pi$$) 是将状态映射到actions被选择概率分布，如果在t时刻，agent的policy是$$\pi$$,则$$\pi(a\mid s)$$表示当$$S_{t}=s$$时$$A_{t}=a$$的概率     
 
-$$V_{\pi}(s)$$：the value of a state under a policy $$\pi$$   
-$$V_{\pi}$$:the state-value function for policy $$\pi$$  
+$$V_{\pi}(s)$$：the value of a state under a policy $$\pi$$     
+$$V_{\pi}$$:the state-value function for policy $$\pi$$   
+$$q_{\pi}(s,a)$$: the value of taking action s under a policy $$\pi$$     
+$$q_{\pi}$$:the action-value function for policy $$\pi$$  
+$$E_{\pi}[\cdot]$$agent 使用策略$$\pi$$下，随机变量的期望值  
+
+$$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]=E_{\pi}[\sum_{k=0}^{\infty}\gamma^{k}R_{t+k+1}\mid S_{t}=s],for\ all \ s \in \widehat{S}$$  
+
+$$q_{\pi}(s,a)=E_{\pi}[G_{t}\mid S_{t}=s]=E_{\pi}[\sum_{k=0}^{\infty}\gamma^{k}R_{t+k+1}\mid S_{t}=s]$$   
 
 
+$$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]\\
+=E_{\pi}[R_{t+1}+\gamma G_{t+1} \mid S_{t}=s]\\
+=\sum_{a}\pi(a\mid s)[R_{t+1}+\gamma G_{t+1} \mid S_{t}=s,A_{t}=a]\\
+=\sum_{a}\pi(a\mid s)[E_{R_{t+1},S_{t+1}}[R_{t+1}+[\gamma G_{t+1} \mid S_{t+1}=s']]]\\
+=\sum_{a}\pi(a\mid s)[E_{R_{t+1},S_{t+1}}[R_{t+1}+\gamma E_{\pi}[G_{t+1} \mid S_{t+1}=s']]]\\
+=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')],for\ all \s s\in  \widehat{S}  \qquad  \qquad (3.1)$$   
 
+$$s'$$:是next states   
+式子(3.1)是Bellman equation for V_{\pi},它描述了当前state value和下一个state value 关系，并平均了所有的可能性。从图可知，agent处于状态s时，根据$$\pi$$得到每个action被选择的概率，选择不同的action会返回不同$$G_{T}$$,所以$$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]$$，描述策略$$\pi$$下处于状态$$s$$时的value值。当agent确定action后$$G_{t}$$仍是随机变量，因为确定action后，根据函数p,会以不同的概率返回$$r,s'$$,$$$$
 
 
 
