@@ -50,7 +50,7 @@ agent 的目标是最大化the total amount of reward,意味并不是最大化im
 
 **3、Returns and Episodes**  
 
-我们希望最大化expected return($$G_{t}$$),$$G_{t}$$被定义为function of the reward sequence 
+我们希望最大化expected return($$G_{t}$$),$$G_{t}$$被定义为function of the reward sequence(从时间t+1到T累计reward):    
 
 $$G_{t}=R_{t+1}+R_{t+2}+R_{t+3}+...+R_{T}  \qquad  T \ is \ the \ final \ time \ step$$  
 
@@ -85,6 +85,18 @@ $$G_{t}=\sum_{k=t+1}^{T}\gamma^{k-t-1}R_{k} $$
 $$T$$可以等于$$\infty$$，$$\gamma$$可以等于1,但两个不能同时出现。
 
 **Policies and Value Function**
+
+value function 分为state-value function($$V_{\pi}(s)$$)和 action-value function($$q_{\pi}(s,a)$$)。
+policy($$\pi$$) 是将状态映射到每个action被选择的概率，如果在t时刻，agent的policy是$$\pi$$,则$$\pi(a\mid s)$$表示当$$\pi$$,$$S_{t}=s$$时$$A_{t}=a$$的概率     
+
+$$V_{\pi}(s)$$：the value of a state under a policy $$\pi$$   
+$$V_{\pi}$$:the state-value function for policy $$\pi$$  
+
+
+
+
+
+
 
 
 
