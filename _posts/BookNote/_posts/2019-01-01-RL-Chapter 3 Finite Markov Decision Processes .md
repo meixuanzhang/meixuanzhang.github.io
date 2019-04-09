@@ -84,7 +84,7 @@ $$G_{t}=\sum_{k=t+1}^{T}\gamma^{k-t-1}R_{k} $$
 
 $$T$$可以等于$$\infty$$，$$\gamma$$可以等于1,但两个不能同时出现。
 
-**Policies and Value Function**
+**4、Policies and Value Function**
 
 value function 分为state-value function($$V_{\pi}(s)$$)和 action-value function($$q_{\pi}(s,a)$$)。
 policy($$\pi$$) 是将状态映射到actions被选择概率分布，如果在t时刻，agent的policy是$$\pi$$,则$$\pi(a\mid s)$$表示当$$S_{t}=s$$时$$A_{t}=a$$的概率     
@@ -103,12 +103,13 @@ $$q_{\pi}(s,a)=E_{\pi}[G_{t}\mid S_{t}=s]=E_{\pi}[\sum_{k=0}^{\infty}\gamma^{k}R
 $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]\\
 =E_{\pi}[R_{t+1}+\gamma G_{t+1} \mid S_{t}=s]\\
 =\sum_{a}\pi(a\mid s)[R_{t+1}+\gamma G_{t+1} \mid S_{t}=s,A_{t}=a]\\
-=\sum_{a}\pi(a\mid s)[E_{R_{t+1},S_{t+1}}[R_{t+1}+[\gamma G_{t+1} \mid S_{t+1}=s']]]\\
-=\sum_{a}\pi(a\mid s)[E_{R_{t+1},S_{t+1}}[R_{t+1}+\gamma E_{\pi}[G_{t+1} \mid S_{t+1}=s']]]\\
-=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')],for\ all \s s\in  \widehat{S}  \qquad  \qquad (3.1)$$   
+=\sum_{a}\pi(a\mid s)[E_{(R_{t+1},S_{t+1})}[R_{t+1}+[\gamma G_{t+1} \mid S_{t+1}=s']]]\\
+=\sum_{a}\pi(a\mid s)[E_{(R_{t+1},S_{t+1})}[R_{t+1}+\gamma E_{\pi}[G_{t+1} \mid S_{t+1}=s']]]\\
+=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')],for\ all \ s\in  \widehat{S}  \qquad  \qquad (3.1)$$   
 
 $$s'$$:是next states   
-式子(3.1)是Bellman equation for V_{\pi},它描述了当前state value和下一个state value 关系，并平均了所有的可能性。从图可知，agent处于状态s时，根据$$\pi$$得到每个action被选择的概率，选择不同的action会返回不同$$G_{T}$$,所以$$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]$$，描述策略$$\pi$$下处于状态$$s$$时的value值。当agent确定action后$$G_{t}$$仍是随机变量，因为确定action后，根据函数p,会以不同的概率返回$$r,s'$$,$$$$
+式子(3.1)是Bellman equation for $$V_{\pi}$$,它描述了当前state value和下一个state value 关系，并平均了所有的可能性。从图可知，agent处于状态s时，根据$$\pi$$有action被选择的概率分布，根据概率分布随机选择action,因此$$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]$$，描述策略$$\pi$$下处于状态$$s$$时的value值。$$G_{t}=R_{t+1}+\gamma G_{t+1}$$,当agent确定$$S_{t},A_{t}$$后$$R_{t+1},S_{t+1}$$是随机变量，因为确定action后，根据函数p,会以不同的概率返回$$r,s'$$,所有$$R_{t+1}+\gamma G_{t+1}=E_{(R_{t+1},S_{t+1})}[R_{t+1}+[\gamma G_{t+1} \mid S_{t+1}=s']]$$,有因为在确定$$S_{t+1}=s'$$后，$$G_{t+1}$$仍是随机变量，$$G_{t+1}=E_{\pi}[G_{t+1} \mid S_{t+1}=s']=V_{\pi}(s')$$   
+
 
 
 
