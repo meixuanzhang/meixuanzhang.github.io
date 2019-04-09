@@ -116,14 +116,15 @@ $$s'$$:是next states
 $$G_{t}=R_{t+1}+\gamma G_{t+1}$$,当agent确定$$S_{t},A_{t}$$后$$R_{t+1},S_{t+1}$$是随机变量，因为确定action后，根据函数p,会以不同的概率返回$$r,s'$$,所以$$R_{t+1}+\gamma G_{t+1}$$估计值为$$E_{(R_{t+1},S_{t+1})}[R_{t+1}+[\gamma G_{t+1} \mid S_{t+1}=s']]$$,同样在确定$$S_{t+1}=s'$$后，$$G_{t+1}$$仍是随机变量，$$G_{t+1}$$估计为$$E_{\pi}[G_{t+1} \mid S_{t+1}=s']=V_{\pi}(s')$$        
 
 
-对比$$q_{\pi}(s,a)$$和$$V_{\pi}(s)$$，$$q_{\pi}(s,a)$$已经确定了$$A_{t}=a$$,因此并不存在根据概率分布选择action这一步。：  
+对比$$q_{\pi}(s,a)$$和$$V_{\pi}(s)$$，$$q_{\pi}(s,a)$$已经确定了$$A_{t}=a$$,因此并不存在根据概率分布选择action这一步。  
 
 $$V_{\pi}(s)=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')]$$  
-$$q_{\pi}(s,a)=\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')]
+
+$$q_{\pi}(s,a)=\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')]$$
 
 **5、Optimal Policies and Optimal Value Function**  
 
-$$V_{\ast) (s)$$=
+$$V_{\ast) (s)$$
 
 
 
