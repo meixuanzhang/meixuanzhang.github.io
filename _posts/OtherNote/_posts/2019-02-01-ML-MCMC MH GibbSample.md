@@ -2,7 +2,7 @@
 layout: post
 title: MCMC采样方法：MH、GibbSample
 date:   2019-01-01
-categories: 机器学习
+categories: 随机
 ---
 
 # MCMC方法(Markov Chain Monte Carlo)
