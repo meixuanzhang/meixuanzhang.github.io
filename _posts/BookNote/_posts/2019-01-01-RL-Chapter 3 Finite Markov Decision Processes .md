@@ -136,7 +136,17 @@ $$V_{\ast} (s)=\mathop{max}_{\pi} V_{\pi}(s),for\ all \ s\in \widehat{S}$$
 
 $$q_{\ast} (a,s)=\mathop{max}_{\pi} q_{\pi}(s,a),for\ all \ s\in \widehat{S},a \in \widehat{A}(s)$$  
 
-$$q_{\ast} (a,s)=E_[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]=$$  
+$$q_{\ast} (a,s)=E[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]=$$  
+
+$$
+V_{\ast} (s)=\mathop{max}_{a \in \widehat{A}(s)} q_{\pi_{\ast}}(s,a)\\
+=\mathop{max}_{a}E_{\pi_{\ast}}[G_{t}\mid S_{t}=s,A_{t}=a]\\
+=\mathop{max}_{a}E_{\pi_{\ast}}[R_{t+1}+\gamma G_{t+1}\mid S_{t}=s,A_{t}=a]\\
+=\mathop{max}_{a}E_{\pi_{\ast}}[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]\\
+=\mathop{max}_{a} \sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\ast}(s')]
+$$  
+
+
 
 
 
