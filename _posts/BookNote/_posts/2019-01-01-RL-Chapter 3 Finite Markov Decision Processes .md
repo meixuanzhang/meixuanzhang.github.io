@@ -2,7 +2,7 @@
 layout: post
 title: Chapter 3 Finite Markov Decision Processes
 date:   2019-03-23
-categories: Reinforcement Learning:An Introduction
+categories: ["Reinforcement Learning:An Introduction"]
 ---
 这章主要介绍是finite Markov decision processes 类型问题，这类问题不仅涉及evaluative feedback，还涉及根据不同的situations,选择不同的action。  
 
