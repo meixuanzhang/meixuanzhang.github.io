@@ -142,7 +142,7 @@ $$q_{\ast} (a,s)=\mathop{max}_{\pi} q_{\pi}(s,a),for\ all \ s\in \widehat{S},a \
 
 $$q_{\ast} (a,s)=E[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]$$  
 
-$$q_{\ast} (a,s)$$和$$V_{\ast} (s)$$之间的关系
+$$q_{\ast} (a,s)$$和$$V_{\ast} (s)$$之间的关系：  
 
 $$
 V_{\ast} (s)=\mathop{max}_{a \in \widehat{A}(s)} q_{\pi_{\ast}}(s,a)\\
