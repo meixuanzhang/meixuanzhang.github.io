@@ -120,7 +120,11 @@ $$G_{t}=R_{t+1}+\gamma G_{t+1}$$,当agent确定$$S_{t},A_{t}$$后$$R_{t+1},S_{t+
 
 $$V_{\pi}(s)=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')]$$  
 
-$$q_{\pi}(s,a)=\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')]$$
+$$q_{\pi}(s,a)=\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')]$$   
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image8.png)  
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image9.png)
 
 **5、Optimal Policies and Optimal Value Function**  
 
@@ -136,7 +140,9 @@ $$V_{\ast} (s)=\mathop{max}_{\pi} V_{\pi}(s),for\ all \ s\in \widehat{S}$$
 
 $$q_{\ast} (a,s)=\mathop{max}_{\pi} q_{\pi}(s,a),for\ all \ s\in \widehat{S},a \in \widehat{A}(s)$$  
 
-$$q_{\ast} (a,s)=E[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]=$$  
+$$q_{\ast} (a,s)=E[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]$$  
+
+$$q_{\ast} (a,s)$$和$$V_{\ast} (s)$$之间的关系
 
 $$
 V_{\ast} (s)=\mathop{max}_{a \in \widehat{A}(s)} q_{\pi_{\ast}}(s,a)\\
@@ -147,6 +153,10 @@ V_{\ast} (s)=\mathop{max}_{a \in \widehat{A}(s)} q_{\pi_{\ast}}(s,a)\\
 $$  
 
 
+$$q_{\ast} (a,s)=E[R_{t+1}+\gamma \mathop{max}_{a'} q_{\ast}(S_{t+1},a') \mid S_{t}=s,A_{t}=a]\\
+= \sum_{s',r}P(s',r\mid s,a)[r+\gamma  q_{\ast}(s',a')]$$  
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image10.png)
 
 
 
