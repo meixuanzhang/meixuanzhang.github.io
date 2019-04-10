@@ -2,7 +2,7 @@
 layout: post
 title: Chapter 2 Multi-armed Bandits 
 date:   2019-03-23
-categories: "Reinforcement Learning"
+categories: ["Reinforcement Learning"]
 ---
 
 多臂老虎机(Multi-armed Bandits)是一种用零钱赌博的机器，因为上面有老虎图案的筹码而得名。老虎机有三个玻璃框，里面有不同的图案，投币之后拉下拉杆(游戏会提供k个杆，选择其中一个)，就会开始转，如果出现特定的图形（比如三个相同）就会吐钱出来，出现相同图型越多奖金则越高,我们希望通过数次拉杆后，获得最大期望奖金。通过n次action后(每次action是玩一场游戏，单一情境下行动)，获得最大期望total reward，这种类型问题称为"bandit problem"  
