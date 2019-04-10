@@ -124,7 +124,10 @@ $$q_{\pi}(s,a)=\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')]$$
 
 **5、Optimal Policies and Optimal Value Function**  
 
-$$V_{\ast) (s)$$
+如果一个策略$$\pi$$的期望return大于另一个策略$$\pi^{'}$$，我们认为策略$$\pi$$优于策略$$\pi^{'}$$($$\pi \ge \pi^{'}$$)
+$$V_{\ast} (s)$$:optimal state-value function by $$\pi_{\ast}$$()
+
+$$V_{\ast} (s)=\mathop{max}{\pi} V_{\pi}(s),for\ all s\in \widehat{S}$$  
 
 
 
