@@ -4,12 +4,12 @@ layout: default
 
 <div>
 
-{% assign category = "统计学习,Reinforcement Learning"| split:',' %}
+{% assign category = "统计学习,Reinforcement-Learning:An-Introduction"| split:',' %}
 {% for item in category %}
-{% capture word %}{{ item}}{% endcapture %}
+{% assign word={{item}}|replace: "-", " "}
 <h1 id="{{ word }}">{{ word }}</h1>
 <ul>
-{% for post in site.categories[word] %}{% if post.title != null %}
+{% for post in site.categories[item] %}{% if post.title != null %}
 {% assign type = post.path | split: "/" %}
 {%if type[1] == "BookNote"%}
 <li><span>{{ post.date | date: "%b %d %Y" }}</span>» <a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
