@@ -5,9 +5,18 @@ layout: default
 <div>
 
 {% assign category = "Reinforcement Learning" %}
-{% for item in site.categories %}
+{% for item in category %}
 {% capture word %}{{ item}}{% endcapture %}
 <h1 id="{{ word }}">{{ word }}</h1>
+<ul>
+{% for post in site.categories[word] %}{% if post.title != null %}
+{% assign type = post.path | split: "/" %}
+{%if type[1] == "BookNote"%}
+<li><span>{{ post.date | date: "%b %d %Y" }}</span>» <a href="{{ site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+{% else %}
+{% continue %}
+{% endif %}{% endif %}{% endfor %}
+</ul>
 {% endfor %}
 <br/><br/>
 </div>
