@@ -2,7 +2,7 @@
 layout: post
 title: Chapter 3 Finite Markov Decision Processes
 date:   2019-03-23
-categories: Reinforcement Learning:An Introduction
+categories: ["Reinforcement Learning:An Introduction"]
 ---
 这章主要介绍是finite Markov decision processes 类型问题，这类问题不仅涉及evaluative feedback，还涉及根据不同的situations,选择不同的action。  
 
@@ -97,7 +97,7 @@ $$E_{\pi}[\cdot]$$agent 使用策略$$\pi$$下，随机变量的期望值
 
 $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]=E_{\pi}[\sum_{k=0}^{\infty}\gamma^{k}R_{t+k+1}\mid S_{t}=s],for\ all \ s \in \widehat{S}$$  
 
-$$q_{\pi}(s,a)=E_{\pi}[G_{t}\mid S_{t}=s]=E_{\pi}[\sum_{k=0}^{\infty}\gamma^{k}R_{t+k+1}\mid S_{t}=s]$$   
+$$q_{\pi}(s,a)=E_{\pi}[G_{t}\mid S_{t}=s,A_{t}=a]=E_{\pi}[\sum_{k=0}^{\infty}\gamma^{k}R_{t+k+1}\mid S_{t}=s,A_{t}=a]$$   
 
 
 $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]\\
@@ -124,7 +124,7 @@ $$q_{\pi}(s,a)=\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')]$$
 
 **5、Optimal Policies and Optimal Value Function**  
 
-如果一个策略$$\pi$$的期望return大于另一个策略$$\pi^{'}$$，我们认为策略$$\pi$$优于策略$$\pi^{'}$$($$\pi \ge \pi^{'}$$ if only if V_{\pi}(s)\ge V_{\pi_{'}}(s))   
+如果一个策略$$\pi$$的期望return大于另一个策略$$\pi^{'}$$，我们认为策略$$\pi$$优于策略$$\pi^{'}$$($$\pi \ge \pi^{'}$$ if and only if $$V_{\pi}(s)\ge V_{\pi_{'}}(s)$$)   
 
 $$\pi_{\ast}$$:optimal policy(表现优于或等于其他所有策略) 
 
@@ -132,9 +132,11 @@ $$V_{\ast} (s)$$:optimal state-value function
 
 $$q_{\ast} (s,a)$$:optimal action-value function    
 
-$$V_{\ast} (s)=\mathop{max}{\pi} V_{\pi}(s),for\ all s\in \widehat{S}$$   
+$$V_{\ast} (s)=\mathop{max}_{\pi} V_{\pi}(s),for\ all \ s\in \widehat{S}$$   
 
-$$q_{\ast} (a,s)=\mathop{max}{\pi} q_{\pi}(s,a),for\ all s\in \widehat{S},a \in \widehat{A}(s)$$
+$$q_{\ast} (a,s)=\mathop{max}_{\pi} q_{\pi}(s,a),for\ all \ s\in \widehat{S},a \in \widehat{A}(s)$$  
+
+$$q_{\ast} (a,s)=E_[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]=$$  
 
 
 
