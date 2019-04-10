@@ -4,7 +4,7 @@ layout: default
 
 <div>
 
-{% assign category = "Reinforcement Learning,深度学习,强化学习"| split:',' %}
+{% assign category = "统计学习,Reinforcement Learning"| split:',' %}
 {% for item in category %}
 {% capture word %}{{ item}}{% endcapture %}
 <h1 id="{{ word }}">{{ word }}</h1>
