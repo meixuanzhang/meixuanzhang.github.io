@@ -122,9 +122,6 @@ $$V_{\pi}(s)=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')
 
 $$q_{\pi}(s,a)=\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')]$$   
 
-![_config.yml]({{ site.baseurl }}/images/12RL/image8.png)  
-
-![_config.yml]({{ site.baseurl }}/images/12RL/image9.png)
 
 **5、Optimal Policies and Optimal Value Function**  
 
