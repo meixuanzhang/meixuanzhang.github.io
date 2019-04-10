@@ -2,7 +2,7 @@
 layout: post
 title: Chapter 1 Introduction 
 date:   2019-03-23
-categories: Reinforcement Learning
+categories: ReinforcementLearning
 ---
 
 当我们思考学习的本质时，首先会想到学习的本质是通过与环境互动学习，通过互动进行学习是学习与智能理论的基本理念。  
