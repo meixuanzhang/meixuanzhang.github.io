@@ -35,7 +35,15 @@ y^{(t)}=softmax(Vh^{(t)}+b_{y})$$
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image1.png)  
 
-## Deep RNN
+## Deep RNN  
+
+以两层RNN为例，以此类推出多次RNN,
+
+$$Z^{(t)}:$$t时刻第二层隐藏层
+
+$$h^{(t)}=\sigma(Ux^{(t)}+W1h^{(t-1)}+b_{h})\\
+Z^{(t)}=\sigma(Gh^{(t)}+W2Z^{(t-1)}+b_{z})
+y^{(t)}=softmax(VZ^{(t)}+b_{y})$$
 
 ## Bidirectional RNN
 
