@@ -30,8 +30,8 @@ $$h^{(t)}:$$t时刻的隐藏层
 $$\sigma(\cdot):\sigma$$激活函数，可以使用不同的激活函数  
 $$softmax(\cdot):softmax$$函数，可以根据情况使用其他函数   
 
-$$h^{(t)}=\sigma(Ux_{(t)}+Wh^{(t-1)}+b_{h})\\
-y^{(t)}=softmax(Vh_{(t)}+b_{y})$$
+$$h^{(t)}=\sigma(Ux^{(t)}+Wh^{(t-1)}+b_{h})\\
+y^{(t)}=softmax(Vh^{(t)}+b_{y})$$
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image1.png)  
 
