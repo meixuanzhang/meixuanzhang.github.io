@@ -37,10 +37,10 @@ y^{(t)}=softmax(Vh^{(t)}+b_{y})$$
 
 ## Deep RNN  
 
-Deep RNN即多层RNN，我们以两层RNN为例，可类推出多层RNN：
+Deep RNN即多层RNN，通过增加中间隐藏层层数实现。我们以两层RNN为例:
 
 Notation:
-$$W^1:$$第一层隐藏层权重,$$W^2:$$第一层隐藏层权重
+$$W^1:$$第一层隐藏层权重,$$W^2:$$第一层隐藏层权重   
 $$h^{(t)}:$$t时刻第一层隐藏层,$$Z^{(t)}:$$t时刻第二层隐藏层   
 
 $$h^{(t)}=\sigma(Ux^{(t)}+W^1h^{(t-1)}+b_{h})\\
@@ -49,9 +49,19 @@ y^{(t)}=softmax(VZ^{(t)}+b_{y})$$
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image2.png)  
 
-多层RNN即不断增加中间隐藏层。
 
-## Bidirectional RNN
+## Bidirectional RNN 
+
+
+Bidirectional RNN隐藏层由两部分构成forward layer和backforward layer
+
+Notation:
+$$\vec{h}^{(t)}$$t时刻forward layer  
+$$\cev{h}^{(t)}$$t时刻backward layer  
+
+
+
+![_config.yml]({{ site.baseurl }}/images/10RNN/image3.png)  
 
 ## 训练
 
