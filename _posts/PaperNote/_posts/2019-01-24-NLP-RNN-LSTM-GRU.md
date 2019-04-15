@@ -56,7 +56,7 @@ y^{(t)}=softmax(VZ^{(t)}+b_{y})$$
 Bidirectional RNN隐藏层由两部分构成forward layer和backforward layer
 
 Notation:  
-$$\vec{h}^{(t)}$$:t时刻forward layer  
+$$\overrightarrow{h}^{(t)}$$:t时刻forward layer  
 $$\overleftarrow{h}^{(t)}$$:t时刻backward layer  
 
 
