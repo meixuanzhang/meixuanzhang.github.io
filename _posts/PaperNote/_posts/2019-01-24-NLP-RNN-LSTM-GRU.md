@@ -57,6 +57,7 @@ y^{(t)}=softmax(VZ^{(t)}+b_{y})$$
 Bidirectional RNN隐藏层由两部分构成:forward layer和backward layer
 
 Notation:  
+
 $$\overrightarrow{h^{(t)}}$$:t时刻forward layer  
 $$\overleftarrow{h^{(t)}}$$:t时刻backward layer  
 $$h$$:是forward h和backward h的concat(两个向量连接一起)
@@ -80,10 +81,34 @@ tf.contrib.rnn.stack_bidirectional_dynamic_rnn：
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image5.png) 
 
-# LSTM
+# LSTM  
+
+Notation:
+
+$$f_{t}$$:t时刻的Forget gate
+$$\bar{C}_{t}$$:ts时刻的Candidate layer 
+$$I_{t}$$:t时刻的Input gate
+$$O_{t}$$:t时刻的Output Gate  
+$$H_{t}$$:t时刻的Hidden state
+$$C_{t}$$:t时刻的Memory state 
+
+  
+
+$$
+f_{t}=\sigma(X_{t}U_{f}+H_{t-1}W_{f}+b_{f})\\
+\bar{C}_{t}=tanh(X_{t}U_{c}+H_{t-1}W_{c}+b_{c})\\
+\I_{t}=\sigma(X_{t}U_{i}+H_{t-1}W_{i}+b_{i})\\
+\O_{t}=\sigma(X_{t}U_{o}+H_{t-1}W_{i}+b_{o})\\
+$$
+
+$$
+C_{t} =f_{t}C_{t-1}+I_{t}\bar{C}_{t}\\
+H_{t} = tanh(C_{t})
+y_{t}=softmax(VH^{(t)}+b_{y})
+$$
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image6.png)   
-[图片来源](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714)  
+[图片来源](https://medium.com/deep-math-machine-learning-ai/chapter-10-1-deepnlp-lstm-long-short-term-memory-networks-with-math-21477f8e4235) 
 
 
 ## 训练
