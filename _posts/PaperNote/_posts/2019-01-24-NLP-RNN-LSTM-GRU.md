@@ -97,13 +97,13 @@ $$C_{t}$$:t时刻的Memory state
 $$
 f_{t}=\sigma(X_{t}U_{f}+H_{t-1}W_{f}+b_{f})\\
 \bar{C}_{t}=tanh(X_{t}U_{c}+H_{t-1}W_{c}+b_{c})\\
-\I_{t}=\sigma(X_{t}U_{i}+H_{t-1}W_{i}+b_{i})\\
-\O_{t}=\sigma(X_{t}U_{o}+H_{t-1}W_{i}+b_{o})\\
+I_{t}=\sigma(X_{t}U_{i}+H_{t-1}W_{i}+b_{i})\\
+O_{t}=\sigma(X_{t}U_{o}+H_{t-1}W_{o}+b_{o})\\
 $$
 
 $$
-C_{t} =f_{t}C_{t-1}+I_{t}\bar{C}_{t}\\
-H_{t} = tanh(C_{t})
+C_{t} =f_{t}\cdot C_{t-1}+I_{t}\cdot \bar{C}_{t}\\
+H_{t} = tanh(C_{t})\\
 y_{t}=softmax(VH^{(t)}+b_{y})
 $$
 
