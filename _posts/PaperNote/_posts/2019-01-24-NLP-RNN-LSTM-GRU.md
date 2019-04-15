@@ -81,7 +81,7 @@ tf.contrib.rnn.stack_bidirectional_dynamic_rnn：
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image5.png) 
 
-# LSTM  
+# LSTM(Long Short Term Memory)
 
 Notation:
 
@@ -95,16 +95,16 @@ $$C_{t}$$:t时刻的Memory state
   
 
 $$
-f_{t}=\sigma(X_{t}U_{f}+H_{t-1}W_{f}+b_{f})\\
-\bar{C}_{t}=tanh(X_{t}U_{c}+H_{t-1}W_{c}+b_{c})\\
-I_{t}=\sigma(X_{t}U_{i}+H_{t-1}W_{i}+b_{i})\\
-O_{t}=\sigma(X_{t}U_{o}+H_{t-1}W_{o}+b_{o})\\
+f_{t}=\sigma(X_{t}U_{f}+h_{t-1}W_{f}+b_{f})\\
+\bar{C}_{t}=tanh(X_{t}U_{c}+h_{t-1}W_{c}+b_{c})\\
+I_{t}=\sigma(X_{t}U_{i}+h_{t-1}W_{i}+b_{i})\\
+O_{t}=\sigma(X_{t}U_{o}+h_{t-1}W_{o}+b_{o})\\
 $$
 
 $$
 C_{t} =f_{t}\cdot C_{t-1}+I_{t}\cdot \bar{C}_{t}\\
-H_{t} = O_{t}\cdot tanh(C_{t})\\
-y_{t}=softmax(VH_{(t)}+b_{y})
+h_{t} = O_{t}\cdot tanh(C_{t})\\
+y_{t}=softmax(Vh_{(t)}+b_{y})
 $$
 
    ![_config.yml]({{ site.baseurl }}/images/10RNN/image6.png)   
@@ -114,7 +114,19 @@ $$
 [来源](https://medium.com/deep-math-machine-learning-ai/chapter-10-1-deepnlp-lstm-long-short-term-memory-networks-with-math-21477f8e4235) 
 
 
-# GRU  
+# GRU(Gated Recurrent Unit)   
+
+
+$$
+z_{t}=\sigma(X_{t}U_{z}+h_{t-1}W_{z}+b_{z})\\
+r_{t}=\sigma(X_{t}U_{r}+h_{t-1}W_{r}+b_{r})\\
+\tilde{h} = tanh(X_{t}U+r_{t}\cdot h_{t-1}W+ b_{h})\\
+h_{t}=1-z_{t}\cdot h_{t-1}+z_{t}\cdot \tilde{h}\\
+$$
+
+
+![_config.yml]({{ site.baseurl }}/images/10RNN/image9.png) 
+
 
 
 ## 训练
