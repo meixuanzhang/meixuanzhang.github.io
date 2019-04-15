@@ -59,13 +59,28 @@ Bidirectional RNN隐藏层由两部分构成:forward layer和backward layer
 Notation:  
 $$\overrightarrow{h^{(t)}}$$:t时刻forward layer  
 $$\overleftarrow{h^{(t)}}$$:t时刻backward layer  
+$$h$$:是forward h和backward h的concat(两个向量连接一起)
 
 $$\overrightarrow{h^{(t)}}=\sigma(\overrightarrow{U}x^{(t)}+\overrightarrow{W}\overrightarrow{h^{(t-1)}}+\overrightarrow{b}_{h})\\
 \overleftarrow{h^{(t)}}=\sigma(\overleftarrow{U}x^{(t)}+\overleftarrow{W}\overleftarrow{h^{(t-1)}}+\overleftarrow{b}_{h})\\
-h=[\overrightarrow{h};\overleftarrow{h}]\\
-y^{(t)}=softmax(Vh+b_{y})$$
+h^{(t)}=[\overrightarrow{h^{(t)}};\overleftarrow{h^{(t)}}]\\
+y^{(t)}=softmax(Vh^{(t)}+b_{y})$$
 
-![_config.yml]({{ site.baseurl }}/images/10RNN/image3.png)  
+![_config.yml]({{ site.baseurl }}/images/10RNN/image3.png)   
+
+## Deep Bidirectional RNN   
+
+tensorflow里提供了两种将deep和bidirectional结合的方式
+
+tf.nn.bidirectional_dynamic_rnn：  
+
+![_config.yml]({{ site.baseurl }}/images/10RNN/image4.png) 
+
+tf.contrib.rnn.stack_bidirectional_dynamic_rnn：
+
+![_config.yml]({{ site.baseurl }}/images/10RNN/image5.png) 
+
+
 
 ## 训练
 
