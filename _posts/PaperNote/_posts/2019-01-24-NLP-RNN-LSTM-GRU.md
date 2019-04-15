@@ -85,12 +85,12 @@ tf.contrib.rnn.stack_bidirectional_dynamic_rnn：
 
 Notation:
 
-$$f_{t}$$:t时刻的Forget gate
-$$\bar{C}_{t}$$:ts时刻的Candidate layer 
-$$I_{t}$$:t时刻的Input gate
-$$O_{t}$$:t时刻的Output Gate  
-$$H_{t}$$:t时刻的Hidden state
-$$C_{t}$$:t时刻的Memory state 
+$$f_{t}$$:t时刻的Forget gate  
+$$\bar{C}_{t}$$:ts时刻的Candidate layer   
+$$I_{t}$$:t时刻的Input gate  
+$$O_{t}$$:t时刻的Output Gate    
+$$H_{t}$$:t时刻的Hidden state  
+$$C_{t}$$:t时刻的Memory state   
 
   
 
@@ -103,8 +103,8 @@ $$
 
 $$
 C_{t} =f_{t}\cdot C_{t-1}+I_{t}\cdot \bar{C}_{t}\\
-H_{t} = tanh(C_{t})\\
-y_{t}=softmax(VH^{(t)}+b_{y})
+H_{t} = O_{t}\cdot tanh(C_{t})\\
+y_{t}=softmax(VH_{(t)}+b_{y})
 $$
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image6.png)   
@@ -114,9 +114,11 @@ $$
 [图片来源](https://medium.com/deep-math-machine-learning-ai/chapter-10-1-deepnlp-lstm-long-short-term-memory-networks-with-math-21477f8e4235) 
 
 
+# GRU  
+
+
 ## 训练
 
 # LSTM结构
 
-# GRU
 
