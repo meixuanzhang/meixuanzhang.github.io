@@ -80,6 +80,10 @@ tf.contrib.rnn.stack_bidirectional_dynamic_rnn：
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image5.png) 
 
+# LSTM
+
+![_config.yml]({{ site.baseurl }}/images/10RNN/image6.png)   
+[图片来源](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714)  
 
 
 ## 训练
