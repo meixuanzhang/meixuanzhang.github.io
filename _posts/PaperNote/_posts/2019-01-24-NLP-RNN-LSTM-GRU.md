@@ -120,7 +120,7 @@ $$
 $$
 z_{t}=\sigma(X_{t}U_{z}+h_{t-1}W_{z}+b_{z})\\
 r_{t}=\sigma(X_{t}U_{r}+h_{t-1}W_{r}+b_{r})\\
-\tilde{h_{t}} = tanh(X_{t}U+r_{t}\cdot h_{t-1}W+ b_{h})\\
+\tilde{h_{t}} = tanh(X_{t}U+r_{t}\cdot h_{t-1}W)\\
 h_{t}=1-z_{t}\cdot h_{t-1}+z_{t}\cdot \tilde{h_{t}}\\
 y_{t}=softmax(Vh_{(t)}+b_{y})
 $$
@@ -129,6 +129,8 @@ $$
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image9.png) 
 
 
+上面例子都属于同步序列输入和输出(Synced sequence input and output) 除了上面结构以外，
+![_config.yml]({{ site.baseurl }}/images/10RNN/image8.png) 
 
 ## 训练
 
