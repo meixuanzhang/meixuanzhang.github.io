@@ -60,8 +60,10 @@ Notation:
 $$\overrightarrow{h}^{(t)}$$:t时刻forward layer  
 $$\overleftarrow{h}^{(t)}$$:t时刻backward layer  
 
-$$\overrightarrow{h}^{(t)}=\sigma(\overrightarrow{U}x^{(t)}+\overrightarrow{W}\overrightarrow{h}^{(t-1)}+\overrightarrow{b}_{h})\\
-$$\overleftarrow{h}^{(t)}=\sigma(\overleftarrow{U}x^{(t)}+\overleftarrow{W}\overrightarrow{h}^{(t-1)}+\overleftarrowb}_{h})\\
+$$\overrightarrow{h}^{(t)}=\sigma(\overrightarrow{U}x^{(t)}+\overrightarrow{W}\overrightarrow{h}^{(t-1)}+\overrightarrow{b}_{h})\\$$
+
+
+$$\overleftarrow{h}^{(t)}=\sigma(\overleftarrow{U}x^{(t)}+\overleftarrow{W}\overrightarrow{h}^{(t-1)}+\overleftarrowb})\\
 h=[\overrightarrow{h};\overleftarrow{h}]
 y^{(t)}=softmax(Vh+b_{y})$$
 
