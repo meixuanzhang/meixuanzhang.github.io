@@ -107,7 +107,7 @@ H_{t} = O_{t}\cdot tanh(C_{t})\\
 y_{t}=softmax(VH_{(t)}+b_{y})
 $$
 
-                ![_config.yml]({{ site.baseurl }}/images/10RNN/image6.png)   
+   ![_config.yml]({{ site.baseurl }}/images/10RNN/image6.png)   
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image7.png) 
 
