@@ -108,6 +108,9 @@ y_{t}=softmax(VH^{(t)}+b_{y})
 $$
 
 ![_config.yml]({{ site.baseurl }}/images/10RNN/image6.png)   
+
+![_config.yml]({{ site.baseurl }}/images/10RNN/image7.png) 
+
 [图片来源](https://medium.com/deep-math-machine-learning-ai/chapter-10-1-deepnlp-lstm-long-short-term-memory-networks-with-math-21477f8e4235) 
 
 
