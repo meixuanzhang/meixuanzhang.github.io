@@ -120,8 +120,8 @@ $$
 $$
 z_{t}=\sigma(X_{t}U_{z}+h_{t-1}W_{z}+b_{z})\\
 r_{t}=\sigma(X_{t}U_{r}+h_{t-1}W_{r}+b_{r})\\
-\tilde{h} = tanh(X_{t}U+r_{t}\cdot h_{t-1}W+ b_{h})\\
-h_{t}=1-z_{t}\cdot h_{t-1}+z_{t}\cdot \tilde{h}\\
+\tilde{h_{t}} = tanh(X_{t}U+r_{t}\cdot h_{t-1}W+ b_{h})\\
+h_{t}=1-z_{t}\cdot h_{t-1}+z_{t}\cdot \tilde{h_{t}}\\
 $$
 
 
