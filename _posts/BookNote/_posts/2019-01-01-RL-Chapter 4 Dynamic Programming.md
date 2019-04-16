@@ -28,7 +28,7 @@ $$q_{\ast} (a,s)=E[R_{t+1}+\gamma \mathop{max}_{a'} q_{\ast}(S_{t+1},a') \mid S_
 = \sum_{s',r}P(s',r\mid s,a)[r+\gamma \mathop{max}_{a'}  q_{\ast}(s',a')]$$
 
 
-1、Policy Evaluation(Prediction)策略评估
+**1、Policy Evaluation(Prediction)策略评估**  
 
 Policy Evaluation：对任意$$\pi$$,计算state-value fuction $$V_{\pi}$$,这是一个prediction problem  
 
@@ -40,11 +40,11 @@ $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]\\
 
 $$\pi(a\mid s)$$表示在策略$$\pi$$下，处于状态s时采取行动a的概率，$$E_{\pi}$$采取策略$$\pi$$下的期望  
 
-假设环境动态是已知的即$$P(s',r\mid s,a)$$已知，考虑近似value function 序列{$$V_{0},V_{1},V_{2}...$$}将$$\widehat{S^+}$$映射到实数，初始值$$V_{0}$$对任意状态是任意取值(除了terminal state,它的值应被设为0)，通过Bellman equation式子更新：
+假设环境动态是已知的即$$P(s',r\mid s,a)$$已知，固定策略$$\pi$$，考虑近似value function 序列{$$V_{0},V_{1},V_{2}...$$}将$$\widehat{S^+}$$映射到实数，初始值$$V_{0}$$对任意状态是任意取值(除了terminal state,它的值应被设为0)，通过Bellman equation式子更新：
 
 $$
-V_{k+1}(s)==E_{\pi}[R_{t+1}+\gamma V_{k}(S_{t+1}) \mid S_{t}=s]\\
+V_{k+1}(s)=E_{\pi}[R_{t+1}+\gamma V_{k}(S_{t+1}) \mid S_{t}=s]\\
 =\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{k}(s')],for\ all \ s\in  \widehat{S}
 $$  
 
-$$V_{k}=V_{\pi}$$,当$$k \to \infinite $$,序列$${V_{k}}$$收敛于$$V_{\pi}$$
+当$$k \to \infty$$,序列$${V_{k}}$$收敛于$$V_{\pi}$$
