@@ -152,7 +152,7 @@ $$
 
 
 $$q_{\ast} (a,s)=E[R_{t+1}+\gamma \mathop{max}_{a'} q_{\ast}(S_{t+1},a') \mid S_{t}=s,A_{t}=a]\\
-= \sum_{s',r}P(s',r\mid s,a)[r+\gamma  q_{\ast}(s',a')]$$  
+= \sum_{s',r}P(s',r\mid s,a)[r+\gamma \mathop{max}_{a'}  q_{\ast}(s',a')]$$  
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image10.png)
 
