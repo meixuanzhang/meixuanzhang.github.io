@@ -47,4 +47,12 @@ V_{k+1}(s)=E_{\pi}[R_{t+1}+\gamma V_{k}(S_{t+1}) \mid S_{t}=s]\\
 =\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{k}(s')],for\ all \ s\in  \widehat{S}
 $$  
 
-当$$k \to \infty$$,序列$${V_{k}}$$收敛于$$V_{\pi}$$
+当$$k \to \infty$$,序列$${V_{k}}$$收敛于$$V_{\pi}$$  
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image11.png)  
+
+**2、Policy Improvement**   
+
+**3、Policy Iteration**  
+
+**4、**
