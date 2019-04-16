@@ -17,6 +17,8 @@ The term dynamic programming (DP) refers to a collection of algorithms that can 
 
 这里假设environment是有限MDP，state,action,rewards集合($$\widehat{S},\widehat{A},\widehat{R}$$)也是有限的,它的动态由$$P(s',r\mid s,a)$$给出，$$s\in \widehat{S},a\in \widehat{A},r\in \widehat{R},s'\in \widehat{S^+}$$($$\widehat{S^+}=\widehat{S}+$$terminal state)。尽管DP可以用于连续的state和action空间，更普遍的方式是将state和action离散化，然后使用finite-state DP 方法。
 
+这章将展示如何通过DP求解value function,通过optimal value function获得最优策略,optimal value function公式：  
+
 $$
 V_{\ast} (s)=\mathop{max}_{a}E_{\pi_{\ast}}[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]\\
 =\mathop{max}_{a} \sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\ast}(s')]
@@ -33,4 +35,7 @@ Policy Evaluation：对任意$$\pi$$,计算state-value fuction $$V_{\pi}$$,这�
 $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]\\
 =E_{\pi}[R_{t+1}+\gamma G_{t+1} \mid S_{t}=s]\\
 =E_{\pi}[R_{t+1}+\gamma V_{\pi}(S_{t+1}) \mid S_{t}=s]\\
-=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')],for\ all \ s\in  \widehat{S}  \qquad  \qquad (3.1)$$ 
+=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')],for\ all \ s\in  \widehat{S}  \qquad  \qquad (3.1)$$   
+
+
+$$\pi(a\min s)$$表示在策略$$\pi$$下，处于状态s时采取行动a的概率，$$E_{\pi}$$采取策略$$\pi$$下的期望
