@@ -58,7 +58,7 @@ $$G_{t}=R_{t+1}+R_{t+2}+R_{t+3}+...+R_{T}  \qquad  T \ is \ the \ final \ time \
 每个episode会以terminal state为结束，并返回不同rewards(子序列reward)。    
 下一个episode开始跟前一个episode的结束是独立的    
 
-将nonterminal states 记为$$\widehat{S}$$，all states+terminal states 记为$$\widehat{S^+}$$，time of termination(终止时间)记为T，T是一个随机变量，每个episode的T取值往往不一样。   
+将nonterminal states 记为$$\widehat{S}$$，$$\widehat{S}$$+terminal states 记为$$\widehat{S^+}$$，time of termination(终止时间)记为T，T是一个随机变量，每个episode的T取值往往不一样。   
 这种涉及episodes任务称为episodic tasks   
 
 在很多情况下，并不能将agent-enviroment 互动分解成一个个子序列,因为互动是无限制继续下的(强化学习的问题有无限步骤)，$$T=\infty$$，return也是无限的   
