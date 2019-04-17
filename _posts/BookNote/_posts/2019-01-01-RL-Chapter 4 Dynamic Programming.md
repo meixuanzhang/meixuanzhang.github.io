@@ -53,6 +53,16 @@ $$
 
 **2、Policy Improvement**   
 
+已知$$\pi$$是deterministic policy(确定性策略：选择概率为1的动作，其他动作概率为0，？)，在s状态下value值为$$V_{\pi}$$,此时：
+
+$$V_{\pi}=q_{\pi}(s,a)\\
+=E[R_{t+1}+\gamma V(S_{t+1}) \mid S_{t}=s,A_{t}=a]\\
+= \sum_{s',r}P(s',r\mid s,a)[r+\gamma V{\pi}(s')]$$
+
+选择另一个确定性策略$$\pi'$$,如果$$q_{\pi}(s,\pi'(s)) \ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,策略$$\pi'$$优于或和$$\pi$$一样好。
+
+
+
 **3、Policy Iteration**  
 
 **4、**
