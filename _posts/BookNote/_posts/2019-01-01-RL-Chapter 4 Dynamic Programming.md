@@ -84,15 +84,32 @@ $$
 对每一个state选择能使$$q_{\pi}(s,a)$$最大的action,这种策略称为**greedy policy $$\pi'$$**:   
 
 $$
-\pi'=\mathop{argmax}_{a}q_{\pi}(s,a)\\
+\pi'(s)=\mathop{argmax}_{a}q_{\pi}(s,a)\\
 =\mathop{argmax}_{a}[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s,A_{t}=a]\\
-=\mathop{argmax}_{a} \sum_{s',r}P(s',r\mid s,a)[r+\gamma V{\pi}(s')]
+=\mathop{argmax}_{a} \sum_{s',r}q(s',r\mid s,a)[r+\gamma V{\pi}(s')] \qquad \qquad (4.2)
 $$ 
 
 greedy policy 根据$$V_{\pi}$$选择了看起来短期最好的action,这个策略满足了policy improvement theorem,因为$$\pi'$$会优于或等于$$\pi$$。  
 
-The process of making a new policy that improves on an original policy, by making it greedy with respect to the value function of the original policy, is called **policy improvement.**
+The process of making a new policy that improves on an original policy, by making it greedy with respect to the value function of the original policy, is called **policy improvement.**   
+
+假设new greedy policy $$\pi'$$= old policy $$\pi$$则：   
+
+$$
+V_{\pi'}(s)=\mathop{max}_{a}E[R_{t+1}+\gamma V_{\pi'}(S_{t+1})\mid S_{t}=s,A_{t}=a]\\
+=\mathop{max}_{a} \sum_{s',r}q(s',r\mid s,a)[r+\gamma V{\pi}(s')]
+$$
+
+根据optimal value function公式，$$V_{\pi'}=V_{\ast}$$,$$\pi,\pi'$$是最优策略。
+
+这里我们只考虑了deterministic policies。stochastic policy $$\pi$$ 表示每个s状态下，选择每个行动a的具体概率$$\pi(s\mid s)$$，一般情况能将这里提到想法扩展到stochastic policy情况下。此外如果尝试使用 policy improvement step(4.2)，对于几个action都能使Value达到同样最大值，在stochastic case中不会从其中选择单一一个action(即不会单一给一个action概率为1),会平分被选择概率给这些action。
 
 **3、Policy Iteration**  
 
-**4、**
+**4、Value Iteration**  
+
+**5、Asynchronous Dynamic Programming**  
+
+**Generalized Policy Iteration**  
+
+**Efficiency of Dynamic Programming**
