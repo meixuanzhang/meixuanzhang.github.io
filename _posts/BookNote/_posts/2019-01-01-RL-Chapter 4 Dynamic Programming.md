@@ -59,11 +59,26 @@ $$q_{\pi}(s,a)\\
 =E[R_{t+1}+\gamma V(S_{t+1}) \mid S_{t}=s,A_{t}=a]\\
 = \sum_{s',r}P(s',r\mid s,a)[r+\gamma V{\pi}(s')]$$
 
-选择另一个确定性策略$$\pi'$$,如果$$q_{\pi}(s,\pi'(s)) \ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,则$$V_{\pi'}(s)\ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,策略$$\pi'$$优于或和$$\pi$$一样好。   
+选择另一个确定性策略$$\pi'$$,如果$$q_{\pi}(s,\pi'(s)) \ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,则$$V_{\pi'}(s)\ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,策略$$\pi'$$优于或和$$\pi$$一样好。     
 
 如果$$q_{\pi}(s,\pi'(s)) > V_{\pi}(s)$$，for all $$s \in \widehat{S}$$，策略$$\pi'$$优于$$\pi$$。  
 
-如果存在一个状态s使$$q_{\pi}(s,\pi'(s)) > V_{\pi}(s)$$,则至少有一个状态使$$V_{\pi'}(s) > V_{\pi}(s)$$。  
+如果存在一个状态s使$$q_{\pi}(s,\pi'(s)) > V_{\pi}(s)$$,则至少有一个状态使$$V_{\pi'}(s) > V_{\pi}(s)$$。    
+
+$$
+V_{\pi}(s)\le q_{\pi}(s,\pi'(s))\\
+=E[R_{t+1}+\gamma V_{\pi}(S_{t+1}\mid S_{t}=s,A_{t}=\pi'(s))]  \only \ A_{t}=\pi'(s) \ A_{t+1}...is\ not \\
+=E_{\pi'}[[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s]\\
+\le E_{\pi'}[[R_{t+1}+\gamma q_{\pi}(S_{t+1}\pi'(S_{t+1}))\mid S_{t}=s]\\
+=E_{\pi'}[[R_{t+1}+\gamma E_{\pi'}[R_{t+1}+V_{\pi}(S_{t+2})]\mid S_{t}=s]\\
+=E_{\pi'}[[R_{t+1}+\gamma R_{t+2}+\gamma^2 V_{\pi}(S_{t+2})\mid S_{t}=s]\\
+\le E_{\pi'}[[R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\gamma^3V_{\pi}(S_{t+3})\mid S_{t}=s]\\
+.\\
+.\\
+\le E_{\pi'}[[R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\gamma^3R_{t+4}...\mid S_{t}=s]\\
+=V_{\pi'}(s)
+$$
+
 
 
 
