@@ -60,6 +60,10 @@ $$V_{\pi}=q_{\pi}(s,a)\\
 = \sum_{s',r}P(s',r\mid s,a)[r+\gamma V{\pi}(s')]$$
 
 选择另一个确定性策略$$\pi'$$,如果$$q_{\pi}(s,\pi'(s)) \ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,策略$$\pi'$$优于或和$$\pi$$一样好。
+$$V_{\pi'}(s)\ge V_{\pi}(s)$$，如果$$q_{\pi}(s,\pi'(s)) > V_{\pi}(s)$$，for all $$s \in \widehat{S}$$，策略$$\pi'$$优于$$\pi$$。  
+
+如果存在一个状态s使$$q_{\pi}(s,\pi'(s)) > V_{\pi}(s)$$,则至少有一个状态使$$V_{\pi'}(s) > V_{\pi}(s)$$。  
+
 
 
 
