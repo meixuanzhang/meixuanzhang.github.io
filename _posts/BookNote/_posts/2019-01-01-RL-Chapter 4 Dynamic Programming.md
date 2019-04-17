@@ -67,7 +67,7 @@ $$q_{\pi}(s,a)\\
 
 $$
 V_{\pi}(s)\le q_{\pi}(s,\pi'(s))\\
-=E[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s,A_{t}=\pi'(s))]  \qquad only \ A_{t}=\pi'(s),A_{t+1}...is\ not \\
+=E[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s,A_{t}=\pi'(s)]  \qquad only \ A_{t}=\pi'(s),A_{t+1}...is\ not \\
 =E_{\pi'}[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s]\\
 \le E_{\pi'}[R_{t+1}+\gamma q_{\pi}(S_{t+1},\pi'(S_{t+1}))\mid S_{t}=s]\\
 =E_{\pi'}[R_{t+1}+\gamma E_{\pi'}[R_{t+2}+V_{\pi}(S_{t+2})]\mid S_{t}=s]\\
@@ -75,7 +75,7 @@ V_{\pi}(s)\le q_{\pi}(s,\pi'(s))\\
 \le E_{\pi'}[R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\gamma^3V_{\pi}(S_{t+3})\mid S_{t}=s]\\
 .\\
 .\\
-\le E_{\pi'}[[R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\gamma^3R_{t+4}...\mid S_{t}=s]\\
+\le E_{\pi'}[R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+\gamma^3R_{t+4}...\mid S_{t}=s]\\
 =V_{\pi'}(s)
 $$
 
@@ -83,7 +83,7 @@ $$
 
 $$
 \pi'=\mathop{argmax}_{a}q_{\pi}(s,a)\\
-=\mathop{argmax}_{a}E[]
+=\mathop{argmax}_{a}[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s,A_{t}=a] 
 $$
 
 
