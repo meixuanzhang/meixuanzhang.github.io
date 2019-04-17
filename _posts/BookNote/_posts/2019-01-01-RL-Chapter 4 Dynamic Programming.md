@@ -59,7 +59,9 @@ $$q_{\pi}(s,a)\\
 =E[R_{t+1}+\gamma V(S_{t+1}) \mid S_{t}=s,A_{t}=a]\\
 = \sum_{s',r}P(s',r\mid s,a)[r+\gamma V{\pi}(s')]$$
 
-选择另一个确定性策略$$\pi'$$,如果$$q_{\pi}(s,\pi'(s)) \ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,则$$V_{\pi'}(s)\ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,策略$$\pi'$$优于或和$$\pi$$一样好。     
+**policy improvement theorem**:
+
+对于确定性策略$$\pi'$$和$$\pi$$,如果$$q_{\pi}(s,\pi'(s)) \ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,则$$V_{\pi'}(s)\ge V_{\pi}(s)$$,for all $$s \in \widehat{S}$$,策略$$\pi'$$优于或和$$\pi$$一样好。     
 
 如果$$q_{\pi}(s,\pi'(s)) > V_{\pi}(s)$$，for all $$s \in \widehat{S}$$，策略$$\pi'$$优于$$\pi$$。  
 
@@ -83,9 +85,13 @@ $$
 
 $$
 \pi'=\mathop{argmax}_{a}q_{\pi}(s,a)\\
-=\mathop{argmax}_{a}[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s,A_{t}=a] 
-$$
+=\mathop{argmax}_{a}[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s,A_{t}=a]\\
+=\mathop{argmax}_{a} \sum_{s',r}P(s',r\mid s,a)[r+\gamma V{\pi}(s')]
+$$ 
 
+greedy policy 根据$$V_{\pi}$$选择了看起来短期最好的action,这个策略满足了policy improvement theorem,因为$$\pi'$$会优于或等于$$\pi$$。  
+
+The process of making a new policy that improves on an original policy, by making it greedy with respect to the value function of the original policy, is called **policy improvement.**
 
 **3、Policy Iteration**  
 
