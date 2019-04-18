@@ -115,7 +115,7 @@ $$\mathop{\longrightarrow}^{I}$$:policy improvement
 
 因为finite MDP policies是有限的，因此在有限迭代中，过程最终会向最优策略和最优value function收敛。这种寻找最优策略的方式称为**policy iteration**
 
-$$![_config.yml]({{ site.baseurl }}/images/12RL/image12.png)$$  
+![_config.yml]({{ site.baseurl }}/images/12RL/image12.png)
 
 
 **4、Value Iteration**  
@@ -127,7 +127,7 @@ V_{k+1}(s)=E_{\pi}[R_{t+1}+\gamma V_{k}(S_{t+1}) \mid S_{t}=s]\\
 =\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{k}(s')],for\ all \ s\in  \widehat{S}
 $$  
 
-$$![_config.yml]({{ site.baseurl }}/images/12RL/image13.png)$$  
+![_config.yml]({{ site.baseurl }}/images/12RL/image13.png)
 
 
 **5、Asynchronous Dynamic Programming**  
