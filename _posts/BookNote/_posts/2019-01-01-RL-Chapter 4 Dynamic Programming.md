@@ -108,7 +108,7 @@ $$
 
 policy$$\pi$$,通过Policy Evaluation估计$$V_{\pi}$$,通过Policy Improvement获得更好的policy$$\pi'$$,然后估计$$V_{\pi'}$$.获得更好的policy$$\pi''$$。 这样可以获得单调提升的policies和value function序列：  
 
-$$\pi_{0}\mathop{\longrightarrow}_{E} V_{\pi_{0}}$$
+$$\pi_{0}\mathop{\longrightarrow}^{E} V_{\pi_{0}}\mathop{\longrightarrow}^{I}\pi_{1}\mathop{\longrightarrow}^{E}  V_{\pi_{1}}\mathop{\longrightarrow}^{I} \pi_{2} \mathop{\longrightarrow}^{E}...\mathop{\longrightarrow}^{I}\pi_{\ast}\mathop{\longrightarrow}^{E}V_{\ast}$$
 
 **4、Value Iteration**  
 
