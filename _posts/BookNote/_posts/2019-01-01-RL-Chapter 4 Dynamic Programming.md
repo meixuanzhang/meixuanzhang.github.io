@@ -106,11 +106,29 @@ $$
 
 **3、Policy Iteration**    
 
-policy$$\pi$$,通过Policy Evaluation估计$$V_{\pi}$$,通过Policy Improvement获得更好的policy$$\pi'$$,然后估计$$V_{\pi'}$$.获得更好的policy$$\pi''$$。 这样可以获得单调提升的policies和value function序列：  
+policy $$\pi$$,通过Policy Evaluation估计$$V_{\pi}$$,通过Policy Improvement获得更好的policy $$\pi'$$,然后估计$$V_{\pi'}$$.获得更好的policy$$\pi''$$。 这样可以获得单调提升的policies和value function序列：  
 
-$$\pi_{0}\mathop{\longrightarrow}^{E} V_{\pi_{0}}\mathop{\longrightarrow}^{I}\pi_{1}\mathop{\longrightarrow}^{E}  V_{\pi_{1}}\mathop{\longrightarrow}^{I} \pi_{2} \mathop{\longrightarrow}^{E}...\mathop{\longrightarrow}^{I}\pi_{\ast}\mathop{\longrightarrow}^{E}V_{\ast}$$
+$$\pi_{0}\mathop{\longrightarrow}^{E} V_{\pi_{0}}\mathop{\longrightarrow}^{I}\pi_{1}\mathop{\longrightarrow}^{E}  V_{\pi_{1}}\mathop{\longrightarrow}^{I} \pi_{2} \mathop{\longrightarrow}^{E}...\mathop{\longrightarrow}^{I}\pi_{\ast}\mathop{\longrightarrow}^{E}V_{\ast}$$ 
+
+$$\mathop{\longrightarrow}^{E}$$:policy evaluation  
+$$\mathop{\longrightarrow}^{I}$$:policy improvement  
+
+因为finite MDP policies是有限的，因此在有限迭代中，过程最终会向最优策略和最优value function收敛。这种寻找最优策略的方式称为**policy iteration**
+
+$$![_config.yml]({{ site.baseurl }}/images/12RL/image12.png)$$  
+
 
 **4、Value Iteration**  
+
+policy iteration 缺点是每次迭代都需要更新一次Policy Evaluation step，Policy Evaluation的更新是延后的(需要更新完策略再更新)，更新需要多次扫过state set，在Policy Evaluation过程中有限次迭代策略value会收敛于真实$$V_{\pi}$$,事实上Policy Evaluation这一步可以通过一些方法进行缩短，同样保证policy iteration的收敛。如只进行一次policy evaluation 这一步的更新。**vlaue iteration**将policy improvement 和 缩减 policy evaluation联合,只需要进行一次policy improvement和policy evaluation更新：  
+
+$$
+V_{k+1}(s)=E_{\pi}[R_{t+1}+\gamma V_{k}(S_{t+1}) \mid S_{t}=s]\\
+=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{k}(s')],for\ all \ s\in  \widehat{S}
+$$  
+
+$$![_config.yml]({{ site.baseurl }}/images/12RL/image13.png)$$  
+
 
 **5、Asynchronous Dynamic Programming**  
 
