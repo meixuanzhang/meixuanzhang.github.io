@@ -123,8 +123,8 @@ $$\mathop{\longrightarrow}^{I}$$:policy improvement
 policy iteration 缺点是每次迭代都需要更新一次Policy Evaluation step，Policy Evaluation的更新是延后的(需要更新完策略再更新)，更新需要多次扫过state set，在Policy Evaluation过程中有限次迭代策略value会收敛于真实$$V_{\pi}$$,事实上Policy Evaluation这一步可以通过一些方法进行缩短，同样保证policy iteration的收敛。如只进行一次policy evaluation 这一步的更新。**vlaue iteration**将policy improvement 和 缩减 policy evaluation联合,只需要进行一次policy improvement和policy evaluation更新：  
 
 $$
-V_{k+1}(s)=E_{\pi}[R_{t+1}+\gamma V_{k}(S_{t+1}) \mid S_{t}=s]\\
-=\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{k}(s')],for\ all \ s\in  \widehat{S}
+V_{k+1}(s)=\mathop{max}_{a}E_[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]\\
+=\mathop{max}_{a} \sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\ast}(s')]
 $$  
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image13.png)
