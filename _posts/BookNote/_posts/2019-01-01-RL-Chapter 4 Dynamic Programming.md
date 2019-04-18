@@ -49,6 +49,8 @@ $$
 
 当$$k \to \infty$$,序列$${V_{k}}$$收敛于$$V_{\pi}$$  
 
+实现policy evaluation迭代时，一种方式是会有两个数组，一个记录新的values,一个记录旧的values,式子右边只使用旧的value。另一种方式是只有一个数组，新的values直接覆盖旧的values,更新value时，已经覆盖的value(新values)式子右边可以直接使用，不再使用旧的value，这是**in-place algorithrm**
+
 ![_config.yml]({{ site.baseurl }}/images/12RL/image11.png)  
 
 **2、Policy Improvement**   
@@ -120,7 +122,9 @@ $$\mathop{\longrightarrow}^{I}$$:policy improvement
 
 **4、Value Iteration**  
 
-policy iteration 缺点是每次迭代都需要更新一次Policy Evaluation step，Policy Evaluation的更新是延后的(需要更新完策略再更新)，更新需要多次扫过state set，在Policy Evaluation过程中有限次迭代策略value会收敛于真实$$V_{\pi}$$,事实上Policy Evaluation这一步可以通过一些方法进行缩短，同样保证policy iteration的收敛。如只进行一次policy evaluation 这一步的更新。**vlaue iteration**将policy improvement 和 缩减 policy evaluation联合,只需要进行一次policy improvement和policy evaluation更新：  
+policy iteration 缺点是每次迭代都需要更新一次Policy Evaluation step，Policy Evaluation的更新是延后的(需要更新完策略再更新)，更新需要多次扫过state set，在Policy Evaluation过程中有限次迭代策略value会收敛于真实$$V_{\pi}$$,事实上Policy Evaluation这一步可以通过一些方法进行缩短，同样保证policy iteration的收敛。如只进行一次policy evaluation 这一步的更新。  
+
+**vlaue iteration**将policy improvement 和 缩减 policy evaluation联合,只需要进行一次policy improvement和policy evaluation更新：  
 
 $$
 V_{k+1}(s)=\mathop{max}_{a}E_[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]\\
@@ -130,7 +134,14 @@ $$
 ![_config.yml]({{ site.baseurl }}/images/12RL/image13.png)
 
 
-**5、Asynchronous Dynamic Programming**  
+**5、Asynchronous Dynamic Programming**   
+
+DP方法缺点是，需要扫state set(MDP涉及的全部state),如果state set 非常大，扫一次的成本非常高。
+
+Asynchronous DP是 **in-place iterative** DP algorithms(第一段提及in-place),算法不需要按固定的顺序扫state set,可以以任意顺序扫state,有些stateh会被更新n次，才到下一个状态更新。Asynchronous DP在选择state更新上有更大自由。
+
+
+Asynchronous value itreation 。
 
 **Generalized Policy Iteration**  
 
