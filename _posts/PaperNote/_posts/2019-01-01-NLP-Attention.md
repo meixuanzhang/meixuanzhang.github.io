@@ -40,8 +40,8 @@ $$a_{t}(s)=align(h_{t},\bar{h_{s}})\\
 
 $$
 score((h_{t},\bar{h_{s}})= = \left\{ \begin{array}{rl}
-h_{t}^T\bar{h_{s}}\\
-h_{t}^TW_{a}\bar{h_{s}}\\
+h_{t}^T\bar{h_{s}} \qquad \qquad  \\
+h_{t}^TW_{a}\bar{h_{s}} \qquad \qquad \\
 v_{a}^Ttanh(W_{a}[h_{t};\bar{h_{s}}])
 \end{array} \right.
 $$  
