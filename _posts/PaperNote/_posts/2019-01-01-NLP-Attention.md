@@ -39,11 +39,15 @@ $$a_{t}(s)=align(h_{t},\bar{h_{s}})\\
 =\frac{exp(score(h_{t},\bar{h_{s}}))}{\sum_{s'}exp(score(h_{t},\bar{h_{s'}}))}$$
 
 $$
-score((h_{t},\bar{h_{s}})=
-$$
+score((h_{t},\bar{h_{s}})= = \left\{ \begin{array}{rl}
+h_{t}^T\bar{h_{s}}\\
+h_{t}^TW_{a}\bar{h_{s}}\\
+v_{a}^Ttanh(W_{a}[h_{t};\bar{h_{s}}])
+\end{array} \right.
+$$  
 
 $$c_{t}=\widehat{H}a_{t}$$
-$$\tilde{h_{t}}=tanh(W_{c}[c_{t}:h_{t}])$$
+$$\tilde{h_{t}}=tanh(W_{c}[c_{t};h_{t}])$$
 
 
 ### Local attention model  
