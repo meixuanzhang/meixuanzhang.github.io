@@ -24,8 +24,8 @@ NMT使用了recurrent architecture:
 ## Global attention model&Local attention model  
 图中蓝色是Encoder，红色是Decoder  
 Notation:  
-$$\bar{h_{s}}$$:Encoder s时刻的隐藏层状态$$\widehat{H}=(\bar{h_{1}},..\bar{h_{S}})$$  
-$$h_{t}$$:Deocder t 时刻的隐藏层状态 $$H=(\bar{h_{1}},..\bar{h_{T}})$$  
+$$\bar{h_{s}}$$:Encoder s时刻的隐藏层状态,$$\widehat{H}=(\bar{h_{1}},..\bar{h_{S}})$$  
+$$h_{t}$$:Deocder t 时刻的隐藏层状态,$$H=(\bar{h_{1}},..\bar{h_{T}})$$  
 $$\tilde{h_{t}}$$:t时刻最后输出的隐藏层  
 $$a_{t}$$:是t时刻计算Encoder隐藏层状态算术平均和的权重向量，$$a_{t}(s)$$Encoder s时刻隐藏层的权重    
 $$c_{t}$$:隐藏层状态算术平均和  
@@ -38,11 +38,14 @@ $$p_{t}$$:对其位置，即局部
 $$a_{t}(s)=align(h_{t},\bar{h_{s}})\\
 =\frac{exp(score(h_{t},\bar{h_{s}}))}{\sum_{s'}exp(score(h_{t},\bar{h_{s'}}))}$$
 
+score计算方法： 
+
 $$
 score(h_{t},\bar{h_{s}}) = \left\{ \begin{array}{rl}
-h_{t}^T\bar{h_{s}} \qquad \qquad  \\
-h_{t}^TW_{a}\bar{h_{s}} \qquad \qquad \\
-v_{a}^Ttanh(W_{a}[h_{t};\bar{h_{s}}])
+h_{t}^T\bar{h_{s}} \qquad \qquad  \qquad \qquad dot\\
+h_{t}^TW_{a}\bar{h_{s}} \qquad \qquad \qquad general\\
+v_{a}^Ttanh(W_{a}[h_{t};\bar{h_{s}}])\qquad concat\\
+W_{a}h_{t}\qquad \qquad  \qquad \qquad location-based
 \end{array} \right.
 $$  
 
