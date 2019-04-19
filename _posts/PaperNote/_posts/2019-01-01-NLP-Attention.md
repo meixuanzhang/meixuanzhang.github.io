@@ -29,10 +29,7 @@ $$h_{t}$$:Deocder t 时刻的隐藏层状态,$$H=(\bar{h_{1}},..\bar{h_{T}})$$
 $$\tilde{h_{t}}$$:t时刻最后输出的隐藏层  
 $$a_{t}$$:是t时刻计算Encoder隐藏层状态算术平均和的权重向量，$$a_{t}(s)$$Encoder s时刻隐藏层的权重    
 $$c_{t}$$:Encoder 隐藏层状态算术平均和  
-$$E$$:Encoder部分信息
-$$D$$:局部关注选取的前后长度  
-$$p_{t}$$:对其位置，即局部   
-
+$$E$$:Encoder部分信息   
 
 ### Global attention model： 
 
@@ -43,9 +40,9 @@ score计算方法：
 
 $$
 score(h_{t},\bar{h_{s}}) = \left\{ \begin{array}{rl}
-& h_{t}^T\bar{h_{s}} &\qquad dot\\
-& h_{t}^TW_{a}\bar{h_{s}} &\qquad general\\
-& v_{a}^Ttanh(W_{a}[h_{t};\bar{h_{s}}])  & \qquad concat\\
+& h_{t}^{\top}\bar{h_{s}} &\qquad dot\\
+& h_{t}^{\top}W_{a}\bar{h_{s}} &\qquad general\\
+& v_{a}^{\top}tanh(W_{a}[h_{t};\bar{h_{s}}])  & \qquad concat\\
 & W_{a}h_{t} & \qquad location-based\\
 \end{array} \right.
 $$  
@@ -60,6 +57,19 @@ $$P(y_{t}\mid y_{<t},E)=softmax(y_{t})$$
 
 ### Local attention model  
 
+Notation:  
+
+$$p_{t}$$:Decoder t时刻，对其位置，即局部  
+$$D$$:局部关注选取的前后长度  
+$$S$$:Encoder的长度
+
+Global attention缺点是需要考虑Encoder句子每个字，计算会随着句子长度增加而增加，如果句子非常长，计算会非常昂贵。因此提出了 Local attention只考虑一部分的字
+
+
+$$
+p_{t}=S \cdot sigmoid(v_{p}^{\top} tanh(W_{p}h_{t}))
+a_{t}(s) =align(h_{t},\bar{h_{s}})exp(-\frac{(s-p_{t})^2}{2\sigma^2})
+$$
 
 ## Key-value Attention Mechanism  
 ## Self-Attention  
