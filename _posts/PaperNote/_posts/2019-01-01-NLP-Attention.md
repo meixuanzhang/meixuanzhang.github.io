@@ -46,7 +46,8 @@ v_{a}^Ttanh(W_{a}[h_{t};\bar{h_{s}}])
 \end{array} \right.
 $$  
 
-$$c_{t}=\widehat{H}a_{t}$$
+$$c_{t}=\widehat{H}a_{t}$$  
+
 $$\tilde{h_{t}}=tanh(W_{c}[c_{t};h_{t}])$$
 
 
