@@ -141,8 +141,15 @@ DP方法缺点是，需要扫state set(MDP涉及的全部state),如果state set 
 Asynchronous DP是 **in-place iterative** DP algorithms(第一段提及in-place),算法不需要按固定的顺序扫state set,可以以任意顺序扫state,有些stateh会被更新n次，才到下一个状态更新。Asynchronous DP在选择state更新上有更大自由。
 
 
-Asynchronous value itreation 。
-
 **Generalized Policy Iteration**  
 
+generalized policy iteration (GPI) refer to the general idea of letting policy evaluation and policy improvement processes interact,
+independent of the granularity and other details of the two processes.
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image14.png)  
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image15.png)
+
 **Efficiency of Dynamic Programming**
+
+DP方法比直接搜索方法效率高，对于非常大的state sets 考虑asynchronous DP和 GPI变形
