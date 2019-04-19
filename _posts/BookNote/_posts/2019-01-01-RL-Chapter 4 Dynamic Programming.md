@@ -159,4 +159,4 @@ policy 通过value function 得到改善，value function不断向策略value fu
 
 **Efficiency of Dynamic Programming**   
 
-DP方法比直接搜索方法效率高，对于非常大的state sets 考虑asynchronous DP和 GPI变形
+DP方法比直接搜索方法效率高，对于非常大的state sets 考虑asynchronous DP和 GPI变形。
