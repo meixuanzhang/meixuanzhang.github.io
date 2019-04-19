@@ -24,11 +24,12 @@ NMT使用了recurrent architecture:
 ## Global attention model&Local attention model  
 图中蓝色是Encoder，红色是Decoder  
 Notation:  
-$$\bar{h_{s}}$$:Encoder s时刻的隐藏层状态,$$\widehat{H}=(\bar{h_{1}},..\bar{h_{S}})$$  
+$$\bar{h_{s}}$$:Encoder s时刻的隐藏层状态,$$\bar{H}=(\bar{h_{1}},..\bar{h_{S}})$$  
 $$h_{t}$$:Deocder t 时刻的隐藏层状态,$$H=(\bar{h_{1}},..\bar{h_{T}})$$  
 $$\tilde{h_{t}}$$:t时刻最后输出的隐藏层  
 $$a_{t}$$:是t时刻计算Encoder隐藏层状态算术平均和的权重向量，$$a_{t}(s)$$Encoder s时刻隐藏层的权重    
-$$c_{t}$$:隐藏层状态算术平均和  
+$$c_{t}$$:Encoder 隐藏层状态算术平均和  
+$$E$$:Encoder部分信息
 $$D$$:局部关注选取的前后长度  
 $$p_{t}$$:对其位置，即局部   
 
@@ -49,10 +50,13 @@ score(h_{t},\bar{h_{s}}) = \left\{ \begin{array}{rl}
 \end{array} \right.
 $$  
 
-$$c_{t}=\widehat{H}a_{t}$$  
+$$c_{t}=\bar{H}a_{t}$$  
 
 $$\tilde{h_{t}}=tanh(W_{c}[c_{t};h_{t}])$$
 
+$$y_{t}=W_{t}\tilde{h_{t}}$$
+
+$$P(y_{t}\mid y_{<t},E)=softmax(y_{t})$$
 
 ### Local attention model  
 
