@@ -42,10 +42,10 @@ score计算方法：
 
 $$
 score(h_{t},\bar{h_{s}}) = \left\{ \begin{array}{rl}
-h_{t}^T\bar{h_{s}} &\qquad dot\\
-h_{t}^TW_{a}\bar{h_{s}} &\qquad general\\
-v_{a}^Ttanh(W_{a}[h_{t};\bar{h_{s}}])  & \qquad concat\\
-W_{a}h_{t} & \qquad location-based\\
+& h_{t}^T\bar{h_{s}} &\qquad dot\\
+& h_{t}^TW_{a}\bar{h_{s}} &\qquad general\\
+& v_{a}^Ttanh(W_{a}[h_{t};\bar{h_{s}}])  & \qquad concat\\
+& W_{a}h_{t} & \qquad location-based\\
 \end{array} \right.
 $$  
 
