@@ -16,13 +16,17 @@ categories: 深度学习
 ## 无Attention机制的NMT( Neural Machine Translation)：    
 图中蓝色是Encoder，红色是Decoder    
 NMT使用了recurrent architecture:
-
+![_config.yml]({{ site.baseurl }}/images/12Attention/image1.png)
 
 
 
 ## Hard attention&Soft attention  
 ## Global attention model&Local attention model  
+
 图中蓝色是Encoder，红色是Decoder  
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image4.png)
+
 Notation:  
 $$\bar{h_{s}}$$:Encoder s时刻的隐藏层状态,$$\bar{H}=(\bar{h_{1}},..\bar{h_{S}})$$  
 $$h_{t}$$:Deocder t 时刻的隐藏层状态,$$H=(\bar{h_{1}},..\bar{h_{T}})$$  
@@ -32,6 +36,7 @@ $$c_{t}$$:Encoder 隐藏层状态算术平均和
 $$E$$:Encoder部分信息   
 
 ### Global attention model： 
+
 
 $$a_{t}(s)=align(h_{t},\bar{h_{s}})\\
 =\frac{exp(score(h_{t},\bar{h_{s}}))}{\sum_{s'}exp(score(h_{t},\bar{h_{s'}}))}$$
@@ -53,14 +58,17 @@ $$\tilde{h_{t}}=tanh(W_{c}[c_{t};h_{t}])$$
 
 $$y_{t}=W_{t}\tilde{h_{t}}$$
 
-$$P(y_{t}\mid y_{<t},E)=softmax(y_{t})$$
+$$P(y_{t}\mid y_{<t},E)=softmax(y_{t})$$  
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image2.png)
+
 
 ### Local attention model  
 
 Notation:  
 
 $$p_{t}$$:Decoder t时刻，对齐Encoder的位置  
-$$D$$:1/2窗口大小    
+$$D$$:1/2窗口大小(选取Encoder部分长度)    
 $$S$$:Encoder的长度  
 
 Global attention缺点是Decoder每个时刻需要考虑Encoder序列每个字，计算会随着句子长度增加而增加，如果句子非常长，计算会非常昂贵。因此提出了 Local attention只考虑Encoder序列部分的字，Decoder t时刻，在Encoder选取对齐位置$$p_{t}$$,只考虑Encoder[$$p_{t}-D,p_{t}+D$$]窗口大小字。
@@ -72,6 +80,9 @@ a_{t}(s) =align(h_{t},\bar{h_{s}})exp(-\frac{(s-p_{t})^2}{2\sigma^2})\\
 $$
 
 论文将上述对齐方式称为,Predictive alignment(local-p),另一种$$p_{t}=t$$的对齐方式称为Monotonic alignment(local-m)
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image3.png)
+
 
 ## Key-value Attention Mechanism  
 ## Self-Attention  
