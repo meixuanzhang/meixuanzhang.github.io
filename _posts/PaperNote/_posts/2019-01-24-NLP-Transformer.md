@@ -23,14 +23,16 @@ i:向量的第i维
 pos: 字在句子中的位置,第pos个  
 由图可知X作为输入首先经过Embeddings，输出为$$A_{m*d_{model}}$$,同时X作为输入经过Positional Encoding,输出为$$B_{m*d_{model}}$$,A+B作为模块的最终输出(C)，注意Positional Encoding 式子中i的取值范围是$$(0 \thicksim d_{model}/2-1)$$，上下两个式子输出的维度是$$m*d_{model}/2$$,需要进行concat
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image2.jpg)  
+
 dmodel取不同值时PE值:  
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image3.png) 
+
 ###  Multi-Head Atention
 原本$$Q=K=V=C_{m*dmodel}$$  
 Multi-Head Atention  
 $$MultiHead(Q,K,V) = Concat(head_{1},...head_{h})W^{o}$$  
 $$where\quad head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$  
-下面Q、K、V是经过线性变换后的Q、K、V  
+下面Q、K、V是经过$$W^Q_{i},W^K_{i},W^V_{i}$$线性变换后的Q、K、V  
 Scaled Dot-Dot Product Attention：  
 $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$  
 相关参数的维度$$W^Q_{i}\in R^{d_{model}*d_{k}},W^K_{i}\in R^{d_{model}*d_{k}},W^V_{i}\in R^{d_{model}*d_{v}},W^{o}\in R^{hd_{v}*d_{model}}$$
