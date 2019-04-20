@@ -65,12 +65,13 @@ $$S$$:Encoder的长度
 
 Global attention缺点是Decoder每个时刻需要考虑Encoder序列每个字，计算会随着句子长度增加而增加，如果句子非常长，计算会非常昂贵。因此提出了 Local attention只考虑Encoder序列部分的字，Decoder t时刻，在Encoder选取对齐位置$$p_{t}$$,只考虑Encoder[$$p_{t}-D,p_{t}+D$$]窗口大小字。
 
-
 $$
 p_{t}=S \cdot sigmoid(v_{p}^{\top} tanh(W_{p}h_{t}))\qquad  \qquad p_{t} \in [0,S]\\
 a_{t}(s) =align(h_{t},\bar{h_{s}})exp(-\frac{(s-p_{t})^2}{2\sigma^2})\\
 \sigma =\frac{D}{2}
 $$
+
+论文将上述对齐方式称为,Predictive alignment(local-p),另一种$$p_{t}=t$$的对齐方式称为Monotonic alignment(local-m)
 
 ## Key-value Attention Mechanism  
 ## Self-Attention  
