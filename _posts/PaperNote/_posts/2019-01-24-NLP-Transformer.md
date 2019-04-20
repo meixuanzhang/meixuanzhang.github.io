@@ -29,7 +29,7 @@ dmodel取不同值时PE值:
 
 ###  Multi-Head Atention
 原本$$Q=K=V=C_{m*dmodel}$$  
-Multi-Head Atention  
+
 $$MultiHead(Q,K,V) = Concat(head_{1},...head_{h})W^{o}$$  
 $$where\quad head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$  
 下面Q、K、V是经过$$W^Q_{i},W^K_{i},W^V_{i}$$线性变换后的Q、K、V  
