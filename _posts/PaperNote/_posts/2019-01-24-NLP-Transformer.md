@@ -39,8 +39,10 @@ PS:源代码实现是对Q、K、V进行了一次线性变换，维度变为m*hid
 注意hiddensize/h要能整除  
 $$Q_{m*hiddensize}=QW_{Q}$$  
 $$K_{m*hiddensize}=KW_{K}$$  
-$$V_{m*hiddensize}=VW_{V}$$ 
-![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image9.jpg)  
+$$V_{m*hiddensize}=VW_{V}$$  
+
+![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image9.jpg) 
+
 源码和论文区别是  
 源码是将一段话分为h个小块，每个小块会有自己对应attention，论文是一段话产生不同的attention  
 例如：我喜欢吃苹果  
