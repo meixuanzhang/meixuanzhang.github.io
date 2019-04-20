@@ -15,7 +15,8 @@ categories: 深度学习
 
 ## 无Attention机制的NMT( Neural Machine Translation)：    
 图中蓝色是Encoder，红色是Decoder    
-NMT使用了recurrent architecture:
+NMT使用了recurrent architecture:  
+
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image1.png)
 
 
@@ -65,7 +66,7 @@ $$P(y_{t}\mid y_{<t},E)=softmax(y_{t})$$
 
 
 
-### Local attention model  
+### Local attention model:  
 
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image3.png)
 
@@ -75,12 +76,13 @@ $$p_{t}$$:Decoder t时刻，对齐Encoder的位置
 $$D$$:1/2窗口大小(选取Encoder部分长度)    
 $$S$$:Encoder的长度  
 
-Global attention缺点是Decoder每个时刻需要考虑Encoder序列每个字，计算会随着句子长度增加而增加，如果句子非常长，计算会非常昂贵。因此提出了 Local attention只考虑Encoder序列部分的字，Decoder t时刻，在Encoder选取对齐位置$$p_{t}$$,只考虑Encoder[$$p_{t}-D,p_{t}+D$$]窗口大小字。
+Global attention缺点是Decoder每个时刻需要考虑Encoder序列每个字，计算会随着句子长度增加而增加，如果句子非常长，计算会非常昂贵。因此提出了 Local attention只考虑Encoder序列部分的字，Decoder t时刻，在Encoder选取对齐位置$$p_{t}$$,只考虑Encoder[$$p_{t}-D,p_{t}+D$$]窗口里字。
 
 $$
-p_{t}=S \cdot sigmoid(v_{p}^{\top} tanh(W_{p}h_{t}))\qquad  \qquad p_{t} \in [0,S]\\
+p_{t}=S \cdot sigmoid(v_{p}^{\top} tanh(W_{p}h_{t}))\\
+p_{t} \in [0,S]\\
 a_{t}(s) =align(h_{t},\bar{h_{s}})exp(-\frac{(s-p_{t})^2}{2\sigma^2})\\
-\sigma =\frac{D}{2}
+\sigma =\frac{D}{2},s\in [p_{t}-D,p_{t}+D]
 $$
 
 论文将上述对齐方式称为,Predictive alignment(local-p),另一种$$p_{t}=t$$的对齐方式称为Monotonic alignment(local-m)
