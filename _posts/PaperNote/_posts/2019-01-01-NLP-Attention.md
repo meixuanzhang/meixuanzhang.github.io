@@ -37,6 +37,8 @@ $$E$$:Encoder部分信息
 
 ### Global attention model： 
 
+![_config.yml]({{ site.baseurl }}/images/12Attention/image2.png)
+
 
 $$a_{t}(s)=align(h_{t},\bar{h_{s}})\\
 =\frac{exp(score(h_{t},\bar{h_{s}}))}{\sum_{s'}exp(score(h_{t},\bar{h_{s'}}))}$$
@@ -60,10 +62,12 @@ $$y_{t}=W_{t}\tilde{h_{t}}$$
 
 $$P(y_{t}\mid y_{<t},E)=softmax(y_{t})$$  
 
-![_config.yml]({{ site.baseurl }}/images/12Attention/image2.png)
+
 
 
 ### Local attention model  
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image3.png)
 
 Notation:  
 
@@ -81,7 +85,7 @@ $$
 
 论文将上述对齐方式称为,Predictive alignment(local-p),另一种$$p_{t}=t$$的对齐方式称为Monotonic alignment(local-m)
 
-![_config.yml]({{ site.baseurl }}/images/12Attention/image3.png)
+
 
 
 ## Key-value Attention Mechanism  
