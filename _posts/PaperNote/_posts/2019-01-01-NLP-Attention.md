@@ -11,6 +11,7 @@ categories: 深度学习
 《A STRUCTURED SELF - ATTENTIVE SENTENCE EMBEDDING》  
 《Hierarchical Attention Network for Documnet Classification》  
 《Attention over Attention Neural Netwarks for Reading Comprehension》  
+《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》(Soft&Hard)  
 以上论文提到了不同的Attention机制  
 
 ## 无Attention机制的NMT( Neural Machine Translation)：    
@@ -18,18 +19,17 @@ categories: 深度学习
 NMT使用了recurrent architecture
 
 Notation:  
-Encoder 句子$$x_{1},..x_{n}$$    
-Decoder 目标输出$$y_{1}...y_{m}$$    
-$$E$$:Encoder信息    
+Encoder 句子$$x=\{x_{1},..x_{n}\}$$    
+Decoder 目标输出$$y=\{y_{1}...y_{m}\}$$       
 $$h_{t}$$:Deocder t 时刻最后的隐藏层状态
 $$W_{t}$$:参数   
 D:数据集  
 
 $$Y_{t}=softmax(W_{t}h_{t})$$  
 
-$$P(y_{t}\mid y_{<t},E)\sim Y_{t}$$   
+$$P(y_{t}\mid y_{<t},x)\sim Y_{t}$$   
 
-$$logP(y\mid x)=\sum_{t=1}^m logP(y_{t}\mid y_{<t},E)$$   
+$$logP(y\mid x)=\sum_{t=1}^m logP(y_{t}\mid y_{<t},x)$$   
 
 损失函数：
 
@@ -81,7 +81,7 @@ $$\tilde{h_{t}}=tanh(W_{c}[c_{t};h_{t}])$$
 
 $$Y_{t}=softmax(W_{t}\tilde{h_{t}})$$
 
-$$P(y_{t}\mid y_{<t},E)\sim Y_{t}$$
+$$P(y_{t}\mid y_{<t},x)\sim Y_{t}$$
 
 ### Local attention model:  
 
@@ -104,9 +104,42 @@ $$
 
 论文将上述对齐方式称为,Predictive alignment(local-p),另一种$$p_{t}=t$$的对齐方式称为Monotonic alignment(local-m)
 
-
-## Hard attention&Soft attention  
-
-
 ## Key-value Attention Mechanism  
 ## Self-Attention  
+
+
+## Hard attention&Soft attention  
+论文《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》提出了Stochastic“Hard”和Deterministic"Soft"Attention
+应用在Image Caption Generation (根据图像自动生成标题)任务。
+
+模型主要框架：图片通过CNN提出特征作为Encoder，使用含有attention机制的RNN生成句子。
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image5.png)
+
+Decoder框架(论文中使用了LSTM模型)：
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image6.png)
+
+Notation:  
+
+y:目标输出,$$y={y_{1}...y_{C}},y_{i}\in R^K$$   
+a:image提取的特征，$$a={a_{1}...a_{L}},a_{i}\in R^D$$   
+$$h_{t}$$:Decoder t时刻的隐藏层  
+$$y_{t}$$:t时刻的目标输出  
+
+$$
+f_{t}=\sigma(U_{f}Ey_{t-1}+W_{f}h_{t-1}+Z_{f}z_{t})\\
+\bar{C}_{t}=tanh(U_{c}Ey_{t-1}+W_{c}h_{t-1}+Z_{c}z_{t})\\
+I_{t}=\sigma(U_{i}Ey_{t-1}+W_{i}h_{t-1}+Z_{i}z_{t})\\
+O_{t}=\sigma(U_{o}Ey_{t-1}+W_{o}h_{t-1}+Z_{o}z_{t})\\
+$$
+
+$$
+C_{t} =f_{t}\cdot C_{t-1}+I_{t}\cdot \bar{C}_{t}\\
+h_{t} = O_{t}\cdot tanh(C_{t})\\
+
+$$
+
+
+
+
