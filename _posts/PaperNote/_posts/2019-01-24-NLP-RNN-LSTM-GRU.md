@@ -95,10 +95,10 @@ $$C_{t}$$:t时刻的Memory state
   
 
 $$
-f_{t}=\sigma(X_{t}U_{f}+h_{t-1}W_{f}+b_{f})\\
-\bar{C}_{t}=tanh(X_{t}U_{c}+h_{t-1}W_{c}+b_{c})\\
-I_{t}=\sigma(X_{t}U_{i}+h_{t-1}W_{i}+b_{i})\\
-O_{t}=\sigma(X_{t}U_{o}+h_{t-1}W_{o}+b_{o})\\
+f_{t}=\sigma(U_{f}X_{t}+W_{f}h_{t-1}+b_{f})\\
+\bar{C}_{t}=tanh(U_{c}X_{t}+W_{c}h_{t-1}+b_{c})\\
+I_{t}=\sigma(U_{i}X_{t}+W_{i}h_{t-1}+b_{i})\\
+O_{t}=\sigma(U_{o}X_{t}+W_{o}h_{t-1}+b_{o})\\
 $$
 
 $$
@@ -118,9 +118,9 @@ $$
 
 
 $$
-z_{t}=\sigma(X_{t}U_{z}+h_{t-1}W_{z}+b_{z})\\
-r_{t}=\sigma(X_{t}U_{r}+h_{t-1}W_{r}+b_{r})\\
-\tilde{h_{t}} = tanh(X_{t}U+r_{t}\cdot h_{t-1}W)\\
+z_{t}=\sigma(U_{z}X_{t}+W_{z}h_{t-1}+b_{z})\\
+r_{t}=\sigma(U_{r}X_{t}+W_{r}h_{t-1}+b_{r})\\
+\tilde{h_{t}} = tanh(U_{h}X_{t}+r_{t}\cdot W_{h}h_{t-1})\\
 h_{t}=1-z_{t}\cdot h_{t-1}+z_{t}\cdot \tilde{h_{t}}\\
 y_{t}=softmax(Vh_{(t)}+b_{y})
 $$
