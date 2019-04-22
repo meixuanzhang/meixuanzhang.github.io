@@ -121,7 +121,7 @@ $$
 z_{t}=\sigma(U_{z}X_{t}+W_{z}h_{t-1}+b_{z})\\
 r_{t}=\sigma(U_{r}X_{t}+W_{r}h_{t-1}+b_{r})\\
 \tilde{h_{t}} = tanh(U_{h}X_{t}+r_{t}\cdot W_{h}h_{t-1})\\
-h_{t}=(1-z_{t})\cdot h_{t-1}+z_{t}\cdot \tilde{h_{t}}\\
+h_{t}=z_{t}\cdot h_{t-1}+(1-z_{t})\cdot \tilde{h_{t}}\\
 y_{t}=softmax(Vh_{t}+b_{y})
 $$
 
