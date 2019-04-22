@@ -122,10 +122,11 @@ Decoder框架(论文中使用了LSTM模型)：
 
 Notation:  
 
-y:目标输出,$$y={y_{1}...y_{C}},y_{i}\in R^K$$   
-a:image提取的特征，$$a={a_{1}...a_{L}},a_{i}\in R^D$$   
+y:目标输出,$$y=\{y_{1}...y_{C}\},y_{i}\in R^K$$   
+a:image提取的特征，$$a=\{a_{1}...a_{L}\},a_{i}\in R^D$$   
 $$h_{t}$$:Decoder t时刻的隐藏层  
 $$y_{t}$$:t时刻的目标输出  
+$$z_{t}$$:attention抓取的Encoder特征
 
 $$
 f_{t}=\sigma(U_{f}Ey_{t-1}+W_{f}h_{t-1}+Z_{f}z_{t})\\
@@ -137,7 +138,7 @@ $$
 $$
 C_{t} =f_{t}\cdot C_{t-1}+I_{t}\cdot \bar{C}_{t}\\
 h_{t} = O_{t}\cdot tanh(C_{t})\\
-
+Y_{t} = softmax(Vh_{t})
 $$
 
 
