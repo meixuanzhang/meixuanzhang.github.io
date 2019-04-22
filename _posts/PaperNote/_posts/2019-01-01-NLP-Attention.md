@@ -6,7 +6,7 @@ categories: 深度学习
 ---
 # 概述  
 文中涉及论文包括:    
-《Effective Approaches to Attention-based Neural Machine Translation》  
+《Effective Approaches to Attention-based Neural Machine Translation》(Global&Local)  
 《Key-value Attention Mechanism for Neural Machine Translation》  
 《A STRUCTURED SELF - ATTENTIVE SENTENCE EMBEDDING》  
 《Hierarchical Attention Network for Documnet Classification》  
@@ -19,9 +19,6 @@ NMT使用了recurrent architecture:
 
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image1.png)
 
-
-
-## Hard attention&Soft attention  
 ## Global attention model&Local attention model  
 
 图中蓝色是Encoder，红色是Decoder  
@@ -51,9 +48,12 @@ score(h_{t},\bar{h_{s}}) = \left\{ \begin{array}{rl}
 & h_{t}^{\top}\bar{h_{s}} &\qquad dot\\
 & h_{t}^{\top}W_{a}\bar{h_{s}} &\qquad general\\
 & v_{a}^{\top}tanh(W_{a}[h_{t};\bar{h_{s}}])  & \qquad concat\\
-& W_{a}h_{t} & \qquad location-based\\
 \end{array} \right.
 $$  
+
+或：
+
+$$a_{t}=softmax( W_{a}h_{t} ) \qquad location-based$$
 
 $$c_{t}=\bar{H}a_{t}$$  
 
@@ -62,9 +62,6 @@ $$\tilde{h_{t}}=tanh(W_{c}[c_{t};h_{t}])$$
 $$y_{t}=W_{t}\tilde{h_{t}}$$
 
 $$P(y_{t}\mid y_{<t},E)=softmax(y_{t})$$  
-
-
-
 
 ### Local attention model:  
 
@@ -88,6 +85,7 @@ $$
 论文将上述对齐方式称为,Predictive alignment(local-p),另一种$$p_{t}=t$$的对齐方式称为Monotonic alignment(local-m)
 
 
+## Hard attention&Soft attention  
 
 
 ## Key-value Attention Mechanism  
