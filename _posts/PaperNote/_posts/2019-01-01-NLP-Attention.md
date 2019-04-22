@@ -53,13 +53,15 @@ $$
 
 或：
 
-$$a_{t}=softmax( W_{a}h_{t} ) \qquad location-based$$   $$a_{t}$$是向量
+$$a_{t}=softmax( W_{a}h_{t} ) \qquad location-based$$   ($$a_{t}$$是向量)
 
 $$c_{t}=\bar{H}a_{t}$$  
 
 $$\tilde{h_{t}}=tanh(W_{c}[c_{t};h_{t}])$$
 
-$$P(y_{t}\mid y_{<t},E)~softmax(W_{t}\tilde{h_{t}})$$
+$$Y_{t}=softmax(W_{t}\tilde{h_{t}})$$
+
+$$P(y_{t}\mid y_{<t},E)\sim Y_{t}$$
 
 ### Local attention model:  
 
