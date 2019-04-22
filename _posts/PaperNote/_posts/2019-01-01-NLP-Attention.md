@@ -21,7 +21,7 @@ Notation:
 Encoder 句子$$x_{1},..x_{n}$$    
 Decoder 目标输出$$y_{1}...y_{m}$$    
 $$E$$:Encoder信息    
-$$h_{t}$$:Deocder t 时刻最后的隐藏层状态,$$H=(\bar{h_{1}},..\bar{h_{T}})$$     
+$$h_{t}$$:Deocder t 时刻最后的隐藏层状态
 $$W_{t}$$:参数   
 D:数据集  
 
@@ -43,7 +43,7 @@ $$J=\sum_{(x,y)\in D}-logP(y\mid x)$$
 
 Notation:  
 $$\bar{h_{s}}$$:Encoder s时刻的隐藏层状态,$$\bar{H}=(\bar{h_{1}},..\bar{h_{S}})$$  
-$$h_{t}$$:Deocder t 时刻最后的隐藏层前一层,$$H=(\bar{h_{1}},..\bar{h_{T}})$$  
+$$h_{t}$$:Deocder t 时刻最后的隐藏层前一层,$$H=(h_{1},..h_{T})$$  
 $$\tilde{h_{t}}$$:t时刻加入attention后最后输出的隐藏层  
 $$a_{t}$$:是t时刻计算Encoder隐藏层状态算术平均和的权重向量，$$a_{t}(s)$$Encoder s时刻隐藏层的权重    
 $$c_{t}$$:Encoder 隐藏层状态算术平均和  
