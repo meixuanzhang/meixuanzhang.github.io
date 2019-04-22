@@ -15,23 +15,43 @@ categories: 深度学习
 
 ## 无Attention机制的NMT( Neural Machine Translation)：    
 图中蓝色是Encoder，红色是Decoder    
-NMT使用了recurrent architecture:  
+NMT使用了recurrent architecture
+
+Notation:  
+Encoder 句子$$x_{1},..x_{n}$$    
+Decoder 目标输出$$y_{1}...y_{m}$$    
+$$E$$:Encoder信息    
+$$h_{t}$$:Deocder t 时刻最后的隐藏层状态,$$H=(\bar{h_{1}},..\bar{h_{T}})$$     
+$$W_{t}$$:参数   
+D:数据集  
+
+$$Y_{t}=softmax(W_{t}h_{t})$$  
+
+$$P(y_{t}\mid y_{<t},E)\sim Y_{t}$$   
+
+$$logP(y\mid x)=\sum_{t=1}^m logP(y_{t}\mid y_{<t},E)$$   
+
+损失函数：
+
+$$J=\sum_{(x,y)\in D}-logP(y\mid x)$$
 
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image1.png)
 
 ## Global attention model&Local attention model  
 
-图中蓝色是Encoder，红色是Decoder  
-
-![_config.yml]({{ site.baseurl }}/images/12Attention/image4.png)
+图中蓝色是Encoder，红色是Decoder    
 
 Notation:  
 $$\bar{h_{s}}$$:Encoder s时刻的隐藏层状态,$$\bar{H}=(\bar{h_{1}},..\bar{h_{S}})$$  
-$$h_{t}$$:Deocder t 时刻的隐藏层状态,$$H=(\bar{h_{1}},..\bar{h_{T}})$$  
-$$\tilde{h_{t}}$$:t时刻最后输出的隐藏层  
+$$h_{t}$$:Deocder t 时刻最后的隐藏层前一层,$$H=(\bar{h_{1}},..\bar{h_{T}})$$  
+$$\tilde{h_{t}}$$:t时刻加入attention后最后输出的隐藏层  
 $$a_{t}$$:是t时刻计算Encoder隐藏层状态算术平均和的权重向量，$$a_{t}(s)$$Encoder s时刻隐藏层的权重    
 $$c_{t}$$:Encoder 隐藏层状态算术平均和  
-$$E$$:Encoder部分信息   
+
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image4.png)
+
+
 
 ### Global attention model： 
 
