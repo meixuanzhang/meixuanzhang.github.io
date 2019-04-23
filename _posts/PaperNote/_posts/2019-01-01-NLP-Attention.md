@@ -202,9 +202,9 @@ $$
 
 $$b_{k}=0.9*b_{k-1}+0.1*logP(y\mid \tilde{s}_{k},a)$$   
 
-为了更进一步减少梯度估计方法，加入entroy(熵)：  
+为了更进一步减少梯度估计方法，加入entroy(熵):(不太理解)     
 
-$$H[\tilde{s}^n]=$$
+$$H[\tilde{s}^n]=-P(\tilde{s}^n\mid a)logP(\tilde{s}^n\mid a)$$
 
 最终损失函数：  
 
