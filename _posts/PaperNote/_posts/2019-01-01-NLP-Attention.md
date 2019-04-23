@@ -179,7 +179,12 @@ $$z_{t}$$是一个随机变量根据$$\alpha_{t}$$分布随机选取 对应的$$
 $$
 L=logP(y\mid a)\\
 = log \sum_{s} P(s\mid a)P(y\mid s,a)\\
-\le log\sum_{s}P(s\mid a)logP(y\mid s,a)
+\ge log\sum_{s}P(s\mid a)logP(y\mid s,a)  \qquad \qquad Jesen inequality
+$$
+
+
+$$
+\frac{\partial L}{\partial W}=\sum_{s}P(s\mid a)[\frac{\partial log P(y\mid s,a)}{\partial W}+ logP(y\mid s,a)\frac{\partial log P(s\mid a)}{\partial W}]
 $$
 
 
