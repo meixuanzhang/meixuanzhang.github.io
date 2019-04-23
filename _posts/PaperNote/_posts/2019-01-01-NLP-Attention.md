@@ -178,7 +178,7 @@ $$z_{t}$$是一个随机变量根据$$\alpha_{t}$$分布随机选取 对应的$$
 
 $$
 L=logP(y\mid a)\\
-= log \sum_{s} P(s\mid a)P(y\mi s,a)\\
+= log \sum_{s} P(s\mid a)P(y\mid s,a)\\
 \le log\sum_{s}P(s\mid a)logP(y\mid s,a)
 $$
 
