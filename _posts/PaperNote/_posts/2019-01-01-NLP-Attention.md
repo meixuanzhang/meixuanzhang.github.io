@@ -184,14 +184,21 @@ $$
 
 
 $$
+\frac{\partial log P(s \mid a)}{\partial W}=\frac{1}{P(s\mid a)}\frac{\partial P( s \mid a)}{\partial W}\\
+
 \frac{\partial L}{\partial W}=\sum_{s}P(s\mid a)[\frac{\partial log P(y\mid s,a)}{\partial W}+ logP(y\mid s,a)\frac{\partial log P(s\mid a)}{\partial W}]\\
-\frac{\partial log P( \s \mid a)}{\partial W}=\frac{1}{P(s\mid a)}\frac{\partial P( s \mid a)}{\partial W}\\
+$$
 
-\frac{\partial L}{\partial W} \approx \frac{1}{N}\sum_{n=1}^N[\frac{\partial log P(y\mid \tilde{s}^n,a)}{\partial W}+ logP(y\mid  \tilde{s}^n,a)\frac{\partial log P( \tilde{s}^n \mid a)}{\partial W}]\\
-\tilde{s}^n \sim Multinoulli_{L}(\{\alpha_{i}\})$$
+上式中梯度估计可以通过Monte Carlo方法进行估计,根据$$\tilde{s}$$分布确定$$s_{t}$$取值:
+
+$$\tilde{s}\sim Multinoulli_{L}(\{\alpha_{i}\})$$
+
+$$\frac{\partial L}{\partial W} \approx \frac{1}{N}\sum_{n=1}^N[\frac{\partial log P(y\mid \tilde{s}^n,a)}{\partial W}+ logP(y\mid  \tilde{s}^n,a)\frac{\partial log P( \tilde{s}^n \mid a)}{\partial W}]\\
+$$  
 
 
-$$\frac{\partial log P( \s \mid a)}{\partial W}=\frac{1}{P(s\mid a)}\frac{\partial P( s \mid a)}{\partial W}$$
+
+
 
 
 ### Deterministic “Soft” Attention  
