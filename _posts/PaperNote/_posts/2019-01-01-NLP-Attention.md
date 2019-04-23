@@ -128,7 +128,7 @@ $$h_{t}$$:Decoder t时刻的隐藏层
 $$y_{t}$$:t时刻的目标输出  
 $$z_{t}$$:attention抓取的Encoder特征
 $$$E$$:embedding 矩阵
-
+$$f_{att},f_{init,c},f_{init,h}:$$多层感知机MLP
 
 LSTM的三个门和Candidate layer（相比没有attention的LSTM增加了$$z_{t}$$部分）：       
 
@@ -150,11 +150,14 @@ output:
 
 $$
 Y_{t} = softmax(L_{o}(Ey_{t-1}+L_{h}h_{t}+L_{z}z_{t}))\\
-P(y_{t}\mid a,y_{<t})\sim Y_{t}
+P(y_{t}\mid a,y_{<t})\sim Y_{t}\\
 L_{o}\in R^{K*m},L_{h}\in R^{m*n},L_{z}\in R^{m*D}
 $$
 
-
+$$
+\alpha_{ti}=\frac{exp(f_{att}(a_{i},h_{t-1}))}{\sum_{i'=1}^L exp(f_{att}(a_{i'},h_{t-1}))}\\
+z_{t}=\phi({a_{i}},{\alpha_{i}})
+$$
 
 
 
