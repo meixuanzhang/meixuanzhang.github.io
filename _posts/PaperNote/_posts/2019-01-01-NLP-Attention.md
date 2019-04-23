@@ -223,7 +223,9 @@ $$\phi(\{a_{i}\},\{\alpha_{i}\})=\sum_{i=1}^L \alpha_{ti}a_{i}=E_{p(s_{t}\mid a)
 论文中有一段解释Deterministic Attention 可以看作是Stochastic Attention损失函数 marginal likelihood近似（略）
 
 
-已知$$\sum_{i}a_{ti}=1$$,希望$$\sum_{t}a_{ti}=1$$，可以解释为模型在生成过程(每个时刻)能同等关注图像每个部分。 
+已知$$\sum_{i}a_{ti}=1$$,希望$$\sum_{t}a_{ti}=1$$，可以解释为模型在生成过程(每个时刻)能同等关注图像每个部分。   
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image7.png)
 
 实际实验中soft attention 还加入了$$\beta$$,这样能使attention更加强调图像总的对象(object):  
 
