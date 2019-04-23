@@ -174,7 +174,7 @@ $$
 
 $$z_{t}$$是一个随机变量根据$$\alpha_{t}$$分布随机选取 对应的$$a_{i}$$  
 
-损失函数：
+损失函数marginal log-likelihood：
 
 $$
 L=logP(y\mid a)\\
@@ -217,9 +217,10 @@ $$
 
 Deterministic attention model 使用soft attention weight 计算$$z_{t}$$:
 
-$$\phi(\{a_{i}\},\{\alpha_{i}\})=\sum_{i=1}^L \alpha_{ti}a_{i}=E_{p(s_{t}\mid a)}$$   
+$$\phi(\{a_{i}\},\{\alpha_{i}\})=\sum_{i=1}^L \alpha_{ti}a_{i}=E_{p(s_{t}\mid a)}[z_{t}]$$   
 
 
+论文中有一段解释Deterministic Attention 可以看作是Stochastic Attention损失函数 marginal likelihood近似（略）
 
 
 已知$$\sum_{i}a_{ti}=1$$,希望$$\sum_{t}a_{ti}=1$$，可以解释为模型在生成过程(每个时刻)能同等关注图像每个部分。 
