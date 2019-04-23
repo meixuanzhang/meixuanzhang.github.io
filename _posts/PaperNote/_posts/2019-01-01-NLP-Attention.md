@@ -112,7 +112,7 @@ $$
 论文《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》提出了Stochastic“Hard”和Deterministic"Soft"Attention
 应用在Image Caption Generation (根据图像自动生成标题)任务。
 
-模型主要框架：图片通过CNN提出特征作为Encoder，使用含有attention机制的RNN生成句子。
+模型主要框架：图片通过CNN提取特征作为Encoder，使用含有attention机制的RNN生成句子。
 
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image5.png)
 
@@ -185,11 +185,13 @@ $$
 
 $$
 \frac{\partial L}{\partial W}=\sum_{s}P(s\mid a)[\frac{\partial log P(y\mid s,a)}{\partial W}+ logP(y\mid s,a)\frac{\partial log P(s\mid a)}{\partial W}]\\
-\approx \frac{1}{N}\sum_{n=1}^N[\frac{\partial log P(y\mid \tilde{s}^n,a)}{\partial W}+ logP(y\mid  \tilde{s}^n,a)\frac{\partial log P( \tilde{s}^n \mid a)}{\partial W}]\\
-tilde{s}^n \sim Multinoulli_{L}(\{\alpha_{i}\})$$
+\frac{\partial log P( \s \mid a)}{\partial W}=\frac{1}{P(s\mid a)}\frac{\partial P( s \mid a)}{\partial W}\\
+
+\frac{\partial L}{\partial W} \approx \frac{1}{N}\sum_{n=1}^N[\frac{\partial log P(y\mid \tilde{s}^n,a)}{\partial W}+ logP(y\mid  \tilde{s}^n,a)\frac{\partial log P( \tilde{s}^n \mid a)}{\partial W}]\\
+\tilde{s}^n \sim Multinoulli_{L}(\{\alpha_{i}\})$$
 
 
-$$\frac{\partial log P( \tilde{s}^n \mid a)}{\partial W}=\frac{1}{P(s\mid a)}\frac{\partialP( \tilde{s}^n \mid a)}{\partial W}$$
+$$\frac{\partial log P( \s \mid a)}{\partial W}=\frac{1}{P(s\mid a)}\frac{\partial P( s \mid a)}{\partial W}$$
 
 
 ### Deterministic “Soft” Attention  
