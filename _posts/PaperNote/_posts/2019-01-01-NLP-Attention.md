@@ -122,7 +122,7 @@ Decoder框架(论文中使用了LSTM模型)：
 
 Notation:  
 
-y:目标输出,$$y=\{y_{1}...y_{C}\},y_{i}\in R^K$$，y_{i}是one-hot向量   
+y:目标输出,$$y=\{y_{1}...y_{C}\},y_{i}\in R^K$$，$$y_{i}$$是one-hot向量   
 a:image提取的特征，$$a=\{a_{1}...a_{L}\},a_{i}\in R^D$$   
 $$\alpha_{ti}$$:t时刻image提取特征$$a_{i}$$对应的权重
 $$h_{t}$$:Decoder t时刻的隐藏层  
@@ -162,7 +162,7 @@ P(y_{t}\mid a,y_{<t})\sim Y_{t}\\
 L_{o}\in R^{K*m},L_{h}\in R^{m*n},L_{z}\in R^{m*D}
 $$
 
-###Stochastic “Hard” Attention  
+### Stochastic “Hard” Attention  
 
 Notation:  
 $$s_{t}$$:是t时刻维度为L的one-hot向量，$$s_{t,i}=1$$表示$$s_{t}$$向量索引i元素等于1，其他为0，代表了选取$$a_{i}$$特征
@@ -172,9 +172,18 @@ P(s_{t,i}=1\mid s_{<t},a)=\alpha_{ti}\\
 z_{t}=\sum_{i}s_{t,i}a_{i}
 $$  
 
-$$z_{t}$$是一个随机变量根据$$\alpha_{t}$$分布随机选取 对应的$$a_{i}$$
+$$z_{t}$$是一个随机变量根据$$\alpha_{t}$$分布随机选取 对应的$$a_{i}$$  
 
-###Deterministic “Soft” Attention  
+损失函数：
+
+$$
+L=logP(y\mid a)\\
+= log \sum_{s} P(s\mid a)P(y\mi s,a)\\
+\le log\sum_{s}P(s\mid a)logP(y\mid s,a)
+$$
+
+
+### Deterministic “Soft” Attention  
 
 $$E_{p(s_{t}\mid a)}=\sum_{i=1}^L \alpha_{ti}a_{i}$$
 
