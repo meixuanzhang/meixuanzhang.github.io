@@ -124,6 +124,7 @@ Notation:
 
 y:目标输出,$$y=\{y_{1}...y_{C}\},y_{i}\in R^K$$，y_{i}是one-hot向量   
 a:image提取的特征，$$a=\{a_{1}...a_{L}\},a_{i}\in R^D$$   
+$$\alpha_{ti}$$:t时刻image提取特征$$a_{i}$$的权重
 $$h_{t}$$:Decoder t时刻的隐藏层  
 $$y_{t}$$:t时刻的目标输出  
 $$z_{t}$$:attention抓取的Encoder特征
@@ -137,7 +138,14 @@ f_{t}=\sigma(U_{f}Ey_{t-1}+W_{f}h_{t-1}+Z_{f}z_{t})\\
 I_{t}=\sigma(U_{i}Ey_{t-1}+W_{i}h_{t-1}+Z_{i}z_{t})\\
 O_{t}=\sigma(U_{o}Ey_{t-1}+W_{o}h_{t-1}+Z_{o}z_{t})\\
 \bar{C}_{t}=tanh(U_{c}Ey_{t-1}+W_{c}h_{t-1}+Z_{c}z_{t})\\
+$$  
+
 $$
+\alpha_{ti}=\frac{exp(f_{att}(a_{i},h_{t-1}))}{\sum_{i'=1}^L exp(f_{att}(a_{i'},h_{t-1}))}\\
+z_{t}=\phi({a_{i}},{\alpha_{i}})
+$$
+
+$$\phi$$函数在后面介绍  
 
 LSTM的Memory state和Hidden stte:   
 
@@ -154,10 +162,7 @@ P(y_{t}\mid a,y_{<t})\sim Y_{t}\\
 L_{o}\in R^{K*m},L_{h}\in R^{m*n},L_{z}\in R^{m*D}
 $$
 
-$$
-\alpha_{ti}=\frac{exp(f_{att}(a_{i},h_{t-1}))}{\sum_{i'=1}^L exp(f_{att}(a_{i'},h_{t-1}))}\\
-z_{t}=\phi({a_{i}},{\alpha_{i}})
-$$
+
 
 
 
