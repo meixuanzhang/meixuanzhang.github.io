@@ -193,7 +193,8 @@ $$
 
 $$\tilde{s}_{t}\sim Multinoulli_{L}(\{\alpha_{i}\})$$
 
-$$\frac{\partial L}{\partial W} \approx \frac{1}{N}\sum_{n=1}^N[\frac{\partial log P(y\mid \tilde{s}^n,a)}{\partial W}+ logP(y\mid  \tilde{s}^n,a)\frac{\partial log P( \tilde{s}^n \mid a)}{\partial W}]\\
+$$
+\frac{\partial L}{\partial W} \approx \frac{1}{N}\sum_{n=1}^N[\frac{\partial log P(y\mid \tilde{s}^n,a)}{\partial W}+ logP(y\mid  \tilde{s}^n,a)\frac{\partial log P( \tilde{s}^n \mid a)}{\partial W}]\\
 $$  
 
 
@@ -205,15 +206,20 @@ $$b_{k}=0.9*b_{k-1}+0.1*logP(y\mid \tilde{s}_{k},a)$$
 
 $$H[\tilde{s}^n]=$$
 
+最终损失函数：  
+
+$$
+\frac{\partial L}{\partial W} \approx \frac{1}{N}\sum_{n=1}^N[\frac{\partial log P(y\mid \tilde{s}^n,a)}{\partial W}+ \lambda_{r}(logP(y\mid  \tilde{s}^n,a)-b)\frac{\partial log P( \tilde{s}^n \mid a)}{\partial W}+\lambda_{e}\frac{\partial H[\tilde{s}^n]}{\partial W}]
+$$
 
 
 ### Deterministic “Soft” Attention  
 
 $$E_{p(s_{t}\mid a)}=\sum_{i=1}^L \alpha_{ti}a_{i}$$  
 
-已知$$\sum_{i}a_{ti}=1$$,希望$$sum_{t}a_{ti}=1$$，可以解释为模型在生成过程(每个时刻)能同等关注图像每个部分。 
+已知$$\sum_{i}a_{ti}=1$$,希望$$\sum_{t}a_{ti}=1$$，可以解释为模型在生成过程(每个时刻)能同等关注图像每个部分。 
 
-此外soft attention 加入了$$\beta$$,这样能使更加强调图像总的对象(object):  
+此外soft attention 加入了$$\beta$$,这样能使attention更加强调图像总的对象(object):  
 
 $$
 \phi(\{a_{i}\},\{\alpha_{i}\})=\beta\sum_{i=1}^L \alpha_{ti}a_{i}\\
