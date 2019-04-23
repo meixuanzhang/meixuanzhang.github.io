@@ -197,11 +197,19 @@ $$\frac{\partial L}{\partial W} \approx \frac{1}{N}\sum_{n=1}^N[\frac{\partial l
 $$  
 
 
+为了减少Monte Carlo方法估计梯度的方差，加入了移动平均baseline(k表示第k个mini-batch):    
 
+$$b_{k}=0.9*b_{k-1}+0.1*lohP(y\mid \tilde{s}_{k},a)$$   
+
+为了更进一步减少梯度估计方法，加入entroy(熵)：  
+
+$$H[\tilde{s}^n]=$$
 
 
 
 ### Deterministic “Soft” Attention  
 
 $$E_{p(s_{t}\mid a)}=\sum_{i=1}^L \alpha_{ti}a_{i}$$
+
+$$L=-log(P(y\mid a))+\lambda\sum_{i}^L(1-\sum_{t}^C\alpha_{ti})^2$$
 
