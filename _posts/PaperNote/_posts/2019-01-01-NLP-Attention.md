@@ -215,11 +215,16 @@ $$
 
 ### Deterministic “Soft” Attention  
 
-$$E_{p(s_{t}\mid a)}=\sum_{i=1}^L \alpha_{ti}a_{i}$$  
+Deterministic attention model 使用soft attention weight 计算$$z_{t}$$:
+
+$$\phi(\{a_{i}\},\{\alpha_{i}\})=\sum_{i=1}^L \alpha_{ti}a_{i}=E_{p(s_{t}\mid a)}$$   
+
+
+
 
 已知$$\sum_{i}a_{ti}=1$$,希望$$\sum_{t}a_{ti}=1$$，可以解释为模型在生成过程(每个时刻)能同等关注图像每个部分。 
 
-此外soft attention 加入了$$\beta$$,这样能使attention更加强调图像总的对象(object):  
+实际实验中soft attention 还加入了$$\beta$$,这样能使attention更加强调图像总的对象(object):  
 
 $$
 \phi(\{a_{i}\},\{\alpha_{i}\})=\beta\sum_{i=1}^L \alpha_{ti}a_{i}\\
