@@ -124,12 +124,12 @@ Notation:
 
 y:目标输出,$$y=\{y_{1}...y_{C}\},y_{i}\in R^K$$，$$y_{i}$$是one-hot向量   
 a:image提取的特征，$$a=\{a_{1}...a_{L}\},a_{i}\in R^D$$   
-$$\alpha_{ti}$$:t时刻image提取特征$$a_{i}$$对应的权重
+$$\alpha_{ti}$$:t时刻image提取特征$$a_{i}$$对应的权重   
 $$h_{t}$$:Decoder t时刻的隐藏层  
 $$y_{t}$$:t时刻的目标输出  
-$$z_{t}$$:attention抓取的Encoder特征
-E:embedding 矩阵
-$$f_{att},f_{init,c},f_{init,h}:$$多层感知机MLP
+$$z_{t}$$:attention抓取的Encoder特征  
+E:embedding 矩阵   
+$$f_{att},f_{init,c},f_{init,h}:$$多层感知机MLP   
 
 LSTM的三个门和Candidate layer（相比没有attention的LSTM增加了$$z_{t}$$部分）：       
 
