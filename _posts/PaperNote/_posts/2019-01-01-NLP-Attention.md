@@ -124,11 +124,11 @@ Notation:
 
 y:目标输出,$$y=\{y_{1}...y_{C}\},y_{i}\in R^K$$，y_{i}是one-hot向量   
 a:image提取的特征，$$a=\{a_{1}...a_{L}\},a_{i}\in R^D$$   
-$$\alpha_{ti}$$:t时刻image提取特征$$a_{i}$$的权重
+$$\alpha_{ti}$$:t时刻image提取特征$$a_{i}$$对应的权重
 $$h_{t}$$:Decoder t时刻的隐藏层  
 $$y_{t}$$:t时刻的目标输出  
 $$z_{t}$$:attention抓取的Encoder特征
-$$$E$$:embedding 矩阵
+E:embedding 矩阵
 $$f_{att},f_{init,c},f_{init,h}:$$多层感知机MLP
 
 LSTM的三个门和Candidate layer（相比没有attention的LSTM增加了$$z_{t}$$部分）：       
@@ -142,7 +142,7 @@ $$
 
 $$
 \alpha_{ti}=\frac{exp(f_{att}(a_{i},h_{t-1}))}{\sum_{i'=1}^L exp(f_{att}(a_{i'},h_{t-1}))}\\
-z_{t}=\phi({a_{i}},{\alpha_{i}})
+z_{t}=\phi(\{a_{i}\},\{\alpha_{i}\})
 $$
 
 $$\phi$$函数在后面介绍  
@@ -162,7 +162,19 @@ P(y_{t}\mid a,y_{<t})\sim Y_{t}\\
 L_{o}\in R^{K*m},L_{h}\in R^{m*n},L_{z}\in R^{m*D}
 $$
 
+###Stochastic “Hard” Attention  
 
+Notation:  
+$$s_{t}$$:是t时刻维度为L的one-hot向量，$$s_{t,i}=1$$表示$$s_{t}$$向量索引i元素等于1，其他为0，代表了选取$$a_{i}$$特征
 
+$$
+P(s_{t,i}=1\mid s_{<t},a)=\alpha_{ti}\\
+z_{t}=\sum_{i}s_{t,i}a_{i}
+$$  
 
+$$z_{t}$$是一个随机变量根据$$\alpha_{t}$$分布随机选取 对应的$$a_{i}$$
+
+###Deterministic “Soft” Attention  
+
+$$E_{p(s_{t}\mid a)}=\sum_{i=1}^L \alpha_{ti}a_{i}$$
 
