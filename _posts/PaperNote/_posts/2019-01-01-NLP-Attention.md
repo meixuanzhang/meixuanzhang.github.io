@@ -189,9 +189,12 @@ $$
 \frac{\partial L}{\partial W}=\sum_{s}P(s\mid a)[\frac{\partial log P(y\mid s,a)}{\partial W}+ logP(y\mid s,a)\frac{\partial log P(s\mid a)}{\partial W}]\\
 $$
 
-上式中梯度估计可以通过Monte Carlo方法进行估计,根据$$\tilde{s}_{t}$$分布抽取 N个$$s_{t}$$取值:
+上式中梯度估计可以通过Monte Carlo方法进行估计,根据每个时刻t$$\tilde{s}_{t}$$分布抽取 N个$$\tilde{s}^n$$取值:
 
 $$\tilde{s}_{t}\sim Multinoulli_{L}(\{\alpha_{i}\})$$
+
+这里$$\tilde{s}^n$$应该是序列,序列长度和$$y$$一致。
+
 
 $$
 \frac{\partial L}{\partial W} \approx \frac{1}{N}\sum_{n=1}^N[\frac{\partial log P(y\mid \tilde{s}^n,a)}{\partial W}+ logP(y\mid  \tilde{s}^n,a)\frac{\partial log P( \tilde{s}^n \mid a)}{\partial W}]\\
@@ -202,11 +205,15 @@ $$
 
 $$b_{k}=0.9*b_{k-1}+0.1*logP(y\mid \tilde{s}_{k},a)$$   
 
-为了更进一步减少梯度估计方法，加入entroy(熵):(不太理解)     
+为了更进一步减少梯度估计方法，加入entroy(熵):(不太理解和确定)     
 
-这里$$\tilde{s}^n$$应该是序列，序列长度和$$y$$一致。
 
-$$H[\tilde{s}^n]=-\sum_{\tilde{s}^n}P(\tilde{s}^n\mid a)logP(\tilde{s}^n\mid a)$$
+这s应该是序列变量，序列长度和$$y$$一致。
+
+$$H[s]=-\sum_{s}P(s \mid a)logP(s \mid a)$$
+
+
+$$H[\tilde{s}^n]=-P(s=\tilde{s}^n \mid a)logP(s=\tilde{s}^n \mid a)$$
 
 最终损失函数：  
 
