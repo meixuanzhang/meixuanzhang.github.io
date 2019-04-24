@@ -189,7 +189,7 @@ $$
 \frac{\partial L}{\partial W}=\sum_{s}P(s\mid a)[\frac{\partial log P(y\mid s,a)}{\partial W}+ logP(y\mid s,a)\frac{\partial log P(s\mid a)}{\partial W}]\\
 $$
 
-上式中梯度估计可以通过Monte Carlo方法进行估计,根据每个时刻t$$\tilde{s}_{t}$$分布抽取 N个$$\tilde{s}^n$$取值:
+上式中梯度估计可以通过Monte Carlo方法进行估计,根据每个时刻$$\tilde{s}_{t}$$分布抽取 N个$$\tilde{s}^n$$:
 
 $$\tilde{s}_{t}\sim Multinoulli_{L}(\{\alpha_{i}\})$$
 
@@ -213,7 +213,7 @@ $$b_{k}=0.9*b_{k-1}+0.1*logP(y\mid \tilde{s}_{k},a)$$
 $$H[s]=-\sum_{s}P(s \mid a)logP(s \mid a)$$
 
 
-$$H[\tilde{s}^n]=-P(s=\tilde{s}^n \mid a)logP(s=\tilde{s}^n \mid a)$$
+求梯度时$$s=\tilde{s}^n$$,只有$$-P(s=\tilde{s}^n \mid a)logP(s=\tilde{s}^n \mid a)$$这一项有关？
 
 最终损失函数：  
 
