@@ -12,7 +12,9 @@ categories: 深度学习
 《Hierarchical Attention Network for Documnet Classification》  
 《Attention over Attention Neural Netwarks for Reading Comprehension》  
 《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》(Soft&Hard)  
-以上论文提到了不同的Attention机制  
+以上论文提到了不同的Attention机制    
+
+下文中多次使用了concat,即两个向量连接：[a;b],a,b均为列向量，上下连接后还是列向量，如果是行向量，连接后仍是行向量  
 
 ## 无Attention机制的NMT( Neural Machine Translation)：    
 图中蓝色是Encoder，红色是Decoder    
@@ -131,17 +133,19 @@ $$c_{j}$$::Decoder j时刻context vector ,维度K*1
 
 两种模型区别在于$$h_{i}$$,Attentin概率分布的计算及context vector的计算   
 
-Encoder-decoder NMT architecture:  
+**Encoder-decoder NMT architecture:**     
 
 $$
 h_{i}=W_{e}[\overrightarrow{h_{i}};\overleftarrow{h_{i}}],W_{e}\in R^{K*2K}\\
 c_{j}=\sum_{i=1}^M\alpha_{ij}h_{i}\\
 \alpha_{ij}=\frac{exp(score(d_{j-1},h_{i}))}{\sum_{l=1}^Mexp(score(d_{j-1},h_{l}))}
+e_{j}=tanh(W_{d}[d_{j};c_{j}])
+y_{j}=softmax(W_{o}e_{j}+b_{o})
 $$
 
-Encoder-decoder NMT architecture with key-value attention:  
+**Encoder-decoder NMT architecture with key-value attention:**    
 
-将原来维度为$$K*1$$的$$\overrightarrow{h_{i}}$$分割成两部分$$\overrightarrow{k_{i}},\overrightarrow{v_{i}}$$,每部分的维度为$$1/2K*1$$,
+将原来维度为$$K*1$$的$$\overrightarrow{h_{i}}$$分割成两部分($$\overrightarrow{k_{i}},\overrightarrow{v_{i}}$$),每部分的维度为$$1/2K*1$$,
 
 $$\overrightarrow{h_{i}}=[\overrightarrow{k_{i}};\overrightarrow{v_{i}}]$$
 
