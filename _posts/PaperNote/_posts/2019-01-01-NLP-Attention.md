@@ -141,7 +141,7 @@ $$
 
 **Encoder-decoder NMT architecture with key-value attention:**    
 
-将原来维度为$$K*1$$的$$\overrightarrow{h_{i}}$$分割成两部分($$\overrightarrow{k_{i}},\overrightarrow{v_{i}}$$),每部分的维度为$$K\2 *1$$,
+将原来维度为$$K*1$$的$$\overrightarrow{h_{i}}$$分割成两部分($$\overrightarrow{k_{i}},\overrightarrow{v_{i}}$$),每部分的维度为$$K/2 *1$$,
 
 $$\overrightarrow{h_{i}}=[\overrightarrow{k_{i}};\overrightarrow{v_{i}}]$$
 
@@ -172,7 +172,7 @@ c_{j}=\sum_{i=1}^M\alpha_{ij}v_{i}\\
 \alpha_{ij}=\frac{exp(score(d_{j-1},k_{i}))}{\sum_{l=1}^Mexp(score(d_{j-1},k_{l}))}
 $$  
 
-注意key-value attention模型$$c_{j}$$维度是$$K\2*1$$，论文中为了保持$$W_{d}$$仍为K*2K，而不是修改成K*2/3K，对$$W_{d}$$初始化进行了一些处理，具体看论文3.3  
+注意key-value attention模型$$c_{j}$$维度是$$K/2*1$$，论文中为了保持$$W_{d}$$仍为K*2K，而不是修改成K*3K/2，对$$W_{d}$$初始化进行了一些处理，具体看论文3.3  
 
 
 ## Hard attention&Soft attention  
