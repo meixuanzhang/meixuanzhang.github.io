@@ -111,19 +111,27 @@ Global attention model&Local attention model中的Encoder 每个时刻的隐藏�
 
 Notation：  
 
-$$y_{j-1}$$:Decoder j-1 时刻的output
-$$d_{j-1}$$:Decoder j-1 时刻隐藏层
-$$h_{i}$$:Encoder i时刻双向隐藏层
-$$\overrightarrow{h_{i}}$$：Encoder i时刻前向隐藏层
-$$\overleftarrow{h_{i}}$$：Encoder i时刻后向隐藏层 
-$$a_{ij}$$:Decoder j时刻,Encoder i时刻双向隐藏层对应的权重
+$$y_{j-1}$$:Decoder j-1 时刻的output   
+$$d_{j-1}$$:Decoder j-1 时刻隐藏层,维度K*1   
+$$h_{i}$$:Encoder i时刻双向隐藏层线性变换后向量 ,维度K*1      
+$$\overrightarrow{h_{i}}$$：Encoder i时刻前向隐藏层,维度K*1  
+$$\overleftarrow{h_{i}}$$：Encoder i时刻后向隐藏层,维度K*1   
+$$\alpha_{ij}$$:Decoder j时刻,Encoder i时刻双向隐藏层对应的权重  
+$$c_{j}$$::Decoder j时刻context vector   
 
-![_config.yml]({{ site.baseurl }}/images/12Attention/image11.png)  
+![_config.yml]({{ site.baseurl }}/images/12Attention/image11.png)    
 
-![_config.yml]({{ site.baseurl }}/images/12Attention/image10.png)  
+![_config.yml]({{ site.baseurl }}/images/12Attention/image10.png)    
 
+两种模型区别在于$$h_{i}$$,Attentin概率分布的计算及context vector的计算   
 
+原来的:
 
+$$h_{i}=W_{e}[\overrightarrow{h_{i}};\overleftarrow{h_{i}}]\\
+W_{e}\in R^{K*2K}\\
+c_{j}=\sum_{i=1}^M\alpha_{ij}\\
+\alpha_{ij}=\frac{exp(score(d_{j-1,h_{i}}))}{\sum_{l=1}^Mexp(score(d_{j-1,h_{l}}))}
+$$
 
 ## Hard attention&Soft attention  
 论文《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》提出了Stochastic“Hard”和Deterministic"Soft"Attention
