@@ -286,7 +286,7 @@ $$P=\parallel(AA^T-I)\parallel_{F}^{2}$$
 
 $$\parallel\cdot \parallel_{F}$$表示矩阵范数    
 
-看$$AA^T$$非对角线上第i行第j列的元素为$$a_{ij}$$：   
+$$AA^T$$非对角线上第i行第j列的元素为$$a_{ij}$$：   
 
 
 $$0<a_{ij}=\sum_{k=1}^na_{k}^ia_{k}^j<1$$   
