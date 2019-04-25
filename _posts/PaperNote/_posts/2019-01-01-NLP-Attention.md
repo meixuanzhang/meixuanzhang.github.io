@@ -127,6 +127,8 @@ $$\alpha_{ij}$$:Decoder j时刻,Encoder i时刻$$h_{i}$$对应的权重
 
 $$c_{j}$$::Decoder j时刻context vector ,维度K*1 
 
+V:词汇表大小
+
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image11.png)    
 
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image10.png)    
@@ -138,14 +140,14 @@ $$c_{j}$$::Decoder j时刻context vector ,维度K*1
 $$
 h_{i}=W_{e}[\overrightarrow{h_{i}};\overleftarrow{h_{i}}],W_{e}\in R^{K*2K}\\
 c_{j}=\sum_{i=1}^M\alpha_{ij}h_{i}\\
-\alpha_{ij}=\frac{exp(score(d_{j-1},h_{i}))}{\sum_{l=1}^Mexp(score(d_{j-1},h_{l}))}
-e_{j}=tanh(W_{d}[d_{j};c_{j}])
-y_{j}=softmax(W_{o}e_{j}+b_{o})
+\alpha_{ij}=\frac{exp(score(d_{j-1},h_{i}))}{\sum_{l=1}^Mexp(score(d_{j-1},h_{l}))}\\
+e_{j}=tanh(W_{d}[d_{j};c_{j}]),W_{d}\in R^{K*2K}\\
+y_{j}=softmax(W_{o}e_{j}+b_{o}),W_{o}\in R^{V*K},b_{o}\in R^{V*K}\\
 $$
 
 **Encoder-decoder NMT architecture with key-value attention:**    
 
-将原来维度为$$K*1$$的$$\overrightarrow{h_{i}}$$分割成两部分($$\overrightarrow{k_{i}},\overrightarrow{v_{i}}$$),每部分的维度为$$1/2K*1$$,
+将原来维度为$$K*1$$的$$\overrightarrow{h_{i}}$$分割成两部分($$\overrightarrow{k_{i}},\overrightarrow{v_{i}}$$),每部分的维度为$$K\2 *1$$,
 
 $$\overrightarrow{h_{i}}=[\overrightarrow{k_{i}};\overrightarrow{v_{i}}]$$
 
@@ -174,7 +176,9 @@ $$k_{i}$$负责Attentin概率分布的计算，$$v_{i}$$负责context vector的�
 $$
 c_{j}=\sum_{i=1}^M\alpha_{ij}v_{i}\\
 \alpha_{ij}=\frac{exp(score(d_{j-1},k_{i}))}{\sum_{l=1}^Mexp(score(d_{j-1},k_{l}))}
-$$
+$$  
+
+注意key-value attention模型$$c_{j}$$维度是$$K\2*1$$，论文中为了保持$$W_{d}$$仍为K*2K，而不是修改成K*2/3K，对$$W_{d}$$初始化进行了一些处理，具体看论文3.3  
 
 
 ## Hard attention&Soft attention  
