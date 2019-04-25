@@ -146,7 +146,14 @@ $$
    k_{i} \\
    v_{i}\\
   \end{matrix}
-  \right\} 
+  \right\} \\
+  
+  =\left\{
+ \begin{matrix}
+   W_{f}[\overrightarrow{k_{i}};\overleftarrow{k_{i}}] \\
+   W_{g}[\overrightarrow{v_{i}};\overleftarrow{v_{i}}]\\
+  \end{matrix}
+  \right\}
 $$  
 
 
