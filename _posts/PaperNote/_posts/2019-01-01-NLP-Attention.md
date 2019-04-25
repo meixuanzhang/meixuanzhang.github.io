@@ -39,7 +39,7 @@ $$J=\sum_{(x,y)\in D}-logP(y\mid x)$$
 
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image1.png)
 
-## Global attention model&Local attention model  
+## Global attention model&Local attention model(NMT)  
 
 图中蓝色是Encoder，红色是Decoder    
 
@@ -105,7 +105,7 @@ $$
 
 论文将上述对齐方式称为,Predictive alignment(local-p),另一种$$p_{t}=t$$的对齐方式称为Monotonic alignment(local-m)
 
-## Key-value Attention Mechanism   
+## Key-value Attention Mechanism(NMT)     
 
 Global attention model&Local attention model中的Encoder 每个时刻的隐藏层即需要用来计算Attentin概率分布又需要用来计算context vector，换句话说需要将这两方面所需要的信息都压缩到一个记忆向量中，这样会导致性能下降。因此提出了Key-value Attention Mechanism
 
@@ -114,18 +114,12 @@ Global attention model&Local attention model中的Encoder 每个时刻的隐藏�
 Notation：  
 
 $$y_{j-1}$$:Decoder j-1 时刻的output   
-
-$$d_{j-1}$$:Decoder j-1 时刻隐藏层,维度K*1  
-
-$$h_{i}$$:Encoder i时刻双向隐藏层线性变换后向量 ,维度K*1      
-
-$$\overrightarrow{h_{i}}$$：Encoder i时刻前向隐藏层,维度K*1  
-
-$$\overleftarrow{h_{i}}$$：Encoder i时刻后向隐藏层,维度K*1   
-
+$$d_{j-1}$$:Decoder j-1 时刻隐藏层,维度$$K*1$$  
+$$h_{i}$$:Encoder i时刻双向隐藏层线性变换后向量 ,维度$$K*1$$      
+$$\overrightarrow{h_{i}}$$：Encoder i时刻前向隐藏层,维度$$K*1$$  
+$$\overleftarrow{h_{i}}$$：Encoder i时刻后向隐藏层,维度$$K*1$$   
 $$\alpha_{ij}$$:Decoder j时刻,Encoder i时刻$$h_{i}$$对应的权重  
-
-$$c_{j}$$::Decoder j时刻context vector ,维度K*1 
+$$c_{j}$$::Decoder j时刻context vector ,维度$$K*1$$ 
 
 V:词汇表大小
 
