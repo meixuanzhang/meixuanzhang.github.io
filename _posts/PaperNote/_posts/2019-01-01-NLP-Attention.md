@@ -105,9 +105,23 @@ $$
 
 ## Key-value Attention Mechanism   
 
-Global attention model&Local attention model中的Encoder 每一个隐藏向量即需要用来计算Attentin概率分布又需要用来计算context vector，换句话说需要将这两方面所需要的信息都压缩到一个记忆向量中，这样会导致性能下降。因此提出了Key-value Attention Mechanism
+Global attention model&Local attention model中的Encoder 每个时刻的隐藏层即需要用来计算Attentin概率分布又需要用来计算context vector，换句话说需要将这两方面所需要的信息都压缩到一个记忆向量中，这样会导致性能下降。因此提出了Key-value Attention Mechanism
 
-模型框架：
+两种模型框架对比： 
+
+Notation：  
+
+$$y_{j-1}$$:Decoder j-1 时刻的output
+$$d_{j-1}$$:Decoder j-1 时刻隐藏层
+$$h_{i}$$:Encoder i时刻双向隐藏层
+$$\overrightarrow{h_{i}}$$：Encoder i时刻前向隐藏层
+$$\overleftarrow{h_{i}}$$：Encoder i时刻后向隐藏层 
+$$a_{ij}$$:Decoder j时刻,Encoder i时刻双向隐藏层对应的权重
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image11.png)  
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image10.png)  
+
 
 
 
