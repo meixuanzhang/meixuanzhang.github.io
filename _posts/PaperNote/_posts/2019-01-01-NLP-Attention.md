@@ -134,14 +134,33 @@ $$c_{j}$$::Decoder j时刻context vector
 Encoder-decoder NMT architecture:  
 
 $$h_{i}=W_{e}[\overrightarrow{h_{i}};\overleftarrow{h_{i}}],W_{e}\in R^{K*2K}\\
-c_{j}=\sum_{i=1}^M\alpha_{ij}\\
+c_{j}=\sum_{i=1}^M\alpha_{ij}h_{i}\\
 \alpha_{ij}=\frac{exp(score(d_{j-1},h_{i}))}{\sum_{l=1}^Mexp(score(d_{j-1},h_{l}))}
 $$
 
 Encoder-decoder NMT architecture with key-value attention:  
 
 $$
+\mathbf{h_{i}}=\left\{
+ \begin{matrix}
+   k_{i} \\
+   v_{i}\\
+  \end{matrix}
+  \right\} 
+$$  
+
+
 $$
+\mathbf{P}=\left\{
+ \begin{matrix}
+   P_{00} & P_{01} & P_{02}&\ldots \\
+   P_{10} & P_{11} & P_{12}&\ldots \\
+   \vdots\\
+   P_{i0} & P_{i1} & P_{i2}&\ldots\\
+   \vdots & \vdots & \vdots
+  \end{matrix}
+  \right\} 
+$$  
 
 ## Hard attention&Soft attention  
 论文《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》提出了Stochastic“Hard”和Deterministic"Soft"Attention
