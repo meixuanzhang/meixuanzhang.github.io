@@ -133,20 +133,21 @@ $$c_{j}$$::Decoder j时刻context vector ,维度K*1
 
 Encoder-decoder NMT architecture:  
 
-$$h_{i}=W_{e}[\overrightarrow{h_{i}};\overleftarrow{h_{i}}],W_{e}\in R^{K*2K}\\
+$$
+h_{i}=W_{e}[\overrightarrow{h_{i}};\overleftarrow{h_{i}}],W_{e}\in R^{K*2K}\\
 c_{j}=\sum_{i=1}^M\alpha_{ij}h_{i}\\
 \alpha_{ij}=\frac{exp(score(d_{j-1},h_{i}))}{\sum_{l=1}^Mexp(score(d_{j-1},h_{l}))}
 $$
 
 Encoder-decoder NMT architecture with key-value attention:  
 
-将原来维度为$$K*1$$的$$\overrightarrow{h_{i}}$$分割成两部分$$\overrightarrow{k_{i}},\overrightarrow{v_{i}}$$,每部分的维度为$$1/2K*1$$
+将原来维度为$$K*1$$的$$\overrightarrow{h_{i}}$$分割成两部分$$\overrightarrow{k_{i}},\overrightarrow{v_{i}}$$,每部分的维度为$$1/2K*1$$,
 
-\overrightarrow{h_{i}}=[\overrightarrow{k_{i}};\overrightarrow{v_{i}}]
+$$\overrightarrow{h_{i}}=[\overrightarrow{k_{i}};\overrightarrow{v_{i}}]$$
 
 同理：  
 
-\overleftarrow{h_{i}}=[\overleftarrow{k_{i}};\overleftarrow{v_{i}}]
+$$\overleftarrow{h_{i}}=[\overleftarrow{k_{i}};\overleftarrow{v_{i}}]$$
 
 $$
 \mathbf{h_{i}}=\left\{
@@ -164,6 +165,12 @@ $$
   \right\}
 $$  
 
+$$k_{i}$$负责Attentin概率分布的计算，$$v_{i}$$负责context vector的计算：  
+
+$$
+c_{j}=\sum_{i=1}^M\alpha_{ij}v_{i}\\
+\alpha_{ij}=\frac{exp(score(d_{j-1},k_{i}))}{\sum_{l=1}^Mexp(score(d_{j-1},k_{l}))}
+$$
 
 
 ## Hard attention&Soft attention  
