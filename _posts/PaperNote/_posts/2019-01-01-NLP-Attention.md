@@ -136,7 +136,7 @@ h_{i}=W_{e}[\overrightarrow{h_{i}};\overleftarrow{h_{i}}],W_{e}\in R^{K*2K}\\
 c_{j}=\sum_{i=1}^M\alpha_{ij}h_{i}\\
 \alpha_{ij}=\frac{exp(score(d_{j-1},h_{i}))}{\sum_{l=1}^Mexp(score(d_{j-1},h_{l}))}\\
 e_{j}=tanh(W_{d}[d_{j};c_{j}]),W_{d}\in R^{K*2K}\\
-y_{j}=softmax(W_{o}e_{j}+b_{o}),W_{o}\in R^{V*K},b_{o}\in R^{V*K}\\
+y_{j}=softmax(W_{o}e_{j}+b_{o}),W_{o}\in R^{V*K},b_{o}\in R^{V}\\
 $$
 
 **Encoder-decoder NMT architecture with key-value attention:**    
