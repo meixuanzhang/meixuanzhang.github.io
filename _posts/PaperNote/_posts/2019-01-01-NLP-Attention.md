@@ -121,9 +121,9 @@ $$\overrightarrow{h_{i}}$$：Encoder i时刻前向隐藏层,维度K*1
 
 $$\overleftarrow{h_{i}}$$：Encoder i时刻后向隐藏层,维度K*1   
 
-$$\alpha_{ij}$$:Decoder j时刻,Encoder i时刻双向隐藏层对应的权重  
+$$\alpha_{ij}$$:Decoder j时刻,Encoder i时刻$$h_{i}$$对应的权重  
 
-$$c_{j}$$::Decoder j时刻context vector   
+$$c_{j}$$::Decoder j时刻context vector ,维度K*1 
 
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image11.png)    
 
@@ -139,6 +139,14 @@ c_{j}=\sum_{i=1}^M\alpha_{ij}h_{i}\\
 $$
 
 Encoder-decoder NMT architecture with key-value attention:  
+
+将原来维度为$$K*1$$的$$\overrightarrow{h_{i}}$$分割成两部分$$\overrightarrow{k_{i}},\overrightarrow{v_{i}}$$,每部分的维度为$$1/2K*1$$
+
+\overrightarrow{h_{i}}=[\overrightarrow{k_{i}};\overrightarrow{v_{i}}]
+
+同理：  
+
+\overleftarrow{h_{i}}=[\overleftarrow{k_{i}};\overleftarrow{v_{i}}]
 
 $$
 \mathbf{h_{i}}=\left\{
@@ -157,17 +165,6 @@ $$
 $$  
 
 
-$$
-\mathbf{P}=\left\{
- \begin{matrix}
-   P_{00} & P_{01} & P_{02}&\ldots \\
-   P_{10} & P_{11} & P_{12}&\ldots \\
-   \vdots\\
-   P_{i0} & P_{i1} & P_{i2}&\ldots\\
-   \vdots & \vdots & \vdots
-  \end{matrix}
-  \right\} 
-$$  
 
 ## Hard attention&Soft attention  
 论文《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》提出了Stochastic“Hard”和Deterministic"Soft"Attention
