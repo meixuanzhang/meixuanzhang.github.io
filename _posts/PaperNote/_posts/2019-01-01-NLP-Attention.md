@@ -105,8 +105,6 @@ $$
 论文将上述对齐方式称为,Predictive alignment(local-p),另一种$$p_{t}=t$$的对齐方式称为Monotonic alignment(local-m)
 
 ## Key-value Attention Mechanism  
-## Self-Attention  
-
 
 ## Hard attention&Soft attention  
 论文《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》提出了Stochastic“Hard”和Deterministic"Soft"Attention
@@ -246,6 +244,51 @@ $$
 最终损失函数：  
 
 $$L=-log(P(y\mid a))+\lambda\sum_{i}^L(1-\sum_{t}^C\alpha_{ti})^2$$  
+
+## Self-Attentive Sentence Embedding  
+
+模型结构：  
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image8.png)  
+
+$$S=(w_{1},w_{2},..w_{n})$$:word embedding 序列,维度是d*n  
+
+前向LSTM时刻t隐藏层输出,维度$$u*1$$：   
+
+$$h_{t}=LSTM(w_{t},h_{t-1})$$   
+
+前向LSTM时刻t隐藏层输出,维度$$u*1$$：   
+
+$$h_{t}=LSTM(w_{t},h_{t+1})$$
+
+双向LSTM时刻t隐藏层concat,维度$$2u*1$$： 
+
+$$h_{t}=[h_{t};h_{t}]$$
+
+隐藏层序列,维度$$2u*n$$:     
+
+$$H=(h_{1},h_{2},..h_{n})$$  
+
+$$W_{s2}$$维度$$r*d_{a}$$,$$W_{s1}$$维度$$d_{a}*2u$$,计算权重A,维度r*n
+
+$$A=softmax(W_{s2}tanh(W_{s1}H))$$
+
+序列word embedding M维度r*2u
+
+$$M=AH^T$$
+
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image8.png)  
+
+
+
+
+
+
+
+
+
+
 
 
 
