@@ -273,12 +273,20 @@ $$W_{s2}$$维度$$r*d_{a}$$,$$W_{s1}$$维度$$d_{a}*2u$$,计算权重A,维度r*n
 
 $$A=softmax(W_{s2}tanh(W_{s1}H))$$
 
-序列word embedding M维度r*2u
+word embedding 序列M，维度r*2u：  
 
 $$M=AH^T$$
 
 
-![_config.yml]({{ site.baseurl }}/images/12Attention/image8.png)  
+A相当于有r组attention方式(r组权重)，以不同的attention方式对H进行组合，M的每一行相当于一种方式组成的context vector,相比起RNN attention只有一个context vector更为丰富  
+
+论文提到这里会存在一个问题，如果A每行(组)权重分布是相似的，M就会存在信息冗余，M的每一行向量之间也是相似的，对句子关注点都是相似的，因此加入了惩罚项，使A行之间权重分布具有多样性，使其能关注到句子不同方面。开始时候考虑使用KL散度(衡量分布差异),极大化KL散度，但因为A中有大量元素是接近0的，使用KL散度并不稳定，同时为了让每一行能关注语义的某个方面，希望权重分布能更为集中，这会使大量元素接近0，KL散度不适用。因此提出了： 
+
+$$P=\parallel(AA^T)\parallel_{F}^{2}$$    
+
+$$\parallel\cdot \parallel_{F}$$表示矩阵范数   
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image9.png)  
 
 
 
