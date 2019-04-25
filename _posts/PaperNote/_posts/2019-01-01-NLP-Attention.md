@@ -52,7 +52,6 @@ $$c_{t}$$:Encoder 隐藏层状态算术平均和
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image4.png)
 
 
-
 ### Global attention model： 
 
 ![_config.yml]({{ site.baseurl }}/images/12Attention/image2.png)
@@ -104,7 +103,13 @@ $$
 
 论文将上述对齐方式称为,Predictive alignment(local-p),另一种$$p_{t}=t$$的对齐方式称为Monotonic alignment(local-m)
 
-## Key-value Attention Mechanism  
+## Key-value Attention Mechanism   
+
+Global attention model&Local attention model中的Encoder 每一个隐藏向量即需要用来计算Attentin概率分布又需要用来计算context vector，换句话说需要将这两方面所需要的信息都压缩到一个记忆向量中，这样会导致性能下降。因此提出了Key-value Attention Mechanism
+
+模型框架：
+
+
 
 ## Hard attention&Soft attention  
 论文《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》提出了Stochastic“Hard”和Deterministic"Soft"Attention
