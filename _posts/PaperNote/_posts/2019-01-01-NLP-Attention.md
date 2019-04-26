@@ -10,7 +10,7 @@ categories: 深度学习
 《Key-value Attention Mechanism for Neural Machine Translation》  
 《A STRUCTURED SELF - ATTENTIVE SENTENCE EMBEDDING》  
 《Hierarchical Attention Network for Documnet Classification》  
-《Attention over Attention Neural Netwarks for Reading Comprehension》  
+
 《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》(Soft&Hard)  
 以上论文提到了不同的Attention机制    
 
@@ -175,7 +175,22 @@ $$
 注意key-value attention模型$$c_{j}$$维度是$$K/2*1$$，论文中为了保持$$W_{d}$$仍为$$K*2K$$，而不是修改成$$K*3K/2$$，对$$W_{d}$$初始化进行了一些处理，具体看论文3.3  
 
 
-## Hard attention&Soft attention  
+## Hierarchical Attention Network(Documnet Classification)   
+
+文档存在等级结构(文档由句子构成，句子由字构成)，因此首先构造句子的representations，然后聚合成文档的representations，相同的文字和句子对于不同的文档重要性是不同的，因此提出 Hierarchical Attention模型包含两个层次的attention机制，一个是文字层面，一个是句子层面的。在构建文档的representations时能或多或少关注到句子和文字
+
+模型架构：
+
+$$u_{s},u_{w}$$设置成变量参数，随机初始，然后在训练中更新。  
+ 
+The context vector $$u_{w}$$ can be seen as a high level representation of a fixed query “what is the informative word” over the words
+like that used in memory networks。同理$$u_{s}$$  
+
+![_config.yml]({{ site.baseurl }}/images/12Attention/image12.png)  
+
+
+
+## Hard attention&Soft attention (Image Caption Generation)
 论文《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》提出了Stochastic“Hard”和Deterministic"Soft"Attention
 应用在Image Caption Generation (根据图像自动生成标题)任务。
 
@@ -349,7 +364,7 @@ $$M=AH^T$$
 
 A相当于有r组attention方式(r组权重)，以不同的attention方式对H进行组合，M的每一行相当于一种方式组成的context vector,相比起RNN attention只有一个context vector更为丰富  
 
-论文提到这里会存在一个问题，如果A每行(组)权重分布是相似的，M就会存在信息冗余，M的每一行向量之间也是相似的，对句子关注点都是相似的，因此加入了惩罚项，使A行之间权重分布具有多样性，使其能关注到句子不同方面。开始时候考虑使用KL散度(衡量分布差异),极大化KL散度，但因为A中有大量元素是接近0的，使用KL散度并不稳定，同时为了让每一行能关注语义的某个方面，希望权重分布能更为集中，这会使大量元素接近0，KL散度不适用。因此提出了： 
+论文提到这里会存在一个问题，如果A每行(组)权重分布是相似的，M就会存在信息冗余，M的每一行向量之间也是相似的，对句子关注点都是相似的，因此加入了惩罚项，使A行之间权重分布具有多样性，使其能关注到句子不同方面。开始时候考虑使用KL散度(衡量分布差异),极大化KL散度，但因为A中有大量元素是接近0的，使用KL散度并不稳定，同时为了让每一行能关注语义的某个方面，希望权重分布能更为集中，这会使大量元素接近0，KL散度不适用。因此提出了惩罚项P： 
 
 $$P=\parallel(AA^T-I)\parallel_{F}^{2}$$    
 
@@ -360,8 +375,7 @@ $$AA^T$$非对角线上第i行第j列的元素为$$a_{ij}$$：
 
 $$0<a_{ij}=\sum_{k=1}^na_{k}^ia_{k}^j<1$$   
 
-$$a_{k}^i$$，代表A的第i行第k个元素，$$a_{k}^j$$代表$$A^T$$的第j行第k个元素,当两个向量$$a^{i},a^{j}$$完全没有重叠信息(两个向量垂直)，$$a_{ij}=0$$，当两个向量完全重叠，并且集中在一个位置时$$a_{ij}=1$$,惩罚项式子中减去单位矩阵，当A每一行向量越集中，则$$AA^T$$对角线会越接近1，同时如果向量间越不相似，非对角线上值会越接近0  
-
+$$a_{k}^i$$，代表A的第i行第k个元素，$$a_{k}^j$$代表$$A^T$$的第j行第k个元素,当两个向量$$a^{i},a^{j}$$完全没有重叠信息(两个向量垂直)，$$a_{ij}=0$$，当两个向量完全重叠，并且集中在一个位置时$$a_{ij}=1$$,惩罚项式子中减去单位矩阵，当A每一行向量越集中，则$$AA^T$$对角线会越接近1，同时如果向量间越不相似，非对角线上值会越接近0。在损失函数中加入P，极小化P。
 
 对比有加入惩罚项和没加入惩罚项attention情况：  
 
