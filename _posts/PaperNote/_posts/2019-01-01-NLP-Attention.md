@@ -8,10 +8,9 @@ categories: 深度学习
 文中涉及论文包括:    
 《Effective Approaches to Attention-based Neural Machine Translation》(Global&Local)  
 《Key-value Attention Mechanism for Neural Machine Translation》  
-《A STRUCTURED SELF - ATTENTIVE SENTENCE EMBEDDING》  
 《Hierarchical Attention Network for Documnet Classification》  
-
 《Show, Attend and Tell: Neural Image Caption Generation with Visual Attention》(Soft&Hard)  
+《A STRUCTURED SELF - ATTENTIVE SENTENCE EMBEDDING》  
 以上论文提到了不同的Attention机制    
 
 下文中多次使用了concat,即两个向量连接：[a;b],a,b均为列向量，上下连接后还是列向量，如果是行向量，连接后仍是行向量  
