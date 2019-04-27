@@ -36,6 +36,7 @@ $$where\quad head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})$$
 Scaled Dot-Dot Product Attention：  
 $$Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_{k}}})V$$  
 相关参数的维度$$W^Q_{i}\in R^{d_{model}*d_{k}},W^K_{i}\in R^{d_{model}*d_{k}},W^V_{i}\in R^{d_{model}*d_{v}},W^{o}\in R^{hd_{v}*d_{model}}$$
+
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image4.jpg)  
 PS:源代码实现是对Q、K、V进行了一次线性变换，维度变为m*hiddensize，然后将Q、K、V分成h份,每份维度是$$m*hiddensize/h$$，每份进行Attention,再concat，而不是对其进行h次线性变换  
 注意hiddensize/h要能整除  
@@ -66,4 +67,22 @@ Decoder与Encoder区别在于Decoder使用了两个Multi-Head Attention，第一
 ###  Linear&Softmax 
 训练时输出是$$m*n$$    
 测试时输出维度是$$1*n$$    
+
 ![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image8.jpg) 
+
+## 为什么使用Positional Encoding  
+
+$$head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})=softmax(\frac{QW^Q_{i}(KW^K_{i})^T}{\sqrt{d_{k}}})VW^V_{i}$$  
+
+没有Positional Encoding情况下图中$$W=W^Q_{i}W^K_{i}^T$$： 
+
+图中可以看到不同顺序句子attention后输出除了顺序变了，关注内容是一致的，也就是说attention没有捕捉到句子顺序信息。
+
+![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image10.png)  
+
+![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image11.png)  
+
+加入Positional Encoding情况下：
+
+![_config.yml]({{ site.baseurl }}/images/Attention Is All You Need/image12.png) 
+
