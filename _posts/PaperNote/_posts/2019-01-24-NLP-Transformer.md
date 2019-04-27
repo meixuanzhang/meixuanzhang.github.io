@@ -74,7 +74,7 @@ Decoder与Encoder区别在于Decoder使用了两个Multi-Head Attention，第一
 
 $$head_{i} = Attention(QW^Q_{i},KW^K_{i},VW^V_{i})=softmax(\frac{QW^Q_{i}(KW^K_{i})^T}{\sqrt{d_{k}}})VW^V_{i}$$  
 
-没有Positional Encoding情况下图中$$W=W^Q_{i}W^K_{i}^T$$： 
+没有Positional Encoding情况下图中$$W=W^Q_{i}(W^K_{i})^T$$： 
 
 图中可以看到不同顺序句子attention后输出除了顺序变了，关注内容是一致的，也就是说attention没有捕捉到句子顺序信息。
 
