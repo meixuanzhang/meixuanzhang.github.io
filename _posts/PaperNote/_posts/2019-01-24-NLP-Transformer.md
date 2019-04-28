@@ -54,8 +54,10 @@ Norm指的是，数据按层进行标准化
 ###  FeedForward
 全连接模块输出和输入会保持相同的维度   
 假设输入为$$F_{m*model}$$,则输出为$$G_{m*dmodel}$$  
-$$F_{m*dmodel}W_{dmodel*dmodel}=G_{m*dmodel}$$
-##  Decoder
+$$F_{m*dmodel}W_{dmodel*dmodel}=G_{m*dmodel}$$  
+
+##  Decoder 
+Decoder和Encoder,embedding matrix是同一个，它们是共享的。 
 Decoder与Encoder区别在于Decoder使用了两个Multi-Head Attention，第一个是带masked,第二个是不带masked，其中第二个的输入K，V等于Encoder的输出
 ###  第一个Multi-Head Atention
 训练时使用的是Masked-Multi-Head Atention  
