@@ -21,7 +21,7 @@ $$X_{i:i+j}$$:词汇向量$$x_{i},x_{i+1}...x_{i+j}$$拼接
 $$\oplus$$:向量拼接符号   
 $$W^r\in R^{hk}$$:第r个filter(卷积核),过滤h个词汇   
 $$c_{i}^r$$:$$X_{i:i+h-1}$$经过第r个卷积核过滤后向量     
-$$\hat{C}$$：CNN最后提取句子特征向量   
+$$Z$$：CNN最后提取句子特征向量   
 
 $$X_{1:n}=x_{1}\oplus x_{2}\oplus...\oplus x_{n}$$
 
@@ -35,9 +35,17 @@ $$c^r=[c_{1}^r,c_{2}^r,...,c_{n-h+1}^r]$$
 
 $$\hat{c}^r=max\{c^r\}$$
 
-l:filter个数：
+m:filter个数：
 
-$$\hat{C}=[\hat{c}^1,\hat{c}^2..\hat{c}^l],\hat{C}\in R^l$$  
+$$Z=[\hat{c}^1,\hat{c}^2..\hat{c}^m],\hat{C}\in R^m$$  
 
 
+最后一层全连接： 
 
+$$y=W'\cdot (Z\cdot d)+b$$   
+
+加入regularization防止过拟合：   
+
+$$y=W'\cdot (Z \circ d)+b$$  
+
+$$d\in R^m$$表示dropout，训练时d中每个元素服从贝努力分布以一定概率取值1，测试时则全部取1.$$\circ$$表示向量元素两两对应相乘 
