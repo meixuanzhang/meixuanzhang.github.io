@@ -13,7 +13,7 @@ categories: 深度学习
 
 **1、Position Embeddings**   
 
-input(输入)长度为m的句子:$$x=(x_{1},..x_{m}),x_{j}$$是one-hot vector 维度是V   
+input(输入)长度为m的句子:$$x=(x_{1},..x_{m}),x_{j}$$是one-hot vector 维度是V，实际中m是句子最大长度，如果句子长度小于m则需要在句子后面补零向量。     
 
 input embedding matrix： $$D\in R^{V*f}$$    
 
@@ -41,8 +41,18 @@ v([A B])\in R^d$$
 
 图片中只展示了一层CNN下模型，实际模型中采用了层叠CNN： 
 
-$$W^l\in R^{2d*kd},b_{w}^l \in R^{2d}$$:l层的卷积,一共有2d个卷积核，每个卷积核大小是$$k*d$$,$$b_{w}^l$$是bias    
+$$W^l\in R^{2f*kf},b_{w}^l \in R^{2f}$$:l层的卷积,一共有2d个卷积核，每个卷积核大小是$$k*d$$ , $$b_{w}^l$$是bias    
 
-$$h_{i}^l=v(W^l[h_{i-k/2},...,h_{i+k/2}+b_{w}^l])$$   
+层叠CNN第l层输出为$$z_{l} \in R^{m*f}$$，其第i维为： 
 
+$$z_{i}^l=v(W^l[z_{i-k/2},...,z_{i+k/2}+z_{w}^l]+b_{w}^l)+z_{i}^{l-1}\\
+z_{i}^l \in R^f$$     
+
+Encoder层叠CNN最后一层第j维输出为$$z_{j}^u\in R^f$$  
+
+CNN每层的输出向量的维度都需要与输入的维度一致，都是$$m*f$$维，因此需要在开头和结尾加入padding:
+
+$$p=((m-1)*s-m+k)/2$$
+
+m句子的长度，k是窗口大小，p是单侧padding大小，s是stride
 
