@@ -55,7 +55,7 @@ $$d\in R^m$$表示dropout，训练时d中每个元素服从贝努力分布以一
 
 测试时则不再使用dropout,同时因为训练时神经元的期望输出是 PZ+(1-P)0=PZ,在测试时需要对$$W'$$进行缩放$$\hat{W}=PW'$$  
 
-$$y=y=\hat{W} \cdot Z+b$$
+$$y=\hat{W} \cdot Z+b$$
 
 
 
