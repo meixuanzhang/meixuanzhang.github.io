@@ -19,13 +19,13 @@ $$X_{i:i+j}$$:词汇向量$$x_{i},x_{i+1}...x_{i+j}$$拼接
 $$\oplus$$:向量拼接符号   
 $$W^r\in R^{hk}$$:第r个filter(卷积核),过滤h个词汇   
 $$c_{i}^r$$:$$X_{i:i+h-1}$$经过第r个卷积核过滤后向量  
-
+$$\hat{C}$$：CNN最后提取句子特征
 
 $$X_{1:n}=x_{1}\oplus x_{2}\oplus...\oplusx_{n}$$
 
 $$c_{i}^r=f(W^r\cdot X_{i:i+j}+b)$$ 
 
-$$C^r=[c_{1}^r,c_{2}^r,...,c_{n-h+1}^r]$$  
+$$\hat{c}^r=[c_{1}^r,c_{2}^r,...,c_{n-h+1}^r]$$  
 
-$$$$
+$$\hat{C}=[\hat{c}^1,\hat{c}^2..\hat{c}^l]$$
 
