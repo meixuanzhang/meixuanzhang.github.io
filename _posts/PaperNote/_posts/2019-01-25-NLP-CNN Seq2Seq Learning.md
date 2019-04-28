@@ -21,7 +21,7 @@ input embedding matrix： $$D\in R^{V*f}$$
 
 embedding input: $$W=(w_{1}....w_{m}),w_{j}\in R^f$$  W=XD   
 
-position :$$\hat(p)=(\hat(p)_{1}...\hat(p)_{m}),\hat(p)_{1}$$是one-hot vector,维度是L   
+position :$$\hat(p)=(\hat{p}_{1}...\hat{p}_{m}),\hat{p}_{1}$$是one-hot vector,维度是L   
 
 position embedding matrix： $$D'\in R^{L*f}$$    
 
