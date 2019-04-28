@@ -9,7 +9,9 @@ categories: 深度学习
 
 论文展示将简单CNN模型应用于句子分类问题，模型仅学习除静态词汇向量外(word vector不进行更新)其他参数。模型可以进行fine-tuneing(预训练)学习，在不同分类任务中获得不错效果
 
-# 模型
+# 模型 
+
+![_config.yml]({{ site.baseurl }}/images/99CnnForSentenceClassfication/image1.png)
 
 Notation:    
 
@@ -18,14 +20,24 @@ $$X_{1:n}$$:长度为n的句子
 $$X_{i:i+j}$$:词汇向量$$x_{i},x_{i+1}...x_{i+j}$$拼接  
 $$\oplus$$:向量拼接符号   
 $$W^r\in R^{hk}$$:第r个filter(卷积核),过滤h个词汇   
-$$c_{i}^r$$:$$X_{i:i+h-1}$$经过第r个卷积核过滤后向量  
-$$\hat{C}$$：CNN最后提取句子特征
+$$c_{i}^r$$:$$X_{i:i+h-1}$$经过第r个卷积核过滤后向量     
+$$\hat{C}$$：CNN最后提取句子特征向量   
 
-$$X_{1:n}=x_{1}\oplus x_{2}\oplus...\oplusx_{n}$$
+$$X_{1:n}=x_{1}\oplus x_{2}\oplus...\oplus x_{n}$$
 
-$$c_{i}^r=f(W^r\cdot X_{i:i+j}+b)$$ 
+f():非线性函数： 
 
-$$\hat{c}^r=[c_{1}^r,c_{2}^r,...,c_{n-h+1}^r]$$  
+$$c_{i}^r=f(W^r\cdot X_{i:i+j}+b^r)$$  
 
-$$\hat{C}=[\hat{c}^1,\hat{c}^2..\hat{c}^l]$$
+stride=1,filter将扫过$${x_{1:h},x_{2:h+1,..x_{n-h+1}}}$$
+
+$$c^r=[c_{1}^r,c_{2}^r,...,c_{n-h+1}^r]$$  
+
+$$\hat{c}^r=max\{c^r\}$$
+
+l:filter个数：
+
+$$\hat{C}=[\hat{c}^1,\hat{c}^2..\hat{c}^l],\hat{C}\in R^l$$  
+
+
 
