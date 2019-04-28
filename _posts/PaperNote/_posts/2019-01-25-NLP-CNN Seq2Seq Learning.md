@@ -86,7 +86,7 @@ Decoder最后一层输出为$$h^L$$
 $$y_{t}=softmax(W_{o}h_{i}^L+b_{o})$$  
 
 
-由于训练时候会将目标g(整个句子)全部作为输入，存在问题是当预测i时刻输出时，会受到i时刻后面词汇影响，出现信息泄露问题，为此对长度为m的句子在开头和结尾加入padding,假设单侧padding长度为n-1,删除当前层CNN输出末尾n个state。如图所示n=3：  
+由于训练时候会将目标g(整个句子)全部作为输入，存在问题是当预测i时刻输出时，会受到i时刻后面词汇影响，出现信息泄露问题，为此对长度为m的句子在开头和结尾加入padding,假设单侧padding长度为n-1,删除当前层CNN输出末尾n个state，再作为下一层的输入。如图所示n=3：  
 
 ![_config.yml]({{ site.baseurl }}/images/80CNNSeq2SeqLearning/image2.png)
 
