@@ -43,18 +43,31 @@ v([A B])\in R^d$$
 
 $$W^l\in R^{2f*kf},b_{w}^l \in R^{2f}$$:l层的卷积,一共有2f个卷积核，每个卷积核大小是$$k*f$$ , $$b_{w}^l$$是bias    
 
-层叠CNN第l层输出为$$z_{l} \in R^{m*f}$$，其第i维为： 
+层叠CNN第l层encoder state输出为$$z^{l} \in R^{m*f}$$，其第i维为： 
 
 $$z_{i}^l=v(W^l[z_{i-k/2},...,z_{i+k/2}+z_{w}^l]+b_{w}^l)+z_{i}^{l-1}\\
 z_{i}^l \in R^f$$     
 
-Encoder层叠CNN最后一层第j维输出为$$z_{j}^u\in R^f$$  
+Encoder层叠CNN最后一层第j维encoder state输出为$$z_{j}^u\in R^f$$  
 
-CNN每层的输出向量的维度都需要与输入的维度一致，都是$$m*f$$维，因此需要在开头和结尾加入padding:
+CNN每层的encoder state输出向量的维度都需要与输入的维度一致，都是$$m*f$$维，因此需要在开头和结尾加入padding:
 
 $$p=((m-1)*s-m+k)/2$$
 
 m句子的长度，k卷积核过滤词汇窗口的大小，p是单侧padding大小，s是stride  
 
 Encoder第j维最终输出为:$$z_{j}^u+e_{j}$$
+
+
+**Decoder**  
+
+Decoder采用了核Encoder相同的卷积结构，但是同时加入了attention机制 
+
+Decoder第l层的i时刻decoder state输出为$$h_{i}^l$$，i-1时刻目标输出为 $$g_{i}$$
+
+$$d_{i}^l=W_{d}^lh_{i}^l+b_{d}^l+g_{i}$$
+
+
+
+
 
