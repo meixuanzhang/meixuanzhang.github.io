@@ -8,9 +8,10 @@ categories: ["The Elements Of Computing Systems"]
 # 布尔代数(Boolean Algebra)  
 
 布尔型函数(Boolean function):是指输入输出数值均为布尔型数值的函数。
+描述方法:
++ 真值表表示法(Truth Table Representation):枚举出函数所有可能的输入变量组合，写出每一种组合对应的函数输出值。
 
-描述方法
-+ 真值表表示法(Truth Table Representation):枚举出函数所有可能的输入变量组合，写出每一种组合对应的函数输出值。 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image1.png)  
 
 + 布尔表达式(Boolean Expressions):布尔函数可以在输入变量上使用布尔算子(Boolean operator)。布尔算子有“And”,"Or","Not"。上图中布尔表达式是$$f(x,y,z)=(x+y)\cdot \bar{z}$$
 
@@ -24,7 +25,9 @@ $$
 
 每个布尔函数不管有多复杂都可以只由“And”,"Or","Not"来完全表达。
 
-所有两个变量的布尔函数：  
+所有两个变量的布尔函数:  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image2.png) 
 
 “And”,"Or","Not"都可以由Nand或Nor来构建，即每个布尔函数都可以仅使用Nand构成，一旦物理上实现了Nand功能，就可以使用很多这样的物理设备，通过特定的连接方式来构建任何布尔函数的硬件实现。  
 
@@ -36,8 +39,11 @@ $$
 
 最简单的门是由微小开关设备(晶体管，transistor)构成，微小开关设备安装设计的拓扑结构进行连接，实现整个门的功能。  
 
-图中primitive gate(原始门)可以看作是黑箱子，通过黑箱子实现逻辑操作。同时通过设计将primitive gate进行连接，可以实现更复杂的函数，构建composite gate(复合门)。 
+下图primitive gate(原始门)可以看作是黑箱子，通过黑箱子实现逻辑操作。同时通过设计将primitive gate进行连接，可以实现更复杂的函数，构建composite gate(复合门)。 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image3.png) 
 
 下图描述的是构建一个简单的门逻辑(gate logic),也称为逻辑设计(logic design),逻辑设计是一种连接门的电路艺术，目的是构建更复杂的函数，即实现composite gate。  
 左图是门的外部接口(interface)，即输入和输出管脚。右图是内部结构。
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image4.png) 
