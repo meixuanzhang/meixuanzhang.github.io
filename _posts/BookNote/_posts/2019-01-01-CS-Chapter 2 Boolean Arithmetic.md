@@ -92,5 +92,5 @@ $$(0.001)_{two}=0\cdot 2^{0}+0\cdot 2^{-1}+0\cdot 2^{-2}+ 1\cdot 2^{-3}=0.125$$
 
 
 参考：   
-(转原码，反码，补码的深入理解与原理)[https://blog.csdn.net/zhiwen_a/article/details/81192087]    
-(转原码，反码，补码的深入理解与原理)[https://www.imooc.com/article/16813?block_id=tuijian_wz]
+[转原码，反码，补码的深入理解与原理](https://blog.csdn.net/zhiwen_a/article/details/81192087)    
+[转原码，反码，补码的深入理解与原理](https://www.imooc.com/article/16813?block_id=tuijian_wz)
