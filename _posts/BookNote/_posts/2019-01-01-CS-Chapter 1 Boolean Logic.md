@@ -13,15 +13,15 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image1.png)  
 
-+ 布尔表达式(Boolean Expressions):布尔函数可以在输入变量上使用布尔算子(Boolean operator)。布尔算子有“And”,"Or","Not"。上图中布尔表达式是$$f(x,y,z)=(x+y)\cdot \bar{z}$$
++ 规范表示法(Canonical Representation):每个布尔函数都至少由一个布尔表达式来描述。
+
+布尔表达式(Boolean Expressions):布尔函数可以在输入变量上使用布尔算子(Boolean operator)。布尔算子有“And”,"Or","Not"。上图中布尔表达式是$$f(x,y,z)=(x+y)\cdot \bar{z}$$
 
 $$
 xAndy:x\cdot y,xy\\
 xOry:x+y\\
 \bar{x}:Not x
 $$
-
-+ 规范表示法(Canonical Representation):每个布尔函数都至少由一个布尔表达式来描述。
 
 每个布尔函数不管有多复杂都可以只由“And”,"Or","Not"来完全表达。
 
