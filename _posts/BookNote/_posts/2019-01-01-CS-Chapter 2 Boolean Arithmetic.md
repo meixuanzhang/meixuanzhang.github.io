@@ -79,11 +79,12 @@ $$(0.001)_{two}=0\cdot 2^{0}+0\cdot 2^{-1}+0\cdot 2^{-2}+ 1\cdot 2^{-3}=0.125$$
 
 算术逻辑单元(arithmetic and logic unit) 是能实现多组算术运算和逻辑运算的组合逻辑电路。
 
-下图展示了有6个输入控制位ALU，可以实现$$2^6=64$$个不同的函数进行操作，图中只展示了18种。此外ALU下方有两个输出控制位。
-
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image33.png)
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image33.png) 
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image34.png) 
+
+下图展示了有6个输入控制位ALU，可以实现$$2^6=64$$个不同的函数进行操作，图中只展示了18种。此外ALU下方有两个输出控制位，在构建完整计算机架构时会使用。
+
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image35.png) 
 
