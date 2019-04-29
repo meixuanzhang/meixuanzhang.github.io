@@ -131,6 +131,6 @@ Computer hardware is typically designed to operate on multi-bit arrays called "b
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image22.png)  
 
 
-注意之间的区别：一个输入变量可以是多位或一位的，输入变量是多位则是Multi-Bit，一个芯片输入可以是多个，在基本逻辑门原因输入个数下扩展成多个输入则是Multi-way
+注意之间的区别：一个输入变量可以是多位或一位的，输入变量是多位则是Multi-Bit，一个芯片输入可以是多个，在基本逻辑门基本输入个数下扩展成多个输入则是Multi-way
 
 
