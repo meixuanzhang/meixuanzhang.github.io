@@ -46,4 +46,58 @@ $$
 下图描述的是构建一个简单的门逻辑(gate logic),也称为逻辑设计(logic design),逻辑设计是一种连接门的电路艺术，目的是构建更复杂的函数，即实现composite gate。  
 左图是门的外部接口(interface)，即输入和输出管脚。右图是内部结构。
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image4.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image4.png)  
+
+# Nand门  
+
+所有其他的门和芯片都能够通过Nand门构建。Nand门用于实现以下布尔函数 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image5.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image6.png) 
+
+# 基本逻辑门
+
+**Not**  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image7.png) 
+
+**And**  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image8.png) 
+
+**Or**  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image9.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image10.png) 
+
+**Xor**  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image11.png) 
+
+**Multiplexor**   
+
+是有三个输入的门，其中一个输入称为"选择位"(Selection-bit)。另外两个输入称为“数据位”(data bits)。选择性输出。
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image12.png)
+
+**Demultiplexor** 
+
+根据"选择位"，选择"数据位"输出的通道 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image13.png) 
+
+# 多位基本门（Multi-Bit Versions of Basic Gates）  
+
+**多位Not(Multi-Bit Not)**  
+
+**多位And(Multi-Bit And)**  
+
+**多位Or(Multi-Bit Or)** 
+
+**多位 Multiplexor(Multi-Bit Multiplexor)** 
+
+# 多通道逻辑门(Multi-Way Versions of Basic Gates)
+
+
