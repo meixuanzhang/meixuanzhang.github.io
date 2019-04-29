@@ -88,16 +88,49 @@ $$
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image13.png) 
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image14.png) 
+
 # 多位基本门（Multi-Bit Versions of Basic Gates）  
+
+基本逻辑门输入是一位的。
+
+Computer hardware is typically designed to operate on multi-bit arrays called "buses".
 
 **多位Not(Multi-Bit Not)**  
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image15.png) 
+
 **多位And(Multi-Bit And)**  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image16.png) 
 
 **多位Or(Multi-Bit Or)** 
 
-**多位 Multiplexor(Multi-Bit Multiplexor)** 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image17.png) 
 
-# 多通道逻辑门(Multi-Way Versions of Basic Gates)
+**多位 Multiplexor(Multi-Bit Multiplexor)**  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image18.png) 
+
+# 多通道逻辑门(Multi-Way Versions of Basic Gates)   
+
+2个输入的门扩展到了任意输入
+
+**多通道Or(Multi-way Or)** 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image19.png) 
+
+**多通道/多位 Multiplexor(Multi-way/Multi-Bit Multiplexo)** 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image20.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image21.png) 
+
+**多通道/多位 Demultiplexor(Multi-way/Multi-Bit Demultiplexo)** 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image22.png)  
+
+
+注意之间的区别：一个输入变量可以是多位或一位的，输入变量是多位则是Multi-Bit，一个芯片输入可以是多个，在基本逻辑门原因输入个数下扩展成多个输入则是Multi-way
 
 
