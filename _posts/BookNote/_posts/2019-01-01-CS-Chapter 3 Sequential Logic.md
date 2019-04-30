@@ -48,6 +48,8 @@ RAM设备的基本设计参数是它的数据宽度(每个word的宽度)，和�
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image44.png)
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image50.png)
+
 **计数器(Counter)** ：是一种时序芯片，它的状态是整数，每经过一个时间周期，该整数增加1个单位，执行函数$$out(t)=out(t-1)+1$$。典型的CPU包括一个程序计数器(program counter),输出是当前程序下一步将要执行的指令地址。
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image45.png)  
@@ -63,4 +65,11 @@ RAM设备的基本设计参数是它的数据宽度(每个word的宽度)，和�
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image48.png)
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image49.png)
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image49.png) 
+
+
+注意：在实际实现中一个时间周期包含了tick-tock，当寄存器在当前时间周期选择位为1时，会在当前时间周期tock存储一个新值，而不是在下一个时间周期才开始存储新值 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image51.png)   
+
+
