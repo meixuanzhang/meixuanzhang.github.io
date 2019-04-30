@@ -46,9 +46,21 @@ RAM设备的基本设计参数是它的数据宽度(每个word的宽度)，和�
  
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image43.png) 
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image44.png)
+
 **计数器(Counter)** ：是一种时序芯片，它的状态是整数，每经过一个时间周期，该整数增加1个单位，执行函数$$out(t)=out(t-1)+1$$。典型的CPU包括一个程序计数器(program counter),输出是当前程序下一步将要执行的指令地址。
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image45.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image46.png)
 
 
 **时序芯片(Sequential chip)** : 直接或间接嵌入一个或多个DFF门的芯片。功能角度就是被DFF赋予了维持状态(内存单元)或对状态进行操作(如计数器)的能力
 
+对比Combinatorial Logic 和 Sequential Logic chip：
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image47.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image48.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image49.png)
