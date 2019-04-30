@@ -17,19 +17,22 @@ categories: ["The Elements Of Computing Systems"]
 
 **寄存器(Registers)** ：内存访问(内存里寄存器)是相对比较慢的操作，需要很长的指令格式(一个地址可能需要32位),大多数处理器都配有一些寄存器，每个寄存器只存储1 bit。它紧挨着处理器，相当于处理器的一个高速本地内存，使得处理器能快速地操控数据和指令。
 
+
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image53.png)  
+
 What exactly does the instruction tell the computer to do?(指令告诉电脑做什么)Program里是指令...   
-
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image53.png) 
-
-which instruction to perform at any given stage and time?(什么时候执行哪个指令)
  
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image54.png) 
 
-add two numbers. the software has to tell the hardware, how exactly, where exactly will it get these two values that it's going to, that it needs to add and where should it put the result. (执行指令涉及到内容哪里来，执行结果保存到哪里)
+which instruction to perform at any given stage and time?(什么时候执行哪个指令)
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image55.png) 
 
 
+add two numbers. the software has to tell the hardware, how exactly, where exactly will it get these two values that it's going to, that it needs to add and where should it put the result. (执行指令涉及到内容哪里来，执行结果保存到哪里)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image56.png) 
 
 
 The basic idea is instead of having just one large block of memory, we're going to have a whole sequence of memories that are getting bigger and bigger. The smallest memories are going to be very easy to access. First of all, because we don't have to specify large address space because there are only going to be a very few of them. Second of all, because there are only very few of them, we can actually get information from them very quickly. And then, there is going to be slightly larger memories, usually called cache, and even larger memories, sometimes called the big, the main memory. And maybe even, even larger memories that are going to sit on disk. At each time we get farther away from the arithmetic unit itself, our memory be, gets bigger. Accessing it becomes harder borth, both in terms of giving a larger, a wider address. And in terms of the time we need to wait until we get the value. But we have more information there. The ways that the different levels of the memory hierarchy are handled differs according to the different levels. But, what we're going to discuss now is the way that registers, the smallest, the smallest memory that usually resides really inside the CPU, and how we handle that.
