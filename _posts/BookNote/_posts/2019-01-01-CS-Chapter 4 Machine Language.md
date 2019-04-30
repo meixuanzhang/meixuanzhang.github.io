@@ -20,8 +20,12 @@ categories: ["The Elements Of Computing Systems"]
 **寄存器(Registers)** ：内存访问(内存里寄存器)是相对比较慢的操作，需要很长的指令格式(一个地址可能需要32位),大多数处理器都配有一些寄存器，每个寄存器只存储1 bit。它紧挨着处理器，相当于处理器的一个高速本地内存，使得处理器能快速地操控数据和指令。
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image53.png) 
+
+What exactly does the instruction tell the computer to do?   
  
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image54.png) 
+
+which instruction to perform at any given stage and time?
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image55.png) 
 
