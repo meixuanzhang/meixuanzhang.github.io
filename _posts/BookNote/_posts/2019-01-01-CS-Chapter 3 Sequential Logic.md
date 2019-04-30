@@ -23,6 +23,17 @@ memory elements的实现涉及了synchronization(同步),clocking(时钟), feedb
 **寄存器(Registers)** ：具有记忆功能的设备，能够存储某一时刻的值，实现$$out(t)=out(t-1)$$。
 设计中使用多路转换器(multiplexor),这个多路转换器的“选择位(select bit)”可以成为整个寄存器芯片的“加载位(load bit)”。如果希望寄存器开始存储一个新值，可以把这个值置于in输入门，然后将load位设为1；如果希望寄存器一直存储它的内部值直到新的指令到来，可以将load位设为0。 
 
-Once we have developed the basic mechanism for remembering a single bit over time, we can easily construct arbitrarily wide registers. This can be achieved by forming an array of as many single-bit registers as needed, creating a register that holds multi-bit values . The basic design parameter of such a register is its width—the number of bits that it holds—e.g., 16, 32, or 64. The multi-bit contents of such registers are typically referred to as words.(可以构建多位寄存器)
+Once we have developed the basic mechanism for remembering a single bit over time, we can easily construct arbitrarily wide registers. This can be achieved by forming an array of as many single-bit registers as needed, creating a register that holds multi-bit values . The basic design parameter of such a register is its width—the number of bits that it holds—e.g., 16, 32, or 64. The multi-bit contents of such registers are typically referred to as **words**.(可以构建多位寄存器)
 
-**内存(Memories)**:具备表达word的能力(多位寄存器)，就可以构建任意长度的存储块。可以将很多寄存器堆叠起来实现RAM单元。随机存储内存(RAM,Ramdom Access Memory)上能够随机访问
+**内存(Memories)**:具备表达word的能力(多位寄存器)，就可以构建任意长度的存储块。可以将很多寄存器堆叠起来实现RAM单元。随机存储内存(RAM,Ramdom Access Memory)上能够随机访问被选择的word，也就是要求内存中的任何word都以相等的速度被直接访问。为此通过以下方式实现：
+
+n位RAM中每个记忆单元分配一个唯一的地址(address，0到n-1之间的整数)
+构建一个由n-寄存器构成的阵列，再构建一个逻辑门，使得该逻辑门能够对给定的地址j，找到地址j对应的记忆单元。
+
+典型的RAM设备接收三种输入：数据输入、地址输入、和加载位。地址指定了当前时钟周期里哪一个RAM寄存器被访问，进行读操作(Load=0),RAM的输出立即发出被选中的记忆单元的值。在进行写操作(Load=1)时，被选择的记录单元将在下一个时间周期内被赋予新输入值。  
+
+RAM设备的基本设计参数是它的数据宽度(每个word的宽度)，和它的大小(RAM中word的数目)，现代计算机一般采用32或64位宽的RAM。
+
+**计数器**：是一种时序芯片
+
+
