@@ -18,5 +18,11 @@ memory elements的实现涉及了synchronization(同步),clocking(时钟), feedb
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image37.png)  
 
-**触发器(Flip-Flops)**:是最基本的sequential element。书里使用其变体数据触发器(DFF,data flip-flop)
+**触发器(Flip-Flops)**:是最基本的sequential element。书里使用其变体数据触发器(DFF,data flip-flop),其接口包含a single-bit输入和a single-bit输出。DFF有个时钟输入，根据主时钟信号连续地交变。数据和时钟的输入使得DFF能够实现基于时间的行为$$out(t)=in(t-1)$$,in和out是门的输入和输出值，t是当前时钟周期。
 
+**寄存器(Registers)** ：具有记忆功能的设备，能够存储某一时刻的值，实现$$out(t)=out(t-1)$$。
+设计中使用多路转换器(multiplexor),这个多路转换器的“选择位(select bit)”可以成为整个寄存器芯片的“加载位(load bit)”。如果希望寄存器开始存储一个新值，可以把这个值置于in输入门，然后将load位设为1；如果希望寄存器一直存储它的内部值直到新的指令到来，可以将load位设为0。 
+
+Once we have developed the basic mechanism for remembering a single bit over time, we can easily construct arbitrarily wide registers. This can be achieved by forming an array of as many single-bit registers as needed, creating a register that holds multi-bit values . The basic design parameter of such a register is its width—the number of bits that it holds—e.g., 16, 32, or 64. The multi-bit contents of such registers are typically referred to as words.(可以构建多位寄存器)
+
+**内存(Memories)**:具备表达word的能力(多位寄存器)，就可以构建任意长度的存储块。可以将很多寄存器堆叠起来实现RAM单元。随机存储内存(RAM,Ramdom Access Memory)上能够随机访问
