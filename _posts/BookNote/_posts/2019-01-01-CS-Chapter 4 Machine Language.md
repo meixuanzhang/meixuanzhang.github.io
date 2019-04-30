@@ -30,9 +30,22 @@ which instruction to perform at any given stage and time?(什么时候执行哪�
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image55.png) 
 
 
-add two numbers. the software has to tell the hardware, how exactly, where exactly will it get these two values that it's going to, that it needs to add and where should it put the result. (执行指令涉及到内容哪里来，执行结果保存到哪里)
+add two numbers. the software has to tell the hardware, how exactly, where exactly will it get these two values that it's going to, that it needs to add and where should it put the result. (执行指令涉及到对象在哪里，执行结果保存到哪里)
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image56.png) 
+
+# 语言  
+
+机器语言程序是一系列的编码指令。图中二进制码最左边是操作编码，剩下是操作对象。二进制码下方是symbolic mnemonics(抽象助记符)。   
+
+这种"symbolic form" 不是真实存在的，它是一种方便助记符用来向人描述机器语言指令含义。 这种“symbolic notation(抽象符号)”称为汇编语言(assembly language)。  
+
+人可以使用汇编语言写机器语言指令，汇编编译器(Assembler)会将汇编程序翻译成二进制码程序  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image58.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image57.png) 
+
 
 
 The basic idea is instead of having just one large block of memory, we're going to have a whole sequence of memories that are getting bigger and bigger. The smallest memories are going to be very easy to access. First of all, because we don't have to specify large address space because there are only going to be a very few of them. Second of all, because there are only very few of them, we can actually get information from them very quickly. And then, there is going to be slightly larger memories, usually called cache, and even larger memories, sometimes called the big, the main memory. And maybe even, even larger memories that are going to sit on disk. At each time we get farther away from the arithmetic unit itself, our memory be, gets bigger. Accessing it becomes harder borth, both in terms of giving a larger, a wider address. And in terms of the time we need to wait until we get the value. But we have more information there. The ways that the different levels of the memory hierarchy are handled differs according to the different levels. But, what we're going to discuss now is the way that registers, the smallest, the smallest memory that usually resides really inside the CPU, and how we handle that.
