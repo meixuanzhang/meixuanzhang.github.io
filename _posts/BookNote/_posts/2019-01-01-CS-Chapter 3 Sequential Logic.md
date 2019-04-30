@@ -68,7 +68,7 @@ RAM设备的基本设计参数是它的数据宽度(每个word的宽度)，和�
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image49.png) 
 
 
-注意：在实际实现中一个时间周期包含了tick-tock，当寄存器在当前时间周期选择位为1时，会在当前时间周期tock存储一个新值，而不是在下一个时间周期才开始存储新值 
+注意：在实际实现中一个时间周期包含了tick-tock，当寄存器在当前时间周期选择位为1时，会在当前时间周期tock存储一个新值，而不是在下一个时间周期才开始存储新值 (0+ 是tick,1是tock...以此类推)
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image51.png)   
 
