@@ -49,16 +49,23 @@ add two numbers. the software has to tell the hardware, how exactly, where exact
 
 # 命令 
 
-直接寻址(Direct addressing) 使用内存地址或使用一个符号表达内存地址(Memory[address],RAM[address],M[address],表示内存单元)
+**直接寻址(Direct addressing)** 使用内存地址或使用一个符号表达内存地址(Memory[address],RAM[address],M[address],表示内存单元)
 
-$$LOAD R1,67  //R1 \leftarrow Memory[67]\\
-LOAD R1,bar // R1 \leftarrow Memory[67] $$
+$$LOAD \ R1,67  //R1 \leftarrow Memory[67]\\
+LOAD \ R1,bar // R1 \leftarrow Memory[67] $$
 
-立即寻址(Immediate addressing) 用来加载常数,加载出现在指令代码里面的数值，直接将指令数据域中的内容当作要操作的数据装入寄存器，而不是将数值当作内存单元的地址
+**立即寻址(Immediate addressing)** 用来加载常数,加载出现在指令代码里面的数值，直接将指令数据域中的内容当作要操作的数据装入寄存器，而不是将数值当作内存单元的地址
 
-间接寻址(Indirect addressing) 要访问的内存地址没有直接出现在指令中，指令指定了一个保存所需地址的内存位置，这种寻址模型被用来处理指针(pointer),如高级语言命令$$x=foo[j]$$, foo是数组变量，x和j是整数变量。foo在高级语言程序里被声明和初始化时，编译器分配一组连续内存单元保存这个数组数据，符号foo指代内存单元组的基地址(base address)
+**间接寻址(Indirect addressing)** 要访问的内存地址没有直接出现在指令中，指令指定了一个保存所需地址的内存位置，这种寻址模型被用来处理指针(pointer),如高级语言命令$$x=foo[j]$$, foo是数组变量，x和j是整数变量。foo在高级语言程序里被声明和初始化时，编译器分配一组连续内存单元保存这个数组数据，符号foo指代内存单元组的基地址(base address)
 
 编译器后来遇到数组单元的符号(foo[j])时，第j个数组入口是某个内存单元的物理地址，该地址相对于数组基地址的偏移量为j。$$x=foo[j]$$在C语言程序中相当于$$x=^*(foo+j)$$,foo+j表示地址，*获取地址指向内容。这里$$^* n$$代表Memory[n]。
 
+将$$x=foo[j] or x=^*(foo+j)$$翻译成汇编语言：
+
+$$
+ADD\ R1,foo,j //R1 \leftarrow foo+j\\
+LOAD^* \ R2,R1 //R2 \leftarrow Memory[R1]\\
+STR \  R2,x // x \leftarrow R2
+$$
 
 The basic idea is instead of having just one large block of memory, we're going to have a whole sequence of memories that are getting bigger and bigger. The smallest memories are going to be very easy to access. First of all, because we don't have to specify large address space because there are only going to be a very few of them. Second of all, because there are only very few of them, we can actually get information from them very quickly. And then, there is going to be slightly larger memories, usually called cache, and even larger memories, sometimes called the big, the main memory. And maybe even, even larger memories that are going to sit on disk. At each time we get farther away from the arithmetic unit itself, our memory be, gets bigger. Accessing it becomes harder borth, both in terms of giving a larger, a wider address. And in terms of the time we need to wait until we get the value. But we have more information there. The ways that the different levels of the memory hierarchy are handled differs according to the different levels. But, what we're going to discuss now is the way that registers, the smallest, the smallest memory that usually resides really inside the CPU, and how we handle that.
