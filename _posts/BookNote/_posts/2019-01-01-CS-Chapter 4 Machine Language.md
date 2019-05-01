@@ -59,7 +59,24 @@ add two numbers. the software has to tell the hardware, how exactly, where exact
 
 ## 内存访问   
 
-内存访问命令分为两类，第一类，算术命令和逻辑命令不仅允许操控寄存器，还可以操控特定的内存单元(memory locations)。第二类，所有计算机都会使用load和store命令，用来在寄存器和内存之间传递数据
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image61.png)
+
+The basic idea is instead of having just one large block of memory, we're going to have a whole sequence of memories that are getting bigger and bigger. The smallest memories are going to be very easy to access.
+
+First of all, because we don't have to specify large address space because there are only going to be a very few of them. 
+
+Second of all, because there are only very few of them, we can actually get information from them very quickly. 
+
+And then, there is going to be slightly larger memories, usually called cache, and even larger memories, sometimes called the big, the main memory. And maybe even, even larger memories that are going to sit on disk. At each time we get farther away from the arithmetic unit itself, our memory be, gets bigger. Accessing it becomes harder borth, both in terms of giving a larger, a wider address. And in terms of the time we need to wait until we get the value. But we have more information there. The ways that the different levels of the memory hierarchy are handled differs according to the different levels. 
+
+
+内存访问命令分为两类，第一类，算术命令和逻辑命令不仅允许操控寄存器，还可以操控特定的内存单元(memory locations)。第二类，所有计算机都会使用load和store命令，用来在寄存器和内存之间传递数据  
+
+But, what we're going to discuss now is the way that registers, the smallest, the smallest memory that usually resides really inside the CPU, and how we handle that.
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image62.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image63.png)
 
 **直接寻址(Direct addressing)** 使用内存地址或使用一个符号表达内存地址(Memory[address],RAM[address],M[address],表示内存单元)
 
@@ -80,7 +97,19 @@ LOAD^* \ R2,R1 //R2 \leftarrow Memory[R1]\\
 STR \  R2,x // x \leftarrow R2
 $$
 
-The basic idea is instead of having just one large block of memory, we're going to have a whole sequence of memories that are getting bigger and bigger. The smallest memories are going to be very easy to access. First of all, because we don't have to specify large address space because there are only going to be a very few of them. Second of all, because there are only very few of them, we can actually get information from them very quickly. And then, there is going to be slightly larger memories, usually called cache, and even larger memories, sometimes called the big, the main memory. And maybe even, even larger memories that are going to sit on disk. At each time we get farther away from the arithmetic unit itself, our memory be, gets bigger. Accessing it becomes harder borth, both in terms of giving a larger, a wider address. And in terms of the time we need to wait until we get the value. But we have more information there. The ways that the different levels of the memory hierarchy are handled differs according to the different levels. But, what we're going to discuss now is the way that registers, the smallest, the smallest memory that usually resides really inside the CPU, and how we handle that.
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image64.png)
 
 
-## 输入和输出
+
+## 输入和输出 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image65.png)
+
+
+## 流程控制  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image66.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image64.png)
+
