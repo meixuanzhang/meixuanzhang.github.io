@@ -25,9 +25,9 @@ CPU有两个寄存器：A(存储数据或地址)，D(存储数据)
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image72.png) 
 
-
-
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image73.png) 
+
+当调用M时，调用的是RAM的一个寄存器，M代表是RAM[address],address是上一句@value中的value
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image74.png) 
 
