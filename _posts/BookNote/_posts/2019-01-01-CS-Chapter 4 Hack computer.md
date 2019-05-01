@@ -73,7 +73,7 @@ Hack程序，使用Symbolic code需要编译器翻译成binary code,计算机才
 ## Hack computer platform:Output
 
 the screen memory map is a designated area which is part of the data memory of what is sometimes called RAM. So the deal is such, that the physical display unit is continuously refreshed from the contents of the memory map. And this happens many times each second.(
-Screen memroy map是RAM的一部分。会连续不断的更新)
+Screen memroy map是RAM的一部分,RAM会由多个芯片组成，Screen 内存芯片是其中一个。其会连续不断的更新)
 
 I'm restricted to working with zeroes and ones only, if I want to write something on the display unit, what I can do is simply manipulate some bits in the memory map. And I can count on, on the fact that in the next refresh cycle, what I change in the memory is going to be reflected on the screen.(将屏幕的每个位置与memory map(Screen芯片/内存)里的每个bit对应，操控bit改变屏幕)
 
