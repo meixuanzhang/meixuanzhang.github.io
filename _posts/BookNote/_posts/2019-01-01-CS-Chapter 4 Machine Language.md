@@ -67,12 +67,14 @@ First of all, because we don't have to specify large address space because there
 
 Second of all, because there are only very few of them, we can actually get information from them very quickly. 
 
-And then, there is going to be slightly larger memories, usually called cache, and even larger memories, sometimes called the big, the main memory. And maybe even, even larger memories that are going to sit on disk. At each time we get farther away from the arithmetic unit itself, our memory be, gets bigger. Accessing it becomes harder borth, both in terms of giving a larger, a wider address. And in terms of the time we need to wait until we get the value. But we have more information there. The ways that the different levels of the memory hierarchy are handled differs according to the different levels. 
+There is going to be slightly larger memories, usually called cache, and even larger memories, sometimes called the big, the main memory. And maybe even, even larger memories that are going to sit on disk.
+
+At each time we get farther away from the arithmetic unit itself, our memory be, gets bigger. Accessing it becomes harder borth, both in terms of giving a larger, a wider address. And in terms of the time we need to wait until we get the value. The ways that the different levels of the memory hierarchy are handled differs according to the different levels. 
 
 
 内存访问命令分为两类，第一类，算术命令和逻辑命令不仅允许操控寄存器，还可以操控特定的内存单元(memory locations)。第二类，所有计算机都会使用load和store命令，用来在寄存器和内存之间传递数据  
 
-But, what we're going to discuss now is the way that registers, the smallest, the smallest memory that usually resides really inside the CPU, and how we handle that.
+registers: the smallest memory that usually resides really inside the CPU, and how we handle that.
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image62.png)
 
@@ -97,9 +99,7 @@ LOAD^* \ R2,R1 //R2 \leftarrow Memory[R1]\\
 STR \  R2,x // x \leftarrow R2
 $$
 
-
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image64.png)
-
 
 
 ## 输入和输出 
@@ -108,6 +108,8 @@ $$
 
 
 ## 流程控制  
+
+程序通常i线性方式，一个命令接着一个命令执行，但偶尔也包含分支，执行其他地方的命令。分支能够实现好几种结构，repetition、conditional execution、subroutine calling，为了支持这些程序结构，机器语言可以有条件或无条件跳转到程序指定的地址。汇编语言中，程序位置可以用符号表示。
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image66.png) 
 
