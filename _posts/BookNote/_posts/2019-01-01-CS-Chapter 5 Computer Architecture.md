@@ -82,26 +82,37 @@ some registers are used to specify addresses. The way we actually achieve indire
  
  ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image93.png)  
  
- # 获取-执行指令循环
+ # 获取(Fetching)-执行(Executing)指令循环
  
-  there is a program counter, when we need to jump into a new location or we need to just increase and go to the next instruction, we need to manipulate the program counter so it will have the address of the next instruction. 
-  
-  
-   different parts of the instruction, bits, actually control the different parts that we need to do right now.
-   
-   So the basic execution executing the current instruction basically mean taking the bits from the instruction code that specifies what to do, and actually doing what needs to be done.
-   
-   from the hardware point of view, the instruction we already got from our fetch, that is now going to feed into the control bus of our CPU, of our computer. And that control bus, basically controls everything
-   
-   
-    And that control bus, basically controls everything. It tell the ALU what instruction to compute, to add numbers, subtract them, or so on.
-It also tells where do the, data pieces come from. Do they come from which which register or from the data memory or so on. So we basically have the instruction memory that we just fetched, basically tells us exactly each part of the system what to do right now in the execute cycle. And that really controls whether we read from the data memory, whether we read from the registers, what do we compute, where to write and so on? Of course there are many details. How is that exactly done? How do we, how does the bytes from the instructions specifically tell the ALU what to do which registers to choose and so on? 
+## Fetching
+
+Program Counter将下一个要执行的指令address传入Program memory，在Program memory里下一个要执行的指令除了包含下一个要执行任务同时包含下下一个指令信息(we need to jump into a new location or we need to just increase and go to the next instruction)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image95.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image96.png)
  
- In the fetch cycle, basically we need to get from the program memory, the next instruction. So we need to put into the address of the memory, the address of the next instruction and get the instructions output. On the other hand, in the execute cycle, we need to access data that also resides in memory. So we need to put into the address of the memory, the address of the data piece that we want to operate on, which has nothing to do with the program piece that gave us the instruction. And because we have a single memory, that is a clash, because what are we going to put into the address, are we going to put there, the pro, the address of the instruction, or is address of the data piece? 
+
+## Executing  
+
+Executing 意味taking the bits from the instruction code that specifies what to do, and actually doing what needs to be done.
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image97.png)
+
+the instruction we already got from our fetch, that is now going to feed into the control bus of our CPU, of our computer. And that control bus, basically controls everything
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image98.png)
+
+这里存在一个冲突，图中只有一个内存，输入address可能是指令地址也可能是数据地址，因此需要multiplexer，在Fetching将内存设置为指向访问的下一个指令地址，在Executing时将内存设置为指向访问的数据地址。
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image99.png)
+
+在fetch cycle，获得了下一个要执行的instruction，将存储在instruction register，当execute cycle，要执行的指令已经在instruction寄存器
+   
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image100.png)
  
- There's going to be a multiplexer that feeds into the address of the memory. In the first part of the cycle in the fetch cycle, we're going to actually set the multiplexer to plug into the address input of the memory, the program counter that is the location of the next instruction. While in the execute cycle, the multiplexer will actually set the memory to actually point into the data address that we need to access. 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image101.png)
  
- When we actually a, are in the fetch cycle, we put the address of the next instruction, we get the next instruction, and then we need to remember it inside an instruction register. And that instruction register is exactly what is remains holding the value of the instruction that we're now executing in the execute cycle. And then of course, in the execute cycle now we have the instruction already stored in this register. And we can work with all the information that we need a, for the execute cycle using the data memory that is being addressed 
  
 # CPU
 
