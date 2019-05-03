@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Chapter 5 Computer Architecture
-date:   2019-03-23
+date:   2019-03-25
 categories: ["The Elements Of Computing Systems"]
 ---
 
@@ -59,25 +59,50 @@ I/O映像基本思想：常见I/O设备的二进制仿真，使其对于CPU而�
 
 总的来说会有三种信息在系统中传递：
 
-数据(data),When we have a number that needs to be added, the number needs to be moved from some, from one place to another, from the data in memory to the registers, to the actual other systematic logic unit that's going to do something with them, and back。
+数据(data)：When we have a number that needs to be added, the number needs to be moved from the data in memory to the registers, to the actual other systematic logic unit that's going to do something with them, and back。
 
-地址(address)The second type of information that we need to control is what's called addresses. What instruction are we actually executing now? What piece of data within the memory do we need to access now? These are in addresses. 
+地址(address)：What instruction are we actually executing now? What piece of data within the memory do we need to access now? These are in addresses. 
 
-控制(control)there is going to be a big bunch of wires that actually do all the control. That actually tell each part of the system what to do at this particular point and this is called the control. Sometimes all these three pieces of the, each one of these pieces of information is actually going to be implemented by wires, by a set of wires sometimes called a bus. 
+控制(control)：That actually tell each part of the system what to do at this particular point 
+
+三种信息通过 wires(电线)传输，称为bus 
+
 
 **ALU**：The ALU loads information from the Data bus and manipulates it using the Control bits.ALU need to have some information from the databus .And then feeds the output value back into the databus. ALU needs to know what kind of operation it does every time,according to the results of the arithmetic or logical operations that it does. It's going to be able to, have to be able to tell the other parts of the system what to do.
  
 
-**registers**: we store intermediate results in the registers. So we're going to be, have to be able to take data in, from the data bust into the registers and then also take data's from the register then feeds them back into the data bus. And of course where would they go from the data bus to other parts of the system such, as the ALU. 
+**registers**: we store intermediate results in the registers. So we have to be able to take data from the data bus into the registers and then also take data's from the register then feeds them back into the data bus. And of course where would they go from the data bus to other parts of the system such, as the ALU. 
 some registers are used to specify addresses. The way we actually achieve indirect addressing into a RAM or jump into a ROM address, the way we do it is usually we put numbers, addresses into a register and then that specifies where we want to access
    
 **memory**: There are two pieces to the memory, there is a data memory and there is a program memory.
 
- we're going to need to put the address of **the next program instruction** into the program memory because this is where we're taking our program instructions. We need to be able to put an address into the program memory address, and then get the instructions from there. Now the instructions that we get from the program memory, both may have data in it. **we need to be able to actually take information from the next instruction, from the data output of the program memory. And feed it into the control bus. **
- 
- ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image93.png)
+ we're going to need to put the address of **the next program instruction** into the program memory because this is where we're taking our program instructions. We need to be able to put an address into the program memory address, and then get the instructions from there. Now the instructions that we get from the program memory, both may have data in it. **we need to be able to actually take information from the next instruction, from the data output of the program memory. And feed it into the control bus.**
  
  ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image94.png)
  
+ ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image93.png)  
  
+ # 获取-执行指令循环
  
+  there is a program counter, when we need to jump into a new location or we need to just increase and go to the next instruction, we need to manipulate the program counter so it will have the address of the next instruction. 
+  
+  
+   different parts of the instruction, bits, actually control the different parts that we need to do right now.
+   
+   So the basic execution executing the current instruction basically mean taking the bits from the instruction code that specifies what to do, and actually doing what needs to be done.
+   
+   from the hardware point of view, the instruction we already got from our fetch, that is now going to feed into the control bus of our CPU, of our computer. And that control bus, basically controls everything
+   
+   
+    And that control bus, basically controls everything. It tell the ALU what instruction to compute, to add numbers, subtract them, or so on.
+It also tells where do the, data pieces come from. Do they come from which which register or from the data memory or so on. So we basically have the instruction memory that we just fetched, basically tells us exactly each part of the system what to do right now in the execute cycle. And that really controls whether we read from the data memory, whether we read from the registers, what do we compute, where to write and so on? Of course there are many details. How is that exactly done? How do we, how does the bytes from the instructions specifically tell the ALU what to do which registers to choose and so on? 
+ 
+ In the fetch cycle, basically we need to get from the program memory, the next instruction. So we need to put into the address of the memory, the address of the next instruction and get the instructions output. On the other hand, in the execute cycle, we need to access data that also resides in memory. So we need to put into the address of the memory, the address of the data piece that we want to operate on, which has nothing to do with the program piece that gave us the instruction. And because we have a single memory, that is a clash, because what are we going to put into the address, are we going to put there, the pro, the address of the instruction, or is address of the data piece? 
+ 
+ There's going to be a multiplexer that feeds into the address of the memory. In the first part of the cycle in the fetch cycle, we're going to actually set the multiplexer to plug into the address input of the memory, the program counter that is the location of the next instruction. While in the execute cycle, the multiplexer will actually set the memory to actually point into the data address that we need to access. 
+ 
+ When we actually a, are in the fetch cycle, we put the address of the next instruction, we get the next instruction, and then we need to remember it inside an instruction register. And that instruction register is exactly what is remains holding the value of the instruction that we're now executing in the execute cycle. And then of course, in the execute cycle now we have the instruction already stored in this register. And we can work with all the information that we need a, for the execute cycle using the data memory that is being addressed 
+ 
+# CPU
+
+And it is also the seat of control. This is where decisions are made about which instruction should be fetched and executed next.
