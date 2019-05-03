@@ -80,11 +80,12 @@ some registers are used to specify addresses. The way we actually achieve indire
  
  ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image94.png)
  
- ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image93.png)  
+ ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image93.png)   
  
- # 获取(Fetching)-执行(Executing)指令循环
  
-## Fetching
+# 获取(Fetch)-执行(Execute)指令循环
+ 
+## Fetch    
 
 Program Counter将下一个要执行的指令address传入Program memory，在Program memory里下一个要执行的指令除了包含下一个要执行任务同时包含下下一个指令信息(we need to jump into a new location or we need to just increase and go to the next instruction)
 
@@ -93,7 +94,7 @@ Program Counter将下一个要执行的指令address传入Program memory，在Pr
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image96.png)
  
 
-## Executing  
+## Execute   
 
 Executing 意味taking the bits from the instruction code that specifies what to do, and actually doing what needs to be done.
 
@@ -114,6 +115,6 @@ the instruction we already got from our fetch, that is now going to feed into th
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image101.png)
  
  
-# CPU
+# CPU   
 
 And it is also the seat of control. This is where decisions are made about which instruction should be fetched and executed next.
