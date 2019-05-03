@@ -96,7 +96,7 @@ Program Counter将下一个要执行的指令address传入Program memory，在Pr
 
 ## Execute   
 
-Executing 意味taking the bits from the instruction code that specifies what to do, and actually doing what needs to be done.
+Executie 意味获得指令，并执行指令
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image97.png)
 
@@ -104,7 +104,7 @@ the instruction we already got from our fetch, that is now going to feed into th
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image98.png)
 
-这里存在一个冲突，图中只有一个内存，输入address可能是指令地址也可能是数据地址，因此需要multiplexer，在Fetching将内存设置为指向访问的下一个指令地址，在Executing时将内存设置为指向访问的数据地址。
+这里存在一个冲突，图中只有一个内存，输入address可能是指令地址也可能是数据地址，因此需要multiplexer，在fetch cycle将内存设置为指向访问的下一个指令地址，在execute cycle时将内存设置为指向访问的数据地址。
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image99.png)
 
@@ -117,4 +117,53 @@ the instruction we already got from our fetch, that is now going to feed into th
  
 # CPU   
 
-And it is also the seat of control. This is where decisions are made about which instruction should be fetched and executed next.
+CPU执行当前指令，计算下一个要执行的指令
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image102.png) 
+
+CPU输入和输出
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image103.png) 
+
+输出：
++ Date value
++ Writer to memroy?(yes/no)
++ Memory Address
++ Address of next instruction
+
+**Hack CPU 实现**
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image104.png)   
+
+**Instruction handling**  
+
+A指令：第一位表明指令的类型是A还是C，后面15位被解释为数组，将数值存储在A寄存器,( 图中指令 seeks to load the value 3,001 into a register. )
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image105.png) 
+
+C指令：指令解码成4个方面，op-code，ALU control bit,Destination load bit,jump bits
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image106.png) 
+
+16位C指令可以分解成"i xx a cccccc ddd jjj"，i表明了指令类型，a决定A register输入，a为1表明输入是ALU的output,a为0输入是指令，如果输入是指令，则c表明要执行什么计算
+
+ALU有两个输入口，其中一个入口数据有两个选择A register和memory register，选取哪个输入由c部分其中一位决定？
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image107.png) 
+
+相同的ALU output可以输入三个不同的寄存器，每个寄存器是否被输入由指令码的d决定即Destination bit  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image108.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image109.png) 
+
+**reset**： 相当于开机，计算机中已经有编写好的指令程序，当按下reset就开始执行  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image110.png)  
+
+Program Counter输出的address,将由C指令码的j决定。
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image111.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image112.png)  
+
