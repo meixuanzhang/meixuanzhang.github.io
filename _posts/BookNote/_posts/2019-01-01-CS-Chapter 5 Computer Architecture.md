@@ -4,21 +4,69 @@ title: Chapter 5 Computer Architecture
 date:   2019-03-23
 categories: ["The Elements Of Computing Systems"]
 ---
-So basically there are, I would say three types of information that's usually passed around the system, and one of them is the data. When we have a number that needs to be added, of course the number needs to be moved from some, from one place to another, from the data in memory to the registers, to the actual other systematic logic unit that's going to do something with them, and back. 
 
-The second type of information that we need to control is what's called addresses. What instruction are we actually executing now? What piece of data within the memory do we need to access now? These are in addresses. 
+# 背景知识
 
-And, of course, there is going to be a, there is going to be a big bunch of wires that actually do all the control. That actually tell each part of the system what to do at this particular point and this is called the control. Sometimes all these three pieces of the, each one of these pieces of information is actually going to be implemented by wires, by a set of wires sometimes called a bus. 
+## 存储程序概念
+
+计算机基于固定的硬件平台，能够知晓固定的指令集。指令能够被当成构件模块，组成任意的程序，程序被存储到计算机的存储设备，和数据一样，称为“软件”。
+
+## 冯诺依结构  
+冯诺伊曼体系结构的基础是一个中央处理单元(CPU),它与记忆设备(memory device)即内存进行交互，负责从输入设备(input device)接收数据,向输出设备(output device)发送数据。计算机内存不仅存储要进行操作的数据，还存储着指数数据。
 
 
- the simplest and clearest part of the CPU of our computer. It basically needs to be able to accept numbers. And add them, subtract them. Do some logical operations on them. So it's very simple. We need, simply need to have some information from the databus connect into the ALU. And then information. And then feeds the output value back into the databus. That's going to be a, and from there, of course, it's going to have to go to other places that also connect to the databus, like the memory or the registers.
+
+### 内存(Memory)
+
+内存有两种类的信息，数据项(data items)和程序指令(programming instructions)。通常计算机里，它们被分布存储到不同的内存区中。尽管功能不同，但两种信息都以二进制数形式存储在相同的通用的随机访问结构中(a continuous array of cells of some fixed width, also called words or locations, each having a unique address.)，因此an individual word (representing either a data item or an instruction) is specified by supplying its address.
+
+**数据内存**： 高级程序操作抽象的元件例如变量(variables),数组(array)和对象。数据抽象被翻译成机器语言，变成二进制数存储在计算机内存中。通过指定的地址，individual word在数据内存中被找到，就可以对其进行读操作和写操作。读就是读取这个individual word的值，写就是将新值存入individual word。
+
+**指令内存**： 高级命令被翻译成机器语言时，它变成binary words,代表机器的指令。指令存储在计算机指令内存中，计算机操作的每一步，CPU从指令中取出一个word，对其进行解码，从而执行指定的指令，然后计算下一条将要执行的指令。
+
+## 中央处理器CPU  
+
+CPU负责执行已被加载到指令内存中的指令。CPU主要通过三个主要硬件执行任务：算术逻辑单元(ALU),寄存器(registers)和控制单元(control unit)。
+
+**算术逻辑单元**：负责执行计算机中所有底层的算术操作和逻辑操作
+
+**寄存器**： 为了能够快速执行简单计算，将和运算相关的数据暂存在某个局部存储器中，每个CPU都配有一组高速寄存器，每个寄存器保存a single word。
+
+**控制单元**： 在指令执行之前，须对其进行解码，指令里面包含的信息向不同的硬件设备(ALU,寄存器,内存)发送信号，指使它们如何执行指令，指令的解码过程是通过某些控制单元完成。
+
+CPU操作：从内存中取一条指令，将其解码，执行该指令，取下一条指令。
+
+## 寄存器(CPU内的)   
+
+当CPU被指示去取内存中地址j的内容时，j从CPU传到RAM，RAM的直接访问逻辑选择地址为j的寄存器，RAM[j]的内容传回到CPU。CPU内部寄存器，能提供同样的数据访问功能，但没有来回的数据传递和寻址开销。CPU内部寄存器分为：  
+
+数据寄存器(Date registers): 为CPU提供短期记忆服务。如计算(a-b)*c时，首先记住(a-b)的值并记住它，这个结果可以暂时被存储在内存中，但更好办法是存储在CPU内数据寄存器中。
+
+寻址寄存器(Addressing registers) :为了进行读写，CPU需连续访问内存中的数据。这样必须确定被访问数据的word所在的内存地址。在某些情况下这个地址作为当前指令的一部分给出，而某些情况下它依赖于前面一条指令的执行结果。后者地址应被存储到某个寄存器，该寄存器内容在今后的操作中能够被当做内存的地址。
+
+程序计数寄存器(Program counter register) 执行程序时，CPU必须总是知道下一条指令内存中的地址，这个地址保存在程序计数器寄存器中。程序计数器内容被当作从指令内存中取指令的地址。
+
+## 输入和输出
+
+I/O映像基本思想：常见I/O设备的二进制仿真，使其对于CPU而言就像普通的内存段。每个I/O设备在内存都分配了独立的区域，作为内存映像。对于输入设备(键盘、鼠标)，内存映像能连续不断地反映设备的物理状态。对于输出设备(屏幕，扬声器),内存映像连续地驱动设备的物理状态。
+
+
+## 系统中信息传递  
+
+总的来说会有三种信息在系统中传递：
+
+数据(data),When we have a number that needs to be added, the number needs to be moved from some, from one place to another, from the data in memory to the registers, to the actual other systematic logic unit that's going to do something with them, and back。
+
+地址(address)The second type of information that we need to control is what's called addresses. What instruction are we actually executing now? What piece of data within the memory do we need to access now? These are in addresses. 
+
+控制(control)there is going to be a big bunch of wires that actually do all the control. That actually tell each part of the system what to do at this particular point and this is called the control. Sometimes all these three pieces of the, each one of these pieces of information is actually going to be implemented by wires, by a set of wires sometimes called a bus. 
+
+**ALU**：The ALU loads information from the Data bus and manipulates it using the Control bits.ALU need to have some information from the databus .And then feeds the output value back into the databus. ALU needs to know what kind of operation it does every time,according to the results of the arithmetic or logical operations that it does. It's going to be able to, have to be able to tell the other parts of the system what to do.
  
- 
- There is one other piece of infor, plus other type of pieces of information that ALB would, ALU will need to be connected to, this is the control bus. On one hand, of course the ALU needs to know what kind of operation it does every time. So it has to reget information from the control bus, specifying the type of operation that it does. And on the other hand, according to the results of the arithmetic or logical operations that it does. It's going to be able to, have to be able to tell the other parts of the system what to do.
- 
- The ALU loads information from the Data bus and manipulates it using the Control bits.
- 
- 
-  we store intermediate results in the registers. So we're going to be, have to be able to take data in, from the data bust into the registers and then also take data's from the register then feeds them back into the data bus. And of course where would they go from the data bus to other parts of the system such, as the ALU. So this is the first thing that of course we will have to connect all the registers to the data bus.
-  
-   some registers are used to specify addresses. The way we actually achieve indirect addressing into a RAM or jump into a ROM address, the way we do it is usually we put numbers, addresses into a register and then that specifies where we want to access
+
+**registers**: we store intermediate results in the registers. So we're going to be, have to be able to take data in, from the data bust into the registers and then also take data's from the register then feeds them back into the data bus. And of course where would they go from the data bus to other parts of the system such, as the ALU. 
+some registers are used to specify addresses. The way we actually achieve indirect addressing into a RAM or jump into a ROM address, the way we do it is usually we put numbers, addresses into a register and then that specifies where we want to access
+   
+**memory**: There are two pieces to the memory, there is a data memory and there is a program memory.
+
+ we're going to need to put the address of **the next program instruction** into the program memory because this is where we're taking our program instructions. We need to be able to put an address into the program memory address, and then get the instructions from there. Now the instructions that we get from the program memory, both may have data in it. we need to be able to actually take information from the next instruction, from the data output of the program memory. And feed it into the control bus. 
