@@ -14,7 +14,9 @@ categories: ["The Elements Of Computing Systems"]
 ## 冯诺依结构  
 冯诺伊曼体系结构的基础是一个中央处理单元(CPU),它与记忆设备(memory device)即内存进行交互，负责从输入设备(input device)接收数据,向输出设备(output device)发送数据。计算机内存不仅存储要进行操作的数据，还存储着指数数据。
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image90.png)
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image91.png)  
 
 ### 内存(Memory)
 
@@ -53,6 +55,8 @@ I/O映像基本思想：常见I/O设备的二进制仿真，使其对于CPU而�
 
 ## 系统中信息传递  
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image92.png)
+
 总的来说会有三种信息在系统中传递：
 
 数据(data),When we have a number that needs to be added, the number needs to be moved from some, from one place to another, from the data in memory to the registers, to the actual other systematic logic unit that's going to do something with them, and back。
@@ -69,4 +73,11 @@ some registers are used to specify addresses. The way we actually achieve indire
    
 **memory**: There are two pieces to the memory, there is a data memory and there is a program memory.
 
- we're going to need to put the address of **the next program instruction** into the program memory because this is where we're taking our program instructions. We need to be able to put an address into the program memory address, and then get the instructions from there. Now the instructions that we get from the program memory, both may have data in it. we need to be able to actually take information from the next instruction, from the data output of the program memory. And feed it into the control bus. 
+ we're going to need to put the address of **the next program instruction** into the program memory because this is where we're taking our program instructions. We need to be able to put an address into the program memory address, and then get the instructions from there. Now the instructions that we get from the program memory, both may have data in it. **we need to be able to actually take information from the next instruction, from the data output of the program memory. And feed it into the control bus. **
+ 
+ ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image93.png)
+ 
+ ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image94.png)
+ 
+ 
+ 
