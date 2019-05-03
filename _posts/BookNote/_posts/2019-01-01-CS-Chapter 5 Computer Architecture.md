@@ -161,7 +161,7 @@ ALU有两个输入口，其中一个入口数据有两个选择A register和memo
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image110.png)  
 
-Program Counter输出的address,将由C指令码的j决定。
+Program Counter输出的address,将由C指令码的j决定。 
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image111.png)  
 
