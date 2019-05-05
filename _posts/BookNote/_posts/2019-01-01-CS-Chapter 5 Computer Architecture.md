@@ -83,9 +83,9 @@ some registers are used to specify addresses. The way we actually achieve indire
  ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image93.png)   
  
  
-# 获取(Fetch)-执行(Execute)指令循环
+## 获取(Fetch)-执行(Execute)指令循环
  
-## Fetch    
+### Fetch    
 
 Program Counter将下一个要执行的指令address传入Program memory，在Program memory里下一个要执行的指令除了包含下一个要执行任务同时包含下下一个指令信息(we need to jump into a new location or we need to just increase and go to the next instruction)
 
@@ -94,7 +94,7 @@ Program Counter将下一个要执行的指令address传入Program memory，在Pr
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image96.png)
  
 
-## Execute   
+### Execute   
 
 Executie 意味获得指令，并执行指令
 
@@ -115,7 +115,11 @@ the instruction we already got from our fetch, that is now going to feed into th
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image101.png)
  
  
-# CPU   
+# Hack computer实现   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image113.png)  
+ 
+## CPU   
 
 CPU执行当前指令，计算下一个要执行的指令
 
@@ -171,9 +175,25 @@ Program Counter输出的address,将由C指令码 jjj 、ALU输出和reset决定�
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image112.png)  
 
-# Hack computer实现  
+## Memory 
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image113.png)  
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image114.png) 
+
+**RAM**  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image116.png) 
+
+**Screen**  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image117.png) 
+
+**Keyboard**    
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image118.png) 
+
+## ROM
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image115.png) 
 
 
 
