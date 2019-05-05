@@ -147,6 +147,7 @@ C指令：指令解码成4个方面，op-code，ALU control bit,Destination load
 
 16位C指令可以分解成"i xx a cccccc ddd jjj"，i表明了指令类型，a决定ALU是把A register的输入当作操作数还是把memory register的输入当作操作数，则c表明要执行什么计算
 
+如果是A指令，A register的输入是A指令后15位代表数值，如果是C指令，A register的输入是ALU的输出
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image107.png) 
 
