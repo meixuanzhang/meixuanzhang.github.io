@@ -139,7 +139,7 @@ CPU输入和输出
 
 16位指令索引是0到15，末尾是0，开头是15
 
-指令第一位表明指令的类型是A还是C，如果是A指令，后面15位被解释为数组，将数值存储在A寄存器,( 图中指令 seeks to load the value 3,001 into a register. )
+指令第一位0表示是A指令，1表示为C指令，如果是A指令，后面15位被解释为数值，将数值存储在A寄存器,( 图中指令 seeks to load the value 3,001 into a register. )
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image105.png) 
 
@@ -147,13 +147,15 @@ C指令：指令解码成4个方面，op-code，ALU control bit,Destination load
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image106.png) 
 
-将C指令分解成"i xx a cccccc ddd jjj"，i表明了指令类型，a决定ALU是把A register的输入当作操作数还是把memory register的输入当作操作数，则c表明要执行什么计算
+将C指令分解成"i xx a cccccc ddd jjj"，C指令i为1，a决定ALU是把A register的输入当作操作数还是把memory register的输入当作操作数，则c表明要执行什么计算
 
-如果是A指令，A register的值是A指令后15位代表数值，如果是C指令，A register的值将根据指令[5]的值决定是ALU的输出还是保持原来的值。
+如果是A指令，A register的值是A指令后15位代表数值，如果是C指令，A register的值将根据指令[5]的值决定，如果指令[5]=1，A register的值是ALU的输出否则保持原来的值。
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image107.png) 
 
-相同的ALU output可以输入三个不同的寄存器，每个寄存器是否被输入由指令码的d决定即Destination bit  
+相同的ALU output可以输入三个不同的寄存器，每个寄存器是否被输入由C指令码的d决定即Destination bit  
+
+上面已经介绍了ALU output输入A寄存器条件，对于D寄存器条件是C指令[4]=1，内存寄存器条件是C指令[3]=1
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image108.png) 
 
@@ -163,9 +165,15 @@ C指令：指令解码成4个方面，op-code，ALU control bit,Destination load
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image110.png)  
 
-Program Counter输出的address,将由C指令码 j 及ALU输出决定。 
+Program Counter输出的address,将由C指令码 jjj 、ALU输出和reset决定。 
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image111.png)  
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image112.png)  
+
+# Hack computer实现  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image113.png)  
+
+
 
