@@ -153,11 +153,11 @@ C指令：指令解码成4个方面，op-code，ALU control bit,Destination load
 
 将C指令分解成"i xx a cccccc ddd jjj"，C指令i为1，a决定ALU是把A register的输入当作操作数还是把memory register的输入当作操作数，则c表明要执行什么计算
 
-如果是A指令，A register的值是A指令后15位代表数值，如果是C指令，A register的值将根据指令[5]的值决定，如果指令[5]=1，A register的值是ALU的输出否则保持原来的值。
+如果是A指令，A register的值是A指令后15位代表数值，如果是C指令，A register的值将根据C指令[5]的值决定，如果C指令[5]=1，A register的值是ALU的输出否则保持原来的值。
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image107.png) 
 
-相同的ALU output可以输入三个不同的寄存器，每个寄存器是否被输入由C指令码的d决定即Destination bit  
+相同的ALU output可以输入三个不同的寄存器，每个寄存器是否被输入由C指令码的 ddd 决定即Destination bit  
 
 上面已经介绍了ALU output输入A寄存器条件，对于D寄存器条件是C指令[4]=1，内存寄存器条件是C指令[3]=1
 
