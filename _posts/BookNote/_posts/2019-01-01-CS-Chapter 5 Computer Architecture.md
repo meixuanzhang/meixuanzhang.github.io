@@ -163,7 +163,7 @@ C指令：指令解码成4个方面，op-code，ALU control bit,Destination load
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image110.png)  
 
-Program Counter输出的address,将由C指令码的j决定。 
+Program Counter输出的address,将由C指令码 j 及ALU输出决定。 
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image111.png)  
 
