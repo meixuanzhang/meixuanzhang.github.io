@@ -27,12 +27,12 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image122.png)  
 
-
-符号表(symbol table):在源代码中，每遇到一个新符号xxx，会在符号表中添加一行(xxx,nn)。根据规则约定，n是分配给对应符号的内存地址。符号表建立完成后，利用它来将程序翻译成无符号版本。
+**符号表(symbol table)**:在源代码中，每遇到一个新符号xxx，会在符号表中添加一行(xxx,nn)。根据规则约定，n是分配给对应符号的内存地址。符号表建立完成后，利用它来将程序翻译成无符号版本。
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image124.png)
 
-sometimes we can jump into a label before the label was actually defined. This is called a forward reference. (label在被定义前使用了)
+
+**forward reference**：sometimes we can jump into a label before the label was actually defined. This is called a forward reference. (label在被定义前使用了)
 
 解决方法：  
 
