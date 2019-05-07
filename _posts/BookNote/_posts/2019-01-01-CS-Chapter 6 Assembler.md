@@ -19,7 +19,7 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image123.png)
 
-**基本汇编编译器逻辑**
+**Hack汇编编译器逻辑**
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image120.png)  
 
@@ -36,8 +36,55 @@ categories: ["The Elements Of Computing Systems"]
 
 解决方法：  
 
-One way, which is usually a little bit more complicated, is to basically remember that I've seen the labels, and I don't know where it is yet. Keep it in a side table. And when I actually get into the definition of the correct address, fix it back.
+One way,is to basically remember that I've seen the labels, and I don't know where it is yet. Keep it in a side table. And when I actually get into the definition of the correct address, fix it back.
 
 another way, The first pass keeps the labels and variables in a symbol table. and the second pass of the assembler translates all of the commands,
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image125.png)
+
+#  The Assembly Process - Handling Instructions
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image126.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image127.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image128.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image129.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image130.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image131.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image132.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image133.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image134.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image135.png)  
+
+#  The Assembly Process - Handling Symbols
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image136.png)  
+
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image137.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image138.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image139.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image140.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image144.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image141.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image142.png)  
+
+#Developing a Hack Assembler
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image143.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image145png) 
