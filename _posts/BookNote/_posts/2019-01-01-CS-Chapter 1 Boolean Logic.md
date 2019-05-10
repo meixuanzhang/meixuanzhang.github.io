@@ -134,3 +134,6 @@ Computer hardware is typically designed to operate on multi-bit arrays called "b
 注意之间的区别：一个输入变量可以是多位或一位的，输入变量是多位则是Multi-Bit，一个芯片输入可以是多个，在基本逻辑门基本输入个数下扩展成多个输入则是Multi-way
 
 
+**整个The Elements Of Computing Systems笔记课程来是coursera的Build a Modern Computer from First Principles Part I和Part II**
+
+
