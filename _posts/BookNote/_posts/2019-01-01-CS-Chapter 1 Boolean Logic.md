@@ -5,7 +5,7 @@ date:   2019-03-23
 categories: ["The Elements Of Computing Systems"]
 ---
 
-**整个The Elements Of Computing Systems笔记课程来是coursera的Build a Modern Computer from First Principles Part I和Part II**
+**整个The Elements Of Computing Systems笔记课程来自coursera的Build a Modern Computer from First Principles Part I和Part II**
 
 # 布尔代数(Boolean Algebra)  
 
