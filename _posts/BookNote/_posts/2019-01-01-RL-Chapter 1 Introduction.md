@@ -69,7 +69,7 @@ Methods for solving reinforcement learning problems that use models and planning
 1、Reinforcement learning relies heavily on the concept of state ——as input to the policy and value function(state是策略和回报函数的输入),
 and as both input to and output from the model(state是环境模型的输入和输出).  
 
-2、we can think of the state as a signal conveying to the agent some sense of "how the environment is" at a particular time.We do not address the issues of constructing, changing, or learning the state signal in this book.本书将状态认为是一种信号传送给agent，让agent感知现在环境怎样，没有说到如果构建、改变、学习状态信号   
+2、we can think of the state as a signal conveying to the agent some sense of "how the environment is" at a particular time.We do not address the issues of constructing, changing, or learning the state signal in this book.本书将状态认为是一种信号传送给agent，让agent感知现在环境怎样，没有讨论构建、改变、学习状态信号的问题。   
 
 In other words, our main concern is not with designing the state signal, but with deciding what action to take as a function of whatever state signal is available.主要关注设计任何状态下应采取什么行动的函数   
 
