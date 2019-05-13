@@ -40,6 +40,11 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image8.png)  
 
+VM语言包含4种类型的命令
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image14.png) 
+
+
 **堆栈的结构和操作**
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image9.png)  
@@ -48,7 +53,6 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image11.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image14.png) 
 
 **堆栈的算术命令**
 
