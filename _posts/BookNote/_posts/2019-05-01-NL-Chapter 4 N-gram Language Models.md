@@ -55,11 +55,43 @@ N-gram model的MLE参数估计为:
 
 $$P(w_{n}\mid w_{n-N+1}^{n-1})=\frac{C(w_{n-N+1}^{n-1}w_{n})}{C(w_{n-N+1}^{n-1})}$$  
 
-这个比值称为relative frequency。
+这个比值称为相对频率relative frequency。
 
 **Estimating the probability as the relative frequency is the maximum likelihood estimate (or MLE ), because this value makes the observed data maximally likely. **
 
 术语：  
 
-语料库：corpora,单数形式是corpus   
-词汇容量的大小：V，也可以用type或token  
+语料库：corpora,单数形式是corpus    
+type:语料库中不同单数的数目,或者是词汇容量的大小V  
+token:语料库全部单词数目，记为N    
+
+
+
+N-gram模型依赖训练于训练语料库，训练模型的上下文越长(即N值越大)，句子的连贯性就越好。如果训练集合测试集语料库之间差异非常大，用统计模型预测是完全没有用的。  
+
+由于V无法包括所有的单词，因此会出现unknown word(未知词)，可以按下面方式处理未知词：  
+
+1、选择词汇：这些词汇是事先确定好的词表  
+2、转换:把训练集中没有出现在V词表的单词转换成<UNK>  
+3、估计:像计算其他常规词一样计算<UNK>在训练集中的概率   
+  
+# Evaluating(评估) Language Models 
+
+评估语言模型性能最好的办法是把语言模型嵌入到应用中取，并评估这个应用的总体性能。这种端对端的评估称为外在评估(extrinsic evaluation).  
+
+内在评估(intrinsic evaluation)就是一种与任何应用无关的模型评估方法。
+
+困惑度(perplexit，pp)是评估N-gram模型的一种常见的内在评估度量指标。对于测试集W=(w_{1}..w_{N}),困惑度计算： 
+
+$$
+PP(W)=P(w_{1}w{2}...w{N})^{-\frac{1}{N}}\\
+=sqrt[N]{\frac{1}{P(w_{1}w{2}...w{N})}}\\
+=sqrt[N]{\prod_{i=1}^N \frac{1}{P(w_{i}\mid w{1}...w{i-1})}}\\
+=sqrt[N]{\prod_{i=1}^N \frac{1}{P(w_{i}\mid w{i-1})}} \ biggram 
+$$
+
+
+
+
+
+
