@@ -51,6 +51,8 @@ VM语言包含4种类型的命令
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image10.png)  
 
+存储器存取命令，pop会将stack顶端内容删除，同时存进对应的存储器：  
+
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image11.png)  
 
 
@@ -65,3 +67,28 @@ VM语言包含4种类型的命令
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image15.png)  
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image16.png)  
+
+# VM(虚拟机代码)  
+
+左边是高级语言代码，右边是VM代码，VM代码需要保留对象的类型，否则会出错  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image18.png)  
+
+不同类型变量使用不同的存储器存储，修改VM代码
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image19.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image20.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image21.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image22.png)  
+
+汇编语言：
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image23.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image24.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image25.png)  
+
