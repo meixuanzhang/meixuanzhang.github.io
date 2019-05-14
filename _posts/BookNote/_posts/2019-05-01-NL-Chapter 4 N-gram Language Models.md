@@ -21,7 +21,7 @@ C表示出现频次
 $$
 P(w_{1}^{n})=P(w_{1},w_{2}..w_{n})\\
 =P(w_{1})P(w_{2}\mid w_{1})P(w_{3}\mid w_{1}^2)..P(w_{n}\mid w_{1}^{n-1})\\
-=\prod_{k=1}^nP(W_{k}\mid w_{1}^{k-1})
+=\prod_{k=1}^nP(w_{k}\mid w_{1}^{k-1})
 $$
 
 如果计算基于条件概率时，不是考虑全部的history h,而只是考虑最接近该单词的N个单词，从而近似逼近该history h，这就是N-gram模型。  
@@ -33,7 +33,7 @@ $$
 Example: 只通过前面一个单词的条件概率$$P(w_{n}\mid w_{n-1})$$来逼近$$P(w_{n}\ mid w_{1}^{n-1})$$,这是biggram model,。
 
 $$
-P(w_{n}\ mid w_{1}^{n-1})\approx P(w_{n}\mid w_{n-1})  \\
+P(w_{n}\mid w_{1}^{n-1})\approx P(w_{n}\mid w_{n-1})  \\
 P(the\mid its\ water \ is \ so \ transparent \ that )\approx  P(the\mid that ) 
 $$
 
@@ -42,7 +42,7 @@ $$
 使用biggram计算单词序列的概率：  
 
 $$
-P(w_{1}^n)=\prod_{k-1}^n P(w_{k}\mid w_{k-1})
+P(w_{1}^n)=\prod_{k=1}^n P(w_{k}\mid w_{k-1})
 $$
 
 估计$$P(w_{k}\mid w_{k-1})$$最简单最直观的方法称为最大似然估计(maximum likelihood estimate,MLE),biggram model的MLE参数估计为:   
@@ -62,14 +62,14 @@ $$P(w_{n}\mid w_{n-N+1}^{n-1})=\frac{C(w_{n-N+1}^{n-1}w_{n})}{C(w_{n-N+1}^{n-1})
 术语：  
 
 语料库：corpora,单数形式是corpus    
-type:语料库中不同单数的数目,或者是词汇容量的大小V  
+type:语料库中不同单数的数目,或者是词汇容量的大小V   
 token:语料库全部单词数目，记为N    
 
 
 
 N-gram模型依赖训练于训练语料库，训练模型的上下文越长(即N值越大)，句子的连贯性就越好。如果训练集合测试集语料库之间差异非常大，用统计模型预测是完全没有用的。  
 
-由于V无法包括所有的单词，因此会出现unknown word(未知词)，可以按下面方式处理未知词：  
+由于V无法包括所有的单词，因此会出现unknown word(未知词)，词表以外的词，可以按下面方式处理未知词：  
 
 1、选择词汇：这些词汇是事先确定好的词表  
 2、转换:把训练集中没有出现在V词表的单词转换成<UNK>  
@@ -81,17 +81,47 @@ N-gram模型依赖训练于训练语料库，训练模型的上下文越长(即N
 
 内在评估(intrinsic evaluation)就是一种与任何应用无关的模型评估方法。
 
-困惑度(perplexit，pp)是评估N-gram模型的一种常见的内在评估度量指标。对于测试集W=(w_{1}..w_{N}),困惑度计算： 
+困惑度(perplexit，pp)是评估N-gram模型的一种常见的内在评估度量指标，信息越多(N越大)，困惑度越低。对于测试集$$W=(w_{1}..w_{N})$$,困惑度计算： 
 
 $$
 PP(W)=P(w_{1}w{2}...w{N})^{-\frac{1}{N}}\\
-=sqrt[N]{\frac{1}{P(w_{1}w{2}...w{N})}}\\
-=sqrt[N]{\prod_{i=1}^N \frac{1}{P(w_{i}\mid w{1}...w{i-1})}}\\
-=sqrt[N]{\prod_{i=1}^N \frac{1}{P(w_{i}\mid w{i-1})}} \ biggram 
+=\sqrt[N]{\frac{1}{P(w_{1}w{2}...w{N})}}\\
+=\sqrt[N]{\prod_{i=1}^N \frac{1}{P(w_{i}\mid w{1}...w{i-1})}}\\
 $$
 
+计算biggram 模型中W的困惑度： 
+
+$$PP(W) =\sqrt[N]{\prod_{i=1}^N \frac{1}{P(w_{i}\mid w{i-1})}}  $$   
+
+在计算概率时，有必要把句子开头标记<s>和结尾标记</s>包括进来。但在词例token N计算总的计数中只包括结尾标记</s>.
+
+# Smoothing(平滑)  
+
+困惑度要求计算每一个测试句子的概率，但如果一个N-gram模型中测试集中有单词从未在训练集中出现过(这里指的不是unknown word)，则涉及这个单词的句子概率最大似然估计将为0.
+
+因此需要修改最大似然估计以计算N-gram 模型中的概率。
+
+##  Laplace Smoothing  
+
+**add-1 smoothing**  
+
+计算单词$$w_{i}$$概率,$$c_{i}$$是单词计数：
+
+$$
+P_{Laplace}(w_{i})=\frac{c_{i}+1}{N+V}
+$$
+
+可以使用调整计数$$c*$$来描述平滑算法对分子的影响：  
+
+$$
+{c*}_{i}=(c_{i}+1)\frac{N}{N+V} 
+$$
+
+这个$$c*$$可以使用N归一化，然后转变为概率$${p*}_{i}$$
 
 
 
+add-1 smoothing,
+add-k smoothing, stupid backoff, and Kneser-Ney smoothing.
 
 
