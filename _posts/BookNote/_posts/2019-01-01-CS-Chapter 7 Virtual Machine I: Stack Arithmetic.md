@@ -111,7 +111,7 @@ p变量存储的值是地址，$$*p$$指向该地址存储的内容
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image30.png)  
 
-local在RAM存储位置存储在RAM[1]上，pop local 2 指的是local当前存储位置后移两位     
+当前local在RAM的存储位置存储在RAM[1]上，pop local 2 指的是local在RAM的当前存储位置后移两位     
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image31.png)
 
