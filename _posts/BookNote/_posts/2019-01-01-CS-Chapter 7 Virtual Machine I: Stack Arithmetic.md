@@ -30,7 +30,7 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image6.png)  
 
-为了只写一次编译器，使用虚拟机，JVM是将字节码(bytecode)翻译成目标平台的对应代码的程序，通过JVM根据不同平台对虚拟机程序进行翻译
+为了只写一次编译器compiler，使用虚拟机，JVM是将字节码(bytecode)翻译成目标平台的对应代码的程序，通过JVM根据不同平台对虚拟机程序进行翻译(不同平台有不同的JVM)
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image7.png)  
 
@@ -86,9 +86,68 @@ VM语言包含4种类型的命令
 
 汇编语言：
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image23.png)  
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image23.png) 
+
+p变量存储的值是地址，$$*p$$指向该地址存储的内容
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image24.png)   
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image25.png)  
+堆栈的实现,堆栈指针指向的位置放在RAM的第0位,从VM代码到汇编代码：   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image25.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image26.png)  
+
+# 存储器分割  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image27.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image28.png)   
+
+以local为例：  
+
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image29.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image30.png)  
+
+local在RAM存储位置存储在RAM[1]上，pop local 2 指的是local当前存储位置后移两位     
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image31.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image32.png)
+
+
+the implementation of this constant is trivial because this is a truly virtual segment(虚拟分割). It doesn't really exist. 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image33.png)  
+
+static segment 会映射到RAM特定某一块内存，static变量会根据其在代码出现的先后依次映射在RAM上，这里RAM的static映射区域是从RAM[16]开始到RAM[25]，注意static变量在汇编语言上的代码形式    
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image34.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image35.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image36.png) 
+
+临时存储： 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image37.png)
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image38.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image40.png)  
+
+when the compiler translates a method, it has to remember the base addresses of the this and that segments. These are the segments that represent the current object and the current array that the method may be processing. 
+
+pointer的值只能取0或1   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image41.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image42.png)  
+
+#   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image43.png)  
+
 
