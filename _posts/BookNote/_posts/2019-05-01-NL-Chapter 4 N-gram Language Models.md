@@ -103,7 +103,7 @@ $$PP(W) =\sqrt[N]{\prod_{i=1}^N \frac{1}{P(w_{i}\mid w{i-1})}}  $$
 
 ##  Laplace Smoothing  
 
-**add-1 smoothing**  
+**Add-1 smoothing**  
 
 计算单词$$w_{i}$$概率,$$c_{i}$$是单词计数：
 
@@ -137,9 +137,38 @@ $$
 c*(w_{n-1}w_{n})=[C(w_{n-1}w_{n})+1]\frac{C(w_{n-1})}{C(w_{n-1})+V} 
 $$ 
 
+对比以下图，单词计数和概率之所以发生这样大的变化，是因为很多的概率量被转移到为零的那些项目当中去了。如果我们不是加一而是加上一个分数，就能够使转移的概率量变小一些，但是这样的方法要求动态选项$$\delta$$,其结果是很多计数出现不恰当的折扣，得到的计数往往带有很糟糕的偏差。
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image1.png)  
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image2.png)   
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image3.png)  
+
+**Add-k smoothing**  
+
+$$
+P_{Add-k}(w_{n}\mid w_{n-1})=\frac{C(w_{n-1}w_{n})+k}{C(w_{n-1})+kV}
+$$
 
 
-add-1 smoothing,
-add-k smoothing, stupid backoff, and Kneser-Ney smoothing.
+# Backoff回退法 and Interpolation插值法 
 
+回退：当阶数较高的N-gram存在零计数时，需要回退到阶数较低的N-gram进行计数。
+插值：将不同阶数的N-gram概率估计混合起来。
 
+例如：线性插值法估计$$P(w_{n}\mid w_{n-2}w_{n-1})$$
+
+$$
+P(w_{n}\mid w_{n-2}w_{n-1})=\lambda_{1}P(w_{n}\mid w_{n-2}w_{n-1})+\lambda_{2}P(w_{n}\mid w_{n-1})+\lambda_{3}P(w_{n})\\
+\sum_{i}\lambda_{i}=1
+$$
+
+如果trigram的计数时基于biggram计数的，biggram有精确计数，可以使trigram的$$\lambda$$值更高，插值时给trigram更高的权重：   
+
+$$
+P(w_{n}\mid w_{n-2}w_{n-1})=\lambda_{1}(w_{n-2}^{n-1})P(w_{n}\mid w_{n-2}w_{n-1})+\lambda_{2}(w_{n-2}^{n-1})P(w_{n}\mid w_{n-1})+\lambda_{3}(w_{n-2}^{n-1})P(w_{n})
+$$
+
+$$\lambda$$值通过保留语料库学习。保留语料库是一个附加的训练语料库，用来设置参数的。
+$$
