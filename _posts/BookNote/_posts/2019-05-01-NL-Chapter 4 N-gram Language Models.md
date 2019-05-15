@@ -177,10 +177,10 @@ $$\lambda$$值通过保留语料库学习。保留语料库是一个附加的训
 回退：当阶数较高的N-gram存在零计数时，需要回退到阶数较低的N-gram进行计数。
 
 $$
-P_{BO)(w_{n}\mid w_{n-N+1}^{n-1})=\left\{
+P_{BO}(w_{n}\mid w_{n-N+1}^{n-1})=\left\{
  \begin{matrix}
   P*(w_{n}\mid w_{n-N+1}^{n-1}),if \ C(w_{n-N+1}^n)>0\\
-  \alpha (w_{n-N+1}^{n-1})P_{BO}(w_{n}\mid w_{n-N+1}^{n-1})\\
+  \alpha (w_{n-N+1}^{n-1})P_{BO}(w_{n}\mid w_{n-N+2}^{n-1})\\
   \end{matrix}
   \right\} 
 $$
