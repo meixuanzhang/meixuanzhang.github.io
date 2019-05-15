@@ -206,5 +206,5 @@ $$
 $$
 
 $$
-P_{CONTINUATION}(w_{i})=\frac{|\{w_{i}:C(w_{i-1}w_{i})>0\}|}{\sum_{w_{i}}|\{w_{i}:C(w_{i-1}w_{i})>0\}|}
+P_{CONTINUATION}(w_{i})=\frac{|\{w_{i-1}:C(w_{i-1}w_{i})>0\}|}{\sum_{w_{i}}|\{w_{i-1}:C(w_{i-1}w_{i})>0\}|}
 $$
