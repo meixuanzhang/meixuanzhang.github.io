@@ -152,9 +152,8 @@ P_{Add-k}(w_{n}\mid w_{n-1})=\frac{C(w_{n-1}w_{n})+k}{C(w_{n-1})+kV}
 $$
 
 
-# Backoff回退法 and Interpolation插值法 
+#and Interpolation插值法 
 
-回退：当阶数较高的N-gram存在零计数时，需要回退到阶数较低的N-gram进行计数。
 插值：将不同阶数的N-gram概率估计混合起来。
 
 例如：线性插值法估计$$P(w_{n}\mid w_{n-2}w_{n-1})$$
@@ -171,4 +170,17 @@ P(w_{n}\mid w_{n-2}w_{n-1})=\lambda_{1}(w_{n-2}^{n-1})P(w_{n}\mid w_{n-2}w_{n-1}
 $$
 
 $$\lambda$$值通过保留语料库学习。保留语料库是一个附加的训练语料库，用来设置参数的。
+
+
+# Backoff回退法 
+
+回退：当阶数较高的N-gram存在零计数时，需要回退到阶数较低的N-gram进行计数。
+
+$$
+P_{BO)(w_{n}\mid w_{n-N+1}^{n-1})=\left\{
+ \begin{matrix}
+  P*(w_{n}\mid w_{n-N+1}^{n-1}),if \ C(w_{n-N+1}^n)>0\\
+  \alpha (w_{n-N+1}^{n-1})P_{BO}(w_{n}\mid w_{n-N+1}^{n-1})\\
+  \end{matrix}
+  \right\} 
 $$
