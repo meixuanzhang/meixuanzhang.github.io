@@ -238,7 +238,7 @@ $$
 H(w_{1},w_{2}..w_{n})=-\sum_{W_{1}^n\in L}P(W_{1}^n)logP(W_{1}^n)
 $$
 
-熵率(entropy rate)[每个单词的熵]：
+熵率(entropy rate)[就像每个单词的熵]：
 
 $$
 \frac{1}{n}H(W_{1}^n)=-\frac{1}{n} \sum_{W_{1}^n\in L}P(W_{1}^n)logP(W_{1}^n)
