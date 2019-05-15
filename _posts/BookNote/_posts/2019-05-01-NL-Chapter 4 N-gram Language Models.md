@@ -197,8 +197,14 @@ Kneser-Ney 算法根源是一种称为绝对折扣(absolute discounting)的打�
 
 $$
 P_{KN}(w_{i}\mid w_{i-n+1}^{i-1})=\frac{max(C(w_{i-n+1}^i)-d,0)}{C(w_{i-n+1}^{i-1})}+\lambda (w_{i-n+1}^{i-1})P_{KN}(w_{i}\mid w_{i-n+2}^{i-1})\\
+
+P_{KN}(w_{i}\mid w_{i-1})=frac{max(C(w_{i-1}w_{i})-d,0)}{C(w_{i-1})}+\lambda (w_{i-1})P_{CONTINUATION}(w_{i})
 $$
 
 $$
 \lambda (w_{i-n+1}^{i-1})=\frac{d}{\sum_{w_{i}}C(w_{i-n+1}^{i-1}w_{i})}|\{w_{i}:C(w_{i-n+1}^{i-1}w_{i})>0\}|
+$$
+
+$$
+P_{CONTINUATION}(w_{i})=\frac{|\{w_{i}:C(w_{i-1}w_{i})>0\}|}{\sum_{w_{i}}|\{w_{i}:C(w_{i-1}w_{i})>0\}|}
 $$
