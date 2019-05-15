@@ -184,3 +184,7 @@ P_{BO}(w_{n}\mid w_{n-N+1}^{n-1})=\left\{
   \end{matrix}
   \right\} 
 $$
+
+$$
+P*(w_{n}\mid w_{n-N+1}^{n-1})=\frac{c*(w_{n-N+1}^{n-1})}{c(w_{n-N+1}^{n-1})}
+$$
