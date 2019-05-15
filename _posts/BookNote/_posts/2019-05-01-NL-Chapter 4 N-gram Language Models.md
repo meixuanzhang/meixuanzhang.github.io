@@ -180,7 +180,7 @@ $$
 P_{BO}(w_{n}\mid w_{n-N+1}^{n-1})=\left\{
  \begin{matrix}
   P*(w_{n}\mid w_{n-N+1}^{n-1}),if \ C(w_{n-N+1}^n)>0\\
-  \alpha (w_{n-N+1}^{n-1})P_{BO}(w_{n}\mid w_{n-N+2}^{n-1})\\
+  \alpha (w_{n-N+1}^{n-1})P_{BO}(w_{n}\mid w_{n-N+2}^{n-1}),otherwise\\
   \end{matrix}
   \right\} 
 $$
@@ -188,3 +188,9 @@ $$
 $$
 P*(w_{n}\mid w_{n-N+1}^{n-1})=\frac{c*(w_{n-N+1}^{n-1})}{c(w_{n-N+1}^{n-1})}
 $$
+
+# Kneser-Ney Smoothing 
+
+Kneser-Ney 算法根源是一种称为绝对折扣(absolute discounting)的打折方法。
+
+
