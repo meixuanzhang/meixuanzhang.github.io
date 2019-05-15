@@ -30,7 +30,7 @@ $$
 
 这种计算单词序列联合概率的模型又称为**语言模型(language model),简称LM**  
 
-Example: 只通过前面一个单词的条件概率$$P(w_{n}\mid w_{n-1})$$来逼近$$P(w_{n}\ mid w_{1}^{n-1})$$,这是biggram model,。
+Example: 只通过前面一个单词的条件概率$$P(w_{n}\mid w_{n-1})$$来逼近$$P(w_{n}\mid w_{1}^{n-1})$$,这是biggram model,。
 
 $$
 P(w_{n}\mid w_{1}^{n-1})\approx P(w_{n}\mid w_{n-1})  \\
