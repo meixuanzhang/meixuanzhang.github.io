@@ -26,7 +26,6 @@ $$\theta=(b,d,W,U,H,C)$$:模型参数
 $$R(\theta)$$：惩罚项   
 $$\varepsilon$$:学习率  
 
-![_config.yml]({{ site.baseurl }}/images/NlpPaper/image1.png)
 
 **模型函数:**  
 
@@ -39,7 +38,10 @@ $$f(w_{t}..w_{t-n+1})=P(w_{t}\mid w_{1}^{t-n+1})\approx P(w_{t}\mid w_{1}^{t-1})
 $$f(i,w_{t-1},..,.w_{t-n+1})=g(i,C(w_{t-1}),..C_{w_{t-n+1}})$$ 
 
 
-整个神经网络计算如下： 
+**整个神经网络计算如下：** 
+
+
+![_config.yml]({{ site.baseurl }}/images/NlpPaper/image1.png)
 
 网络以前n个单词的distributed feature vectors作为输入,经过隐藏层,跳跃连接及softmax输出层，获得每个单词的条件概率。
 
