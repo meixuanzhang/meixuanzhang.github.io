@@ -257,4 +257,6 @@ $$
 
 $$
 H(L)=-\mathop{lim}_{n\to \infty} \frac{1}{n} logP(w_{1},w_{2}..w_{n})
-$$
+$$  
+
+
