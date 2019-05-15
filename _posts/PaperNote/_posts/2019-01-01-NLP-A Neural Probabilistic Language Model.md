@@ -21,9 +21,12 @@ $$w_{1},..w_{T}$$:长度为T的训练序列，$$w_{t}\in V$$
 $$w_{1}^{t-1}=(w_{1}...w_{t-1})$$  
 $$C:$$distributed representation矩阵，维度为$$|V|*m,C(i)\in R^m$$表示V词汇表里第i个单词在C的映射向量，即distributed feature vectors 
 
-$$\varepsilon$$:学习率  
-$$\theta=(b,d,W,U,H,C)$$:参数    
+
+$$\theta=(b,d,W,U,H,C)$$:模型参数    
 $$R(\theta)$$：惩罚项   
+$$\varepsilon$$:学习率  
+
+![_config.yml]({{ site.baseurl }}/images/NlpPaper/image1.png)
 
 **模型函数:**  
 
@@ -38,6 +41,12 @@ $$f(i,w_{t-1},..,.w_{t-n+1})=g(i,C(w_{t-1}),..C_{w_{t-n+1}})$$
 
 整个神经网络计算如下： 
 
+网络以前n个单词的distributed feature vectors作为输入,经过隐藏层,跳跃连接及softmax输出层，获得每个单词的条件概率。
+
+H是隐藏层参数，维度为(h*(n-1)m)，d是隐藏层的bias,维度为(|V|)，tanh是隐藏层激活函数。   
+U,W是输出层的参数，维度分别为(|V|*h)，(|V|*(n-1)m)，b是输出层的bias，维度为(|V|)。   
+当W全为0时则不存在跳跃连接。  
+
 $$
 x=(C(w_{t-1}),C(w_{t-2}),..C(w_{t-n+1}))\\
 y=b+Wx+Utanh(d+Hx)\\
@@ -45,23 +54,6 @@ P(w_{t}\mid w_{t-1}..w_{t-n+1})=\frac{e^{y_{w_{t}}}}{\sum_{i}e^{y_{i}}}
 $$
 
 
-网络以前n个单词的distributed feature vectors作为输入,经过隐藏层,跳跃连接及softmax输出层，获得每个单词的条件概率。
-
-H是隐藏层参数，维度为(h*(n-1)m)，d是隐藏层的bias,维度为(|V|)，tanh是隐藏层激活函数。   
-U,W是输出层的参数，维度分别为(|V|*h)，(|V|*(n-1)m)，b是输出层的bias，维度为(|V|)。   
-当W全为0时则不存在跳跃连接。   
-
-损失函数：  
-
-$$
-L=\frac{1}{T}\sum_{t}logf(w_{t}..w_{t-n+1};\theta)+R(\theta)
-$$
-
-参数更新：
-
-$$
-\theta \gets \theta +\varepsilon\frac{\partial logP(w_{t}\mid w_{t-1},..w_{t-n+1})}{\partial \theta}
-$$
 
 
 
