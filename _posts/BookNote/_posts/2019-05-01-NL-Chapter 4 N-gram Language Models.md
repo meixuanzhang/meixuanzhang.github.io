@@ -251,3 +251,10 @@ $$
 H(L)=-\mathop{lim}_{n\to \infty} \frac{1}{n} H(w_{1},w_{2}..w_{n})\\
 =-\mathop{lim}_{n\to \infty} \frac{1}{n}\sum_{W \in L}P(w_{1},w_{2}..w_{n})logP(w_{1},w_{2}..w_{n})
 $$
+
+
+根据Shannon-McMillan-Breiman定理：
+
+$$
+H(L)=-\mathop{lim}_{n\to \infty} \frac{1}{n} logP(w_{1},w_{2}..w_{n})
+$$
