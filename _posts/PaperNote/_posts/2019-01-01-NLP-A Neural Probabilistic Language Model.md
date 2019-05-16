@@ -17,8 +17,9 @@ categories: 深度学习
 **Notation:**  
 
 V：词汇表  
-$$w_{1},..w_{T}$$:长度为T的训练序列，$$w_{t}\in V,w_{1}^{t-1}=(w_{1}...w_{t-1})$$  
-$$C:$$distributed representation矩阵，维度为$$|V|*m,C(i)\in R^m$$表示V词汇表里第i个单词在C的映射向量，即distributed feature vectors 
+$$w_{1},..w_{T}$$:训练集，一个长度为T的序列，$$w_{t}\in V$$  
+$$w_{1}^{t-1}=(w_{1}...w_{t-1})$$，训练词$$w_{t}$$所在句子其前t个词    
+$$C:$$distributed representation矩阵，维度为$$|V|*m,C(i)\in R^m$$表示V词汇表里第i个单词在C的映射向量，即distributed feature vectors   
 
 
 $$\theta=(b,d,W,U,H,C)$$:模型参数    
