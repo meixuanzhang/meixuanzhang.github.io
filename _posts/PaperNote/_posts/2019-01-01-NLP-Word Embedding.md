@@ -23,26 +23,37 @@ word2vector总共有两种类型，分别是CBOW(Continuous Bag-of-Words)、Skip
 Notation: 
 
 V:词汇表  
-$$W:$$前Embedding matrix,维度$$|V|*l$$  
-$$U:$$后Embedding matrix,维度$$|V|*l$$  
+$$W:$$前Embedding matrix,维度$$N*|V|$$  
+$$U:$$后Context matrix,维度$$|V|*N$$  
 
-假设给定一个训练序列$$w_{1},..w_{T}$$,其目标函数为
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image1.png)
+
+假设给定一个训练序列$$w_{1},..w_{T}$$,$$w_{i}$$是行向量，其目标函数为
 
 $$L=\frac{1}{T}\sum_{t=k}^{T-k}logP(w_{t}\mid w_{t-k}...w_{t+k})$$
 
-$$P(w_{t}\mid w_{t-k}...w_{t+k})=\frac{e^{y_{w_{t}}}}{\sum_{i}e^{y_{i}}}$$
+$$P(w_{t}\mid w_{t-k}...w_{t+k})=\frac{e^{y_{w_{t}}}}{\sum_{j}e^{y_{j}}}$$
 
 $$y=b+Uh(w_{t-k}...w_{t+k};W)$$
 
-y是向量维度为|V|  
+y是行向量维度为|V|  
 
-h是$$w_{t-k}...w_{t+k}$$在W对应vector的均值
+h输出是$$w_{t-k}...w_{t+k}$$在W对应vector的均值，是行向量。 
 
 
-## Skip-gram模型架构
+## Skip-gram模型架构   
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image3.png)  
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image2.png)  
 
 # doc2vec模型
 
-# Glove模型
+# Glove模型  
+
+
+
+参考：  
+[Learning Word Embedding](https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html)
 
 
