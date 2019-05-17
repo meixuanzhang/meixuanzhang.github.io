@@ -48,7 +48,7 @@ $$f(i,w_{t-1},..,.w_{t-n+1})=g(i,C(w_{t-1}),..C(w_{t-n+1}))$$
 H是隐藏层参数，维度为$$(h*(n-1)m)$$，d是隐藏层的bias,维度为$$(|V|)$$，tanh是隐藏层激活函数。   
 U,W是输出层的参数，维度分别为$$(|V|*h)，(|V|*(n-1)m)$$，b是输出层的bias，维度为$$(|V|)$$。   
 当W全为0时则不存在跳跃连接。  
-$$y_{i}$$表示非标准化的log概率。   
+$$y_{i}$$表示单词i非标准化的log概率。   
 
 $$
 x=(C(w_{t-1}),C(w_{t-2}),..C(w_{t-n+1}))\\
@@ -56,6 +56,17 @@ y=b+Wx+Utanh(d+Hx)\\
 P(w_{t}\mid w_{t-1}..w_{t-n+1})=\frac{e^{y_{w_{t}}}}{\sum_{i}e^{y_{i}}}
 $$
 
+假设训练数据集为$$w_{1},..w_{T}$$序列,损失函数为(最大化)： 
+
+$$
+L=\frac{1}{T}\sum_{t}logf(w_{t}..w_{t-n+1};\theta)+R(\theta)
+$$
+
+随机梯度下降概率对参数更新：  
+
+$$
+\theta \gets \theta +\varepsilon\frac{\partial logP(w_{t}\mid w_{t-1},..w_{t-n+1})}{\partial \theta}
+$$
 
 
 
