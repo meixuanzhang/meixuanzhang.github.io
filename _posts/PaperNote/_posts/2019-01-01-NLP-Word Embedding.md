@@ -33,7 +33,7 @@ $$W:$$Embedding matrix,维度$$N*V$$
 $$U:$$Embedding matrix,维度$$V*N$$   
 $$k:$$是窗口大小   
 
-假设给定一个训练序列$$w_{1},..w_{T}$$,$$w_{i}$$是行向量，其目标函数为
+假设给定一个训练序列$$w_{1},..w_{T}$$,$$w_{i}$$是onehot行向量，其目标函数为
 
 $$L=\frac{1}{T}\sum_{t=k}^{T-k}logP(w_{t}\mid w_{t-k}...w_{t+k})$$
 
@@ -43,7 +43,11 @@ $$y=b+Uh(w_{t-k}...w_{t+k};W)$$
 
 y是行向量维度为V  
 
-h输出是$$w_{t-k}...w_{t+k}$$在W对应vector的均值，是行向量。 
+h输出是$$w_{t-k}...w_{t+k}$$在W Embedding matrix 对应vector的均值，是行向量。 
+
+向量在W对应vector计算： 
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image5.png)
 
 
 ## Skip-gram模型架构   
@@ -59,7 +63,7 @@ $$c:$$是窗口大小
 
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image2.png)  
 
-假设给定一个训练序列$$w_{1},..w_{T}$$,$$w_{i}$$是行向量，其目标函数为 
+假设给定一个训练序列$$w_{1},..w_{T}$$,$$w_{i}$$是onehot行向量，其目标函数为 
 
 $$
 L= \frac{1}{T}\sum_{t=1}^{T}\sum_{-c\le j\le c,j\ne 0}logP(w_{t+j}\mid w_{t})
@@ -73,7 +77,7 @@ $$y=b+Uh(w_{t};W)$$
 
 y是行向量维度为V  
 
-h输出是$$w_{t}$$在W对应vector，是行向量。 
+h输出是$$w_{t}$$在W Embedding matrix对应vector，是行向量。 
 
 ## 算法
 
@@ -83,19 +87,31 @@ h输出是$$w_{t}$$在W对应vector，是行向量。
 
 根据窗口单词在词汇表出现的频率构建Huffman tree。例子： 
 
-按频率高到低对单词进行排序{and:14,in:7,today:4,fat:3,potato:3,fridge:2,kangaroo:2,zebra:1}  
+按频率高到低对单词进行排序  
+{and:14,in:7,today:4,fat:3,potato:3,fridge:2,kangaroo:2,zebra:1}  
 
-将频率最低的两个单词进行合并，并重新排序{and:14,in:7,today:4,fat:3,potato:3,(kangaroo,zebra):3,fridge:2} 
+将频率最低的两个单词进行合并，并重新排序  
+{and:14,in:7,today:4,fat:3,potato:3,(kangaroo,zebra):3,fridge:2} 
 
-将频率最低的两个单词或合并词进行合并，并重新排序{and:14,in:7,(kangaroo,zebra,fridge):5,today:4,fat:3,potato:3} 
+将频率最低的两个单词或合并词进行合并，并重新排序  
+{and:14,in:7,(kangaroo,zebra,fridge):5,today:4,fat:3,potato:3} 
 
-将频率最低的两个单词或合并词进行合并，并重新排序{and:14,in:7,(fat,potato):6,(kangaroo,zebra,fridge):5,today:4} 
+将频率最低的两个单词或合并词进行合并，并重新排序  
+{and:14,in:7,(fat,potato):6,(kangaroo,zebra,fridge):5,today:4} 
 
 以此类推就形成图中所示：  
 
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image4.png)  
 
-2、
+2、计算$$P(w\mid context(w))$$ 或  $$P(context(w)\mid w)$$
+
+图中$$X_{w}$$是Huffman tree输入向量，当我们求解$$P(w\mid context(w))$$时$$X_{w}$$为context(w)在W对应vector的均值，求解$$P(context(w)\mid w)$$时$$X_{w}$$为中心词$$w$$ 在W对应vector  
+
+$$P(w\mid context(w))=\prod_{j=2}^{l^w}P(d_{j}^w\mid X_{w};\theta_{j-1}^{w})$$
+
+$$P(context(w) \mid w)=\prod_{u\in context(w)}\prod_{j=2}^{l^u}P(d_{j}^w\mid X_{w};\theta_{j-1}^{w})$$
+
+
 
 
 ### Negative Sampling 
