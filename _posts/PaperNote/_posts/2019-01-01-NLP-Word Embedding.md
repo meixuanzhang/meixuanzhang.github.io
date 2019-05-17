@@ -105,21 +105,23 @@ h输出是$$w_{t}$$在W Embedding matrix对应vector，是行向量。
 
 2、计算$$P(w\mid context(w))$$ 或  $$P(context(w)\mid w)$$  
 
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image6.png) 
+
 $$w:$$表示中心词  
-$$contex(x):$$表示窗口文本  
+$$contex(w):$$表示窗口文本  
 
 图中$$X$$是Huffman tree输入向量，当我们求解$$P(w\mid context(w))$$时$$X$$为context(w)在W对应vector的均值，求解$$P(context(w)\mid w)$$时$$X_{w}$$为中心词$$w$$ 在W对应vector  
 
 $$l^w$$表示从树开始到达底端字 w 时经历的分叉次数，$$d_{j}^w$$表示在第 j 个分叉处选择，例如上图中足球,经历了4次分叉，$$l^w=4$$,每次选择分别是  
-{d_{1}^w:1,d_{2}^w:0,d_{3}^w:0,d_{4}^w:1}  
+$$\{d_{1}^w:1,d_{2}^w:0,d_{3}^w:0,d_{4}^w:1\}$$
 
-$$P(w\mid context(w))=\prod_{j=1}^{l^w}P(d_{j}^w\mid X_{w};\theta_{j}^{w})$$  
+$$P(w\mid context(w))=\prod_{j=1}^{l^w}P(d_{j}^w\mid X;\theta_{j}^{w})$$  
 
-$$P(context(w) \mid w)=\prod_{u\in context(w)}\prod_{j=1}^{l^u}P(d_{j}^u\mid X_{w};\theta_{j}^{w})$$   
+$$P(context(w) \mid w)=\prod_{u\in context(w)}\prod_{j=1}^{l^u}P(d_{j}^u\mid X;\theta_{j}^{w})$$   
 
 $$P(d_{j}^w\mid X_{w};\theta_{j}^{w})=[\sigma(X^T \theta_{j}^{w})]^{1-d_{j}^w}[1-\sigma(X^T \theta_{j}^{w})]^{d_{j}^w}$$  
 
-![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image6.png) 
 
 ### Negative Sampling 
 
