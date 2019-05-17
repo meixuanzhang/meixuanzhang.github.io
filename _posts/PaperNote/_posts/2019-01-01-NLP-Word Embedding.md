@@ -184,12 +184,12 @@ $$
 
 $$
 p(D=0\mid c,w)=\frac{\frac{k}{1+k}*q(w)}{\frac{1}{1+k}*\tilde{p}(w\mid c)+\frac{k}{1+k}*q(w)}\\
-=/frac{k*q{w}}{\tilde{p}(w\mid c)+k*q(w)}
+=\frac{k*q{w}}{\tilde{p}(w\mid c)+k*q(w)}
 $$
 
 
 $$
-p(D=1\mid c,w)=/frac{\tilde{p}(w\mid c)}{\tilde{p}(w\mid c)+k*q(w)}
+p(D=1\mid c,w)=\frac{\tilde{p}(w\mid c)}{\tilde{p}(w\mid c)+k*q(w)}
 $$
 
 
