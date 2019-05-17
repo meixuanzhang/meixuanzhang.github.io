@@ -19,8 +19,8 @@ word2vec模型优点：训练后单向向量能捕获句法信息和单词语义
 word2vector总共有两种类型，分别是CBOW(Continuous Bag-of-Words)、Skip-gram,为了减少计算成本每种类型有两种算法策略,分别是Hierarchical Softmax、Negative Sampling。
 
 
-CBOW是从窗口文本词推出中心词，如“我喜欢吃梨”，“我喜吃梨” $$\to$$ “梨”  
-Skip-gram是从中心词推出文本词,如“我喜欢吃梨”，“梨” $$\to$$ “我喜吃梨”  
+CBOW是从窗口文本词推出中心词，如假设窗口大小为5，则“我喜欢吃梨”，“我喜吃梨” $$\to$$ “欢”  
+Skip-gram是从中心词推出文本词,如“我喜欢吃梨”，“欢” $$\to$$ “我喜吃梨”  
 
 ## CBOW模型架构 
 
@@ -31,7 +31,7 @@ Notation:
 V:词汇表  
 $$W:$$Embedding matrix,维度$$N*V$$  
 $$U:$$Embedding matrix,维度$$V*N$$   
-$$k:$$是窗口大小   
+$$k:$$是(窗口大小-1)/2   
 
 假设给定一个训练序列$$w_{1},..w_{T}$$,$$w_{i}$$是onehot行向量，其目标函数为
 
@@ -57,7 +57,7 @@ Notation:
 V:词汇表  
 $$W:$$Embedding matrix,维度$$N*V$$  
 $$U:$$Context matrix,维度$$V*N$$   
-$$c:$$是窗口大小   
+$$c:$$是(窗口大小-1)/2 
 
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image3.png)  
 
@@ -103,19 +103,23 @@ h输出是$$w_{t}$$在W Embedding matrix对应vector，是行向量。
 
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image4.png)  
 
-2、计算$$P(w\mid context(w))$$ 或  $$P(context(w)\mid w)$$
+2、计算$$P(w\mid context(w))$$ 或  $$P(context(w)\mid w)$$  
 
-图中$$X_{w}$$是Huffman tree输入向量，当我们求解$$P(w\mid context(w))$$时$$X_{w}$$为context(w)在W对应vector的均值，求解$$P(context(w)\mid w)$$时$$X_{w}$$为中心词$$w$$ 在W对应vector  
+$$w:$$表示中心词  
+$$contex(x):$$表示窗口文本  
+
+图中$$X$$是Huffman tree输入向量，当我们求解$$P(w\mid context(w))$$时$$X$$为context(w)在W对应vector的均值，求解$$P(context(w)\mid w)$$时$$X_{w}$$为中心词$$w$$ 在W对应vector  
 
 $$l^w$$表示从树开始到达底端字 w 时经历的分叉次数，$$d_{j}^w$$表示在第 j 个分叉处选择，例如上图中足球,经历了4次分叉，$$l^w=4$$,每次选择分别是  
 {d_{1}^w:1,d_{2}^w:0,d_{3}^w:0,d_{4}^w:1}  
 
-$$P(w\mid context(w))=\prod_{j=1}^{l^w}P(d_{j}^w\mid X_{w};\theta_{j}^{w})$$
+$$P(w\mid context(w))=\prod_{j=1}^{l^w}P(d_{j}^w\mid X_{w};\theta_{j}^{w})$$  
 
-$$P(context(w) \mid w)=\prod_{u\in context(w)}\prod_{j=1}^{l^u}P(d_{j}^u\mid X_{w};\theta_{j}^{w})$$
+$$P(context(w) \mid w)=\prod_{u\in context(w)}\prod_{j=1}^{l^u}P(d_{j}^u\mid X_{w};\theta_{j}^{w})$$   
 
+$$P(d_{j}^w\mid X_{w};\theta_{j}^{w})=[\sigma(X^T \theta_{j}^{w})]^{1-d_{j}^w}[1-\sigma(X^T \theta_{j}^{w})]^{d_{j}^w}$$  
 
-
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image6.png) 
 
 ### Negative Sampling 
 
