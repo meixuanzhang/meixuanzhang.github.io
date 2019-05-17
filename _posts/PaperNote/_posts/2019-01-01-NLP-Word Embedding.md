@@ -149,6 +149,8 @@ Skip-gram只更新了中心词 w 在 W 矩阵对应的向量,以及计算过程�
 
 基础：**Noise contrastive estimation (NCE)**  
 
+需要求解$$p_{\theta}(w\mid c)$$的参数$$\theta$$
+
 假设二分类样本通过以下方式生成，根据$$p(c)$$分布采样，获得一个$$c$$,根据$$\tilde{p}(w \mid c)$$分布采样，获得一个$$w$$，把样本标记为$$D=1$$,根据$$q(w)$$“noise”分布采样，获得$$k$$个$$w$$,把样本标记为$$D=0$$,则：  
 
 $$
@@ -184,7 +186,7 @@ $$
 
 $$
 p(D=0\mid c,w)=\frac{\frac{k}{1+k}*q(w)}{\frac{1}{1+k}*\tilde{p}(w\mid c)+\frac{k}{1+k}*q(w)}\\
-=\frac{k*q{w}}{\tilde{p}(w\mid c)+k*q(w)}
+=\frac{k*q(w)}{\tilde{p}(w\mid c)+k*q(w)}
 $$
 
 
@@ -192,7 +194,11 @@ $$
 p(D=1\mid c,w)=\frac{\tilde{p}(w\mid c)}{\tilde{p}(w\mid c)+k*q(w)}
 $$
 
+损失函数：
 
+$$
+L_{NCE_{k}}=\sum_{(w,c)\in D}(logp(D=1\mid c,w)+kE_{\bar{w}\sim q}logp(D=0\mid c,\bar{w}))
+$$
 
 # doc2vec模型
 
