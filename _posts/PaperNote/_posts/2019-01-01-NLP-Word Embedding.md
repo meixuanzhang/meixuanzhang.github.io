@@ -85,7 +85,7 @@ h输出是$$w_{t}$$在W Embedding matrix对应vector，是行向量。
 
 1、构建Huffman tree  
 
-根据窗口单词在词汇表出现的频率构建Huffman tree。例子： 
+根据单词在词汇表出现的频率构建Huffman tree。树需要包含所有在词汇表中出现过的单词。例子(假设词汇表大小是8)： 
 
 按频率高到低对单词进行排序  
 {and:14,in:7,today:4,fat:3,potato:3,fridge:2,kangaroo:2,zebra:1}  
@@ -109,12 +109,16 @@ h输出是$$w_{t}$$在W Embedding matrix对应vector，是行向量。
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image6.png) 
 
 $$w:$$表示中心词  
-$$contex(w):$$表示窗口文本  
+$$context(w):$$表示窗口文本  
 
-图中$$X$$是Huffman tree输入向量，当我们求解$$P(w\mid context(w))$$时$$X$$为context(w)在W对应vector的均值，求解$$P(context(w)\mid w)$$时$$X_{w}$$为中心词$$w$$ 在W对应vector  
+图中$$X$$是Huffman tree输入向量，当我们求解$$P(w\mid context(w))$$时$$X$$为context(w)在W对应vector的均值，求解$$P(context(w)\mid w)$$时$$X$$为中心词$$w$$ 在W对应vector  
+
+
 
 $$l^w$$表示从树开始到达底端字 w 时经历的分叉次数，$$d_{j}^w$$表示在第 j 个分叉处选择，例如上图中足球,经历了4次分叉，$$l^w=4$$,每次选择分别是  
-$$\{d_{1}^w:1,d_{2}^w:0,d_{3}^w:0,d_{4}^w:1\}$$
+$$\{d_{1}^w:1,d_{2}^w:0,d_{3}^w:0,d_{4}^w:1\}$$ 
+
+树每个节点都有一个$$\theta$$向量参数，$$\theta_{j}^{w}$$表示到达单词 w ,经历的第 j 个分叉处的$$\theta$$向量参数
 
 $$P(w\mid context(w))=\prod_{j=1}^{l^w}P(d_{j}^w\mid X;\theta_{j}^{w})$$  
 
@@ -122,6 +126,24 @@ $$P(context(w) \mid w)=\prod_{u\in context(w)}\prod_{j=1}^{l^u}P(d_{j}^u\mid X;\
 
 $$P(d_{j}^w\mid X_{w};\theta_{j}^{w})=[\sigma(X^T \theta_{j}^{w})]^{1-d_{j}^w}[1-\sigma(X^T \theta_{j}^{w})]^{d_{j}^w}$$  
 
+3、梯度更新参数$$W,\theta$$   
+
+CBOW损失函数：  
+
+$$
+L=\frac{1}{T}\sum_{t=k}^{T-k}logP(w_{t}\mid context(w_{t}))
+$$
+
+
+Skip-gram损失函数：  
+
+$$
+L= \frac{1}{T}\sum_{t=1}^{T}logP(context(w) \mid w)
+$$
+
+CBOW更新了context(w) 在 W 矩阵对应的向量,以及计算过程中涉及的$$\theta$$   
+Skip-gram只更新了中心词 w 在 W 矩阵对应的向量,以及计算过程中涉及的$$\theta$$      
+最后求得的 W 矩阵就是单词的distributed representation    
 
 ### Negative Sampling 
 
