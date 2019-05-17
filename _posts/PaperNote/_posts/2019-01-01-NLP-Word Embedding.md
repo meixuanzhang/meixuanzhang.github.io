@@ -75,6 +75,31 @@ y是行向量维度为V
 
 h输出是$$w_{t}$$在W对应vector，是行向量。 
 
+## 算法
+
+### Hierarchical Softmax  
+
+1、构建Huffman tree  
+
+根据窗口单词在词汇表出现的频率构建Huffman tree。例子： 
+
+按频率高到低对单词进行排序{and:14,in:7,today:4,fat:3,potato:3,fridge:2,kangaroo:2,zebra:1}  
+
+将频率最低的两个单词进行合并，并重新排序{and:14,in:7,today:4,fat:3,potato:3,(kangaroo,zebra):3,fridge:2} 
+
+将频率最低的两个单词或合并词进行合并，并重新排序{and:14,in:7,(kangaroo,zebra,fridge):5,today:4,fat:3,potato:3} 
+
+将频率最低的两个单词或合并词进行合并，并重新排序{and:14,in:7,(fat,potato):6,(kangaroo,zebra,fridge):5,today:4} 
+
+以此类推就形成图中所示：  
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image4.png)  
+
+2、
+
+
+### Negative Sampling 
+
 # doc2vec模型
 
 # Glove模型  
@@ -82,6 +107,7 @@ h输出是$$w_{t}$$在W对应vector，是行向量。
 
 
 参考：  
-[Learning Word Embedding](https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html)
+[Learning Word Embedding](https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html)  
+[Hierarchical Softmax](http://building-babylon.net/2017/08/01/hierarchical-softmax/)
 
 
