@@ -18,6 +18,10 @@ word2vec模型优点：训练后单向向量能捕获句法信息和单词语义
 
 word2vector总共有两种类型，分别是CBOW(Continuous Bag-of-Words)、Skip-gram,为了减少计算成本每种类型有两种算法策略,分别是Hierarchical Softmax、Negative Sampling。
 
+
+CBOW是从窗口文本词推出中心词，如“我喜欢吃梨”，“我喜吃梨” $$\to$$ “梨”  
+Skip-gram是从中心词推出文本词,如“我喜欢吃梨”，“梨” $$\to$$ “我喜吃梨”  
+
 ## CBOW模型架构 
 
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image1.png)
@@ -49,7 +53,7 @@ Notation:
 V:词汇表  
 $$W:$$Embedding matrix,维度$$N*V$$  
 $$U:$$Context matrix,维度$$V*N$$   
-$$k:$$是窗口大小   
+$$c:$$是窗口大小   
 
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image3.png)  
 
@@ -62,7 +66,7 @@ L= \frac{1}{T}\sum_{t=1}^{T}\sum_{-c\le j\le c,j\ne 0}logP(w_{t+j}\mid w_{t})
 $$
 
 $$
-P((w_{t+j}\mid w_{t}))=\frac{e^{y_{w_{t+j}}}}{\sum_{j}e^{y_{j}}}$$
+P(w_{t+j}\mid w_{t})=\frac{e^{y_{w_{t+j}}}}{\sum_{j}e^{y_{j}}}
 $$  
 
 $$y=b+Uh(w_{t};W)$$  
