@@ -171,7 +171,28 @@ $$p(w\mid c)$$当 d=0 已经确定时，w 和 c 相互独立
 $$
 p(d=0,w\mid c)\\
 =p(d=0)p(w\mid c)=p(d=0)q(w)
+$$  
+
+
+因此： 
+
 $$
+p(D\mid c,w)=\frac{p(D,w,c)}{p(w,c)}\\
+=/frac{\frac{p(D,w,c)}{p(c)}}{\frac{p(w,c)}{p(c)}}\\
+=\frac{p(D,w\mid c)}{p(w\mid c)}
+$$
+
+$$
+p(D=0\mid c,w)=\frac{\frac{k}{1+k}*q(w)}{\frac{1}{1+k}*\tilde{p}(w\mid c)+\frac{k}{1+k}*q(w)}\\
+=/frac{k*q{w}}{\tilde{p}(w\mid c)+k*q(w)}
+$$
+
+
+$$
+p(D=1\mid c,w)=/frac{\tilde{p}(w\mid c)}{\tilde{p}(w\mid c)+k*q(w)}
+$$
+
+
 
 # doc2vec模型
 
