@@ -178,7 +178,7 @@ $$
 
 $$
 p(D\mid c,w)=\frac{p(D,w,c)}{p(w,c)}\\
-=/frac{\frac{p(D,w,c)}{p(c)}}{\frac{p(w,c)}{p(c)}}\\
+=\frac{\frac{p(D,w,c)}{p(c)}}{\frac{p(w,c)}{p(c)}}\\
 =\frac{p(D,w\mid c)}{p(w\mid c)}
 $$
 
