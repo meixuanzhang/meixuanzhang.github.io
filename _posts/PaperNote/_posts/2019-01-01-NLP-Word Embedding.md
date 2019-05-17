@@ -99,7 +99,7 @@ h输出是$$w_{t}$$在W Embedding matrix对应vector，是行向量。
 将频率最低的两个单词或合并词进行合并，并重新排序  
 {and:14,in:7,(fat,potato):6,(kangaroo,zebra,fridge):5,today:4} 
 
-以此类推就形成图中所示：  
+以此类推就形成图中所示(单词频率越高，越靠近根部)：  
 
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image4.png)  
 
@@ -147,6 +147,32 @@ Skip-gram只更新了中心词 w 在 W 矩阵对应的向量,以及计算过程�
 
 ### Negative Sampling 
 
+基础：**Noise contrastive estimation (NCE)**  
+
+假设二分类样本通过以下方式生成，根据$$p(c)$$分布采样，获得一个$$c$$,根据$$\tilde{p}(w \mid c)$$分布采样，获得一个$$w$$，把样本标记为$$D=1$$,根据$$q(w)$$“noise”分布采样，获得$$k$$个$$w$$,把样本标记为$$D=0$$,则：  
+
+$$
+p(d,w\mid c)= \left\{ \begin{array}{rl}
+& \frac{k}{1+k}*q(w) &if \ d=0\\
+& \frac{1}{1+k}*\tilde{p}(w\mid c) &if \ d=1\\
+\end{array} \right.
+$$  
+
+$$p(d=1,w,c)$$当 d=1 已经确定时，d 与 (w,c) 独立    
+
+$$
+p(d=1,w\mid c)=\frac{p(d=1,w,c)}{p(c)}\\
+=\frac{p(d=1)p(w,c)}{p(c)}=\frac{p(d=1)p(w\mid c)p(c)}{p(c)}\\
+=p(d=1)p(w\mid c)=p(d=1)\tilde{p}(w\mid c)
+$$
+
+$$p(w\mid c)$$当 d=0 已经确定时，w 和 c 相互独立   
+
+$$
+p(d=0,w\mid c)\\
+=p(d=0)p(w\mid c)=p(d=0)q(w)
+$$
+
 # doc2vec模型
 
 # Glove模型  
@@ -156,5 +182,6 @@ Skip-gram只更新了中心词 w 在 W 矩阵对应的向量,以及计算过程�
 参考：  
 [Learning Word Embedding](https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html)  
 [Hierarchical Softmax](http://building-babylon.net/2017/08/01/hierarchical-softmax/)
+[Notes on Noise Contrastive Estimation and Negative Sampling](http://demo.clab.cs.cmu.edu/cdyer/nce_notes.pdf)
 
 
