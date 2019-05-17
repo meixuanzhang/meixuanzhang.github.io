@@ -62,7 +62,7 @@ $$
 L=\frac{1}{T}\sum_{t}logf(w_{t}..w_{t-n+1};\theta)+R(\theta)
 $$
 
-随机梯度下降概率对参数更新：  
+在随机梯度下降中序列里每个字概率对参数更新：  
 
 $$
 \theta \gets \theta +\varepsilon\frac{\partial logP(w_{t}\mid w_{t-1},..w_{t-n+1})}{\partial \theta}
