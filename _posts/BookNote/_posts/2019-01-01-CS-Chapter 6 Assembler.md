@@ -83,7 +83,7 @@ another way, The first pass keeps the labels and variables in a symbol table. an
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image142.png)  
 
-#Developing a Hack Assembler
+# Developing a Hack Assembler  
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image143.png)  
 
