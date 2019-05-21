@@ -55,9 +55,9 @@ N-gram model的MLE参数估计为:
 
 $$P(w_{n}\mid w_{n-N+1}^{n-1})=\frac{C(w_{n-N+1}^{n-1}w_{n})}{C(w_{n-N+1}^{n-1})}$$  
 
-这个比值称为相对频率relative frequency。
+这个比值称为相对频率relative frequency。    
 
-**Estimating the probability as the relative frequency is the maximum likelihood estimate (or MLE ), because this value makes the observed data maximally likely. **
+**Estimating the probability as the relative frequency is the maximum likelihood estimate (or MLE ), because this value makes the observed data maximally likely.**
 
 术语：  
 
