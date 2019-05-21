@@ -87,4 +87,4 @@ another way, The first pass keeps the labels and variables in a symbol table. an
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image143.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image145png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image145.png) 
