@@ -57,7 +57,7 @@ $$P(w_{n}\mid w_{n-N+1}^{n-1})=\frac{C(w_{n-N+1}^{n-1}w_{n})}{C(w_{n-N+1}^{n-1})
 
 这个比值称为相对频率relative frequency。    
 
-**Estimating the probability as the relative frequency is the maximum likelihood estimate (or MLE ), because this value makes the observed data maximally likely.**
+**Estimating the probability as the relative frequency is the maximum likelihood estimate (or MLE ), because this value makes the observed data maximally likely.**   
 
 术语：  
 
@@ -72,8 +72,8 @@ N-gram模型依赖训练于训练语料库，训练模型的上下文越长(即N
 由于V无法包括所有的单词，因此会出现unknown word(未知词)，词表以外的词，可以按下面方式处理未知词：  
 
 1、选择词汇：这些词汇是事先确定好的词表  
-2、转换:把训练集中没有出现在V词表的单词转换成<UNK>     
-3、估计:像计算其他常规词一样计算<UNK>在训练集中的概率   
+2、转换:把训练集中没有出现在V词表的单词转换成$$<UNK>$$          
+3、估计:像计算其他常规词一样计算$$<UNK>$$在训练集中的概率   
   
 # Evaluating(评估) Language Models 
 
