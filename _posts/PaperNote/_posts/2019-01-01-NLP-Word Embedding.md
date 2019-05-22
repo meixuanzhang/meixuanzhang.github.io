@@ -201,8 +201,8 @@ $$
 可以使用sigmod函数定义$$p(D=1\mid c,w)$$则：
 
 $$
-p(D=1\mid c,w)=\frac{1}{1+e^{-v_{c}v_{w}}}\\
-p(D=0\mid c,w)=1-\frac{1}{1+e^{-v_{c}v_{w}}}
+p(D=1\mid c,w)=\frac{1}{1+e^{-v_{c}v_{w}}}=\sigma(v_{c}v_{w})\\
+p(D=0\mid c,w)=\frac{1}{1+e^{v_{c}v_{w}}}=\sigma(-v_{c}v_{w})
 $$
 
 
