@@ -205,6 +205,15 @@ L_{NCE_{k}}^{MC}=\sum_{(w,c)\in D}(logp(D=1\mid c,w)+k*\sum_{\bar{w}\sim q}^k \f
 =\sum_{(w,c)\in D}(logp(D=1\mid c,w)+\sum_{\bar{w}\sim q}^k logp(D=0\mid c,\bar{w}))
 $$
 
+可以使用sigmod函数定义$$p(D=1\mid c,w)$$则：
+
+$$
+p(D=1\mid c,w)=\frac{1}{1+e^{-v_{c}v_{w}}}\\
+p(D=0\mid c,w)=1-\frac{1}{1+e^{-v_{c}v_{w}}}
+$$
+
+
+
 # doc2vec模型
  
 # Glove模型  
