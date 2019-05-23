@@ -224,23 +224,31 @@ $$
 
 **Skip-gram**  
 
-假设Skip-gram一组样本为(context(c),w),实际训练样本为$$(w,context(c_{1})),(w,context(c_{2}))...$$,在Negative Sampling 方法$$v_{w}=context(c_{i})$$,$$v_{c}=w$$如图,需要对$$context(c)$$每个单词进行负采样。
+假设Skip-gram一组样本为(context(c),w),实际训练样本为$$(w,context(c_{1})),(w,context(c_{2}))...$$,在Negative Sampling 方法$$v_{w}=context(c_{i})$$,$$v_{c}=w$$,需要对$$context(c)$$每个单词进行负采样。
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image6.png) 
 
 **采样方法**  
 
 
 $$w_{i}\sim \frac{p(w_{i})^{3/4}}{Z}$$
 
-$$Z=\sum_{i}^V p(w_{i})^{3/4}$$是标准化常数$$
+$$Z=\sum_{i}^V p(w_{i})^{3/4}$$是标准化常数
 
 为了对抗高频词和低频词之间的不平衡，使用简单的subsampling  
 
 $$p(w_{i})=1-\sqrt{\frac{t}{f(w_{i})}}$$
 
-$$f_(w_{i})$$是单词$$w_{i}$$的频率，t是选择阀值，取值围绕在$$10^{-5}$$左右
+$$f_(w_{i})$$是单词$$w_{i}$$的频率，t是选择阀值，取值围绕在$$10^{-5}$$左右  
+
+对于如何按分布采样参考[MC直接采样](https://meixuanzhang.github.io/ML-Monte-Carlo-method/) 
 
 
-# doc2vec模型
+# doc2vec模型  
+
+通过doc2vec学习文档或段落representation，即Paragraph Vector。 
+
+模型
  
 # Glove模型  
 
