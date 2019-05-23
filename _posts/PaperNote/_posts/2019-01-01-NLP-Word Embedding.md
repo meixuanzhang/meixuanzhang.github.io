@@ -212,6 +212,10 @@ p(D=1\mid c,w)=\frac{1}{1+e^{-v_{c}v_{w}}}=\sigma(v_{c}v_{w})\\
 p(D=0\mid c,w)=\frac{1}{1+e^{v_{c}v_{w}}}=\sigma(-v_{c}v_{w})
 $$
 
+$$
+L_{NCE_{k}}=\sum_{(v_{w},v_{c})\in D}(log\sigma(v_{c}v_{w})+\sum_{i=1}^kE_{\bar{w_{i}}\sim q}logp\sigma(-v_{c}v_{w_{i}}))
+$$
+
 
 
 # doc2vec模型
