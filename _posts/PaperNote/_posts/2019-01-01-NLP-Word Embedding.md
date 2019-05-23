@@ -248,16 +248,33 @@ $$f_(w_{i})$$是单词$$w_{i}$$的频率，t是选择阀值，取值围绕在$$1
 
 通过doc2vec学习文档或段落representation，即Paragraph Vector。 模型结构与word2vector相似。模型使用的算法是Hierarchical Softmax。  
 
-**基于CBOW获得Paragraph Vector**
+**使用与CBOW类似模型获得Paragraph Vector**
 
 与训练单词向量不同的是，输入中加入了Paragraph id(对训练文档进行编码1,2,3,...使用one-hot向量表示编码)，同时加入了一个新的矩阵$$D$$,作为，即Paragraph vector matrix,输出target是输入文字的下一个单词，不再是中心词。
 
-$$P(w_{t}\mid d,w_{t-1}..w_{t-k})=\frac{e^{y_{w_{t}}}}{\sum_{j}e^{y_{j}}}$$
+$$L=\frac{1}{T}\sum_{t=k}^{T-k}logP(w_{t}\mid d,w_{t-1}..w_{t-k})$$
 
-$$y=b+Uh(w_{t-1}...w_{t-k};W)+Dh(d;D)$$
+$$P(w_{t}\mid d,w_{t-1}..w_{t-k})=\frac{e^{y_{w_{t}}}}{\sum_{j}e^{y_{j}}}$$  
+
+$$y=b+Uh(d,w_{t-1}...w_{t-k};D,W)$$  
+
+h输出是$$w_{t-1}...w_{t-k}$$在W Embedding matrix 对应vector值,$$d$$在D Paragraph matrix对应vector值，相加取平均，是行向量。 
 
 
+**使用与Skip-gram类似模型获得Paragraph Vector**  
 
+输入是Paragraph id，输出是文档中文本。
+
+
+$$
+L= \frac{1}{T}\sum_{t=1}^{T}\sum_{1 \le j\le c,j\ne 0}logP(w_{t+j}\mid d)
+$$
+
+$$
+P(w_{t+j}\mid d)=\frac{e^{y_{w_{t+j}}}}{\sum_{j}e^{y_{j}}}
+$$  
+
+$$y=b+Uh(d;D)$$  
 
  
 # Glove模型  
