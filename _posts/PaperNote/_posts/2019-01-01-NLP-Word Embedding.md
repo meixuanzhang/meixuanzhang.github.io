@@ -145,7 +145,7 @@ CBOW更新了context(w) 在 W 矩阵对应的向量,以及计算过程中涉及�
 Skip-gram只更新了中心词 w 在 W 矩阵对应的向量,以及计算过程中涉及的$$\theta$$      
 最后求得的 W 矩阵就是单词的distributed representation    
 
-### Negative Sampling 
+### Negative Sampling(NEG)
 
 基础：**Noise contrastive estimation (NCE)**  
 
@@ -220,11 +220,19 @@ $$
 
 **CBOW**  
 
-假设CBOW一组样本为(context(c),w),在Negative Sampling 方法中，$$v_{c}=context(c)$$的均值,$$v_{w}=w$$是中心词。
+假设CBOW一组样本为(context(c),w),在Negative Sampling 方法中，$$v_{c}=context(c)$$的均值,$$v_{w}=w$$是中心词。需要对中心词进行负采样。
 
 **Skip-gram**  
 
 假设Skip-gram一组样本为(context(c),w),实际训练样本为$$(w,context(c_{1})),(w,context(c_{2}))...$$,在Negative Sampling 方法$$v_{w}=context(c_{i})$$,$$v_{c}=w$$如图,需要对$$context(c)$$每个单词进行负采样。
+
+**采样方法**  
+
+
+$$w_{i}\sim \frac{p(w_{i})^{3/4}}{Z}$$
+
+$$p(w_{i})=1-\sqrt{\frac{t}{f(w_{i})}}$$
+
 
 # doc2vec模型
  
