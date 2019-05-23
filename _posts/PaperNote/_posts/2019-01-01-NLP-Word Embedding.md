@@ -218,7 +218,13 @@ L_{NCE_{k}}=\sum_{(v_{w},v_{c})\in D}(log\sigma(v_{c}v_{w})+\sum_{i=1}^kE_{\bar{
 =\sum_{(v_{w},v_{c})\in D}(log\sigma(v_{c}v_{w})+\sum_{i=1,\bar{w_{i}}\sim q}^k log\sigma(-v_{c}v_{\bar{w_{i}}}))
 $$
 
+**CBOW**  
 
+假设CBOW一组样本为(context(c),w),在Negative Sampling 方法中，$$v_{c}=context(c)$$的均值,$$v_{w}=w$$是中心词。
+
+**Skip-gram**  
+
+假设Skip-gram一组样本为(context(c),w),实际训练样本为$$(w,context(c_{1})),(w,context(c_{2}))...$$,在Negative Sampling 方法$$v_{w}=context(c_{i})$$,$$v_{c}=w$$如图,需要对$$context(c)$$每个单词进行负采样。
 
 # doc2vec模型
  
@@ -227,8 +233,9 @@ $$
 
 
 参考：  
-[Learning Word Embedding](https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html)  
-[Hierarchical Softmax](http://building-babylon.net/2017/08/01/hierarchical-softmax/)
-[Notes on Noise Contrastive Estimation and Negative Sampling](http://demo.clab.cs.cmu.edu/cdyer/nce_notes.pdf)
+[Learning Word Embedding](https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html)   
+[Hierarchical Softmax](http://building-babylon.net/2017/08/01/hierarchical-softmax/)  
+[Notes on Noise Contrastive Estimation and Negative Sampling](http://demo.clab.cs.cmu.edu/cdyer/nce_notes.pdf)  
+[Noise-contrastive estimation: A new estimation principle for unnormalized statistical models](http://proceedings.mlr.press/v9/gutmann10a/gutmann10a.pdf)
 
 
