@@ -226,7 +226,7 @@ $$
 
 假设Skip-gram一组样本为(context(c),w),实际训练样本为$$(w,context(c_{1})),(w,context(c_{2}))...$$,在Negative Sampling 方法$$v_{w}=context(c_{i})$$,$$v_{c}=w$$,需要对$$context(c)$$每个单词进行负采样。
 
-![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image6.png) 
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image7.png) 
 
 **采样方法**  
 
@@ -276,6 +276,9 @@ $$
 
 $$y=b+Uh(d;D)$$  
 
+相比起上面方法，这里参数只有$$U,b,D$$,没有$$W$$   
+
+两种方法当有新的文档或段落需要训练时，按顺序接着编码，同时向下增加矩阵D长度，固定$$W,U,b$$，然后更新$$D$$直到收敛，即可获得新文档的Paragraph Vector  
  
 # Glove模型  
 
