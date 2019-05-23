@@ -205,7 +205,7 @@ L_{NCE_{k}}^{MC}=\sum_{(w,c)\in D}(logp(D=1\mid c,w)+k*\sum_{i=1,\bar{w_{i}}\sim
 =\sum_{(w,c)\in D}(logp(D=1\mid c,w)+\sum_{i=1,\bar{w_{i}}\sim q}^k logp(D=0\mid c,\bar{w_{i}}))
 $$
 
-可以使用sigmod函数定义$$p(D=1\mid c,w)$$则：
+NCE可以近似为log probability of softmax则：
 
 $$
 p(D=1\mid c,w)=\frac{1}{1+e^{-v_{c}v_{w}}}=\sigma(v_{c}v_{w})\\
@@ -231,7 +231,13 @@ $$
 
 $$w_{i}\sim \frac{p(w_{i})^{3/4}}{Z}$$
 
+$$Z=\sum_{i}^V p(w_{i})^{3/4}$$是标准化常数$$
+
+为了对抗高频词和低频词之间的不平衡，使用简单的subsampling  
+
 $$p(w_{i})=1-\sqrt{\frac{t}{f(w_{i})}}$$
+
+$$f_(w_{i})$$是单词$$w_{i}$$的频率，t是选择阀值，取值围绕在$$10^{-5}$$左右
 
 
 # doc2vec模型
