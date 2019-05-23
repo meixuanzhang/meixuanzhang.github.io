@@ -201,8 +201,8 @@ $$
 使用Monte Carlo approximation则：
 
 $$
-L_{NCE_{k}}^{MC}=\sum_{(w,c)\in D}(logp(D=1\mid c,w)+k*\sum_{i=1,\bar{w}\sim q}^k \frac{1}{k} logp(D=0\mid c,\bar{w}))\\
-=\sum_{(w,c)\in D}(logp(D=1\mid c,w)+\sum_{i=1,\bar{w}\sim q}^k logp(D=0\mid c,\bar{w}))
+L_{NCE_{k}}^{MC}=\sum_{(w,c)\in D}(logp(D=1\mid c,w)+k*\sum_{i=1,\bar{w_{i}}\sim q}^k \frac{1}{k} logp(D=0\mid c,\bar{w_{i}}))\\
+=\sum_{(w,c)\in D}(logp(D=1\mid c,w)+\sum_{i=1,\bar{w_{i}}\sim q}^k logp(D=0\mid c,\bar{w_{i}}))
 $$
 
 可以使用sigmod函数定义$$p(D=1\mid c,w)$$则：
@@ -213,9 +213,9 @@ p(D=0\mid c,w)=\frac{1}{1+e^{v_{c}v_{w}}}=\sigma(-v_{c}v_{w})
 $$
 
 $$
-L_{NCE_{k}}=\sum_{(v_{w},v_{c})\in D}(log\sigma(v_{c}v_{w})+\sum_{i=1}^kE_{\bar{w_{i}}\sim q}log\sigma(-v_{c}v_{w_{i}}))\\
-=\sum_{(v_{w},v_{c})\in D}(log\sigma(v_{c}v_{w})+kE_{\bar{w}\sim q}log\sigma(-v_{c}v_{w}))\\
-=\sum_{(v_{w},v_{c})\in D}(log\sigma(v_{c}v_{w})+\sum_{i=1,\bar{w}\sim q}^k log\sigma(-v_{c}v_{w}))
+L_{NCE_{k}}=\sum_{(v_{w},v_{c})\in D}(log\sigma(v_{c}v_{w})+\sum_{i=1}^kE_{\bar{w_{i}}\sim q}log\sigma(-v_{c}v_{\bar{w_{i}}}))\\
+=\sum_{(v_{w},v_{c})\in D}(log\sigma(v_{c}v_{w})+kE_{\bar{w}\sim q}log\sigma(-v_{c}v_{\bar{w}}))\\
+=\sum_{(v_{w},v_{c})\in D}(log\sigma(v_{c}v_{w})+\sum_{i=1,\bar{w_{i}}\sim q}^k log\sigma(-v_{c}v_{\bar{w_{i}}}))
 $$
 
 
