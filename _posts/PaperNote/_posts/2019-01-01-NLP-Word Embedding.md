@@ -296,15 +296,15 @@ $$y=b+Uh(d;D)$$
 
 **模型构建**  
 
-Notation:
-$$X_{ij}$$:word j 出现在word i context的频数。单词 i context 指的是在整个语料中以 i 为中心词的窗口范围内在出现的所有文本   
-$$X_{i}=\sum_{k}X_{ik}$$: i context 的所有文本量
-$$P_{ij}=P(j\mid i)=X_{ij}/X_{i}$$: word j 出现在 i context里的概率 
+Notation:   
+$$X_{ij}$$:word j 出现在word i context的频数。单词 i context 指的是在整个语料中以 i 为中心词的窗口范围内在出现的所有文本    
+$$X_{i}=\sum_{k}X_{ik}$$: i context 的所有文本量  
+$$P_{ij}=P(j\mid i)=X_{ij}/X_{i}$$: word j 出现在 i context里的概率   
 
-下图为单词 ice 和 steam 的共现概率矩阵，k代表额是context。从图中观察发现，当k=water或k=fashion时，$$P(k\mid ice)$$和$$P(k\mid steam)$$概率大小相等，意味这两个单词出现在ice,steam context的概率是相等的，k 与 i,j要么都相关，要么都不相关，此时$$P(k\mid ice)/P(k\mid steam)$$接近1。当k=solid时，k与ice相关，但与steam不太相关，此时ratio将非常大，当k=gas时，k与steam相关，但与ice不太相关，此时ratio就比较小。通过ratio可以区分出与i或 j相关的词，以及与i,j都相关或都不相关的词。此外ratio一定程度区分了相关词差异如(solid,gas)。
+下图为单词 ice 和 steam 的共现概率矩阵，k代表额是context。从图中观察发现，当k=water或k=fashion时，$$P(k\mid ice)$$和$$P(k\mid steam)$$概率大小相等，意味这两个单词出现在ice,steam context的概率是相等的，k 与 i,j要么都相关，要么都不相关，此时$$P(k\mid ice)/P(k\mid steam)$$接近1。当k=solid时，k与ice相关，但与steam不太相关，此时ratio将非常大，当k=gas时，k与steam相关，但与ice不太相关，此时ratio就比较小。通过ratio可以区分出与i或 j相关的词，以及与i,j都相关或都不相关的词。此外ratio一定程度区分了相关词差异如(solid,gas)。   
 
 
-![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image11.png)  
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image11.png)    
 
 我们希望构建模型捕获ratio信息：  
 
