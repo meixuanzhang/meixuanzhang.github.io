@@ -329,26 +329,53 @@ $$F((w_{i}-w_{j})^T \bar{w_{k}})=\frac{P_{ik}}{P_{jk}}$$
 
 上一个式子没有体现出这种对称的信息,因为交换位置后ratio就不同了,如：
 
-$$F(\bar{w_{k}}^T w_{i}-w_{j^T\bar{w_{k}})=\frac{P_{ki}}{P_{jk}}$$
+$$F(\bar{w_{k}}^T w_{i}-w_{j}^T\bar{w_{k}})=\frac{P_{ki}}{P_{jk}}$$
 
-为了对称性，F需要是homomorphism(这里不太懂)，所以 ：
+对称性通过两步实现，首先需要F是homomorphism，所以 ：
 
 $$F((w_{i}-w_{j})^T \bar{w_{k}})=\frac{F(w_{i}^T \bar{w_{k}})}{F(w_{j}^T \bar{w_{k}})}\\
 F(w_{i}^T \bar{w_{k}})=P_{ik}=\frac{X_{ik}}{X_{i}}\\
 F=exp\\
-(w_{i}^T \bar{w_{k}}=log(P_{ik})=log(X_{ik})-log(X_{i})\\
+w_{i}^T \bar{w_{k}}=log(P_{ik})=log(X_{ik})-log(X_{i})\\
 $$
+
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image13.png)     
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image14.png)     
 
 假设去掉末尾项$$log(X_{i})$$,式子就具有对称性，$$w_{i}$$和$$\bar{w_{k}}$$对换,不会改变ratio,由于$$log(X_{i})$$与k是独立的，所以可以将这项信息吸收到$$w_{i}$$偏差$$b_{i}$$里，同时加入$$\bar{w_{k}}$$偏差$$\bar{b_{k}}$$，这样就保持了对称性：
 
-$$w_{i}^T\bar{w_{k}}+b_{i}+\bar{b_{k}}=log(X_{ik})$$
+$$w_{i}^T\bar{w_{k}}+b_{i}+\bar{b_{k}}=log(X_{ik})$$   
 
+上式存在一个问题，当$$X_{ik}=0$$时结果是发散的，无穷小，所以提出加入weight function $$f(X_{ik})$$
+
+$$
+J=\sum_{i,k=1}^V f(X_{ij})(w_{i}^T \bar{w_{k}}+b_{i}+\bar{b_{k}}-logX_{ik})^2
+$$
+
+weight function 需要满足三个条件：
+
+当$$X_{ik}=0$$时，$$f(0)=0$$   
+
+$$f(X_{ik})$$应该是非递减的，这样小共现词汇的权重不会过大(递减意味越小的$$X_{ik}$$权重越大)   
+
+$$f(X_{ik})$$对于大共现词汇，权重应该不应该过大。后面这两个条件是让模型能平衡每对词汇的重要性  
+
+V是词汇量数  
+
+所以,当$$X_{ik}$$不为零时：
+
+$$
+f(x)=
+$$
 
 
 参考：  
 [Learning Word Embedding](https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html)   
 [Hierarchical Softmax](http://building-babylon.net/2017/08/01/hierarchical-softmax/)  
 [Notes on Noise Contrastive Estimation and Negative Sampling](http://demo.clab.cs.cmu.edu/cdyer/nce_notes.pdf)  
-[Noise-contrastive estimation: A new estimation principle for unnormalized statistical models](http://proceedings.mlr.press/v9/gutmann10a/gutmann10a.pdf)
+[Noise-contrastive estimation: A new estimation principle for unnormalized statistical models](http://proceedings.mlr.press/v9/gutmann10a/gutmann10a.pdf) 
+[Understanding GloVe](https://www.slideshare.net/JiHyunPark18/understanding-glove)
+
 
 
