@@ -301,18 +301,32 @@ $$X_{ij}$$:word j 出现在word i context的频数。单词 i context 指的是�
 $$X_{i}=\sum_{k}X_{ik}$$: i context 的所有文本量  
 $$P_{ij}=P(j\mid i)=X_{ij}/X_{i}$$: word j 出现在 i context里的概率   
 
-下图为单词 ice 和 steam 的共现概率矩阵，k代表是context。  
-从图中观察发现，当k=water或k=fashion时，$$P(k\mid ice)$$和$$P(k\mid steam)$$概率大小相等，意味这两个单词出现在ice,steam context的概率是相等的，k 与 i,j要么都相关，要么都不相关，此时$$P(k\mid ice)/P(k\mid steam)$$接近1。    
+下图为词汇 ice 和 steam 的共现概率矩阵，k代表是context。  
+从图中观察发现，当k=water或k=fashion时，$$P(k\mid ice)$$和$$P(k\mid steam)$$概率大小相等，意味这两个词汇出现在ice,steam context的概率是相等的，k 与 i,j要么都相关，要么都不相关，此时$$P(k\mid ice)/P(k\mid steam)$$接近1。    
 当k=solid时，k与ice相关，但与steam不太相关，此时ratio较大。   
 当k=gas时，k与steam相关，但与ice不太相关，此时ratio就比较小。  
-通过ratio可以区分出与i或 j相关的词，以及与i,j都相关或都不相关的词。此外ratio一定程度区分了相关词差异如(solid,gas)。     
+通过ratio可以区分出与i或 j相关的词，以及与i,j都相关或都不相关的词。此外ratio一定程度区分了相关词差异如(solid,gas)。   
+
 
 
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image11.png)    
 
-我们希望构建模型捕获ratio信息：  
+我们希望构建模型通过词汇向量空间捕获词汇间(i,j,k)ratio信息：  
 
-$$F(w_{i},w_{j},\bar{w_{k}})=\frac{P_{ik}}{P_{jk}}$$
+$$F(w_{i},w_{j},\bar{w_{k}})=\frac{P_{ik}}{P_{jk}}$$  
+
+注意这里$$w_{i},w_{j}$$与$$w_{k}$$是来自不同的向量空间
+
+由于向量空间是线性结构，又希望通过F编码能在词汇向量空间中呈现ratio的信息,所以(这个理由有点跳跃..可能ratio信息呈现出了i，j词汇差异在 k 上表现)：  
+
+$$F(w_{i}-w_{j},\bar{w_{k}})=\frac{P_{ik}}{P_{jk}}$$
+
+ratio是常量，我们希望F输出结果是常量，F可能是非常复杂的结构如神经网络，但是上式F输入会模糊了想要捕获的线性信息(如：king-queen=man-woman),混合了向量维度(向量每个维度代表信息类型不一致,如所有向量维度1都应该代表同一类信息如：积极或消极)，所以：
+
+$$F((w_{i}-w_{j})^T \bar{w_{k}})=\frac{P_{ik}}{P_{jk}}$$
+
+这样向量维度之间计算一一对应，由于共现矩阵，context和中心词互换是不会改变共现频率的，如图：
+
 
 
 参考：  
