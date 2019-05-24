@@ -248,7 +248,9 @@ $$f_(w_{i})$$是单词$$w_{i}$$的频率，t是选择阀值，取值围绕在$$1
 
 通过doc2vec学习文档或段落representation，即Paragraph Vector。 模型结构与word2vector相似。模型使用的算法是Hierarchical Softmax。  
 
-**使用与CBOW类似模型获得Paragraph Vector**
+**使用与CBOW类似模型获得Paragraph Vector**  
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image8.png) 
 
 与训练单词向量不同的是，输入中加入了Paragraph id(对训练文档进行编码1,2,3,...使用one-hot向量表示编码)，同时加入了一个新的矩阵$$D$$,作为，即Paragraph vector matrix,输出target是输入文字的下一个单词，不再是中心词。
 
@@ -262,6 +264,8 @@ h输出是$$w_{t-1}...w_{t-k}$$在W Embedding matrix 对应vector值,$$d$$在D P
 
 
 **使用与Skip-gram类似模型获得Paragraph Vector**  
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image9.png) 
 
 输入是Paragraph id，输出是文档中文本。
 
@@ -281,6 +285,23 @@ $$y=b+Uh(d;D)$$
 两种方法当有新的文档或段落需要训练时，按顺序接着编码，同时向下增加矩阵D长度，固定$$W,U,b$$，然后更新$$D$$直到收敛，即可获得新文档的Paragraph Vector  
  
 # Glove模型  
+
+学习词汇向量空间representation的一些向量算法已经成功捕获了精细化(fine-grained:细粒度）语义和句法规律，但规律起源仍是模糊的。构建word representation主要两类模型结构为：global matrix factorization,local context windows
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image10.png)  
+
+论文提出的模型结合了两类模型结构的优点，同时为了让词汇向量蕴含某些规律，分析和明确了模型应具有哪些属性。
+
+语料库word occurrences统计是非监督学习word representation的主要信息来源，现在已经存在很多方法利用统计信息构建word representation的方法，它们解决的问题是统计蕴含了什么意义，word vector是怎样代表了这些意义。论文提出了GloVe模型，模型直接捕获了语料库统计信息  
+
+**模型构建**  
+
+Notation:
+$$X_{ij}$$:word j 出现在word i context的频数。单词 i context 指的是在整个语料中以 i 为中心词的窗口范围内在出现的所有文本   
+$$X_{i}=\sum_{k}X_{ik}$$: i context 的所有文本量
+$$P_{ij}=P(j\mid i)=X_{ij}/X_{i}$$: word j 出现在 i context里的概率 
+
+下图为单词 ice 和 steam 的共现概率矩阵，k代表额是context。从图中观察发现，当k=water或k=fashion时，$$P(k\mid ice)$$和$$P(k\mid steam)$$概率大小相等，意味这两个单词出现在ice,steam context的概率是相等的，一样大或一样小，此时$$P(k\mid ice)/P(k\mid steam)$$接近1。
 
 
 
