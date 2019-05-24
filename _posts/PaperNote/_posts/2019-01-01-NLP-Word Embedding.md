@@ -396,7 +396,7 @@ $$
 
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image17.png)
 
-$$\vec{OB}-\vec{{OA}=\vec{AB}\\
+$$\vec{OB}-\vec{OA}=\vec{AB}\\
 \vec{OC}+\vec{AB}=\vec{OX'}$$
 
 根据线性关系$$\vec{OX'}$$应该与$$\vec{OX}$$相似，两个向量相似性作为word representation评估 
