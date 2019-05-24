@@ -327,6 +327,8 @@ $$F((w_{i}-w_{j})^T \bar{w_{k}})=\frac{P_{ik}}{P_{jk}}$$
 
 这样向量维度之间计算一一对应(个人理解)，由于共现矩阵，context和中心词互换是不会改变两个词汇间共现频率的，就是 i 是 j 的context,j是中心词，共现频率是n,反过来 j 是 i 的cotext ，i,j共现频率依然是n。 
 
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image12.png) 
+
 上一个式子没有体现出这种对称的信息,因为交换位置后ratio就不同了,如：
 
 $$F(\bar{w_{k}}^T w_{i}-w_{j}^T\bar{w_{k}})=\frac{P_{ki}}{P_{jk}}$$
@@ -340,7 +342,7 @@ w_{i}^T \bar{w_{k}}=log(P_{ik})=log(X_{ik})-log(X_{i})\\
 $$
 
 
-![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image13.png)     
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image13.png)      
 ![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image14.png)     
 
 假设去掉末尾项$$log(X_{i})$$,式子就具有对称性，$$w_{i}$$和$$\bar{w_{k}}$$对换,不会改变ratio,由于$$log(X_{i})$$与k是独立的，所以可以将这项信息吸收到$$w_{i}$$偏差$$b_{i}$$里，同时加入$$\bar{w_{k}}$$偏差$$\bar{b_{k}}$$，这样就保持了对称性：
@@ -366,11 +368,41 @@ V是词汇量数
 
 $$
 f(x)= \left\{ \begin{array}{rl}
-& (x/x_{max}) &\qquad if \ x < x_{max}\\
+& (x/x_{max})^{\alpha} &\qquad if \ x < x_{max}\\
 & 1 &\qquad otherwise\\
 \end{array} \right.
 $$
 
+图中j是式子k: 
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image15.png)
+
+论文中$$x_{max}=100$$  
+
+# 评估word representation好坏
+
+总的来说有两类方法：Intrinsic Evaluation 和 Extrinsic Evaluation
+
+**Extrinsic Evaluation**  
+
+借助任务对word representation进行评估，将word representation应用到任务中(如情绪分类)，评估任务的好坏作为word representation表现评估。
+
+**Intrinsic Evaluation**
+
+不借助任务进行评估，通常评估方法有 Word Analogies、Word Correlation
+
+**向量类比（word vector analogies）**: 它评估了一组词向量在语义和句法上表现出来的线性关系
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image17.png)
+
+$$\vec{OB}-\vec{{OA}=\vec{AB}\\
+\vec{OC}+\vec{AB}=\vec{OX'}\\$$
+
+根据线性关系$$\vec{OX'}$$应该与$$\vec{OX}$$相似，两个向量相似性作为word representation评估 
+
+**Word Correlation** : 将词向量相似性与人打分进行对比。
+
+![_config.yml]({{ site.baseurl }}/images/15Word Embedding/image16.png)
 
 参考：  
 [Learning Word Embedding](https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html)   
