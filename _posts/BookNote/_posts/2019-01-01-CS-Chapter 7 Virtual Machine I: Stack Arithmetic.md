@@ -146,7 +146,7 @@ pointer的值只能取0或1
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image42.png)  
 
-#   
+ 
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image43.png)  
 
