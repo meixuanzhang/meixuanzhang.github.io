@@ -67,11 +67,26 @@ $$P_{\theta}$$是模型架构，如带权重参数的神经网络。使用最大
 $$
 KL(\hat{p}_{data}(x)\parallel p_{\theta}(x))=\sum_{x}\hat{p}_{data}(x) log\frac{\hat{p}_{data}(x)}{p_{\theta}(x)}\\
 =\sum_{x}\hat{p}_{data}(x) (-log\frac{p_{\theta}(x)}{\hat{p}_{data}(x)})\\
-=E_{x\sim \hat{p}_{data}(x)}[-logp_{\theta}-\hat{p}_{data}(x)]\\
+=E_{x\sim \hat{p}_{data}(x)}[-logp_{\theta}-log\hat{p}_{data}(x)]\\
 =E_{x\sim \hat{p}_{data}(x)}[-logp_{\theta}]-H(\hat{p}_{data}(x))\\
 =H(\hat{p}_{data}(x)p_{\theta}(x))-H(\hat{p}_{data}(x))
-=$$
+$$
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image9.png)
 
-![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image10.png)
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image10.png)  
+
+3、自回归模型(Autoregressive model)
+
+原本定义： An autoregressive model is when a value from a time series is regressed on previous values from that same time series.   
+
+这里通过贝叶斯网络结构构建维度之间的关系然后通过神经网络计算维度间条件概率分布，能计算出每个样本联合概率，最后获得数据联合概率分布，这里存在问题是神经网格参数会随样本维度增加而增加，维度越大贝叶斯网络结构越复杂，需要计算的条件概率越多，神经网络数量增加(每个神经网络负责贝叶斯结构里一个条件概率)，神经网络间参数是相互独立的。
+
+为此提出了条件分布间共享参数  
+
+4、RNN autoregressive  
+
+5、Masking-based autoregressive models 
+
+
+(p)
