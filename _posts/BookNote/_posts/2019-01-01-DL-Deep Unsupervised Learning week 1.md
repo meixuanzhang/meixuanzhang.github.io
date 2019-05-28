@@ -58,15 +58,18 @@ histogram生成模型没办法解决高维度数据生成问题。例如MINIST�
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image6.png)
 
 解决的办法是function approximation,使用$$\theta$$作为函数的参数，输入数据会映射到对应概率，每个数据点更新$$\theta$$时，相比起histogram模型不再是只更新自身对应p，会影响到其他$$p_{1}..p_{k}$$.$$\theta$$维度会远小于k。  
-$$P_{\theta}$$是模型架构，如带权重参数的神经网络。使用最大似然估计法估计参数，这相当于最小化KL散度。  
+$$P_{\theta}$$是模型架构，如带权重参数的神经网络。使用最大似然估计法估计参数，这相当于最小化KL散度。KL散度是大于等于0的。     
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image7.png) 
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image8.png) 
 
-$$KL(\hat{p}_{data}\parallel p_{\theta})=\sum_{x}\hat{p}_{data} log\frac{\hat{p}_{data}}{p_{\theta}}\\
-=\sum_{x}\hat{p}_{data} -log\frac{p_{\theta}}{\hat{p}_{data}}
-=E_{x\sim \hat{p}_{data}}[log\hat{p}_{data}-logp_{\theta})]\\
+$$
+KL(\hat{p}_{data}(x)\parallel p_{\theta}(x))=\sum_{x}\hat{p}_{data}(x) log\frac{\hat{p}_{data}(x)}{p_{\theta}(x)}\\
+=\sum_{x}\hat{p}_{data}(x) (-log\frac{p_{\theta}(x)}{\hat{p}_{data}(x)})\\
+=E_{x\sim \hat{p}_{data}(x)}[-logp_{\theta}-\hat{p}_{data}(x)]\\
+=E_{x\sim \hat{p}_{data}(x)}[-logp_{\theta}]-H(\hat{p}_{data}(x))\\
+=H(\hat{p}_{data}(x)p_{\theta}(x))-H(\hat{p}_{data}(x))
 =$$
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image9.png)
