@@ -11,7 +11,12 @@ categories: ["Deep Unsupervised Learning"]
 
 + 监督学习需要标注数据，会花费大量时间和钱
 + 非监督学习有更多的数据和信息
-+ 智能就是压缩(compression)，如从几个想法中找出所有模式(规则)=找出原始数据简短描述，找出压缩数据最小程序，找出最短代码推断在数据中发现，这些都是非监督学习
++ 智能就是压缩(compression)，如从几个想法中找出所有模式(规则)=找出原始数据简短描述，找出压缩数据最小程序，找出最短代码推断在数据中发现，这些都是非监督学习   
+
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image1.png)
+
+
 2、非监督学习有两个方法
 + 基于生成的非监督学习(generative models-based unsupervised learning) 对数据建模，创建数据概率分布
 + 自监督学习 self-supervised learning  
@@ -33,13 +38,31 @@ categories: ["Deep Unsupervised Learning"]
 你有样本数据$$x^{(1)},..,x^{(n)}$$，它们是通过独立同分布$$P_{data}$$采样获得的，似然模型就是通过获得的样本数据估计数据的联合概率分布$$P_{data}$$,
 分布P是一个函数，输入是数据点，输出是0到1的概率,如果输出是0，说明数据点不属于这个分布(Anomal detection)异常检测   
 
-我们希望既能估计高维度数据分布同时保持计算和统计效率
+我们希望既能估计高维度数据分布同时保持计算和统计效率 
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image2.png) 
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image3.png)
 
 2、Histogram 模型——最基本的基于似然的生成模型   
 
 生成模型的目标是通过样本数据估计数据概率分布，然后从估计概率分布生成数据
-假设样本取值是1到k,生成模型分布函数输入是1到k,模型就是集合$$P_{1}...P_{k}$$,histogram生成模型就是通过数据集频数估计$$P_{1}...P_{k}$$  
+假设样本取值是1到k,生成模型分布函数输入是1到k,模型就是集合$$P_{1}...P_{k}$$,histogram生成模型就是通过数据集频数估计$$P_{1}...P_{k}$$    
 
-histogram生成模型没办法解决高维度数据生成问题。例如MINIST数据集，样本维度是$$28*28$$，每个像素的取值是0或1，则样本取值空间是$$2^{784$}$$，样本数据量是60000，远小于样本空间，在数据集外你没办法估计样本分布。使用histogram模型，只有60000个参数不为零(样本取值空间对应的P就是所有参数)，这是样本中出现过的数据，当我们生成数据时，只能生成这60000个样本中的一个。每个样本只能影响其自身对应的参数P，不影响其他参数
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image4.png)
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image5.png)
+
+
+histogram生成模型没办法解决高维度数据生成问题。例如MINIST数据集，样本维度是$$28*28$$，每个像素的取值是0或1，则样本取值空间是$$2^{784$}$$，样本数据量是60000，远小于样本空间，在数据集外你没办法估计样本分布。使用histogram模型，只有60000个参数不为零(样本取值空间对应的P就是所有参数)，这是样本中出现过的数据，当我们生成数据时，只能生成这60000个样本中的一个。每个样本只能影响其自身对应的参数P，不影响其他参数   
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image6.png)
 
 解决的办法是function approximation,使用$$\theta$$作为函数的参数，输入数据会映射到对应概率，每个数据点更新$$\theta$$时，相比起histogram模型不再是只更新自身对应P，会影响到其他$$P_{1}..P_{k}$$
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image7.png) 
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image8.png)
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image9.png)
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image10.png)
