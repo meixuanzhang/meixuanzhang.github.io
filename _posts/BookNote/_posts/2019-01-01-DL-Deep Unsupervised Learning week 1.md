@@ -53,7 +53,7 @@ categories: ["Deep Unsupervised Learning"]
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image5.png)
 
 
-histogram生成模型没办法解决高维度数据生成问题。例如MINIST数据集，样本维度是$$28*28$$，每个像素的取值是0或1，则样本取值空间是$$2^{784$}$$，样本数据量是60000，远小于样本空间，在数据集外你没办法估计样本分布。使用histogram模型，只有60000个参数不为零(样本取值空间对应的P就是所有参数)，这是样本中出现过的数据，当我们生成数据时，只能生成这60000个样本中的一个。每个样本只能影响其自身对应的参数P，不影响其他参数   
+histogram生成模型没办法解决高维度数据生成问题。例如MINIST数据集，样本维度是$$28*28$$，每个像素的取值是0或1，则样本取值空间是$$2^{784}$$，样本数据量是60000，远小于样本空间，在数据集外你没办法估计样本分布。使用histogram模型，只有60000个参数不为零(样本取值空间对应的P就是所有参数)，这是样本中出现过的数据，当我们生成数据时，只能生成这60000个样本中的一个。每个样本只能影响其自身对应的参数p，不影响其他参数   
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image6.png)
 
@@ -62,9 +62,12 @@ $$P_{\theta}$$是模型架构，如带权重参数的神经网络。使用最大
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image7.png) 
 
-$$KL(\hat{p}_{data}\parallel p_{\theta})=\sum\hat{p}_{data} log\frac{\hat{p}_{data}}{p_{\theta}}$$
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image8.png) 
 
-![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image8.png)
+$$KL(\hat{p}_{data}\parallel p_{\theta})=\sum_{x}\hat{p}_{data} log\frac{\hat{p}_{data}}{p_{\theta}}\\
+=\sum_{x}\hat{p}_{data} -log\frac{p_{\theta}}{\hat{p}_{data}}
+=E_{x\sim \hat{p}_{data}}[log\hat{p}_{data}-logp_{\theta})]\\
+=$$
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image9.png)
 
