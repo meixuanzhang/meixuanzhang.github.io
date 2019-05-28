@@ -89,4 +89,4 @@ $$
 5、Masking-based autoregressive models 
 
 
-(p)
+(训练时平行运算，生成时不是)
