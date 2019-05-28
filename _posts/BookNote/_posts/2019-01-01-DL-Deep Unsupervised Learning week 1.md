@@ -47,7 +47,7 @@ categories: ["Deep Unsupervised Learning"]
 2、Histogram 模型——最基本的基于似然的生成模型   
 
 生成模型的目标是通过样本数据估计数据概率分布，然后从估计概率分布生成数据
-假设样本取值是1到k,生成模型分布函数输入是1到k,模型就是集合$$P_{1}...P_{k}$$,histogram生成模型就是通过数据集频数估计$$P_{1}...P_{k}$$    
+假设样本取值是1到k,生成模型分布函数输入是1到k,模型就是集合$$p_{1}...p_{k}$$,histogram生成模型就是通过数据集频数估计$$p_{1}...p_{k}$$    
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image4.png)
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image5.png)
@@ -57,9 +57,12 @@ histogram生成模型没办法解决高维度数据生成问题。例如MINIST�
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image6.png)
 
-解决的办法是function approximation,使用$$\theta$$作为函数的参数，输入数据会映射到对应概率，每个数据点更新$$\theta$$时，相比起histogram模型不再是只更新自身对应P，会影响到其他$$P_{1}..P_{k}$$
+解决的办法是function approximation,使用$$\theta$$作为函数的参数，输入数据会映射到对应概率，每个数据点更新$$\theta$$时，相比起histogram模型不再是只更新自身对应p，会影响到其他$$p_{1}..p_{k}$$.$$\theta$$维度会远小于k。  
+$$P_{\theta}$$是模型架构，如带权重参数的神经网络。使用最大似然估计法估计参数，这相当于最小化KL散度。  
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image7.png) 
+
+$$KL(\hat{p}_{data}\parallel p_{\theta})=\sum\hat{p}_{data} log\frac{\hat{p}_{data}}{p_{\theta}}$$
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image8.png)
 
