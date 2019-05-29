@@ -76,17 +76,34 @@ $$
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image10.png)  
 
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image11.png) 
+
 3、自回归模型(Autoregressive model)
 
 原本定义： An autoregressive model is when a value from a time series is regressed on previous values from that same time series.   
+图中autoregressive式子表明，维度 x 之间是有顺序的，只有前面的维度可以估计后面的维度，不能反过来。
 
-这里通过贝叶斯网络结构构建维度之间的关系然后通过神经网络计算维度间条件概率分布，能计算出每个样本联合概率，最后获得数据联合概率分布，这里存在问题是神经网格参数会随样本维度增加而增加，维度越大贝叶斯网络结构越复杂，需要计算的条件概率越多，神经网络数量增加(每个神经网络负责贝叶斯结构里一个条件概率)，神经网络间参数是相互独立的。
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image13.png) 
+
+在autoregressive性质下通过贝叶斯网络结构构建维度之间的关系然后通过神经网络计算维度间条件概率分布，能计算出每个样本联合概率，最后获得数据联合概率分布，这里存在问题是神经网格参数会随样本维度增加而增加，维度越大贝叶斯网络结构越复杂，需要计算的条件概率越多，神经网络数量增加(每个神经网络负责贝叶斯结构里一个条件概率,如图中$$P(J\mid A)$$和$$P(M\mid A)$$需要两个不同的神经网络)，神经网络间参数是相互独立的。
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image12.png) 
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image14.png) 
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image15.png) 
 
 为此提出了条件分布间共享参数  
 
 4、RNN autoregressive  
 
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image16.png) 
+
 5、Masking-based autoregressive models 
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image17.png)  
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image18.png) 
 
 
 (训练时平行运算，生成时不是)
