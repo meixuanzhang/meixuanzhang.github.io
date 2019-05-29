@@ -60,7 +60,7 @@ $$
 
 # Masked Autoencoders   
 
-修改autoencoder使其满足autoregressive性质：output$$\hat_{x_{d}}$$只能与先于$$x_{<d}$$的input有关，意味$$\hat_{x_{d}}$$与$$x_{d},..x_{D}$$不应该存在连接计算路径，因此对于这种路径在矩阵$$W,V$$对于位置至少有一个为零。注意这里整个input是有序的序列。
+修改autoencoder使其满足autoregressive性质：output$$\hat{x_{d}}$$只能与先于$$x_{<d}$$的input有关，意味$$\hat{x_{d}}$$与$$x_{d},..x_{D}$$不应该存在连接计算路径，因此对于这种路径在矩阵$$W,V$$对于位置至少有一个为零。注意这里整个input是有序的序列。
 
 $$ M^w,M^v$$是binary mask matrix,用来作elementwise-multiply(矩阵对应元素相乘)，使原本$$W,V$$部分路径元素为0.
 
@@ -112,7 +112,7 @@ Deep MADE隐藏层L>1,图中展示了一个中间由两层隐藏层构成的MADE
 对于Deep MADE mask满足以下式子：
 
 $$
-M_{k',d}^w^l=1_{m^l(k')\ge m^{l-1}(k)}=\left\{ \begin{array}{rl}
+M_{k',k}^{w^l}=1_{m^l(k')\ge m^{l-1}(k)}=\left\{ \begin{array}{rl}
 & 1 &\qquad if \ m^l(k')\ge m^{l-1}(k)}\\
 & 0 &\qquad otherwise\\
 \end{array} \right.
