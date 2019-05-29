@@ -112,8 +112,8 @@ Deep MADE隐藏层数L>1,图中展示了一个中间由两层隐藏层构成的M
 对于Deep MADE mask满足以下式子：
 
 $$
-M_{k^',k}^{w^l}=1_{m^l(k^')\ge m^{l-1}(k)}=\left\{ \begin{array}{rl}
-& 1 &\qquad if \ m^l(k^')\ge m^{l-1}(k)}\\
+M_{\dot{k},k}^{w^l}=1_{m^l(\dot{k})\ge m^{l-1}(k)}=\left\{ \begin{array}{rl}
+& 1 &\qquad if \ m^l(\dot{k})\ge m^{l-1}(k)}\\
 & 0 &\qquad otherwise\\
 \end{array} \right.
 $$
