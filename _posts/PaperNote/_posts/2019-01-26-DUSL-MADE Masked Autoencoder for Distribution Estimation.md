@@ -94,7 +94,7 @@ $$
 
 $$M^{v,w}=M^v M^w$$ 会是一个下三角矩阵(对角线为0)，从图中可以发现input位置数大于等于output位置数的元素总是为0。  
 
-![_config.yml]({{ site.baseurl }}/images/31MADE/image3.png)
+![_config.yml]({{ site.baseurl }}/images/31MADE/image3.jpg)
 
 过去autoregressive神经网络研究发现，在input层和output层直接添加连接会提升表现，所以改造后$$\hat{x}$$：
 
@@ -133,13 +133,13 @@ $$
 
 **Connectivity-agnostic training**  
 
-训练过程中，神经网络无法确定神经元输出为0是由于masked造成的还是由于神经元input值为0，因此加入companion weight $$U^l$$,$$l$$层隐藏层输出更新为：
+训练过程中，神经网络无法确定神经元输出为0是由于mask造成的还是由于神经元权重w与输入乘积值为0，因此加入companion weight $$U^l$$,$$l$$层隐藏层输出更新为：
 
 $$
 h^l(x)=g(b^l+(W^l\odot M^{w^l})h^{l-1}(x)+(U^l\odot M^{w^l})1)
 $$
 
-这样当神经元input值为0，mask不为0时，神经元输出不再是0  
+这样当神经元权重w与输入乘积值为0，mask不为0时，神经元输出不再是0  
 
 # 
 
