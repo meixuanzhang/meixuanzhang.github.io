@@ -104,7 +104,7 @@ $$A$$是下三角矩阵(对角线为0)
 
 # Deep MADE  
 
-Deep MADE隐藏层L>1,图中展示了一个中间由两层隐藏层构成的MADE，以及对input序列采用了不同的排序，$$\{x_{2},x_{3},x_{1}\}$$
+Deep MADE隐藏层数L>1,图中展示了一个中间由两层隐藏层构成的MADE，以及对input序列采用了不同的排序，$$\{x_{2},x_{3},x_{1}\}$$
 
 ![_config.yml]({{ site.baseurl }}/images/31MADE/image2.png)
 
@@ -125,8 +125,23 @@ M_{d,k}^v=1_{m(k)\ge d}=\left\{ \begin{array}{rl}
 \end{array} \right.
 $$
 
-训练过程采样了两种技巧
+训练采样了两种技巧:
 
+**Order-agnostic training**  
+
+对input序列sample an ordering before each stochastic/minibatch gradient update of the model.这样有两个优点，一是对于缺失值，we invoke an ordering where observed dimensions are all before unobserved ones, making inference straightforward.二是计算联合概率时，平均不同的ordering下的联合概率作为最后的结果。
+
+**Connectivity-agnostic training**  
+
+训练过程中，神经网络无法确定神经元输出为0是由于masked造成的还是由于神经元input值为0，因此加入companion weight $$U^l$$,$$l$$层隐藏层输出更新为：
+
+$$
+h^l(x)=g(b^l+(W^l\odot M^{w^l})h^{l-1}(x)+(U^l\odot M^{w^l})1)
+$$
+
+这样当神经元input值为0，mask不为0时，神经元输出不再是0  
+
+# 
 
 
 
