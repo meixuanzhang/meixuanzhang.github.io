@@ -17,7 +17,7 @@ categories:  深度非监督学习
 
 模型架构：  
 
-![_config.yml]({{ site.baseurl }}/images/31MADE/image1.png)
+![_config.yml]({{ site.baseurl }}/images/31MADE/image1.png)   
 
 $$h(x)=g(b+Wx)\\
 \hat{x}= sigm(c+Vh(x))$$  
