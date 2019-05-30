@@ -60,9 +60,9 @@ $$
 
 # Masked Autoencoders   
 
-修改autoencoder使其满足autoregressive性质：output$$\hat{x_{d}}$$只能与先于$$x_{<d}$$的input有关，意味$$\hat{x_{d}}$$与$$x_{d},..x_{D}$$不应该存在连接计算路径，因此对于这种路径在矩阵$$W,V$$对于位置至少有一个为零。注意这里整个input是有序的序列。
+修改autoencoder使其满足autoregressive性质：output $$\hat{x_{d}}$$ 只能与先于$$x_{<d}$$ 的input有关，意味$$\hat{x_{d}}$$与$$x_{d},..x_{D}$$不应该存在连接计算路径，因此对于这种路径至少有一个矩阵$$W,V$$在相应位置元素为零，阻断连接。这里整个input是有序的序列。
 
-$$ M^w,M^v$$是binary mask matrix,用来作elementwise-multiply(矩阵对应元素相乘)，使原本$$W,V$$部分路径元素为0.
+$$ M^w,M^v$$是binary mask matrix,用来作elementwise-multiply(矩阵对应元素相乘)，使原本$$W,V$$部分位置元素为0.
 
 模型架构：  
 
