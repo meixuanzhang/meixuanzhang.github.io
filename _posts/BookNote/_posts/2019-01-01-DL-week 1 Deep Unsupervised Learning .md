@@ -102,12 +102,13 @@ $$
 5、Masking-based autoregressive models   
 
 MADE相比起RNN autoregressive和Bayes autoregressive训练时可以进行平行运算，不需要等待前面的条件概率计算完再进行后面计算，会一次性输出计算联合概率分布所需的条件概率   
-
-MADE中神经元之间的连接时任意的。   
+  
 
 生成过程不是平行的，如图中需要根据histogram选择$$x_{2}$$的值，然后将$$x_{2}$$作为网络输入，得到$$p(x_{3}\mid x_{2})$$分布，根据分布得到$$x_{3}$$的取值，然后将$$x_{2},x_{3}$$输入到网络得到$$p(x_{1}\mid x_{2},x_{3})$$的分布，根据分布得到$$x_{1}$$的取值。   
 
-最后每个神经元如($$p(x_{1}\mid x_{2},x_{3})$$)输出的是一个向量，通过softmax表示条件下$$x_{1}$$取值分布   
+最后每个神经元如($$p(x_{1}\mid x_{2},x_{3})$$)输出的是一个向量，通过softmax表示条件下$$x_{1}$$取值分布    
+
+[MADE论文笔记](https://meixuanzhang.github.io/DUSL-MADE-Masked-Autoencoder-for-Distribution-Estimation/)   
 
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image17.png)  
@@ -116,14 +117,24 @@ MADE中神经元之间的连接时任意的。
 
 模型评估：  
 
-使用测试集(没见过的图片)计算$$-logp$$
+使用测试集(没见过的图片)计算$$-logp$$    
+没见过的图片联合概率不为零说明有一定泛化能力   
+从生成结果看，会生成没有见过的图片，模型不仅仅是记住看过的图片    
 
-没见过的图片联合概率不为零说明有一定泛化能力
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image20.png)  
 
-从生成结果看，会生成没有见过的图片，模型不仅仅是记住看过的图片  
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image21.png)   
+
+代码实现:  
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image19.png) 
 
 
-6、  
+6、  Masked Temporal Convolution   
+
+![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image22.png)    
+
+7、
 
 valid autoregressive ordering
 
