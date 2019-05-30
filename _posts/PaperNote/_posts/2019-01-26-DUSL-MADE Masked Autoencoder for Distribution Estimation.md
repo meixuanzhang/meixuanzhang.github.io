@@ -104,7 +104,7 @@ $$A$$是下三角矩阵(对角线为0)
 
 # Deep MADE  
 
-Deep MADE隐藏层数L>1,图中展示了一个中间由两层隐藏层构成的MADE，以及对input序列采用了不同的排序，$$\{x_{2},x_{3},x_{1}\}$$
+Deep MADE隐藏层数L>1,图中展示了一个中间由两层隐藏层构成的MADE，其对input序列采用了不同的排序，$$\{x_{2},x_{3},x_{1}\}$$，最后输出层每个神经元输出都是取值范围向量，通过softmax标准化，每个维度代表是取值的概率。
 
 ![_config.yml]({{ site.baseurl }}/images/31MADE/image2.png)
 
@@ -125,7 +125,7 @@ M_{d,k}^v=1_{m(k)\ge d}=\left\{ \begin{array}{rl}
 \end{array} \right.
 $$
 
-训练采样了两种技巧:
+训练的两个技巧:
 
 **Order-agnostic training**  
 
@@ -141,7 +141,23 @@ $$
 
 这样当神经元权重w与输入乘积值为0，mask不为0时，神经元输出不再是0。这个设置是一个超参数，也就是不一定会这样设置。
 
-# 
+# 联合概率分布计算   
+
+以中间由两层隐藏层构成的MADE图为例，先根据histogram计算$$p(x_{2})$$，将$$x_{2}$$输入到神经网络，然后计算$$p(x_{3}\mid x_{2})$$，将$$x_{2},x_{3}$$输入到神经网络，计算$$p(x_{1}\mid x_{2},x_{3})$$，最后联合概率为：  
+
+
+$$
+p(x_{1},x_{2},x_{3})=p(x_{2})p(x_{3}\mid x_{2})p(x_{1}\mid x_{2},x_{3})
+$$
+
+
+# 评估  
+
+将测试数据输入到神经网络，计算其联合概率分布$$p$$，取$$-logp$$作为最后的得分，分数越低效果越好  
+
+![_config.yml]({{ site.baseurl }}/images/31MADE/image4.png) 
+
+![_config.yml]({{ site.baseurl }}/images/31MADE/image5.png) 
 
 
 
