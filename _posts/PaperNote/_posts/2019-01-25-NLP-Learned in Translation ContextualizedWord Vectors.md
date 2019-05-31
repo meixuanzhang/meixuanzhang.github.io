@@ -50,8 +50,13 @@ $$
 当前时刻context-adjusted hidden state(与一般LSTM相比省去了Output Gate，同时将attention后的vector与当前时刻Memory state相连):    
 
 $$
-\tilde{h}_{t}=tanh(W_{2}[H^T\alpha_{t};h_{t}^{dec}]+b_{2})\\
-p(w_{t}^z\mid X,w_{1}^z,...,w_{t-1}^z)=softmax(W_{out}\tilde{h}_{t}+b_{out})
+\tilde{h}_{t}=tanh(W_{2}[H^T\alpha_{t};h_{t}^{dec}]+b_{2})
+$$ 
+
+当前时刻output word的概率分布：  
+
+$$
+p(w_{t}^z\mid H,w_{1}^z,...,w_{t-1}^z)=softmax(W_{out}\tilde{h}_{t}+b_{out})
 $$
 
 
