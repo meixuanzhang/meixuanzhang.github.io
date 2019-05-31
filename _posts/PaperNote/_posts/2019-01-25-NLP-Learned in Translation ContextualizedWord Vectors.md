@@ -20,7 +20,7 @@ Word Vectors 是使用GloVe训练获得的词向量，Encoder是双层双向的L
 
 **Encoder**  
 
-Encoder会根据输入序列输出对应的hidden states
+Encoder会根据输入序列输出对应的hidden states,$$w^x$$是source language序列
 
 $$
 h=MT-LSTM(GloVe(w^x))
@@ -33,7 +33,7 @@ $$h_{t}^{dec}$$:当前时刻的隐藏状态，实际相当于LSTM中的Memory st
 $$\tilde{h}_{t-1}$$:前一个时刻的context-adjusted hidden state,实际相当于LSTM中Hidden state，但不同的是计算中没有用Output Gate，输入也不只是Memory state    
 $$H$$:Encoder输出的隐藏状态序列    
 
-[LSTM模型](https://meixuanzhang.github.io/NLP-RNN-LSTM-GRU/)   
+[LSTM模型链接](https://meixuanzhang.github.io/NLP-RNN-LSTM-GRU/)   
 
 当前时刻Decoder输出的hidden state:   
 
@@ -53,10 +53,23 @@ $$
 \tilde{h}_{t}=tanh(W_{2}[H^T\alpha_{t};h_{t}^{dec}]+b_{2})
 $$ 
 
-当前时刻output word的概率分布：   
+当前时刻output word的概率分布($$w^x$$是target language序列)：   
 
 $$
-p(w_{t}^z\mid H,w_{1}^z,...,w_{t-1}^z)=softmax(W_{out}\tilde{h}_{t}+b_{out})
+p(\hat{w}_{t}^z\mid H,w_{1}^z,...,w_{t-1}^z)=softmax(W_{out}\tilde{h}_{t}+b_{out})
 $$
 
+# Context Vector(CoVe) 
+
+$$CoVe(w)$$就是encoder的输出序列。  
+
+$$CoVe(w)=MT-LSTM(GloVe(w))$$  
+
+将词向量应用到NLP的其他任务，词向量可以表示为：
+
+$$
+\tilde{w_{i}}=[GloVe(w_{i});CoVe(w_{i})]
+$$ 
+
+需将词的两个向量表征进行连接
 
