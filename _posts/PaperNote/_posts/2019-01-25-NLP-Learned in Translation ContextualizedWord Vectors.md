@@ -30,10 +30,13 @@ $$
 
 
 
-时刻t输出的hidden state:
+t时刻LSTM输出的hidden state:
 
 $$
-h
+h_{t}^{dec}=LSTM([z_{t-1};\tilde{h}_{t-1}],h_{t-1}^{dec}})\\
+\alpha_{t}=softmax(H(W_{1}h_{t}^{dec})+b_{1})\\
+\tilde{h}_{t}=tanh(W_{2}[H^T\alpha_{t};h_{t}^{dec}]+b_{2})\\
+p(,w_{t}^z\mid X,w_{1}^z,...,w_{t-1}^z)=softmax(W_{out}\tilde{h}_{t}+b_{out})
 $$
 
 
