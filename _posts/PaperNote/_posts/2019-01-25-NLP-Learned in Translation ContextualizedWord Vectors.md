@@ -65,11 +65,13 @@ $$CoVe(w)$$就是encoder的输出序列。
 
 $$CoVe(w)=MT-LSTM(GloVe(w))$$  
 
-将词向量应用到NLP的其他任务，词向量可以表示为：
+将LSTM encoder应用到NLP的其他任务，词向量表示为：
 
 $$
 \tilde{w_{i}}=[GloVe(w_{i});CoVe(w_{i})]
 $$ 
 
-需将词的两个向量表征进行连接
+需将词的两个向量表征进行连接    
+
+论文中将训练出来的LSTM encoder应用到了NLP的分类和问答任务中。
 
