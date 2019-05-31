@@ -31,6 +31,14 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image53.png) 
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image54.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image54.png)   
+
+nArgs是将多少个参数传入函数，nvars是函数有多少个local variable 两个值不一定相等   
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image55.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image56.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image57.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image58.png) 
