@@ -28,15 +28,26 @@ $$
 
 **Decoder**  
 
+$$z_{t-1}$$:前一个时刻的target embedding,相当于LSMT中的input vector
+$$h_{t}^{dec}$$:当前时刻的隐藏状态，实际相当于LSTM中的Memory state
+$$\tilde{h}_{t-1}$$:前一个时刻的context-adjusted hidden state,实际相当于LSTM中Hidden state，但不同的是计算中没有用Output Gate，输入也不只是Memory state   
+$$H$$:Encoder输出的隐藏状态序列
 
+[LSTM模型](https://meixuanzhang.github.io/NLP-RNN-LSTM-GRU/)   
 
-t时刻LSTM输出的hidden state:
+当前时刻Decoder输出的hidden state:
 
 $$
-h_{t}^{dec}=LSTM([z_{t-1};\tilde{h}_{t-1}],h_{t-1}^{dec}})\\
-\alpha_{t}=softmax(H(W_{1}h_{t}^{dec})+b_{1})\\
+h_{t}^{dec}=LSTM([z_{t-1};\tilde{h}_{t-1}],h_{t-1}^{dec})
 $$
 
+当前时刻attention权重：  
+
+
+$$
+\alpha_{t}=softmax(H(W_{1}h_{t}^{dec})+b_{1})$$
+
+当前时刻context-adjusted hidden state(与一般LSTM相比省去了Output Gate，同时将attention后的vector与当前时刻Memory state相连):    
 
 $$
 \tilde{h}_{t}=tanh(W_{2}[H^T\alpha_{t};h_{t}^{dec}]+b_{2})\\
