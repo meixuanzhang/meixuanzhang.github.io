@@ -21,3 +21,16 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image49.png) 
 
+# 函数  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image50.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image51.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image52.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image53.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image54.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image55.png) 
