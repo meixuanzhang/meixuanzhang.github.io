@@ -19,6 +19,8 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image48.png)
 
+如果值不为0则跳
+
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image49.png) 
 
 # 函数  
@@ -41,4 +43,6 @@ nArgs是将多少个参数传入函数，nvars是函数有多少个local variabl
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image57.png) 
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image58.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image58.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image59.png) 
