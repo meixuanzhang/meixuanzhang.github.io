@@ -9,10 +9,13 @@ categories: 深度学习
 
 论文展示CNN-LSTM结构的神经语言模型，模型的输入是character-level,输出仍然是word-level，word的character是CNN的输入，CNN的输出是LSTM的输入。
 
-# 模型结构  
+# 模型结构    
+
+![_config.yml]({{ site.baseurl }}/images/99Character-Aware Neural Language Models/image1.png)
 
 
-# Character-level Convolutional Neural Network 
+## Character-level Convolutional Neural Network  
+
 
 Notation:   
 $$\bar{C}:$$ the vocabulary of characters,词汇的所有字符(字母)   
@@ -36,7 +39,7 @@ $$y^k=max_{i}f^k[i]$$
 
 假设CNN有h个kernel分别为$$H_{1}..H_{j}$$,则对于词语k，CNN输出为$$Y^k=[y_{1}^k,..y_{h}^k]$$  
 
-# LSTM Neural Network Language Model  
+## LSTM Neural Network Language Model  
 
 t时刻CNN的输出为$$Y_{t}$$，以CNN的输出作为LSTM的输入，LSTM的结构为:    
 
@@ -53,7 +56,7 @@ $$g$$是非线性函数
 $$W_{H}$$、$$W_{T}$$是权重矩阵，$$b_{H}$$和$$b_{T}$$是偏差   
 
 
-# 损失函数negative log-likelihood 
+## 损失函数negative log-likelihood 
 
 将$$w_{1:T}=[w_{1},..w_{T}]$$定义为训练语料库中的词语序列，我们的目标是最小化negative log-likelihood(NNL)函数：  
 
