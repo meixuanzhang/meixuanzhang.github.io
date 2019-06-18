@@ -38,8 +38,19 @@ $$y^k=max_{i}f^k[i]$$
 
 # LSTM Neural Network Language Model  
 
-t-1时刻CNN的输出为$$Y_{t}$$，以CNN的输出作为LSTM的输入，LSTM的结构为:    
+t时刻CNN的输出为$$Y_{t}$$，以CNN的输出作为LSTM的输入，LSTM的结构为:    
 
 [LSTM结构](https://meixuanzhang.github.io/NLP-RNN-LSTM-GRU/)
+
+相比起直接将$$Y_{t}$$作为LSTM的输入，论文在CNN和LSTM中间增加了Highway Network，Highway Network以CNN的输出$$Y$$作为输入,输出$$z$$：  
+
+$$
+z=t\odot g(W_{H}Y+b_{H})+(1-t)\odot Y\\
+t=\sigmod(W_{T}Y+b_{T})
+$$  
+
+$$g$$是非线性函数     
+$$W_{H}$$、$$W_{T}$$是权重矩阵，$$b_{H}$$和$$b_{T}$$是偏差   
+
 
 
