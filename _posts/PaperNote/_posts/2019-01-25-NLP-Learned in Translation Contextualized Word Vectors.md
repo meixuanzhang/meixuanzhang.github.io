@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 读《Learned in Translation ContextualizedWord Vectors》
+title: 读《Learned in Translation Contextualized Word Vectors》
 date:   2019-01-25
 categories: 深度学习
 ---  
