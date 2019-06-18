@@ -42,15 +42,35 @@ t时刻CNN的输出为$$Y_{t}$$，以CNN的输出作为LSTM的输入，LSTM的�
 
 [LSTM结构](https://meixuanzhang.github.io/NLP-RNN-LSTM-GRU/)
 
-相比起直接将$$Y_{t}$$作为LSTM的输入，论文在CNN和LSTM中间增加了Highway Network，Highway Network以CNN的输出$$Y$$作为输入,输出$$z$$：  
+相比起直接将$$Y_{t}$$作为LSTM的输入，论文在CNN和LSTM中间增加了Highway Network，Highway Network以CNN的输出$$Y$$作为输入,输出$$z$$作为LSTM的输入：   
 
 $$
 z=t\odot g(W_{H}Y+b_{H})+(1-t)\odot Y\\
-t=\sigmod(W_{T}Y+b_{T})
+t=\sigma(W_{T}Y+b_{T})
 $$  
 
 $$g$$是非线性函数     
 $$W_{H}$$、$$W_{T}$$是权重矩阵，$$b_{H}$$和$$b_{T}$$是偏差   
+
+
+# 损失函数negative log-likelihood 
+
+将$$w_{1:T}=[w_{1},..w_{T}]$$定义为训练语料库中的词语序列，我们的目标是最小化negative log-likelihood(NNL)函数：  
+
+$$
+NLL=-\sum_{t=1}^TlogPr(w_{t}\mid w_{1:t-1})
+$$
+
+$$Pr(w_{t}\mid w_{1:t-1})$$由LSTM输出获得  
+
+# 效果评估  
+
+论文中采用perplexity(PPL)评估模型表现，对于序列$$[w_{1},..w_{T}]$$其perplexity(PPL)值为：   
+
+$$
+PPL=exp(\frac{NLL}{T})
+$$
+
 
 
 
