@@ -15,10 +15,11 @@ categories: 深度学习
 # Character-level Convolutional Neural Network 
 
 Notation:   
-$$C:$$ the vocabulary of characters,词汇的所有字符(字母)   
+$$\bar{C}:$$ the vocabulary of characters,词汇的所有字符(字母)   
 $$d:$$ 字符embedding的维度    
-$$Q\in R^{d*\mid C \mid}:$$matrix character embeddings,字符的embedding矩阵   
+$$Q\in R^{d*\mid \bar{C} \mid}:$$matrix character embeddings,字符的embedding矩阵   
+$$c_{j}:$$是Q的第$$j$$列向量   
 
-假设c
+假设词语$$k$$是由长度为$$l$$序列字符组成$$[c_{1}...c_{l}]$$，词语$$k$$的character-level representation是矩阵$$C^k \in R^{d*l}$$,
 
 
