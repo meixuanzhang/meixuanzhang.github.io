@@ -90,7 +90,8 @@ $$\bar{C}_{t}$$:ts时刻的Candidate layer
 $$I_{t}$$:t时刻的Input gate  
 $$O_{t}$$:t时刻的Output Gate    
 $$H_{t}$$:t时刻的Hidden state  
-$$C_{t}$$:t时刻的Memory state   
+$$C_{t}$$:t时刻的Memory state    
+$$X_{t}$$:t时刻的输入  
 
   
 
