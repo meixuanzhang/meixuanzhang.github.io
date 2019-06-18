@@ -30,10 +30,16 @@ $$b:$$是偏差bias
 $$C^k[*,i:i+w-1]$$表示$$C^k$$的第$$i$$到$$i+w-1$$列    
 $$<A,B>$$表示Frobenius inner product(内积)，就是A,B对应位置元素相乘的和   
 
-对于一个kernel\filter的CNN输出为：  
+CNN的一个kernel(or filter)的输出为：  
 
 $$y^k=max_{i}f^k[i]$$
 
-假设CNN有h个kernel分别为$$H_{1}..H_{j}$$,则对于词语k，CNN输出为$$Y^k=[y_{1}^k,..y_{h}^k]$$
+假设CNN有h个kernel分别为$$H_{1}..H_{j}$$,则对于词语k，CNN输出为$$Y^k=[y_{1}^k,..y_{h}^k]$$  
+
+# LSTM Neural Network Language Model  
+
+t-1时刻CNN的输出为$$Y_{t}$$，以CNN的输出作为LSTM的输入，LSTM的结构为:    
+
+[LSTM结构](https://meixuanzhang.github.io/NLP-RNN-LSTM-GRU/)
 
 
