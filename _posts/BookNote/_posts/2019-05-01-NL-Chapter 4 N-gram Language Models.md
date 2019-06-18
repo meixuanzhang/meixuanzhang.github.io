@@ -152,7 +152,7 @@ P_{Add-k}(w_{n}\mid w_{n-1})=\frac{C(w_{n-1}w_{n})+k}{C(w_{n-1})+kV}
 $$
 
 
-#and Interpolation插值法 
+# Interpolation插值法 
 
 插值：将不同阶数的N-gram概率估计混合起来。
 
