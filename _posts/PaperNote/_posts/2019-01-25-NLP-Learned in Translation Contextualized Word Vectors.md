@@ -20,7 +20,7 @@ Word Vectors 是使用GloVe训练获得的词向量，Encoder是双层双向的L
 
 **Encoder**  
 
-Encoder会根据输入序列输出对应的hidden states,$$w^x$$是source language序列
+Encoder会根据输入序列输出对应的hidden states,$$w^x$$是source language序列,Encoder使用MT-LSTM计算的隐藏状态：   
 
 $$
 h=MT-LSTM(GloVe(w^x))
@@ -53,7 +53,7 @@ $$
 \tilde{h}_{t}=tanh(W_{2}[H^T\alpha_{t};h_{t}^{dec}]+b_{2})
 $$ 
 
-当前时刻output word的概率分布($$w^x$$是target language序列)：   
+当前时刻output word的概率分布($$w^z$$是target language序列)：   
 
 $$
 p(\hat{w}_{t}^z\mid H,w_{1}^z,...,w_{t-1}^z)=softmax(W_{out}\tilde{h}_{t}+b_{out})
