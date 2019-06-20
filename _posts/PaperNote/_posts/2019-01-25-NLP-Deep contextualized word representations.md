@@ -19,12 +19,12 @@ word repesentation通过双向LSTM在大文本语料库上使用coupled language
 ## Bidirectional language models 
 
 Notation:
-$$(t_{1}..t_{N}):$$长度为N的单词序列  
-$$k:$$表示在序列中的位置  
-$$L:$$表示LSTM隐藏层数
-$$j:$$表示LSTM的第j层，$$j=1,..L$$
-$$\vec{h}_{k,j}^{LM}$$:表示 forwardLM 模型第 j 层的第 k 位置的隐藏状态 
-$$\cev{h}_{k,j}^{LM}$$:表示 backwardLM 模型第 j 层的第 k 位置的隐藏状态 
+$$(t_{1}..t_{N}):$$长度为N的单词序列     
+$$k:$$表示在序列中的位置   
+$$L:$$表示LSTM隐藏层数   
+$$j:$$表示LSTM的第j层，$$j=1,..L$$   
+$$\overrightarrow{h}_{k,j}^{LM}$$:表示 forwardLM 模型第 j 层的第 k 位置的隐藏状态    
+$$\overleftarrow{h}_{k,j}^{LM}$$:表示 backwardLM 模型第 j 层的第 k 位置的隐藏状态      
 
 forward language model:   
 
