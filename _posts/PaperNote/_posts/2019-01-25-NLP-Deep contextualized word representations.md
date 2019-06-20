@@ -69,5 +69,11 @@ $$
 ELMo_{k}^{task}=E(R_{k}\theta^{task})=\gamma^{task}\sum_{j=0}^L s_{j}^{task}h_{k,j}^{LM}
 $$
 
+$$s_{j}^{task}:$$softmax-normalized weights   
+$$\gamma^{task}:$$scalar parameter allows the task model to scale the entire ELMo vector   
+
+the activations of each biLM layer have a different distribution, in some cases it also helped to apply layer normalization (Ba et al., 2016) to each biLM layer before weighting.
+
+
 
 
