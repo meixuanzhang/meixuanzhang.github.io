@@ -56,7 +56,7 @@ ELMo是组合biLM中间层的一项任务
 
 $$
 R_{k}=\{X_{k}^{LM},\overrightarrow{h}_{k,j}^{LM},\overleftarrow{h}_{k,j}^{LM}\mid j=1,..,L\}\\
-=\{h_{k,j}^{LM}\mid j=1,..,L\}\\
+=\{h_{k,j}^{LM}\mid j=0,..,L\}\\
 h_{k,j}^{LM}=[\overrightarrow{h}_{k,j}^{LM};\overleftarrow{h}_{k,j}^{LM}]\\
 h_{k,0}^{LM}=X_{k}^{LM}
 $$
