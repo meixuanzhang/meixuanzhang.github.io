@@ -26,7 +26,7 @@ $$\overrightarrow{h}_{k,j}^{LM}$$:表示 forward 语言模型第 j 层的第 k �
 $$\overleftarrow{h}_{k,j}^{LM}$$:表示 backward 语言模型第 j 层的第 k 位置的隐藏状态     
 $$\overrightarrow{\theta}_{LSTM}:$$forward 语言模型所有参数    
 $$\overleftarrow{\theta}_{LSTM}:$$backward 语言模型所有参数    
-$$\theta_{x} :$$token(语料) representation(token layer) ,类似embedding matrix,第k个位置representation用$$h_{k,0}^{LM}$$或$$X_{k}^{LM}$$表示，(forward和backward是同一个参数)   
+$$\theta_{x} :$$token(语料) representation(第一层token layer) ,类似embedding matrix,第k个位置token representation用$$h_{k,0}^{LM}$$或$$X_{k}^{LM}$$表示，(forward和backward是同一个参数)   
 $$\theta_{s}：$$最后softmax层的参数(forward和backward是同一个参数)   
 
 forward language model:   
@@ -59,6 +59,14 @@ R_{k}=\{X_{k}^{LM},\overrightarrow{h}_{k,j}^{LM},\overleftarrow{h}_{k,j}^{LM}\mi
 =\{h_{k,j}^{LM}\mid j=0,..,L\}\\
 h_{k,j}^{LM}=[\overrightarrow{h}_{k,j}^{LM};\overleftarrow{h}_{k,j}^{LM}]\\
 h_{k,0}^{LM}=X_{k}^{LM}
+$$
+
+对于下游的任务，ELMo需要将所有层折叠成单个向量$$EMLo_{k}=E(R_{k}\theta_{e})$$,最简单的例子是只取最顶层作为最后的repesentation$$E(R_{k})=h_{k,L}^{LM}$$.
+
+更一般的是计算权重对biLM的layer进行组合：   
+
+$$
+ELMo_{k}^{task}=E(R_{k}\theta^{task})=\gamma^{task}\sum_{j=0}^L s_{j}^{task}h_{k,j}^{LM}
 $$
 
 
