@@ -18,13 +18,17 @@ word repesentation通过双向LSTM在大文本语料库上使用coupled language
 
 ## Bidirectional LSTM language models 
 
-Notation:
-$$(t_{1}..t_{N}):$$长度为N的单词序列     
-$$k:$$表示在序列中的位置   
-$$L:$$表示LSTM隐藏层数   
-$$j:$$表示LSTM的第j层，$$j=1,..L$$   
-$$\overrightarrow{h}_{k,j}^{LM}$$:表示 forward 语言模型第 j 层的第 k 位置的隐藏状态    
-$$\overleftarrow{h}_{k,j}^{LM}$$:表示 backward 语言模型第 j 层的第 k 位置的隐藏状态      
+Notation:    
+$$(t_{1}..t_{N}):$$长度为N的语料序列      
+$$k:$$表示在序列中的位置    
+$$L:$$表示LSTM隐藏层数    
+$$j:$$表示LSTM的第j层，$$j=1,..L$$    
+$$\overrightarrow{h}_{k,j}^{LM}$$:表示 forward 语言模型第 j 层的第 k 位置的隐藏状态     
+$$\overleftarrow{h}_{k,j}^{LM}$$:表示 backward 语言模型第 j 层的第 k 位置的隐藏状态     
+$$\overrightarrow{\theta}_{LSTM}:$$forward 语言模型所有参数    
+$$\overleftarrow{\theta}_{LSTM}:$$backward 语言模型所有参数    
+$$\theta_{x} :$$token(语料) representation,类似embedding matrix,可以用$$h_{k,0}^{LM}$$表示，(forward和backward是同一个参数)   
+$$\theta_{s}：$$最后softmax层的参数(forward和backward是同一个参数)   
 
 forward language model:   
 
@@ -38,9 +42,11 @@ $$
 p(t_{1},t_{2},...t_{N})=\prod_{k=1}^N p(t_{k}\mid t_{k+1},t_{k+2}...t_{N})
 $$  
 
-目标函数：
+目标函数：  
 
 $$
+\sum_{k=1}^N(logp(t_{k}\mid t_{1},..,t_{k-1};\theta_{x},\overrightarrow{\theta}_{LSTM},\theta_{s})+logp(t_{k}\mid t_{k+1},..,t_{N};\theta_{x},\overleftarrow{\theta}_{LSTM},\theta_{s}))
+
 $$
 
 
