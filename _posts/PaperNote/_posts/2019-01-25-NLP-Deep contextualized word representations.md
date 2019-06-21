@@ -71,7 +71,7 @@ h_{k,j}^{LM}=[\overrightarrow{h}_{k,j}^{LM};\overleftarrow{h}_{k,j}^{LM}]\\
 h_{k,0}^{LM}=X_{k}^{LM}
 $$
 
-对于下游的任务，ELMo需要将所有层折叠成单个向量$$EMLo_{k}=E(R_{k}\theta_{e})$$,最简单的例子是只取最顶层作为最后的repesentation$$E(R_{k})=h_{k,L}^{LM}$$.
+对于下游的任务，ELMo需要将所有层折叠成单个向量$$EMLo_{k}=E(R_{k};\theta_{e})$$,最简单的例子是只取最顶层作为最后的repesentation$$E(R_{k})=h_{k,L}^{LM}$$.
 
 更一般的是计算权重对biLM的layer进行组合：   
 
