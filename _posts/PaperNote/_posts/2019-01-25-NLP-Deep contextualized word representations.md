@@ -15,7 +15,7 @@ categories: 深度学习
 
 # ELMo模型结构   
 
-
+![_config.yml]({{ site.baseurl }}/images/97ELMo/image1.png)
 
 ## Token Representation 
 Notation:    
