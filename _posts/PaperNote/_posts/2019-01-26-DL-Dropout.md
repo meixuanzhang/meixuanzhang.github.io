@@ -42,9 +42,9 @@ $$y_{i}^{l+1}$$:$$l+1$$层第i个神经元的输出
 $$W^{l+1},b^{l+1}$$:神经网络$$l+1$$层的权重和偏差     
 
 
-![_config.yml]({{ site.baseurl }}/images/81Dropout/image1.jpg)  
-![_config.yml]({{ site.baseurl }}/images/81Dropout/image2.jpg)   
-![_config.yml]({{ site.baseurl }}/images/81Dropout/image3.jpg)  
+![_config.yml]({{ site.baseurl }}/images/81Dropout/image1.png)  
+![_config.yml]({{ site.baseurl }}/images/81Dropout/image2.png)   
+![_config.yml]({{ site.baseurl }}/images/81Dropout/image3.png)  
 
 
 $$z_{i}^{l+1}=w_{i}^{l+1}y_{l}+b_{i}^{l+1}\\
@@ -62,6 +62,8 @@ y_{i}^{l+1}=f(z_{i}^{l+1})$$
 测试时：
 
 $$W_{test}^l=pW^l$$  
+
+因为训练时每个神经元输出期望为$$E(y)=py+(1-p)0$$
 
 
 
