@@ -38,13 +38,19 @@ Dropout提高了神经网络在(视觉，语音识别，文档分类和计算生
 Notation:  
 $$z^{l+1}$$:神经网络$$l+1$$层的输入   
 $$y^{l+1}$$:$$l+1$$层的输出(当$$y^{0}=x$$,是神经网络输入)    
-$$y_{i}^{l+1}$$:$$l+1$$层第i个神经元的输出
-$$W^{l+1},b^{l+1}$$:神经网络$$l+1$$层的权重和偏差   
+$$y_{i}^{l+1}$$:$$l+1$$层第i个神经元的输出  
+$$W^{l+1},b^{l+1}$$:神经网络$$l+1$$层的权重和偏差     
+
+
+![_config.yml]({{ site.baseurl }}/images/81Dropout/image1.jpg)  
+![_config.yml]({{ site.baseurl }}/images/81Dropout/image2.jpg)   
+![_config.yml]({{ site.baseurl }}/images/81Dropout/image3.jpg)  
+
 
 $$z_{i}^{l+1}=w_{i}^{l+1}y_{l}+b_{i}^{l+1}\\
 y_{i}^{l+1}=f(z_{i}^{l+1})$$ 
 
-$$i$$代表隐藏层神经元的索引,$$f$$是激活函数：  
+$$f$$是激活函数：  
 
 $$f(x)=1/(1+exp(-x))$$ 
 
@@ -52,6 +58,12 @@ $$r_{j}\sim Bernoulli(p)\\
 \tilde{y}^l=r^l*y^l\\
 z_{i}^{l+1}=w_{i}^{l+1}\tilde{y}^l+b_{i}^{l+1}\\
 y_{i}^{l+1}=f(z_{i}^{l+1})$$  
+
+测试时：
+
+$$W_{test}^l=pW^l$$  
+
+
 
 
 
