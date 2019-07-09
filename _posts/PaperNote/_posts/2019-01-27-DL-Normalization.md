@@ -35,7 +35,7 @@ $$\frac{1}{m}\frac{\partial l(x_{i},\theta)}{\partial \theta}$$
 $$l=F_{2}(F_{1}(u,\theta_{1}),\theta_{2})$$   
 $$x=F_{1}(u,\theta_{1})$$  
 $$l=F_{2}(x,\theta_{2})$$  
-$$\theta_{2} \gets \frac{\alpha}{m}\sum_{i=1}_{m}\frac{\partial F_{2}(x_{i},\theta_{2})}{\partial \theta_{2}}$$  
+$$\theta_{2} \gets \frac{\alpha}{m}\sum_{i=1}^{m}\frac{\partial F_{2}(x_{i},\theta_{2})}{\partial \theta_{2}}$$  
 
 $$F_{1},F_{2}$$是任意的转换函数，$$\theta_{1},\theta_{2}$$是参数，由于$$x$$受$$F_{1}(u,\theta_{1})$$影响，因此出现了covariate shift问题。   
 
