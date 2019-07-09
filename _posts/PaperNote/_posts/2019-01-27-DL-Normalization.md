@@ -56,7 +56,7 @@ $$u$$为层的输入，当$$\mid x\mid$$增加时，$$g'(x)$$(微分)会趋向�
 
 # 算法  
 
-先按batch Normalizing Transform转换多个批量数据，计算批量均值的期望，以及批量方差的期望，以均值期望和方差期望，作为标准化的均值和方差，转换数据并进行训练。 这里对激活函数输入标准化后还要经历一次线性转换，才能输入到激活函数里。
+先按batch Normalizing Transform转换多个批量数据，计算批量均值的期望，以及批量方差的期望，以均值期望和方差期望，作为标准化的均值和方差，转换数据并进行训练。 这里激活函数输入通过均值和方差标准化后还要经历一次线性转换，才能输入到激活函数里。
 
 ![_config.yml]({{ site.baseurl }}/images/19Normalization/image1.png)
 ![_config.yml]({{ site.baseurl }}/images/19Normalization/image2.png)
@@ -69,6 +69,20 @@ $$
 
 
 # Batch-Normalized Convolutional-Network   
+
+CNN filter 激活函数输入前值为:   
+
+$$x=Wu+b$$
+
+filter 激活函数输出为：  
+
+$$z=g(Wu+b)$$  
+
+atch-Normalized Convolutional-Network需要对$$x$$进行标准化：  
+
+$$z=g(BN(Wu))$$   
+
+假设feature map 维度是$$p*q$$,mini-batch的大小是$$m$$,由于CNN网络feature map神经元之间不是独立的需要根据$$$m*p*q$$计算标准化所需均值和方差，而不是单独对每一个激活函数输入单独在批量维度进行标准化，$$BN(Wu)$$除了包含均值和方差标准化，还包含线性转换，每个feature map有对应的线性转换参数$$\gamma^k,\beta^k$$
 
 
 
