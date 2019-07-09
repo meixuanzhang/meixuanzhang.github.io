@@ -86,6 +86,31 @@ $$z=g(BN(Wu))$$
 
 ## Batch Normalization允许更高的学习率，具有正则化能力   
 
+假设训练过程中将权重缩放$$\alpha$$倍：  
+
+$$
+BN(Wu)=BN((\alpha W)u)\\
+\frac{\partial BN((\alpha W)u)}{\partial u }=\frac{\partial BN(Wu)}{\partial u}\\
+\frac{\partial BN((\alpha W)u)}{\partial (\alpha W) }=\frac{1}{\alpha}\frac{\partial BN(Wu)}{\partial W}\\
+$$ 
+
+可以发现$$\alpha$$不影响Jacobian(雅克比矩阵W)，权重$$W$$成倍增大会导致更小的梯度。  
+
+此外论文推测Batch Normalization 让 Jacobians层(W)的特征值接近1，两个标准化转换关系为$$\hat{z}=F(\hat{x})$$，假设$$\hat{x},\hat{z}$$各自维度间不相关且每个维度服从高斯分布，$$F(\hat{x})\approx J\hat{x}$$，$$\hat{x}$$和$$\hat{z}$$有单位的协方差矩阵，则： 
+
+
+$$
+IJ=JCov[\hat{x}]\\
+I=Cov[\hat{z}]=JCov[\hat{x}]J^T=JJ^T\\
+$$
+所以
+
+
+
+
+
+
+
 
 
 
