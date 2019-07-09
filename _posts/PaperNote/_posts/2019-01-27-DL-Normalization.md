@@ -100,12 +100,14 @@ $$
 
 
 $$
-IJ=JCov[\hat{x}]\\
 I=Cov[\hat{z}]=JCov[\hat{x}]J^T=JJ^T\\
 $$
 
 $$J$$的所有特征值为1，防止出现巨大的梯度。  
 
+In reality, the transformation is not linear, and the normalized values are not guaranteed to be Gaussian nor independent, but we nevertheless expect Batch Normalization to help make gradient propagation better behaved. 
+
+当使用Batch Normalization进行训练时，训练样本与小批量中的其他样本结合使用，训练网络不再为给定的训练样本产生确定性值，这有利于网络的泛化。   
 
 
 
