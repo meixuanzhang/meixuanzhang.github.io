@@ -17,4 +17,4 @@ Batch Normalization优势在于使标准化成为模型体系结构的一部分�
 
 SGD(stochastic gradient descent)已经被证明是非常有效训练方式，其通过优化参数$$\theta$$来最小化损失函数：   
 
-$$\theta=\mathop{\arg\max}{\theta}\frac{1}{N}\sum_{i=1}^{N}l(x_{i},\theta) $$
+$$\theta=\mathop{\arg\max}_{\theta}\frac{1}{N}\sum_{i=1}^{N}l(x_{i},\theta) $$
