@@ -78,11 +78,14 @@ filter 激活函数输出为：
 
 $$z=g(Wu+b)$$  
 
-atch-Normalized Convolutional-Network需要对$$x$$进行标准化：  
+batch-Normalized Convolutional-Network需要对$$x$$进行标准化,(这里$$x$$没有加b,因为偏差量加到了后面的标准化$$\beta$$参数中)：   
 
 $$z=g(BN(Wu))$$   
 
-假设feature map 维度是$$p*q$$,mini-batch的大小是$$m$$,由于CNN网络feature map神经元之间不是独立的需要根据$$$m*p*q$$计算标准化所需均值和方差，而不是单独对每一个激活函数输入单独在批量维度进行标准化，$$BN(Wu)$$除了包含均值和方差标准化，还包含线性转换，每个feature map有对应的线性转换参数$$\gamma^k,\beta^k$$
+假设feature map 维度是$$p*q$$,mini-batch的大小是$$m$$,由于CNN网络feature map神经元之间不是独立的需要根据$$$m*p*q$$计算标准化所需均值和方差，而不是单独对每一个激活函数输入单独在批量维度进行标准化，$$BN(Wu)$$除了包含均值和方差标准化，还包含线性转换，每个feature map有对应的线性转换参数$$\gamma^k,\beta^k$$  
+
+## Batch Normalization允许更高的学习率，具有正则化能力   
+
 
 
 
