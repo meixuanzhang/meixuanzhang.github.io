@@ -54,6 +54,24 @@ $$u$$为层的输入，当$$\mid x\mid$$增加时，$$g'(x)$$(微分)会趋向�
 论文提出Batch Normalization，减少了内部covariate shift，并且这样做大大加速了深层神经网络的训练。它通过一个标准化步骤来实现这一点，该步骤确定了层输入的平均值和方差。Batch Normalization减少梯度对参数及自身初始值依赖性。这使我们可以使用更高的学习率。此外，Batch Normalization有regularize作用，减少了对Dropout的需求（Srivastava等，2014）。最后，Batch Normalization可以通过防止网络陷入饱和模式来使用饱和非线性激活函数。   
 
 
-#
+# 算法  
+
+先按batch Normalizing Transform转换多个批量数据，计算批量均值的期望，以及批量方差的期望，以均值期望和方差期望，作为标准化的均值和方差，转换数据并进行训练。 这里对激活函数输入标准化后还要经历一次线性转换，才能输入到激活函数里。
+
+![_config.yml]({{ site.baseurl }}/images/19Normalization/image1.png)
+![_config.yml]({{ site.baseurl }}/images/19Normalization/image2.png)
+
+在测试时同样以均值期望和方差期望，作为标准化的均值和方差：  
+
+$$
+\hat{x}=\frac{x-E[x]}{\sqrt{var[x]+\epsilon}}
+$$
+
+
+# Batch-Normalized Convolutional-Network   
+
+
+
+
 
 
