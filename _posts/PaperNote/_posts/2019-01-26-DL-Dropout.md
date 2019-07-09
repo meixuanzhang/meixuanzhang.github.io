@@ -65,31 +65,17 @@ $$W_{test}^l=pW^l$$
 
 因为训练时每个神经元输出期望为$$E(y)=py+(1-p)0$$
 
+# Backpropagation  
 
+训练采用的是stochastic gradient descent 方式，同时使用momentum,annealed learning rates 和L2 weight decay提升训练效果，其中一个被证实有效的正则化方法是max-norm regularization,对于每个神经元对应的向量$$w$$,当$$\parallel w \parallel_{2}<c$$时才进行乘法，$$c$$是常数参数，需要通过验证集设置。   
 
+# unsupersived pretraining  
 
+Neural networks can be pretrained using stacks of RBMs (Hinton and Salakhutdinov, 2006), autoencoders (Vincent et al., 2010) or Deep Boltzmann Machines (Salakhutdinov and Hinton, 2009).   
 
+假设预训练权重为$$\tilde{w}$$,目标任务训练权重为$$w$$，因为dropout,权重期望为$$wp$$,因此$$w=\frac{1}{p} \tilde{w}$$,才能保证预训练权重与目标训练权重期望一致，当测试时$$w_{test}=pw=\tilde{w}$$。   
 
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
+(未完待续)
 
 
 
