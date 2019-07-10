@@ -96,7 +96,7 @@ $$
 
 可以发现$$\alpha$$不影响Jacobian层，权重$$W$$成倍增大会导致更小的梯度。  
 
-此外论文推测Batch Normalization 让 Jacobians层($$\beta$$)的特征值接近1，两个标准化转换关系为$$\hat{z}=F(\hat{x})$$，假设$$\hat{x},\hat{z}$$各自维度间不相关且每个维度服从高斯分布，$$F(\hat{x})\approx J\hat{x}$$，$$\hat{x}$$和$$\hat{z}$$有单位的协方差矩阵，则： 
+此外论文推测Batch Normalization 让 Jacobians层($$\beta$$)的奇异值接近1，两个标准化转换关系为$$\hat{z}=F(\hat{x})$$，假设$$\hat{x},\hat{z}$$各自维度间不相关且每个维度服从高斯分布，$$F(\hat{x})\approx J\hat{x}$$，$$\hat{x}$$和$$\hat{z}$$有单位的协方差矩阵，则： 
 
 
 
@@ -116,7 +116,7 @@ Cov(z)=E((z-E(z))(z-E(z))^T)\\
 =JE[J(x-E(x))(x-E(x))^T]J^T\\
 =JCov(x)J^T$$
 
-$$J$$是正交矩阵所有特征值为1，防止出现巨大的梯度。  
+$$J$$是实正交矩阵，奇异值为1，防止出现巨大的梯度。  
 
 In reality, the transformation is not linear, and the normalized values are not guaranteed to be Gaussian nor independent, but we nevertheless expect Batch Normalization to help make gradient propagation better behaved. 
 
