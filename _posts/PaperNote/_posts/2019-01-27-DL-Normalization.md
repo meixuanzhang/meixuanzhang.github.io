@@ -7,8 +7,10 @@ categories: 深度学习
 
 **涉及论文**  
 《Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift》
-
-
+《Layer Normalization》
+《Instance Normalization:The Missing Ingredient for Fast Stylization》
+《Group Normalization》 
+《DIFFERENTIABLE LEARNING-TO-NORMALIZE VIA SWITCHABLE NORMALIZATION》
 
 # Batch Normalization  
 训练深度神经网络很复杂，因为每个层的输入分布在训练期间会发生变化，因为前一层的参数会发生变化。这通过要求较低的学习速率和仔细的参数初始化来减慢训练，并且使得训练具有饱和非线性的模型变得非常困难。  
@@ -122,9 +124,13 @@ In reality, the transformation is not linear, and the normalized values are not 
 
 当使用Batch Normalization进行训练时，训练样本与小批量中的其他样本结合使用，训练网络不再为给定的训练样本产生确定性值，这有利于网络的泛化。   
 
+# Layer Normalization   
 
+# Instance Normalization
 
+# Group Normalization
 
+# SWITCHABLE NORMALIZATION
 
 
 
