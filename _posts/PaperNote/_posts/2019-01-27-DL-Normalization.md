@@ -116,7 +116,7 @@ Cov(z)=E((z-E(z))(z-E(z))^T)\\
 =JE[J(x-E(x))(x-E(x))^T]J^T\\
 =JCov(x)J^T$$
 
-$$J$$的所有特征值为1，防止出现巨大的梯度。  
+$$J$$是正交矩阵所有特征值为1，防止出现巨大的梯度。  
 
 In reality, the transformation is not linear, and the normalized values are not guaranteed to be Gaussian nor independent, but we nevertheless expect Batch Normalization to help make gradient propagation better behaved. 
 
