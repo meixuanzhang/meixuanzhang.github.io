@@ -99,9 +99,22 @@ $$
 此外论文推测Batch Normalization 让 Jacobians层($$\beta$$)的特征值接近1，两个标准化转换关系为$$\hat{z}=F(\hat{x})$$，假设$$\hat{x},\hat{z}$$各自维度间不相关且每个维度服从高斯分布，$$F(\hat{x})\approx J\hat{x}$$，$$\hat{x}$$和$$\hat{z}$$有单位的协方差矩阵，则： 
 
 
+
+
 $$
 I=Cov[\hat{z}]=JCov[\hat{x}]J^T=JJ^T\\
 $$
+
+证明(这里x是矩阵，行代表特征维度，列是样本)：  
+
+$$Cov(x)=E((x-E(x))(x-E(x))^T)\\
+z=Jx\\
+E(z)=E(Jx)=JE(x)\\
+z-E(z)=J(x-E(x))\\
+Cov(z)=E((z-E(z))(z-E(z))^T)\\
+=E[J(x-E(x))(x-E(x))^TJ^T]\\
+=JE[J(x-E(x))(x-E(x))^T]J^T\\
+=JCov(x)J^T$$
 
 $$J$$的所有特征值为1，防止出现巨大的梯度。  
 
