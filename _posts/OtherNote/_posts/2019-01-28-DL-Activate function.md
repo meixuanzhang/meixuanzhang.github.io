@@ -23,6 +23,17 @@ $$\mathop{lim}_{x\to -\infty }h'(x)=0$$
 
 ## sigmoid  
 
+$$\sigma(x)=\frac{1}{1+e^{-x}}$$
+
 ## tanh
 
-## ReLU
+$$tanh(x)=$$
+## ReLU  
+
+## Leaky ReLU  
+
+$$$$
+
+## Mazout  
+
+## ELU
