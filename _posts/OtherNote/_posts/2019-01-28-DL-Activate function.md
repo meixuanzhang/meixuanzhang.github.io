@@ -17,9 +17,9 @@ $$\mathop{lim}_{x\to +\infty }h'(x)=0$$
 
 $$\mathop{lim}_{x\to -\infty }h'(x)=0$$
 
-3、当一个函数既满足左饱和又满足右饱和的时候我们就称之为饱和，典型的函数有Sigmoid，Tanh函数。  
+3、当一个函数既满足左饱和又满足右饱和的时候我们就称之为饱和，典型的函数有Sigmoid，Tanh函数。    
 
-![_config.yml]({{ site.baseurl }}/images/66Activate function/image2.png)
+![_config.yml]({{ site.baseurl }}/images/66Activate function/image2.png)  
 
 ## sigmoid  
 
@@ -30,10 +30,18 @@ $$\sigma(x)=\frac{1}{1+e^{-x}}$$
 $$tanh(x)=$$
 ## ReLU  
 
+$$f(x)=max(0,x)$$
+
 ## Leaky ReLU  
 
-$$$$
+
+
+$$f(x)=$$
+
+## RReLU(Randomized Leaky ReLU)  
+
+## PReLU
 
 ## Mazout  
 
-## ELU
+## ELU(Expoential Linear Units)
