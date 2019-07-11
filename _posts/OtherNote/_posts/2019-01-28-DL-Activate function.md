@@ -49,9 +49,19 @@ f(x) = \left\{ \begin{array}{rl}
 \end{array} \right.
 $$  
 
+$$a$$是一个固定值，根据先验知识决定，取值范围$$a \in (0,1)$$
 
 
 ## RReLU(Randomized Leaky ReLU)  
+
+$$
+f(x) = \left\{ \begin{array}{rl}
+& x &\qquad if \ x \ge 0\\
+& ax &\qquad if \ x < 0\\
+\end{array} \right.
+$$  
+
+$$a$$是一个随机值，其服从均匀分布$$U(l,u)$$，其中$$l<u$$且$$l,u\in[0,1)$$  
 
 ## PReLU
 
