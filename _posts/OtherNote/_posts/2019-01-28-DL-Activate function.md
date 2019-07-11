@@ -7,7 +7,7 @@ categories: 深度学习
 
 # 饱和激活函数与非饱和激活函数    
 
-假设$$g(x)$$是一个激活函数
+假设$$h(x)$$是一个激活函数
 
 1、当x取值趋近于正无穷时，激活函数的导数趋近于0，此称之为右饱和 
 
@@ -23,7 +23,7 @@ $$\mathop{lim}_{x\to -\infty }h'(x)=0$$
 
 4、对于任意的$$x$$，如果存在常数$$c$$，当$$x>c$$时，恒有$$h'(x)=0$$，则称其为右硬饱和。如果对于任意的$$x$$，如果存在常数$$c$$，当$$x<c$$时，恒有$$h'(x)=0$$,则称其为左硬饱和。既满足左硬饱和又满足右硬饱和的我们称这种函数为硬饱和。
 
-4.对于任意的$$x$$，如果存在常数$$c$$，当$$x>c$$时，恒有$$h'(x)$$趋近于0，则称其为右软饱和。如果对于任意的$$x$$，如果存在常数$$c$$，当$$x<c$$时，恒有$$h'(x)$$趋近于0,则称其为左软饱和。既满足左软饱和又满足右软饱和的我们称这种函数为软饱和。
+5、对于任意的$$x$$，如果存在常数$$c$$，当$$x>c$$时，恒有$$h'(x)$$趋近于0，则称其为右软饱和。如果对于任意的$$x$$，如果存在常数$$c$$，当$$x<c$$时，恒有$$h'(x)$$趋近于0,则称其为左软饱和。既满足左软饱和又满足右软饱和的我们称这种函数为软饱和。
 
 
 
@@ -31,22 +31,25 @@ $$\mathop{lim}_{x\to -\infty }h'(x)=0$$
 
 $$\sigma(x)=\frac{1}{1+e^{-x}}$$
 
-## tanh
+## tanh双曲正切
 
-$$tanh(x)=$$
+$$tanh(x)=\frac{sinh(x)}{cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}$$  
+
 ## ReLU  
 
 $$f(x)=max(0,x)$$
 
 ## Leaky ReLU  
 
-参考：  
 
-[激活函数中的硬饱和，软饱和，左饱和和右饱和](https://blog.csdn.net/donkey_1993/article/details/81662065)
+$$
+f(x) = \left\{ \begin{array}{rl}
+& x &\qquad if \ x \ge 0\\
+& ax &\qquad if \ x \le 0\\
+\end{array} \right.
+$$  
 
 
-
-$$f(x)=$$
 
 ## RReLU(Randomized Leaky ReLU)  
 
@@ -54,4 +57,8 @@ $$f(x)=$$
 
 ## Mazout  
 
-## ELU(Expoential Linear Units)
+## ELU(Expoential Linear Units)  
+
+参考：  
+
+[激活函数中的硬饱和，软饱和，左饱和和右饱和](https://blog.csdn.net/donkey_1993/article/details/81662065)
