@@ -128,10 +128,12 @@ $$
 
 ## SELU(Scaled exponential Linear Unit)  
 
+$$
 selu(x)=\lambda\left\{ \begin{array}{rl}
 & x &\qquad if \ x > 0\\
 & a(e^x-1)x &\qquad if \ x \le 0\\
 \end{array} \right.
+$$
 
 **导数**： 
 
