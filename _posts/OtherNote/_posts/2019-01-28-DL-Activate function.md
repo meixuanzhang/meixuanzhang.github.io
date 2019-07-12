@@ -152,6 +152,7 @@ $$y$$: 是one-hot向量
 
 $$
 a_{j}=\frac{e^{z_{j}}}{\sum_{k=1}^K e^{z_{k}}}  \ for \ j =1,..K   
+$$
 
 $$C=-\sum_{j}y_{j}lna_{j}$$
 
@@ -160,8 +161,6 @@ $$\frac{\partial C}{\partial z_{j}}=a_{j}\sum_{k}y_{k}-y_{i}\\
 
 y向量只有一个维度为1，其余为0
 
-
-$$
 
 参考：  
 
