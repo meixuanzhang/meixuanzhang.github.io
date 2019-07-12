@@ -129,10 +129,26 @@ $$
 \end{array} \right.
 $$
 
+## SELU(Scaled exponential Linear Unit)  
+
+selu(x)=\lambda\left\{ \begin{array}{rl}
+& x &\qquad if \ x > 0\\
+& a(e^x-1)x &\qquad if \ x \le 0\\
+\end{array} \right.
+
+**导数**： 
+
+$$
+\left\{ \begin{array}{rl}
+& \lambda &\qquad if \ x > 0\\
+& selu(x)+\lambda a &\qquad if \ x \le 0\\
+\end{array} \right.
+$$
+
 ## Softmax 
 
 $$
-\sigma(x)_{j}=\frac{e^{x_{j}}}{\sum_{k=1}^K e^{x_{k}}}  \ for j =1,..K
+\sigma(x)_{j}=\frac{e^{x_{j}}}{\sum_{k=1}^K e^{x_{k}}}  \ for \ j =1,..K
 $$
 
 参考：  
