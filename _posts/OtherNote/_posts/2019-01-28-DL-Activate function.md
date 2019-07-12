@@ -156,7 +156,7 @@ $$
 
 $$C=-\sum_{j}y_{j}lna_{j}$$
 
-$$\frac{\partial C}{\partial z_{j}}=a_{j}\sum_{k}y_{k}-y_{i}\\
+$$\frac{\partial C}{\partial z_{j}}=a_{j}\sum_{k}y_{k}-y_{j}\\
 =a_{j}-y_{j}$$  
 
 y向量只有一个维度为1，其余为0
