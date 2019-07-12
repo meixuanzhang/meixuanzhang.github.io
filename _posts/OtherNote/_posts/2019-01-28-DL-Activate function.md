@@ -76,9 +76,6 @@ $$
 \end{array} \right.
 $$
 
-
-
-
 ## RReLU(Randomized Leaky ReLU)  
 
 $$
@@ -145,10 +142,25 @@ $$
 \end{array} \right.
 $$
 
-## Softmax 
+## Loss: Softmax 
+
+Notation:  
+
+$$z_{j}$$: 最后一层隐藏层第j个神经元  
+$$a_{j}$$: 是第j个神经元类别概率输出  
+$$y$$: 是one-hot向量  
 
 $$
-\sigma(x)_{j}=\frac{e^{x_{j}}}{\sum_{k=1}^K e^{x_{k}}}  \ for \ j =1,..K
+a_{j}=\frac{e^{z_{j}}}{\sum_{k=1}^K e^{z_{k}}}  \ for \ j =1,..K   
+
+$$C=-\sum_{j}y_{j}lna_{j}$$
+
+$$\frac{\partial C}{\partial z_{j}}=a_{j}\sum_{k}y_{k}-y_{i}\\
+=a_{j}-y_{j}$$  
+
+y向量只有一个维度为1，其余为0
+
+
 $$
 
 参考：  
