@@ -50,7 +50,7 @@ f(x) = \left\{ \begin{array}{rl}
 $$  
 
 Leaky ReLU :$$a$$是一个固定值，根据先验知识决定，取值范围$$a \in (0,1)$$   
-PReLU : $$a$$是参W数，需要神经网络学习
+PReLU : $$a$$是参数，需要神经网络学习
 
 
 ## RReLU(Randomized Leaky ReLU)  
@@ -72,11 +72,24 @@ $$z_{ij}$$:第 i 个神经元的第j个输入
 $$W_{..ij}$$:计算第 i 个神经元对应第 j 个权重向量，i对应$$W$$的第二维,j对应$$W$$的第三维
 
 $$h_{i}(x)=\mathop{max}_{j\in [1,k]}z_{ij}\\
-where z_{ij}=x^TW_{...ij}+b_{ij},and W\in R^{d*m*k} $$  
+where \ z_{ij}=x^TW_{...ij}+b_{ij},and \  W\in R^{d*m*k} $$  
 
 对于隐藏层第i个神经元，计算出$$k$$个$$z_{ij}$$,取值最大的作为神经元$$i$$的输入
 
 ## ELU(Expoential Linear Units)  
+
+$$
+f(x)= \left\{ \begin{array}{rl}
+& x &\qquad if \ x > 0\\
+& a(e^x-1)x &\qquad if \ x \le 0\\
+\end{array} \right.
+$$  
+
+## Softmax 
+
+$$
+\sigma(x)_{j}=\frac{e^{x_{j}}}{\sum_{k=1}^K e^{x_{k}}}  \ for j =1,..K
+$$
 
 参考：  
 
