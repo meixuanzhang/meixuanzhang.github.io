@@ -39,17 +39,18 @@ $$tanh(x)=\frac{sinh(x)}{cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}$$
 
 $$f(x)=max(0,x)$$
 
-## Leaky ReLU  
+## Leaky ReLU  & PReLU(Parametric ReLU)
 
 
 $$
 f(x) = \left\{ \begin{array}{rl}
 & x &\qquad if \ x \ge 0\\
-& ax &\qquad if \ x \le 0\\
+& ax &\qquad if \ x < 0\\
 \end{array} \right.
 $$  
 
-$$a$$是一个固定值，根据先验知识决定，取值范围$$a \in (0,1)$$
+Leaky ReLU :$$a$$是一个固定值，根据先验知识决定，取值范围$$a \in (0,1)$$   
+PReLU : $$a$$是参W数，需要神经网络学习
 
 
 ## RReLU(Randomized Leaky ReLU)  
@@ -61,11 +62,19 @@ f(x) = \left\{ \begin{array}{rl}
 \end{array} \right.
 $$  
 
-$$a$$是一个随机值，其服从均匀分布$$U(l,u)$$，其中$$l<u$$且$$l,u\in[0,1)$$  
-
-## PReLU
+$$a$$是一个随机值，其服从均匀分布$$U(l,u)$$，其中$$l<u$$且$$l,u\in[0,1)$$
 
 ## Mazout  
+
+Notation:  
+$$h_{i}$$:隐藏层的第 i 个神经元 
+$$z_{ij}$$:第 i 个神经元的第j个输入  
+$$W_{..ij}$$:计算第 i 个神经元对应第 j 个权重向量，i对应$$W$$的第二维,j对应$$W$$的第三维
+
+$$h_{i}(x)=\mathop{max}_{j\in [1,k]}z_{ij}\\
+where z_{ij}=x^TW_{...ij}+b_{ij},and W\in R^{d*m*k} $$  
+
+对于隐藏层第i个神经元，计算出$$k$$个$$z_{ij}$$,取值最大的作为神经元$$i$$的输入
 
 ## ELU(Expoential Linear Units)  
 
