@@ -346,7 +346,7 @@ $$\overleftarrow{h_{t}}=LSTM(w_{t},h_{t+1})$$
 
 双向LSTM时刻t隐藏层concat,维度$$2u*1$$： 
 
-$$h_{t}=[\overrightarrow{h_{t}};\overrightarrow{{h_{t}}]$$
+$$h_{t}=[\overrightarrow{h_{t}};\overleftarrow{h_{t}}]$$
 
 隐藏层序列,维度$$2u*n$$:     
 
