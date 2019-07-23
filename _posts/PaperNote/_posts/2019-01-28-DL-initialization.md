@@ -6,8 +6,8 @@ categories: 深度学习
 ---  
 
 **涉及论文**： 
-《On weight initialization in deep neural networks》
-《Understanding the difficulty of training deep feedforward neural networks》
+《On weight initialization in deep neural networks》   
+《Understanding the difficulty of training deep feedforward neural networks》    
 
 
 # 概述  
