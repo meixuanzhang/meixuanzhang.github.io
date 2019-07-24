@@ -133,14 +133,28 @@ $$u^{l}$$:神经网络第$$l$$层神经元均值
 $$\sigma^l$$:神经网络第$$l$$层神经元标准差  
 $$a^l$$:神经网络第$$l$$层所有神经元  
 
-$$u^{l}=\frac{}{H}\sum_{i=1}^H a_{i}^l\\
-\sigma^l=\sqrt{\frac{1}{H}\sum_{i=1}^H(a_{i}^l-u^{l})}$$
+$$u^{l}=\frac{1}{H}\sum_{i=1}^H a_{i}^l\\
+\sigma^l=\sqrt{\frac{1}{H}\sum_{i=1}^H(a_{i}^l-u^{l})^2}$$
 
 $$\tilde{a}^l=\frac{g}{\sigma^l}\odot (a^l-u^{l})+b$$  
 
 $$g,b$$是bias，偏差   
 
+## layer normalized recurrent nerural networks  
 
+Notation:  
+
+$$H$$:t时刻循环神经网络隐藏层神经元总数    
+$$u^{t}$$:t时刻循环神经网络隐藏层输入均值    
+$$\sigma^l$$:t时刻循环神经网络隐藏层输入标准差  
+$$a^t$$:t时刻循环神经网络隐藏层输入
+$$h^t$$:t时刻循环神经网络隐藏层输出
+
+$$
+a^t=W_{hh}h^{t-1}+W_{xh}X^t\\
+u^{t}=\frac{1}{H}\sum_{i=1}^H a_{i}^t\\
+\sigma^t=\sqrt{\frac{1}{H}\sum_{i=1}^H(a_{i}^t-u^{t})^2}\\
+h^t=f[\frac{g}{\sigma^t}\odot (a^t-u^{t})+b]$$
 
 # Instance Normalization
 
