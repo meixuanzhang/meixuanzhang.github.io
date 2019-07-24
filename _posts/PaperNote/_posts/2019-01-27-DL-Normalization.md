@@ -63,7 +63,7 @@ $$u$$为层的输入，当$$\mid x\mid$$增加时，$$g'(x)$$(微分)会趋向�
 ![_config.yml]({{ site.baseurl }}/images/19Normalization/image1.png)
 ![_config.yml]({{ site.baseurl }}/images/19Normalization/image2.png)
 
-在测试时同样以均值期望和方差期望，作为标准化的均值和方差：  
+在测试时同样以均值期望和方差期望，作为标准化所需的均值和方差：  
 
 $$
 \hat{x}=\frac{x-E[x]}{\sqrt{var[x]+\epsilon}}
@@ -126,11 +126,19 @@ In reality, the transformation is not linear, and the normalized values are not 
 
 # Layer Normalization   
 
-Notation:
+Notation:  
 
-$$H$$:神经网络某层神经元总数   
-$$u^{l}$$:神经网络第$$l$$层神经元均值  
-$$\sigma^l$$:神经网络第$$l$$层神经元标准差 
+$$H$$:神经网络某层神经元总数    
+$$u^{l}$$:神经网络第$$l$$层神经元均值    
+$$\sigma^l$$:神经网络第$$l$$层神经元标准差  
+$$a^l$$:神经网络第$$l$$层所有神经元  
+
+$$u^{l}=\frac{}{H}\sum_{i=1}^H a_{i}^l\\
+\sigma^l=\sqrt{\frac{1}{H}\sum_{i=1}^H(a_{i}^l-u^{l})}$$
+
+$$\tilde{a}^l=\frac{g}{\sigma^l}\odot (a^l-u^{l})+b$$  
+
+$$g,b$$是bias，偏差   
 
 
 
