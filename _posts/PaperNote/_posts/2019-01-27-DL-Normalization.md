@@ -171,10 +171,10 @@ $$x_{tijk}$$:batch中第$$t$$张图片，第$$i$$个频道(第$$i$$个filter)，
 $$
 u_{ti}=\frac{1}{HW}\sum_{l=1}^W \sum_{m=1}^H x_{tilm}\\
 \sigma_{ti}^2=\frac{1}{HW}\sum_{l=1}^W \sum_{m=1}^H(x_{tilm}-u_{ti})^2\\
-y_{tijk}=/frac{x_{tijk}-u_{ti}}{\sqrt{\sigma_{ti}^2+\epsilon}}
+y_{tijk}=\frac{x_{tijk}-u_{ti}}{\sqrt{\sigma_{ti}^2+\epsilon}}
 $$
 
-# Group Normalization
+# Group Normalization  
 
 # SWITCHABLE NORMALIZATION
 
