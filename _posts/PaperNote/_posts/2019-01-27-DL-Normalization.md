@@ -146,17 +146,32 @@ Notation:
 
 $$H$$:t时刻循环神经网络隐藏层神经元总数    
 $$u^{t}$$:t时刻循环神经网络隐藏层输入均值    
-$$\sigma^l$$:t时刻循环神经网络隐藏层输入标准差  
-$$a^t$$:t时刻循环神经网络隐藏层输入
-$$h^t$$:t时刻循环神经网络隐藏层输出
+$$\sigma^l$$:t时刻循环神经网络隐藏层输入标准差   
+$$a^t$$:t时刻循环神经网络隐藏层输入  
+$$h^t$$:t时刻循环神经网络隐藏层输出  
 
 $$
 a^t=W_{hh}h^{t-1}+W_{xh}X^t\\
 u^{t}=\frac{1}{H}\sum_{i=1}^H a_{i}^t\\
 \sigma^t=\sqrt{\frac{1}{H}\sum_{i=1}^H(a_{i}^t-u^{t})^2}\\
-h^t=f[\frac{g}{\sigma^t}\odot (a^t-u^{t})+b]$$
+h^t=f[\frac{g}{\sigma^t}\odot (a^t-u^{t})+b]$$ 
 
-# Instance Normalization
+
++ 三种标准化方式对比： 
+
+![_config.yml]({{ site.baseurl }}/images/19Normalization/image3.png)
+
+# Instance Normalization  
+
+Notation:  
+
+$$x\in R^{T*C*W*H}$$:没有经过激活函数的feature map ，其中$$T$$表示batch size,$$C$$是channel,$$W*H$$像素大小  
+$$x_{tijk}$$:batch中第$$t$$张图片，第$$i$$个频道(第$$i$$个filter)，位置为$$jk$$feature map的像素点，$$y_{tijk}$$是其标准化结果  
+
+$$
+u_{ti}=\frac{1}{HW}\sum_{l=1}^W \sum_{m=1}^H x_{tilm}\\
+\sigma_{ti}^2=\frac{1}{HW}\sum_{l=1}^W \sum_{m=1}^H(x_{tilm})
+$$
 
 # Group Normalization
 
