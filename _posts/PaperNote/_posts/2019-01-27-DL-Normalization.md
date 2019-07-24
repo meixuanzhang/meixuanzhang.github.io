@@ -84,7 +84,7 @@ batch-Normalized Convolutional-Network需要对$$x$$进行标准化,(这里$$x$$
 
 $$z=g(BN(Wu))$$   
 
-假设feature map 维度是$$p*q$$,mini-batch的大小是$$m$$,由于CNN网络feature map神经元之间不是独立的需要根据$$$m*p*q$$计算标准化所需均值和方差，而不是单独对每一个激活函数输入单独在批量维度进行标准化，$$BN(Wu)$$除了包含均值和方差标准化，还包含线性转换，每个feature map有对应的线性转换参数$$\gamma^k,\beta^k$$  
+假设feature map 维度是$$p*q$$,mini-batch的大小是$$m$$,由于CNN网络feature map神经元之间不是独立的需要根据$$m*p*q$$计算标准化所需均值和方差，而不是单独对每一个激活函数输入单独在批量维度进行标准化，$$BN(Wu)$$除了包含均值和方差标准化，还包含线性转换，每个feature map有对应的线性转换参数$$\gamma^k,\beta^k$$  
 
 ## Batch Normalization允许更高的学习率，具有正则化能力   
 
@@ -170,7 +170,8 @@ $$x_{tijk}$$:batch中第$$t$$张图片，第$$i$$个频道(第$$i$$个filter)，
 
 $$
 u_{ti}=\frac{1}{HW}\sum_{l=1}^W \sum_{m=1}^H x_{tilm}\\
-\sigma_{ti}^2=\frac{1}{HW}\sum_{l=1}^W \sum_{m=1}^H(x_{tilm})
+\sigma_{ti}^2=\frac{1}{HW}\sum_{l=1}^W \sum_{m=1}^H(x_{tilm}-u_{ti})^2\\
+y_{tijk}=/frac{x_{tijk}-u_{ti}}{\sqrt{\sigma_{ti}^2+\epsilon}}
 $$
 
 # Group Normalization
