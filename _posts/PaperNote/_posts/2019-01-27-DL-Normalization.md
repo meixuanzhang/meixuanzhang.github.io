@@ -166,7 +166,7 @@ h^t=f[\frac{g}{\sigma^t}\odot (a^t-u^{t})+b]$$
 Notation:  
 
 $$x\in R^{T*C*W*H}$$:没有经过激活函数的feature map ，其中$$T$$表示batch size,$$C$$是channel,$$W*H$$像素大小  
-$$x_{tijk}$$:batch中第$$t$$张图片，第$$i$$个频道(第$$i$$个filter)，位置为$$jk$$feature map的像素点，$$y_{tijk}$$是其标准化结果  
+$$x_{tijk}$$:batch中第$$t$$张图片，第$$i$$个频道(第$$i$$个filter)，在feature map的$$jk$$位置的像素点，$$y_{tijk}$$是其标准化结果  
 
 $$
 u_{ti}=\frac{1}{HW}\sum_{l=1}^W \sum_{m=1}^H x_{tilm}\\
@@ -175,6 +175,23 @@ y_{tijk}=\frac{x_{tijk}-u_{ti}}{\sqrt{\sigma_{ti}^2+\epsilon}}
 $$
 
 # Group Normalization  
+
++ 对比四种类型的Normalization  
+
+![_config.yml]({{ site.baseurl }}/images/19Normalization/image4.png)
+
+Notation: 
+$$\tilde{x_{i}}$$:feature map的一个像素点，索引为$$i$$,$$i=(i_{N},i_{C},i_{H},i_{W})$$是一个四维向量，向量空间是$$(N,C,H,W)$$  
+
+为了标准化$$\tilde{x_{i}}$$： 
+
+$$\tilde{x_{i}}=\frac{1}{\sigma_{i}}(x_{i}-u_{i})$$
+
+需要计算$$\sigma_{i},u_{i}$$:   
+
+$$u_{i}=\frac{1}{m}\sum_{k\in S_{i}}x_{k}\\
+\sigma_{i}=\sqrt{\frac{1}{m}\sum_{k\in S_{i}}(x_{i}-u_{i})^2+\epsilon}
+$$
 
 # SWITCHABLE NORMALIZATION
 
