@@ -223,6 +223,8 @@ $$S_{i}={k\mid k_{N}=i_{N},\lfloor \frac{k_{C}}{C/G} \rfloor=\lfloor \frac{i_{C}
 
 # 5、SWITCHABLE NORMALIZATION   
 
+![_config.yml]({{ site.baseurl }}/images/19Normalization/image5.png)
+
 进行标准化需要计算均值和标准差：  
 
 $$\tilde{h}_{ncij}=\gamma \frac{h_{ncij}-u}{\sqrt{\sigma^2+\epsilon}}+\beta\\
