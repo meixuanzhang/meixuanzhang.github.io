@@ -197,26 +197,26 @@ $$S_{i}$$is the set of pixels in which the mean and std are computed, and $$m$$ 
 
 + Bartch Norm  
 
-$$S_{i}={k\mid k_{C}=i_{C}}$$  
+$$S_{i}=\{k\mid k_{C}=i_{C}\}$$  
 
 CNN网络结构batch norm沿着$$(N,H,W)$$计算均值和标准差,每一个channel$$(N,H,W)$$是一个set
 
 + Layer Norm
 
-$$S_{i}={k\mid k_{N}=i_{N}}$$  
+$$S_{i}=\{k\mid k_{N}=i_{N}\}$$  
 
 沿着$$(C,H,W)$$计算均值和标准差,每一个样本$$(C,H,W)$$是一个set   
 
 + Instance Norm  
 
-$$S_{i}={k\mid k_{N}=i_{N},k_{C}=i_{C}}$$  
+$$S_{i}=\{k\mid k_{N}=i_{N},k_{C}=i_{C}\}$$  
 
 沿着$$(H,W)$$计算均值和标准差,每一个样本每一个channel$$(H,W)$$是一个set   
 
 
 + Group Norm  
 
-$$S_{i}={k\mid k_{N}=i_{N},\lfloor \frac{k_{C}}{C/G} \rfloor=\lfloor \frac{i_{C}}{C/G} \rfloor}$$  
+$$S_{i}=\{k\mid k_{N}=i_{N},\lfloor \frac{k_{C}}{C/G} \rfloor=\lfloor \frac{i_{C}}{C/G} \rfloor\}$$  
 
 将channel划分为G组，每组含有channel数为$$C/G$$   
 沿着$$(H,W)$$以及 $$C/G$$个channel计算均值和标准差,每一个样本每个channel组的$$(C/G,H,W)$$是一个set
@@ -229,14 +229,31 @@ $$S_{i}={k\mid k_{N}=i_{N},\lfloor \frac{k_{C}}{C/G} \rfloor=\lfloor \frac{i_{C}
 
 $$\tilde{h}_{ncij}=\gamma \frac{h_{ncij}-u}{\sqrt{\sigma^2+\epsilon}}+\beta\\
 
-n\in [1,N],c\in [1,C],i\in [1,H],j\in [1,W]$$
+n\in [1,N],c\in [1,C],i\in [1,H],j\in [1,W]$$  
+
+$$\gamma,\beta$$是参数  
 
 SWITCHABLE NORMALIZATION 结合了IN,LN,BN:  
 
 
 $$\tilde{h}_{ncij}=\gamma \frac{h_{ncij}-\sum_{k\in\Omega}w_{k}u_{k}}{\sqrt{\sum_{k\in\Omega}w_{k}^{'}\sigma_{k}^2+\epsilon}}+\beta$$
 
+$$\Omega={in,ln,bn}$$  
 
+$$
+u_{in}=\frac{1}{HW}\sum_{i,j}^{H,W} h_{ncij}\\
+\sigma_{in}^2=\frac{1}{HW}\sum_{i,j}^{H,W} (h_{ncij}-u_{in})^2
+$$
+
+$$
+u_{ln}=\frac{1}{C}\sum_{c=1}^{C} u_{in}\\
+\sigma_{ln}^2=\frac{1}{C}\sum_{c=1}^{C} (\sigma_{in}^2+u_{in}^2)-u_{ln}^2
+$$
+
+$$
+u_{bn}=\frac{1}{N}\sum_{n=1}^{N} u_{in}\\
+\sigma_{Bn}^2=\frac{1}{N}\sum_{n=1}^{N} (\sigma_{in}^2+u_{in}^2)-u_{bn}^2
+$$
 
 
 
