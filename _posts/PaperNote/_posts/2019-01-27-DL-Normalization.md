@@ -176,7 +176,7 @@ $$
 
 # Group Normalization  
 
-+ 对比四种类型的Normalization  
+**对比四种类型的Normalization**  
 
 ![_config.yml]({{ site.baseurl }}/images/19Normalization/image4.png)
 
@@ -192,6 +192,34 @@ $$\tilde{x_{i}}=\frac{1}{\sigma_{i}}(x_{i}-u_{i})$$
 $$u_{i}=\frac{1}{m}\sum_{k\in S_{i}}x_{k}\\
 \sigma_{i}=\sqrt{\frac{1}{m}\sum_{k\in S_{i}}(x_{i}-u_{i})^2+\epsilon}
 $$
+
+$$S_{i}$$is the set of pixels in which the mean and std are computed, and $$m$$ is the size of this set.  
+
++ Bartch Norm  
+
+$$S_{i}={k\mid k_{C}=i_{C}}$$  
+
+CNN网络结构batch norm沿着$$(N,H,W)$$计算均值和标准差,每一个channel$$(N,H,W)$$是一个set
+
++ Layer Norm
+
+$$S_{i}={k\mid k_{N}=i_{N}}$$  
+
+沿着$$(C,H,W)$$计算均值和标准差,每一个样本$$(C,H,W)$$是一个set   
+
++ Instance Norm  
+
+$$S_{i}={k\mid k_{N}=i_{N},k_{C}=i_{C}}$$  
+
+沿着$$(H,W)$$计算均值和标准差,每一个样本每一个channel$$(H,W)$$是一个set   
+
+
++ Group Norm  
+
+$$S_{i}={k\mid k_{N}=i_{N},\lfloor \frac{k_{C}}{C/G} \rfloor=\lfloor \frac{i_{C}}{C/G} \rfloor}$$  
+
+将channel划分为G组，每组含有channel $$C/G$$   
+沿着$$(H,W)$$以及 $$C/G$$个channel计算均值和标准差,每一个样本每个channel组的$$(C/G,H,W)$$是一个set
 
 # SWITCHABLE NORMALIZATION
 
