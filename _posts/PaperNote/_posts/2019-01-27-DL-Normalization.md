@@ -12,7 +12,7 @@ categories: 深度学习
 《Group Normalization》   
 《DIFFERENTIABLE LEARNING-TO-NORMALIZE VIA SWITCHABLE NORMALIZATION》   
 
-# Batch Normalization  
+# 1、Batch Normalization  
 训练深度神经网络很复杂，因为每个层的输入分布在训练期间会发生变化，因为前一层的参数会发生变化。这通过要求较低的学习速率和仔细的参数初始化来减慢训练，并且使得训练具有饱和非线性的模型变得非常困难。  
 
 Batch Normalization优势在于使标准化成为模型体系结构的一部分，对每个小批量训练样本进行标准化。Batch Normalization允许我们使用更高的学习速率并且不需要过于担心初始化问题。
@@ -124,7 +124,7 @@ In reality, the transformation is not linear, and the normalized values are not 
 
 当使用Batch Normalization进行训练时，训练样本与小批量中的其他样本结合使用，训练网络不再为给定的训练样本产生确定性值，这有利于网络的泛化。   
 
-# Layer Normalization   
+# 2、Layer Normalization   
 
 Notation:  
 
@@ -161,7 +161,7 @@ h^t=f[\frac{g}{\sigma^t}\odot (a^t-u^{t})+b]$$
 
 ![_config.yml]({{ site.baseurl }}/images/19Normalization/image3.png)
 
-# Instance Normalization  
+# 3、Instance Normalization  
 
 Notation:  
 
@@ -174,7 +174,7 @@ u_{ti}=\frac{1}{HW}\sum_{l=1}^W \sum_{m=1}^H x_{tilm}\\
 y_{tijk}=\frac{x_{tijk}-u_{ti}}{\sqrt{\sigma_{ti}^2+\epsilon}}
 $$
 
-# Group Normalization  
+# 4、Group Normalization  
 
 **对比四种类型的Normalization**  
 
@@ -218,13 +218,21 @@ $$S_{i}={k\mid k_{N}=i_{N},k_{C}=i_{C}}$$
 
 $$S_{i}={k\mid k_{N}=i_{N},\lfloor \frac{k_{C}}{C/G} \rfloor=\lfloor \frac{i_{C}}{C/G} \rfloor}$$  
 
-将channel划分为G组，每组含有channel $$C/G$$   
+将channel划分为G组，每组含有channel数为$$C/G$$   
 沿着$$(H,W)$$以及 $$C/G$$个channel计算均值和标准差,每一个样本每个channel组的$$(C/G,H,W)$$是一个set
 
-# SWITCHABLE NORMALIZATION
+# 5、SWITCHABLE NORMALIZATION   
+
+进行标准化需要计算均值和标准差：  
+
+$$\tilde{h}_{ncij}=\gamma \frac{h_{ncij}-u}{\sqrt{\sigma^2+\epsilon}}+\beta\\
+
+n\in [1,N],c\in [1,C],i\in [1,H],j\in [1,W]$$
+
+SWITCHABLE NORMALIZATION 结合了IN,LN,BN:  
 
 
-
+$$\tilde{h}_{ncij}=\gamma \frac{h_{ncij}-\sum_{k\in\Omega}w_{k}u_{k}}{\sqrt{\sum_{k\in\Omega}w_{k}^{'}\sigma_{k}^2+\epsilon}}+\beta$$
 
 
 
