@@ -79,7 +79,7 @@ $$
 $$
 
 
-假设初始时是线性范围的，权重是独立初始化的，每一个权重方差相同$$}Var[W^{i'}]$$,输入特征方差是相同的为$$Var[x]$$
+假设初始时是线性范围的，权重是独立初始化的，每一个权重方差相同$$Var[W^{i'}]$$,输入特征方差是相同的为$$Var[x]$$
 
 $$
 f'(s_{k}^i)\approx 1,\\
@@ -96,6 +96,8 @@ Var[z^i] = Var[z_{k}^i]=Var[\sum_{j=1}^{n_{i-1}}z_{j}^{i-1}W_{j,k}^{i-1}]\\
 =n_{i-1}Var[z^{i-1}]Var[W^{i-1}]\\
 $$ 
 
-
+$$
+Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s^d}]\prod_{i'=i}^{d-1}Var[W^{i'+1}]
+$$
 
 
