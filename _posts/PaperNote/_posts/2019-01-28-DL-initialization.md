@@ -64,6 +64,18 @@ $$softsign(x)=x/(1+\mid x\mid )$$
 
 上图显示的是训练结束时激活值的直方图，上图是tanh，下图是Softsign，tanh激活值主要分布在0，和渐近线-1，1，Softsign激活值主要分布在0，-1和1之间  
 
+## Studying Gradients and their Propagation  
+
+Notation:  
+
+$$s^i$$:神经网络第i层神经元的输入,$$s^i=z^iW^i+b^i$$   
+$$z^i$$:神经网络第i层上一层神经元的输出，$$z^{i+1}=f(s^i)$$    
+
+$$
+\frac{\partial Cost}{\partial s_{k}^i}=f'(s_{k}^i)W_{k,\bullet}^{i+1}\frac{\partial Cost}{\partial s^{i+1}}\\
+\frac{\partial Cost}{\partial w_{l,k}^i}=z_{l}^i\frac{\partial Cost}{\partial s_{k}^{i}}
+$$
+
 
 
 
