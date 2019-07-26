@@ -252,8 +252,16 @@ $$
 
 $$
 u_{bn}=\frac{1}{N}\sum_{n=1}^{N} u_{in}\\
-\sigma_{Bn}^2=\frac{1}{N}\sum_{n=1}^{N} (\sigma_{in}^2+u_{in}^2)-u_{bn}^2
-$$
+\sigma_{bn}^2=\frac{1}{N}\sum_{n=1}^{N} (\sigma_{in}^2+u_{in}^2)-u_{bn}^2
+$$  
+
+其中$$\sum_{k\in \Omega}w_{k}=1,\sum_{k\in \Omega}w_{k}^{'}=1$$
+
+$$w_{k}=\frac{e^{\lambda_{k}}}{\sum_{z\in {in,ln,bn}}^e^{\lambda_{z}}}\\
+k \in \{in,ln,bn\}$$ 
+
+同理$$w_{k}^{'}$$   
+
 
 
 
