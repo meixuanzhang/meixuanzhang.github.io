@@ -272,6 +272,12 @@ D_{ln}(x)=E_{ln}(x^2)-E_{ln}(x)^2=\frac{1}{C}\sum_{c=1}^{C}E_{in}(x^2)-E_{ln}(x)
 =\frac{1}{C}\sum_{c=1}^{C} (\sigma_{in}^2+u_{in}^2)-u_{ln}^2
 $$
 
+**总结**   
 
+上述标准化，是对第L层每个神经元激活值或者说对于第L+1层网络神经输入进行Normalization操作，还有另一类是对神经网络中连接相邻隐层神经元之间的边上的权重进行标准化操作如 Weight Norm
 
+# 6、Weight Normalization(待续)  
+
+参考：  
+[深度学习中的Normalization模型](https://www.jiqizhixin.com/articles/2018-08-29-7)  
 
