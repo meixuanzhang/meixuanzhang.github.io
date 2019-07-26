@@ -5,7 +5,7 @@ date:   2019-01-28
 categories: 深度学习
 ---  
 
-**涉及论文**： 
+**涉及论文**：    
 《Understanding the difficulty of training deep feedforward neural networks》   
 《On weight initialization in deep neural networks》   
    
@@ -69,7 +69,9 @@ $$softsign(x)=x/(1+\mid x\mid )$$
 Notation:  
 
 $$s^i$$:神经网络第i层神经元的输入,$$s^i=z^iW^i+b^i$$   
-$$z^i$$:神经网络第i层上一层神经元的输出，$$z^{i+1}=f(s^i)$$    
+$$z^i$$:神经网络第i层上一层神经元的输出，$$z^{i+1}=f(s^i)$$     
+$$n_{i}$$:神经网络第i层的神经元数量   
+$$x$$:是input   
 
 $$
 \frac{\partial Cost}{\partial s_{k}^i}=f'(s_{k}^i)W_{k,\bullet}^{i+1}\frac{\partial Cost}{\partial s^{i+1}}\\
@@ -77,7 +79,28 @@ $$
 $$
 
 
+假设初始时是线性范围的，权重是独立初始化的，输入特征方差是相同的为$$Var[x]$$
 
+$$
+f'(s_{k}^i)\approx 1,\\
+Var[z^i]=Var[x]\prod_{i'=0}^{i-1}n_{i'}Var[W^{i'}]
+$$
+
+$$z^{i-1},W^{i-1}$$相互独立，且因为$$f'(s_{k}^i)\approx 1$$所有$$z^{i+1}\approx s^i$$   
+
+$$
+Var[z^i]=Var[f(s^{i-1})]=Var[z^{i-1}W^{i-1}+b^{i-1}]=Var[z^{i-1}W^{i-1}]
+$$
+
+式子$$Var[z^{i-1}W^{i-1}]$$是矩阵运算,所以   
+
+
+$$
+Var[z_{k}^i]=Var[\sum_{j=1}^{n_{i-1}}z_{j}^{i-1}W_{j,k}^{i-1}]\\
+=\sum_{j=1}^{n_{i-1}}Var[z_{j}^{i-1}W_{j,k}^{i-1}]\\
+=\sum_{j=1}^{n_{i-1}}Var[z_{j}^{i-1}]Var[W_{j,k}^{i-1}]\\
+=n_{i-1}Var[z_{j}^{i-1}]Var[W_{j,k}^{i-1}]\\
+$$
 
 
 
