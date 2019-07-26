@@ -257,10 +257,20 @@ $$
 
 其中$$\sum_{k\in \Omega}w_{k}=1,\sum_{k\in \Omega}w_{k}^{'}=1$$
 
-$$w_{k}=\frac{e^{\lambda_{k}}}{\sum_{z\in {in,ln,bn}}^e^{\lambda_{z}}}\\
+$$w_{k}=\frac{e^{\lambda_{k}}} {\sum_{z\in \{in,ln,bn\}}e^{\lambda_{z}}}\\
 k \in \{in,ln,bn\}$$ 
 
 同理$$w_{k}^{'}$$   
+
+
+上面式子之间关系：  
+
+$$
+D_{in}(x)=E_{in}(x^2)-E_{in}(x)^2\\
+D_{ln}(x)=E_{ln}(x^2)-E_{ln}(x)^2=\frac{1}{C}\sum_{c=1}^{C}E_{in}(x^2)-E_{ln}(x)^2\\
+=\frac{1}{C}\sum_{c=1}^{C}(D_{in}(x)+E_{in}(x)^2)-E_{ln}(x)^2\\
+=\frac{1}{C}\sum_{c=1}^{C} (\sigma_{in}^2+u_{in}^2)-u_{ln}^2
+$$
 
 
 
