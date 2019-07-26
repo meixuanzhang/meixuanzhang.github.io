@@ -278,6 +278,7 @@ $$
 
 # 6、Weight Normalization(待续)  
 
+
 参考：  
 [深度学习中的Normalization模型](https://www.jiqizhixin.com/articles/2018-08-29-7)  
 
