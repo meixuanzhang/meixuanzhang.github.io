@@ -100,9 +100,19 @@ $$
 Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s^d}]\prod_{i'=i+1}^{d}n_{1'+1}Var[W^{i'}]
 $$
 
+$$
+Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s_{k}^i}]\\
+=Var[\sum_{j=1}^{n_{i+2}}\frac{\partial Cost}{\partial s_{j}^{i+1}} \frac{\partial s_{j}^{i+1}}{\partial z_{k}^{i+1}}f'(s_{k}^i)]\\
+=n_{i+2}Var[W_{k}^{i+1}]Var[\frac{\partial Cost}{\partial s_{j}^{i+1}}]
+$$
+
+
+
 
 $$
-Var[\frac{\partial Cost}{\partial W^i}]=Var[x]\prod_{i'=0}^{i-1}n_{i'}Var[W^{i'}]\prod_{i'=i+1}^{d}n_{1'+1}Var[W^{i'}]*Var[x]Var[\frac{\partial Cost}{\partial s^d}]
+Var[\frac{\partial Cost}{\partial W^i}]=Var[x]\prod_{i'=0}^{i-1}n_{i'}Var[W^{i'}]\prod_{i'=i+1}^{d}n_{i'+1}Var[W^{i'}]*Var[x]Var[\frac{\partial Cost}{\partial s^d}]   
 $$
+
+
 
 
