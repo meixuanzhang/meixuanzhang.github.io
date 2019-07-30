@@ -32,7 +32,8 @@ TCN模型基于两个原则：神经网络输出与输入有相同长度，以�
 
 ## Dilated causal convolutional  
 
-Nation
+Dilated convolutional 
+
 
 ![_config.yml]({{ site.baseurl }}/images/64TCN/image2.png)  
 
