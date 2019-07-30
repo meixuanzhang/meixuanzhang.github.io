@@ -106,11 +106,31 @@ Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s_{k}^
 =n_{i+2}Var[W_{k}^{i+1}]Var[\frac{\partial Cost}{\partial s_{j}^{i+1}}]
 $$
 
-
+$$n_{o}$$是输入$$x$$的维度，$$z^0=x^0$$,$$s^0=z^0W^0+b^0)$$,$$s^0$$维度为$$n_{1}$$  
 
 
 $$
 Var[\frac{\partial Cost}{\partial W^i}]=Var[x]\prod_{i'=0}^{i-1}n_{i'}Var[W^{i'}]\prod_{i'=i+1}^{d}n_{i'+1}Var[W^{i'}]*Var[x]Var[\frac{\partial Cost}{\partial s^d}]   
+$$
+
+为了保持信息的流动，希望对于任意$$\forall(i,i')$$有： 
+
+$$
+Var[z^i]=Var[z^_{i'}]\\
+Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s^_{i'}}]
+$$
+
+因此对于任意的$$i$$有：  
+
+$$
+n_{i}Var[W^i]=1 \\
+n_{i+1}Var[W^i]=1\\
+Var[W']=\frac{2}{n_{i}+n_{i+1}}
+$$ 
+
+$$
+Var[\frac{\partial Cost}{\partial s^i}]=[nVar[W]]^{d-i}Var[x]\\
+Var[\frac{\partial Cost}{\partial W^i}]=[nVar[W]]^dVar[x]Var[\frac{\partial Cost}{\partial s^d}]
 $$
 
 
