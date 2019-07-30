@@ -116,7 +116,7 @@ $$
 为了保持信息的流动，希望对于任意$$\forall(i,i')$$有： 
 
 $$
-Var[z^i]=Var[z^_{i'}]\\
+Var[z^i]=Var[z^{i'}]\\
 Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s^_{i'}}]
 $$
 
@@ -138,7 +138,7 @@ $$
 $$
 Var[W]=\frac{(\frac{1}{\sqrt{n}}+\frac{1}{\sqrt{n}})^2}{12}\\
 =\frac{\frac{4}{n}}{12}=\frac{1}{3n}\\
-nVar=\frac{1}{3}
+nVar[W]=\frac{1}{3}
 $$
 
 
