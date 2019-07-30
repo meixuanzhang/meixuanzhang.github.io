@@ -133,6 +133,12 @@ Var[\frac{\partial Cost}{\partial s^i}]=[nVar[W]]^{d-i}Var[x]\\
 Var[\frac{\partial Cost}{\partial W^i}]=[nVar[W]]^dVar[x]Var[\frac{\partial Cost}{\partial s^d}]
 $$
 
+对于参数标准的初始化方法$$W_{ij} \sim U[-\frac{1}{\sqrt{n}},\frac{1}{\sqrt{n}}]$$，有： 
 
+$$
+Var[W]=\frac{(\frac{1}{\sqrt{n}}+\frac{1}{\sqrt{n}})^2}{12}\\
+=\frac{\frac{4}{n}}{12}=\frac{1}{3n}\\
+nVar=\frac{1}{3}
+$$
 
 
