@@ -117,7 +117,7 @@ $$
 
 $$
 Var[z^i]=Var[z^{i'}]\\
-Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s^_{i'}}]
+Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s^{i'}}]
 $$
 
 因此对于任意的$$i$$有：  
@@ -139,6 +139,24 @@ $$
 Var[W]=\frac{(\frac{1}{\sqrt{n}}+\frac{1}{\sqrt{n}})^2}{12}\\
 =\frac{\frac{4}{n}}{12}=\frac{1}{3n}\\
 nVar[W]=\frac{1}{3}
-$$
+$$ 
+
+采用$$W_{ij} \sim U[-\frac{6}{\sqrt{n_{j}+n_{j+1}}},\frac{6}{\sqrt{n_{j}+n_{j+1}}}]$$参数初始化方式，对比两种初始化方式有：  
+
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image9.png)  
+
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image10.png)   
+
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image11.png)  
 
 
+为了防止饱和，输入不应该分布在激活函数梯度值太低的位置，对于以0为对称的激活函数，如果输入值为0，激活函数梯度值虽然不为零，但参数梯度值依然为0，参数梯度应该均值为0但有大的方差
+
+
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image12.png)  
+
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image13.png) 
+
+
+
+ 
