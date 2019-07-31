@@ -28,20 +28,39 @@ TCN模型基于两个原则：神经网络输出与输入有相同长度，以�
 
 ![_config.yml]({{ site.baseurl }}/images/64TCN/image1.png)   
 
-一个简单的causal convolutions只能访问与神经网络深度成线性比的历史。这使得将causal convolutions应用于需要更长历史的序列任务是困难的。
+
 
 ## Dilated causal convolutional  
 
-Dilated convolutional 
+一个简单的causal convolutions只能访问与神经网络深度成线性比的历史。这使得将causal convolutions应用于需要更长历史的序列任务是困难的。解决的方法是使用Dilated convolutional。   
 
+Dilated convolutional:   
 
 ![_config.yml]({{ site.baseurl }}/images/64TCN/image2.png)  
 
+Notation:  
+
+$$x \in R^n$$:序列输入   
+$$f:\{0,..,k-1\}\to R:$$卷积的filter  
+$$d:$$dilation factor   
+$$k:$$filter size  
+$$s-d \cdot i:$$解释了过去的方向
+
+$$F(s)=(x*_{d}f)(s)=\sum_{i=0}^{k-1}x_{s-d \cdot i}$$  
+
+使用较大的dilation可以使输出表示更宽范围的输入，从而有效的扩展ConvNet的感受野。选择更大的filter以及增加dilation factor 可以增大感受野，每一层在前一层有效历史是(k-1)d
+
+使用dilated convolutions时，通常会随着网络深度以指数形式增加dilation factor大小(即$$d=O(2^i)$$)，这可以确保每一个输入都会有一些filter，同时允许使用深度网络获得极大的有效历史
 
 ![_config.yml]({{ site.baseurl }}/images/64TCN/image3.png)  
 
 
 ![_config.yml]({{ site.baseurl }}/images/64TCN/image4.png)  
+
+
+## Residul Connection  
+
+
 
 参考： 
 [WAVENET: A GENERATIVE MODEL FOR RAW AUDIO](https://arxiv.org/abs/1609.03499)
