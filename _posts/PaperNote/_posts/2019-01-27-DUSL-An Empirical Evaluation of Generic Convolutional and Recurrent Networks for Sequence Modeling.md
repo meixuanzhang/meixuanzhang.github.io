@@ -63,7 +63,15 @@ $$F(s)=(x*_{d}f)(s)=\sum_{i=0}^{k-1}x_{s-d \cdot i}$$
 由于TCN的感受野取决于网络深度$$n$$以及filter尺寸$$k$$和dilation factor$$d$$，因此，对于更深和更大TCN的稳定变得非常重要。例如，在预测可能依赖于大小为$$2^{12}$$的历史和高维输入序列的情况下，可能需要最多12层的网络。更具体地说，每一层都由多个filter组成，用于特征提取。因此，在我们的通用TCN模型设计中，我们使用Residul模块代替卷积层。由于输入和输出长度是不一致的，因此加入了$$1*1$$convolution。模型还使用了weight normalization,以及Dropout
 
 
-## 优点
+## 优点  
+
++ Parallelism(平行运算)   
++ Flexible receptive field size(灵活的感受野)   
++ Stable gradients(避免了梯度爆炸和消失问题)  
++ Low memory requirement for training
++ Variable length inputs
+
+
 
 参考： 
 [WAVENET: A GENERATIVE MODEL FOR RAW AUDIO](https://arxiv.org/abs/1609.03499)
