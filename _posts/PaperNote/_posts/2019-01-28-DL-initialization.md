@@ -19,10 +19,10 @@ categories: 深度学习
 # 梯度计算  
 
 以feedforward nerual network为例，下图展示了计算参数梯度时(来源：台大深度学习)影响因素，从最后结果可以看出对于$$l$$层参数梯度计算，其受上一层($$l-1$$层)神经元的输出$$a^{l-1}$$,当前层激活函数对其输入微分$$\sigma ' (z^l)$$,下一层($$l+1$$层)参数$$W^l$$,损失函数对下一层激活函数输入微分$$\delta$$影响  
-![_config.yml]({{ site.baseurl }}/images/65 initialization/image1.png)
-![_config.yml]({{ site.baseurl }}/images/65 initialization/image2.png)
-![_config.yml]({{ site.baseurl }}/images/65 initialization/image3.png)
-![_config.yml]({{ site.baseurl }}/images/65 initialization/image4.png)
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image1.png)   
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image2.png)   
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image3.png)  
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image4.png)  
 
 
 
@@ -41,7 +41,7 @@ $$
 
 ### Experiments with the Sigmoid  
 
-![_config.yml]({{ site.baseurl }}/images/65 initialization/image5.png)
+![_config.yml]({{ site.baseurl }}/images/65 initialization/image5.png)    
 
 从图中可以发现训练开始，除了神经网络最后一层，其他层的激活值(激活函数输出值)围绕在0.5，随着神经网络加深，激活值有下降趋势，神经网络最后一层激活值在很长一段时间内值为0(此时激活函数梯度接近0)，处于饱和状态，对于神经网络中间层(图中第四层)，随着epoch增加激活值出现了从饱和状态“逃离”现象，同时第一层部分激活值开始出现了饱和状态，如果参数初始化是采用预训练的方式则不会出现这样的饱和现象。   
 
