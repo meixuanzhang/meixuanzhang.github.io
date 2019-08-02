@@ -55,7 +55,7 @@ $$F(s)=(x*_{d}f)(s)=\sum_{i=0}^{k-1}x_{s-d \cdot i}$$
 ![_config.yml]({{ site.baseurl }}/images/64TCN/image3.png)  
 
 
-![_config.yml]({{ site.baseurl }}/images/64TCN/image4.png)  
+![_config.yml]({{ site.baseurl }}/images/64TCN/image4.jpg)  
 
 
 ## Residul Connection  
