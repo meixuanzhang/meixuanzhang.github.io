@@ -36,7 +36,11 @@ TCN模型基于两个原则：神经网络输出与输入有相同长度，以�
 
 Dilated convolutional:   
 
-![_config.yml]({{ site.baseurl }}/images/64TCN/image2.png)  
+![_config.yml]({{ site.baseurl }}/images/64TCN/image4.jpg)  
+
+Dilated causal convolutional:  
+
+![_config.yml]({{ site.baseurl }}/images/64TCN/image2.png) 
 
 Notation:  
 
@@ -52,10 +56,11 @@ $$F(s)=(x*_{d}f)(s)=\sum_{i=0}^{k-1}x_{s-d \cdot i}$$
 
 使用dilated convolutions时，通常会随着网络深度以指数形式增加dilation factor大小(即$$d=O(2^i)$$)，这可以确保每一个输入都会有一些filter，同时允许使用深度网络获得极大的有效历史
 
+
 ![_config.yml]({{ site.baseurl }}/images/64TCN/image3.png)  
 
 
-![_config.yml]({{ site.baseurl }}/images/64TCN/image4.jpg)  
+
 
 
 ## Residul Connection  
