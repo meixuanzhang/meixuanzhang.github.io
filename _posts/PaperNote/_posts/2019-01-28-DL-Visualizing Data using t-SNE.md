@@ -19,9 +19,9 @@ $$
 
 $$\sigma_{i}$$是以$$x_{i}$$为均值高斯分布的方差。$$\sigma_{i}$$的值不是手动优化或指定的，而是通过二分搜索找到$$\sigma_{i}$$以匹配预先指定的困惑值Perp。
 
-因为只关心成对相似性所以可以把$$P_{i\mid i}$$设置为0。高维度数据点$$x_{i},x_{j}$$在低维度对应点为$$y_{i},y_{j}$$,将低维度的数据条件概率定义为$$q_{j\mid i}$$，将其对应的高斯分布方差设定为$$\frac{1}{\sqrt{2}}$$。  
+因为只关心成对相似性所以可以把$$p_{i\mid i}$$设置为0。高维度数据点$$x_{i},x_{j}$$在低维度对应点为$$y_{i},y_{j}$$,将低维度的数据条件概率定义为$$q_{j\mid i}$$，将其对应的高斯分布方差设定为$$\frac{1}{\sqrt{2}}$$。  
 
-$$q_{j\mid i}=\frac{exp(-\parallel y_{i}-y_{j}\parallel^2/)}{\sum_{k\ne i }exp(-\parallel x_{i}-x_{k}\parallel^2/))}$$
+$$q_{j\mid i}=\frac{exp(-\parallel y_{i}-y_{j}\parallel^2)}{\sum_{k\ne i }exp(-\parallel x_{i}-x_{k}\parallel^2))}$$
 
 同理将$$q_{i\mid i}$$设置为0.
 
@@ -31,8 +31,17 @@ $$q_{j\mid i}=\frac{exp(-\parallel y_{i}-y_{j}\parallel^2/)}{\sum_{k\ne i }exp(-
 
 $$C=\sum_{i}KL(P_{i}\parallel Q_{i})=\sum_{i}\sum_{j}p_{j\mid i}log \frac{p_{j\mid i}}{q_{j\mid i}}$$  
 
+$$P_{i}$$表示给定数据点$$x_{i}$$情况下所有其他数据点的条件概率分布  
+$$Q_{i}$$表示给定数据点$$y_{i}$$情况下所有其他数据点的条件概率分布    
 
+KL散度具有不对称性，使用相距较远的低维数据点来表示相近的高维数据点，惩罚较小，但使用相距较近的低维数据来表示相远的高维数据点，惩罚较大，如：
 
+$$
+q_{j\mid i}=0.2,p_{j\mid i}=0.8,cost=0.8log\frac{0.8}{0.2}=1.11\\
+q_{j\mid i}=0.8,p_{j\mid i}=0.2,cost=0.2log\frac{0.2}{0.8}=0.277\\
+$$  
+
+换句话说，SNE成本函数侧重于保留数据的局部结构,低维空间中的聚类应该可解释为在高维空间中也非常相似的数据点
 
 # t-Stochastic Neighbor Embedding(t-SNE) 
 
