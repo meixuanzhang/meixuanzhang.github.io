@@ -41,7 +41,17 @@ q_{j\mid i}=0.2,p_{j\mid i}=0.8,cost=0.8log\frac{0.8}{0.2}=1.11\\
 q_{j\mid i}=0.8,p_{j\mid i}=0.2,cost=0.2log\frac{0.2}{0.8}=0.277\\
 $$  
 
-换句话说，SNE成本函数侧重于保留数据的局部结构,低维空间中的聚类应该可解释为在高维空间中也非常相似的数据点
+SNE损失函数侧重于保留数据的局部结构,低维空间中的聚类应该可解释为在高维空间中也非常相似的数据点
+
+**Perplexity**  
+
+不同$$\sigma_{i}$$对于不同的分布$$P_{i}$$,每个分布会有对应的熵，熵会随着$$\sigma_{i}$$增大而增大，Perplexity和熵关系如下：  
+
+
+$$Perp(P_{i}) = 2^{H(P_{i})}\\
+H(P_{i}=-\sum_{j}p_{j\mid i}log_{2}p_{j\mid i}$$
+
+Perplexity可以解释为对有效邻近点数量的一种平滑测量，通过设置Perplexity，找到对应的$$\sigma_{i}$$,
 
 # t-Stochastic Neighbor Embedding(t-SNE) 
 
