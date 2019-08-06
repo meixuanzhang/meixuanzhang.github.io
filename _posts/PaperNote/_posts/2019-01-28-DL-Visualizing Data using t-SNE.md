@@ -21,7 +21,7 @@ $$\sigma_{i}$$是以$$x_{i}$$为均值高斯分布的方差。$$\sigma_{i}$$的�
 
 因为只关心成对相似性所以可以把$$p_{i\mid i}$$设置为0。高维度数据点$$x_{i},x_{j}$$在低维度对应点为$$y_{i},y_{j}$$,将低维度的数据条件概率定义为$$q_{j\mid i}$$，将其对应的高斯分布方差设定为$$\frac{1}{\sqrt{2}}$$。  
 
-$$q_{j\mid i}=\frac{exp(-\parallel y_{i}-y_{j}\parallel^2)}{\sum_{k\ne i }exp(-\parallel x_{i}-x_{k}\parallel^2))}$$
+$$q_{j\mid i}=\frac{exp(-\parallel y_{i}-y_{j}\parallel^2)}{\sum_{k\ne i }exp(-\parallel y_{i}-y_{k}\parallel^2))}$$
 
 同理将$$q_{i\mid i}$$设置为0.
 
@@ -71,13 +71,34 @@ $$\alpha(t)$$:第t次迭代的的momentum
 
 # t-Stochastic Neighbor Embedding(t-SNE) 
 
+**Symmetric(对称) SNE**  
+
+设置$$p_{ii}=0,q_{ii}=0,p_{ij}=p_{ji},q_{ij}=q_{ji}$$  
+
+$$q_{ij}=\frac{exp(-\parallel y_{i}-y_{j}\parallel^2)}{\sum_{k\ne l }exp(-\parallel y_{k}-y_{l}\parallel^2))}\\
+p_{ij}=\frac{exp(-\parallel x_{i}-x_{j}\parallel^2/2\sigma_{i}^2)}{\sum_{k\ne l }exp(-\parallel x_{k}-x_{l}\parallel^2/2\sigma_{i}^2))}
+$$   
+
+对称SNE存在问题，当$$x_{i}$$是离群值时，$$p_{ij}$$对于所有的$$j$$会非常的小，在低维图点$$y_{i}$$对损失函数影响非常小，结果是这个点所在位置没有根据其他点位置设置。所以t-SNE修改为：  
+
+$$
+p_{ij}=\frac{p_{j\mid i}+p_{i\mid j}}{2n}\\
+\sum_{j}p_ {ij}>\frac{1}{2n}
+$$
+
+梯度：  
+
+$$\frac{\partial C}{\partial y_{i}}=4\sum_{j}(p_{ij}-q_{ij})(y_{i}-y_{j})$$
+
+**Crowding promblem**  
+
+高维图中邻近关系有时候不能在低维图中保留  
+
+如图，2维图中4个点$$x_{1},x_{2},x_{3},x_{4}$$关系如图，将2维图中点距离关系映射到1维图中，在确定$$x_{1},x_{2},x_{3}$$关系后，$$x_{4}$$无论是放在$$x_{3}$$还是$$x_{1}$$旁边都无法保留2维图中邻近关系，$$x_{4}$$到$$x_{1}$$和$$x_{3}$$应比$$x_{2}$$小
 
 
-
-
-
-
-
+为了解决“Crowding promblem”，Cook et al. (2007)提出加入slight repulsio
+by .
 
 
 
@@ -86,3 +107,5 @@ $$\alpha(t)$$:第t次迭代的的momentum
 参考： 
 
 [Automatic Selection of t-SNE Perplexity](https://arxiv.org/pdf/1708.03229.pdf)
+
+[Crowding Problem(t-SNE)](https://www.youtube.com/watch?v=hMUrZ708PFk)
