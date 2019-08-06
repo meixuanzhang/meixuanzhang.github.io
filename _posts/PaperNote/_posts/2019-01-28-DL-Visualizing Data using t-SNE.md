@@ -65,7 +65,9 @@ $$
 y^{(t)}=y^{(t-1)}+\eta \frac{\partial C}{\partial y}+\alpha(t)(y^{(t-1)}-y^{(t-2)}) 
 $$
 
-
+$$y^{(t)}$$:第t次迭代的结果    
+$$h$$: learning rate(学习率)   
+$$\alpha(t)$$:第t次迭代的的momentum    
 
 # t-Stochastic Neighbor Embedding(t-SNE) 
 
