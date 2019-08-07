@@ -99,12 +99,12 @@ $$\frac{\partial C}{\partial y_{i}}=4\sum_{j}(p_{ij}-q_{ij})(y_{i}-y_{j})$$
 
 ![_config.yml]({{ site.baseurl }}/images/62tSNE/image1.png)
 
-为了解决“Crowding promblem”，Cook et al. (2007)提出加入slight repulsio,即UNI-SNE,但优化中低维度开始距离较远的两个聚类点，后续无法再拉近，解释参考：  
+为了解决“Crowding promblem”，Cook et al. (2007)提出加入slight repulsio,即UNI-SNE,但优化中低维度开始距离较远的两个聚类点，后续无法再拉近，论文则提出在低维度中使用t分布，解释参考：  
 
 [t-SNE完整笔记](http://www.datakit.cn/blog/2017/02/05/t_sne_full.html#77)    
 [从SNE到t-SNE再到LargeVis](https://bindog.github.io/blog/2016/06/04/from-sne-to-tsne-to-largevis/)
 
-论文提出在低维度中使用t分布，则$$q_{ij}$$为：  
+$$q_{ij}$$为：  
 
 $$
 q_{ij}=\frac{(1+\parallel y_{i}-y_{j}\parallel^2)^{-1}}{\sum_{k \ne l}(1+\parallel y_{k}-y_{l}\parallel^2)^{-1}}
@@ -115,6 +115,8 @@ $$
 $$
 \frac{\partial C}{\partial y_{i}}=4\sum_{j}(p_{ij}-q_{ij})(y_{i}-y_{j})(1+\parallel y_{i}-y_{j}\parallel^2)^{-1}
 $$
+
+
 
 参考： 
 
