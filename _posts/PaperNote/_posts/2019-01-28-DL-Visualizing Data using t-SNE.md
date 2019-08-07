@@ -94,15 +94,27 @@ $$\frac{\partial C}{\partial y_{i}}=4\sum_{j}(p_{ij}-q_{ij})(y_{i}-y_{j})$$
 
 高维图中邻近关系有时候不能在低维图中保留  
 
-如图，2维图中4个点$$x_{1},x_{2},x_{3},x_{4}$$关系如图，将2维图中点距离关系映射到1维图中，在确定$$x_{1},x_{2},x_{3}$$关系后，$$x_{4}$$无论是放在$$x_{3}$$还是$$x_{1}$$旁边都无法保留2维图中邻近关系，$$x_{4}$$到$$x_{1}$$和$$x_{3}$$应比$$x_{2}$$小
+如图，2维图中4个点$$x_{1},x_{2},x_{3},x_{4}$$关系如图，将2维图中点距离关系映射到1维图中，在确定$$x_{1},x_{2},x_{3}$$关系后，$$x_{4}$$无论是放在$$x_{3}$$还是$$x_{1}$$旁边都无法保留2维图中邻近关系，$$x_{4}$$与$$x_{1}$$和$$x_{3}$$的距离应比$$x_{2}$$小
 
 
-为了解决“Crowding promblem”，Cook et al. (2007)提出加入slight repulsio
-by .
+![_config.yml]({{ site.baseurl }}/images/62tSNE/image1.png)
 
+为了解决“Crowding promblem”，Cook et al. (2007)提出加入slight repulsio,即UNI-SNE,但优化中低维度开始距离较远的两个聚类点，后续无法再拉近，解释参考：  
 
+[t-SNE完整笔记](http://www.datakit.cn/blog/2017/02/05/t_sne_full.html#77)    
+[从SNE到t-SNE再到LargeVis](https://bindog.github.io/blog/2016/06/04/from-sne-to-tsne-to-largevis/)
 
+论文提出在低维度中使用t分布，则$$q_{ij}$$为：  
 
+$$
+q_{ij}=\frac{(1+\parallel y_{i}-y_{j}\parallel^2)^{-1}}{\sum_{k \ne l}(1+\parallel y_{k}-y_{l}\parallel^2)^{-1}}
+$$
+
+梯度为：  
+
+$$
+\frac{\partial C}{\partial y_{i}}=4\sum_{j}(p_{ij}-q_{ij})(y_{i}-y_{j})(1+\parallel y_{i}-y_{j}\parallel^2)^{-1}
+$$
 
 参考： 
 
