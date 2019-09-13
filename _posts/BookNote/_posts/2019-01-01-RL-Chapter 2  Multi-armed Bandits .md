@@ -51,7 +51,7 @@ $$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概�
 
 $$q\ast (a),a=1,.,10$$的值通过均值为0，方差为1的高斯分布产生  
 $$R_{t}$$的值通过均值为$$q\ast (A_{t})$$,方差为1的高斯分布产生   
-这个例子中$R_{t}$$概率分布是稳定的，不会随时间变化
+这个例子中$$R_{t}$$概率分布是稳定的，不会随时间变化
 结果如图： 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image1.png)
 
