@@ -67,7 +67,7 @@ reward方差越大，$$\varepsilon$$应越大，更多的取探索
 
 sample -average method估计Q :  
 
-$$Q_{t}(a)\frac{\sum_{i=1}^{t-1}R_{i}\mathbb{1}_{A_{i}=a}}{\sum_{i=1}^{t-1}\mathbb{1}_{A_{i}=a}}$$   
+$$Q_{t}(a)=\frac{\sum_{i=1}^{t-1}R_{i}\mathbb{1}_{A_{i}=a}}{\sum_{i=1}^{t-1}\mathbb{1}_{A_{i}=a}}$$   
 
 现将$$R_{1},R_{2}..R_{n-1}$$定义t-1次游戏中有n-1次选择了action a 返回的reward,则$$Q_{t}(a)$$估计为：  
 
@@ -77,7 +77,7 @@ Q_{t}(a) = Q_{n}(a)
 $$
 
 
-上面式子需要记录游戏所有action以及返回的reward，每场游戏后才能重新计算Q(a),为此提出incremental implementation(只需要记录每个action最新的Q及已经action次数):  
+上面式子需要记录游戏所有action以及返回的reward，每场游戏后才能重新计算$$Q(a)$$,为此提出incremental implementation(只需要记录每个action最新的Q及已经action次数):  
 
 $$Q_{n+1}(a)=\frac{1}{n}\sum_{i=1}^nR_{i}\\
 =\frac{1}{n}(R_{n} +\sum_{i=1}^{n-1}R_{i})\\
@@ -88,7 +88,7 @@ $$Q_{n+1}(a)=\frac{1}{n}\sum_{i=1}^nR_{i}\\
 
 $$R_{n}$$是第n次选择action a 产生的reward    
 对于任意的$$Q_{1},Q_{2}=R_{1}$$
-式子(2,1)一般形式是：   
+式子(2.1)一般形式是：   
 NewEstimate $$\gets$$ OldEstimate + StepSize[Target-OldEstimate]    
 
 算法流程：  
@@ -109,7 +109,8 @@ $$\alpha$$取值范围$$(0,1]$$
 $$(1-\alpha)^n+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}=1$$   
 (2.2)式子称为：exponential recency-weighted average,$$R_{i}$$权重随着奖励次数增加而衰减  
 
-将$$\alpha_{n}(a)$$定义为步长参数，在sample -average method中$$\alpha_{n}(a)=\frac{1}{n}$$，根据大数定律保证其能收敛于真实的action values。但不是所有{$$\alpha_{n}(a)$$}序列都能保证收敛的，根据stochastic approximation theory以概率1收敛条件是：  
+有时可以在各个步骤之间你更改步长参数，将$$\alpha_{n}(a)$$定义第n次游戏选择动作$$a$$获得reward的步长参数，在sample -average method中$$\alpha_{n}(a)=\frac{1}{n}$$，根据大数定律保证其能收敛于真实的action values。但不是所有{$$\alpha_{n}(a)$$}序列都能保证收敛的，根据stochastic approximation theory以概率1收敛(converge to
+the true action values )条件是：  
 
 $$\sum_{n=1}^{\infty}\alpha_{n}(a)=\infty $$ 和 $$\sum_{n=1}^{\infty}\alpha_{n}^2(a)<\infty$$   
 
@@ -118,7 +119,7 @@ $$\alpha_{n}(a)=\frac{1}{n}$$满足这两个条件，设置为常数则不满足
 
 后面的案例中，通常不满足第二个条件，意味估计值不会收敛，往往会根据最近的reward不断变化，这对于Nonstationary情境是非常有用的，我们遇见的问题往往是Nonstationary，现实中很少要求{$$\alpha_{n}(a)$$}要符合收敛条件，更多在理论中使用，同时即使符合收敛过程也是非常慢的。  
 
-**5、Optimistic Initial Values**  
+**6、Optimistic Initial Values**  
 
  (2.2)更新方法估计的Q是永远存在bias的，因为会一直受到初始Q影响，(2.1)方法当所有action都被选过一次后，估计的Q则不再受初始Q的影响。初始状态Q作为参数需要人为确定，对初始Q设定可以根据人的先验知识。  
  
