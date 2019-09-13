@@ -103,9 +103,12 @@ $$q_{\pi}(s,a)=E_{\pi}[G_{t}\mid S_{t}=s,A_{t}=a]=E_{\pi}[\sum_{k=0}^{\infty}\ga
 $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]\\
 =E_{\pi}[R_{t+1}+\gamma G_{t+1} \mid S_{t}=s]\\
 =\sum_{a}\pi(a\mid s)[R_{t+1}+\gamma G_{t+1} \mid S_{t}=s,A_{t}=a]\\
+=\sum_{a}\pi(a\mid s)[E_{R_{t+1},S_{t+1}}[R_{t+1}+\gamma G_{t+1}\mid S_{t+1}=s'] \mid S_{t}=s,A_{t}=a]\\ 
+
+=\sum_{a}\pi(a\mid s)[E_{R_{t+1},S_{t+1}}[R_{t+1}+\gamma E_{\pi}[G_{t+1}\mid S_{t+1}=s']] \mid S_{t}=s,A_{t}=a]\\ 
+
 
 =\sum_{a}\pi(a\mid s)[[R_{t+1}+\gamma E_{\pi}[G_{t+1} \mid S_{t+1}=s']]\mid S_{t}=s,A_{t}=a]\\
-=\sum_{a}\pi(a\mid s)[E_{(R_{t+1},S_{t+1})}[R_{t+1}+\gamma E_{\pi}[G_{t+1} \mid S_{t+1}=s']]]\\
 
 =\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')],for\ all \ s\in  \widehat{S}  \qquad  \qquad (3.1)$$   
 
