@@ -58,7 +58,7 @@ $$G_{t}=R_{t+1}+R_{t+2}+R_{t+3}+...+R_{T}  \qquad  T \ is \ the \ final \ time \
 每个episode会以terminal state为结束，并返回不同rewards(子序列reward)。    
 下一个episode开始跟前一个episode的结束是独立的    
 
-将nonterminal states 记为$$\widehat{S}$$，$$\widehat{S}$$+terminal states 记为$$\widehat{S^+}$$，time of termination(终止时间)记为T，T是一个随机变量，每个episode的T取值往往不一样。   
+将nonterminal states 记为$$\widehat{S}$$，terminal states 记为$$\widehat{S^+}$$，time of termination(终止时间)记为T，T是一个随机变量，每个episode的T取值往往不一样。   
 这种涉及episodes任务称为episodic tasks   
 
 在很多情况下，并不能将agent-enviroment 互动分解成一个个子序列,因为互动是无限制继续下的(强化学习的问题有无限步骤)，$$T=\infty$$，return也是无限的   
@@ -103,8 +103,10 @@ $$q_{\pi}(s,a)=E_{\pi}[G_{t}\mid S_{t}=s,A_{t}=a]=E_{\pi}[\sum_{k=0}^{\infty}\ga
 $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]\\
 =E_{\pi}[R_{t+1}+\gamma G_{t+1} \mid S_{t}=s]\\
 =\sum_{a}\pi(a\mid s)[R_{t+1}+\gamma G_{t+1} \mid S_{t}=s,A_{t}=a]\\
-=\sum_{a}\pi(a\mid s)[E_{(R_{t+1},S_{t+1})}[R_{t+1}+[\gamma G_{t+1} \mid S_{t+1}=s']]]\\
+
+=\sum_{a}\pi(a\mid s)[[R_{t+1}+\gamma E_{\pi}[G_{t+1} \mid S_{t+1}=s']]\mid S_{t}=s,A_{t}=a]\\
 =\sum_{a}\pi(a\mid s)[E_{(R_{t+1},S_{t+1})}[R_{t+1}+\gamma E_{\pi}[G_{t+1} \mid S_{t+1}=s']]]\\
+
 =\sum_{a}\pi(a\mid s)\sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\pi}(s')],for\ all \ s\in  \widehat{S}  \qquad  \qquad (3.1)$$   
 
 $$s'$$:是next states   
