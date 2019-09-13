@@ -109,7 +109,7 @@ $$\alpha$$取值范围$$(0,1]$$
 $$(1-\alpha)^n+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}=1$$   
 (2.2)式子称为：exponential recency-weighted average,$$R_{i}$$权重随着奖励次数增加而衰减  
 
-有时可以在各个步骤之间你更改步长参数，将$$\alpha_{n}(a)$$定义第n次游戏选择动作$$a$$获得reward的步长参数，在sample -average method中$$\alpha_{n}(a)=\frac{1}{n}$$，根据大数定律保证其能收敛于真实的action values。但不是所有{$$\alpha_{n}(a)$$}序列都能保证收敛的，根据stochastic approximation theory以概率1收敛(converge to
+有时可以在各个步骤之间更改步长参数，将$$\alpha_{n}(a)$$定义第n次游戏选择动作$$a$$获得reward的步长参数，在sample -average method中$$\alpha_{n}(a)=\frac{1}{n}$$，根据大数定律保证其能收敛于真实的action values。但不是所有{$$\alpha_{n}(a)$$}序列都能保证收敛的，根据stochastic approximation theory以概率1收敛(converge to
 the true action values )条件是：  
 
 $$\sum_{n=1}^{\infty}\alpha_{n}(a)=\infty $$ 和 $$\sum_{n=1}^{\infty}\alpha_{n}^2(a)<\infty$$   
