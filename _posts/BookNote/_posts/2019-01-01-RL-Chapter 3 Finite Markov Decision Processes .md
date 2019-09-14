@@ -8,7 +8,7 @@ categories: ["Reinforcement Learning:An Introduction"]
 
 MDPs是序列决策的经典模型，actions不仅会影响immediate reward ,还会影响后面的situations或state,甚至是future reward。MDPs 需要平衡 immediate 和delayed reward。  
 
-bandit promble 是估计$$q\ast (a)$$   
+bandit promble 是估计$$q_{\ast}(a)$$   
 MDPs 是估计$$q_{\ast} (s,a)$$或$$V_{\ast} (s)$$(s情境，最优action下value）  
 
 
@@ -97,7 +97,7 @@ $$E_{\pi}[\cdot]$$agent 使用策略$$\pi$$下，随机变量的期望值
 
 $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]=E_{\pi}[\sum_{k=0}^{\infty}\gamma^{k}R_{t+k+1}\mid S_{t}=s],for\ all \ s \in \widehat{S}$$  
 
-$$q_{\pi}(s,a)=E_{\pi}[G_{t}\mid S_{t}=s,A_{t}=a]=E_{\pi}[\sum_{k=0}^{\infty}\gamma^{k}R_{t+k+1}\mid S_{t}=s,A_{t}=a]$$   
+$$q_{\pi}(s,a)=E[G_{t}\mid S_{t}=s,A_{t}=a]=E[\sum_{k=0}^{\infty}\gamma^{k}R_{t+k+1}\mid S_{t}=s,A_{t}=a]$$   
 
 
 $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]\\
@@ -116,7 +116,7 @@ $$s'$$:是next states
 
 从图可知，agent处于状态s时，根据$$\pi$$有actions被选择的概率分布，根据概率分布随机选择action获得不同的$$G_{t}$$,因此$$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s]$$，描述agent在状态s下，采取策略$$\pi$$下value估计值等于处于状态$$s$$时采取策略$$\pi$$下(actions 被选择概率分布下)value期望值。
 
-$$G_{t}=R_{t+1}+\gamma G_{t+1}$$,当agent确定$$S_{t},A_{t}$$后$$R_{t+1},S_{t+1}$$是随机变量，因为确定action后，根据函数p,会以不同的概率返回$$r,s'$$,所以$$R_{t+1}+\gamma G_{t+1}$$估计值为$$E_{(R_{t+1},S_{t+1})}[R_{t+1}+[\gamma G_{t+1} \mid S_{t+1}=s']]$$,同样在确定$$S_{t+1}=s'$$后，$$G_{t+1}$$仍是随机变量，$$G_{t+1}$$估计为$$E_{\pi}[G_{t+1} \mid S_{t+1}=s']=V_{\pi}(s')$$        
+$$G_{t}=R_{t+1}+\gamma G_{t+1}$$,当agent确定$$S_{t},A_{t}$$后$$R_{t+1},S_{t+1}$$是随机变量，因为确定action后，根据函数p,会以不同的概率返回$$r,s'$$,所以$$R_{t+1}+\gamma G_{t+1}$$估计值为$$E_{(R_{t+1},S_{t+1})}[R_{t+1}+(\gamma G_{t+1} \mid S_{t+1}=s')\mid S_{t}=s,A_{t}=a]$$,同样在确定$$S_{t+1}=s'$$后，$$G_{t+1}$$仍是随机变量，$$G_{t+1}$$估计为$$E_{\pi}[G_{t+1} \mid S_{t+1}=s']=V_{\pi}(s')$$        
 
 
 对比$$q_{\pi}(s,a)$$和$$V_{\pi}(s)$$，$$q_{\pi}(s,a)$$已经确定了$$A_{t}=a$$,因此并不存在根据概率分布选择action这一步。  
@@ -139,11 +139,11 @@ $$q_{\ast} (s,a)$$:optimal action-value function
 
 $$V_{\ast} (s)=\mathop{max}_{\pi} V_{\pi}(s),for\ all \ s\in \widehat{S}$$   
 
-$$q_{\ast} (a,s)=\mathop{max}_{\pi} q_{\pi}(s,a),for\ all \ s\in \widehat{S},a \in \widehat{A}(s)$$  
+$$q_{\ast} (s,a)=\mathop{max}_{\pi} q_{\pi}(s,a),for\ all \ s\in \widehat{S},a \in \widehat{A}(s)$$  
 
-$$q_{\ast} (a,s)=E[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]$$  
+$$q_{\ast} (s,a)=E[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]$$  
 
-$$q_{\ast} (a,s)$$和$$V_{\ast} (s)$$之间的关系：  
+$$q_{\ast} (s,a)$$和$$V_{\ast} (s)$$之间的关系：  
 
 $$
 V_{\ast} (s)=\mathop{max}_{a \in \widehat{A}(s)} q_{\pi_{\ast}}(s,a)\\
@@ -154,7 +154,7 @@ V_{\ast} (s)=\mathop{max}_{a \in \widehat{A}(s)} q_{\pi_{\ast}}(s,a)\\
 $$  
 
 
-$$q_{\ast} (a,s)=E[R_{t+1}+\gamma \mathop{max}_{a'} q_{\ast}(S_{t+1},a') \mid S_{t}=s,A_{t}=a]\\
+$$q_{\ast} (s,a)=E[R_{t+1}+\gamma \mathop{max}_{a'} q_{\ast}(S_{t+1},a') \mid S_{t}=s,A_{t}=a]\\
 = \sum_{s',r}P(s',r\mid s,a)[r+\gamma \mathop{max}_{a'}  q_{\ast}(s',a')]$$  
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image10.png)
