@@ -58,5 +58,7 @@ In on-policy control methods the policy is generally soft, meaning that $$\pi(a\
 
 $$\pi ':\varepsilon$$-greedy 策略 
 
-$$q_{\pi}(s,\pi)=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)$$
+$$q_{\pi}(s,\pi)=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
+=\frac{\varepsilon}{ \mid \widehat{A}(s)\mid}\sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\\
+$$
 
