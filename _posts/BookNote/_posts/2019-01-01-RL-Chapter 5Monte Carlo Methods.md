@@ -43,19 +43,19 @@ This is the general problem of **maintaining exploration.**
 
 **4、Monte Carlo Control without Exploring Starts**   
 
-在不使用exploring starts假设下，为了确保所有的action能被访问，可以使用on-policy and off-policy方法。   
+在不使用exploring starts假设下，为了确保所有的action能被访问，可以使用on-policy 和 off-policy方法。   
 on-policy：
 off-policy： 
 
 In on-policy control methods the policy is generally soft, meaning that $$\pi(a\mid s)>0$$ for all $$s\in \widehat{S},a\in \widehat{A}(s)$$, but gradually shifted closer and closer to a deterministic optimal policy.  
 
-下面展示的on-policy methods是$$\varepsilon$$-soft 策略，即对于nongreedy action(解释在第二章)访问概率设置为$$\frac{\varepsilon}{\mid \widehat{A}(s)\mid}$$,对于greedy action访问概率设置为$$1-\varepsilon+\frac{\varepsilon}{\mid \widehat{A}(s)\mid}$$,   
+下面展示采用$$\varepsilon$$-soft 策略的on-policy methods，即对于nongreedy action(解释在第二章)访问概率设置为$$\frac{\varepsilon}{\mid \widehat{A}(s)\mid}$$,对于greedy action访问概率设置为$$1-\varepsilon+\frac{\varepsilon}{\mid \widehat{A}(s)\mid}$$,   
 
 第二章提到的$$\varepsilon$$-greedy是$$\varepsilon$$-soft的一个例子   
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image18.png)   
 
-$$\pi^'$$:\varepsilon$$-greedy 策略 
+$$\pi^':\varepsilon$$-greedy 策略 
 
-$$q_{\pi}(s,\pi)$$
+$$q_{\pi}(s,\pi)=\sum_{a}\pi^'(a\mid s)$$
 
