@@ -104,7 +104,7 @@ $$
 
 根据optimal value function公式，$$V_{\pi'}=V_{\ast}$$,$$\pi,\pi'$$是最优策略。
 
-这里我们只考虑了deterministic policies。stochastic policy $$\pi$$ 表示每个s状态下，选择每个行动a的具体概率$$\pi(s\mid s)$$，一般情况能将这里提到想法扩展到stochastic policy情况下。此外如果尝试使用 policy improvement step(4.2)，对于几个action都能使Value达到同样最大值，在stochastic case中不会从其中选择单一一个action(即不会单一给一个action概率为1),会平分被选择概率给这些action。
+这里我们只考虑了deterministic policies。stochastic policy $$\pi$$ 表示每个s状态下，选择每个行动a的具体概率$$\pi(a\mid s)$$，一般情况能将这里提到想法扩展到stochastic policy情况下。此外如果尝试使用 policy improvement step(4.2)，对于几个action都能使Value达到同样最大值，在stochastic case中不会从其中选择单一一个action(即不会单一给一个action概率为1),会平分被选择概率给这些action。
 
 **3、Policy Iteration**    
 
@@ -127,7 +127,7 @@ policy iteration 缺点是每次迭代都需要更新一次Policy Evaluation ste
 **vlaue iteration**将policy improvement 和 缩减 policy evaluation联合,只需要进行一次policy improvement和policy evaluation更新：  
 
 $$
-V_{k+1}(s)=\mathop{max}_{a}E_[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]\\
+V_{k+1}(s)=\mathop{max}_{a}E[R_{t+1}+\gamma V_{\ast}(S_{t+1})\mid S_{t}=s,A_{t}=a]\\
 =\mathop{max}_{a} \sum_{s',r}P(s',r\mid s,a)[r+\gamma V_{\ast}(s')]
 $$  
 
