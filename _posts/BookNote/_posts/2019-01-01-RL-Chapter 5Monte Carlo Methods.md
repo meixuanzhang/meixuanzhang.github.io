@@ -56,11 +56,20 @@ In on-policy control methods the policy is generally soft, meaning that $$\pi(a\
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image18.png)   
 
-$$\pi ':\varepsilon$$-greedy 策略 
+$$\pi ':\varepsilon$$-greedy 策略   
+$$\pi$$: \varepsilon$$-soft 策略  
 
-$$q_{\pi}(s,\pi)=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
+任何关于$$q_{\pi}$$的$$\varepsilon$$-greedy 策略都是对$$\pi$$: \varepsilon$$-soft策略的改进，这是由策略改进定理保证的。对于任何$$s\in \widehat{S}$$有：  
+
+$$
+q_{\pi}(s,\pi)=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
 =\frac{\varepsilon}{ \mid \widehat{A}(s)\mid}\sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\\
 =\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\mathop{max}_{a}q_{\pi}(s,a)\\
-\ge \frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\sum_{a}\frac{\pi(a\mid s)-\frac{\varepsilon}{\mid \widehat{A}(s)\mid} }{1-\varepsilon}   \mathop{max}_{a}q_{\pi}(s,a)
+\ge \frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\sum_{a}\frac{\pi(a\mid s)-\frac{\varepsilon}{\mid \widehat{A}(s)\mid} }{1-\varepsilon}   \mathop{max}_{a}q_{\pi}(s,a)\\
+=frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)-frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+\sum_{a}\pi (a\mid s)q_{\pi}(s,a)\\
+=V_{\pi}(s)
 $$
 
+(the sum is a weighted average with nonnegative weights summing to 1, and as such it must be lessthan or equal to the largest number averaged)    
+
+根据策略改进定理,$$\pi '>\pi$$(即$$V_{\pi'}(s)>V_{\pi}(s)$$ for all $$s\in \widehat{S}$$)   
