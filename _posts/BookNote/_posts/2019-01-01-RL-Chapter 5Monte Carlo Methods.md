@@ -43,9 +43,10 @@ This is the general problem of **maintaining exploration.**
 
 **4、Monte Carlo Control without Exploring Starts**   
 
-在不使用exploring starts假设下，为了确保所有的action能被访问，可以使用on-policy 和 off-policy方法。   
-on-policy：
-off-policy： 
+在不使用exploring starts假设下，为了确保所有的action能经常被访问，可以使用on-policy 和 off-policy方法。   
+
+on-policy：   
+off-policy：  
 
 In on-policy control methods the policy is generally soft, meaning that $$\pi(a\mid s)>0$$ for all $$s\in \widehat{S},a\in \widehat{A}(s)$$, but gradually shifted closer and closer to a deterministic optimal policy.  
 
@@ -55,7 +56,7 @@ In on-policy control methods the policy is generally soft, meaning that $$\pi(a\
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image18.png)   
 
-$$\pi^':\varepsilon$$-greedy 策略 
+$$\pi ':\varepsilon$$-greedy 策略 
 
-$$q_{\pi}(s,\pi)=\sum_{a}\pi^'(a\mid s)$$
+$$q_{\pi}(s,\pi)=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)$$
 
