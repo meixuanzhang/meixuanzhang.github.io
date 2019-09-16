@@ -174,7 +174,13 @@ $$V_{\pi}(s)=\frac{\sum_{t\in \jmath(s)}\rho_{t:T(t)-1}G_{t}}{\sum_{t\in \jmath(
 In fact, assuming bounded returns, the variance of the weighted importance-sampling estimator converges to zero even if the variance of the ratios themselves is infinite.    
 In practice, the weighted estimator usually has dramatically lower variance and is strongly preferred.  
 
+书中例子：  
 
+![_config.yml]({{ site.baseurl }}/images/12RL/image19.png)   
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image20.png)   
+
+**6、Incremental Implementation**   
 
  
 
