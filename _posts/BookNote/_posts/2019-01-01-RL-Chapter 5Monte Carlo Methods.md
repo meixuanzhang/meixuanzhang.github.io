@@ -62,7 +62,7 @@ $$\pi: \varepsilon$$-soft 策略
 任何关于$$q_{\pi}$$的$$\varepsilon$$-greedy 策略都是对$$\varepsilon$$-soft策略的改进，这是由策略改进定理保证的。对于任何$$s\in \widehat{S}$$有：  
 
 $$
-q_{\pi}(s,\pi(s))=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
+q_{\pi}(s,\pi '(s))=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
 =\frac{\varepsilon}{ \mid \widehat{A}(s)\mid}\sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\\
 =\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\mathop{max}_{a}q_{\pi}(s,a)\\
 \ge \frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\sum_{a}\frac{\pi(a\mid s)-\frac{\varepsilon}{\mid \widehat{A}(s)\mid} }{1-\varepsilon}   \mathop{max}_{a}q_{\pi}(s,a)\\
@@ -74,4 +74,20 @@ $$
 
 根据策略改进定理,$$\pi '>\pi$$(即$$V_{\pi'}(s)>V_{\pi}(s)$$ for all $$s\in \widehat{S}$$)   
 
-$$V_{*}(s)$$，$$q_{*}(s)$$:optimal value function
+$$V_{*}(s)$$，$$q_{*}(s)$$:optimal value function  
+
+考虑有两个environment，new environment规定每次选择action的策略是以$$1-\varepsilon$$概率选择greedy action，以$$\varepsilon$$概率在所有actions中随机选择一个action，通过experience估计state value，但不更新$$\pi$$，其optimal value function为：
+
+
+$$
+V_{*}(s)=\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{*}(s,a)+(1-\varepsilon)\mathop{max}_{a}q_{*}(s,a)\\
+=\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}\sum_{s',r}p(s',r\mid s,a)[r+\gamma V_{*}(s')]    +(1-\varepsilon)\mathop{max}_{a}\sum_{s',r}p(s',r\mid s,a)[r+\gamma V_{*}(s')]
+$$
+
+original environment 则是以图中$$\varepsilon$$-soft策略不断更新$$\pi$$,通过experience估计state value为：  
+
+
+$$
+V_{\pi}(s)=\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\mathop{max}_{a}q_{\pi}(s,a)\\
+=\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}\sum_{s',r}p(s',r\mid s,a)[r+\gamma V_{\pi}(s')]    +(1-\varepsilon)\mathop{max}_{a}\sum_{s',r}p(s',r\mid s,a)[r+\gamma V_{\pi}(s')]
+$$
