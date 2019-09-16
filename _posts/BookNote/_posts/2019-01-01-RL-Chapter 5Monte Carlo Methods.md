@@ -73,3 +73,5 @@ $$
 (the sum is a weighted average with nonnegative weights summing to 1, and as such it must be lessthan or equal to the largest number averaged)    
 
 根据策略改进定理,$$\pi '>\pi$$(即$$V_{\pi'}(s)>V_{\pi}(s)$$ for all $$s\in \widehat{S}$$)   
+
+$$V_{*}(s)$$，$$q_{*}(s)$$:optimal value function

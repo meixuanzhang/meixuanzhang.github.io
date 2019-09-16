@@ -44,7 +44,7 @@ greedy action selection method选择a:
 
 $$A_{t}=\mathop{\arg\max}_{a}Q_{t}(a) $$ 
 
-$$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概率选择greedy action，以$$\varepsilon$$概率在non-greedy actions随机选择一个action
+$$\varepsilon$$-greedy methods:每次选择action时，以$$1-\varepsilon$$概率选择greedy action，以$$\varepsilon$$概率在所有actions中随机选择一个action,最终选择optimal action概率会收敛于大于$$1-\varepsilon$$
 
 
 **3、Example: the 10-armed Testbed**  
