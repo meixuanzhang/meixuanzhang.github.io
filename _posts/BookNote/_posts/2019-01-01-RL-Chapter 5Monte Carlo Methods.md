@@ -103,7 +103,7 @@ $$\pi:$$target policy，$$b$$:behavior policy
 
 使用off-policy methods估计$$V_{\pi},q_{\pi}$$，意味我们需要从策略b获得episodes(experience)来估计$$V_{\pi},q_{\pi}$$，同时$$\pi \ne b$$ 。  
 
-In order to use episodes from b to estimate values for $$\pi$$, we require that every action taken under $$\pi$$ is also taken, at least occasionally, under b.(在$$\pi$$策略下发生的action,b策略下也应该发生) That is, we require that $$\pi(a\mids)>0$$ implies $$b(a\mid s)>0$$.This is called the assumption of coverage. It follows from coverage that b must be stochastic in states where it is not identical to $$\pi$$(两个策略不同是b具有随机性,action是随机的在state下,但 $$\pi$$不一定). The target policy $$\pi$$, on the other hand, may be deterministic, and, in fact, this is a case of particular interest in control applications.  
+In order to use episodes from b to estimate values for $$\pi$$, we require that every action taken under $$\pi$$ is also taken, at least occasionally, under b.(在$$\pi$$策略下发生的action,b策略下也应该发生) That is, we require that $$\pi(a\mid s)>0$$ implies $$b(a\mid s)>0$$.This is called the assumption of coverage. It follows from coverage that b must be stochastic in states where it is not identical to $$\pi$$(两个策略不同是b具有随机性,action是随机的在state下,但 $$\pi$$不一定). The target policy $$\pi$$, on the other hand, may be deterministic, and, in fact, this is a case of particular interest in control applications.  
 
 几乎所有的off-policy method利用[importance sampling](https://meixuanzhang.github.io/ML-Monte-Carlo-method/),a general technique for estimating expected values under one distribution given samples from another.   
 
@@ -112,7 +112,7 @@ We apply importance sampling to off-policy learning by weighting returns accordi
 在策略$$\pi$$下，给定初始状态$$S_{t}$$,后续的state-action轨迹为$$A_{t},S_{t+1},A_{t+1},...,S_{T}$$的概率为：  
 
 $$
-Pr{A_{t},S_{t+1},A_{t+1},...,S_{T}\mid S_{t},A_{t:T-1}~\pi}\\
+Pr{A_{t},S_{t+1},A_{t+1},...,S_{T}\mid S_{t},A_{t:T-1}\sim \pi}\\
 =\pi(A_{t}\mid S_{t})p(S_{t+1}\mid S_{t},A_{t)\pi(A_{t+1}\mid S_{t+1})...p(S_{T}\mid S_{T-1},A_{T-1})\\
 =\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k)
 $$  
@@ -122,7 +122,7 @@ $$
 **importance-sampling ratio**：  
 
 $$
-\rho_{t:T-1}=\frac{\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k)}{\prod_{k=t}^{T-1}b(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k)}\\
+\rho_{t:T-1}=\frac{\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k})}{\prod_{k=t}^{T-1}b(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k})}\\
 =\prod_{k=t}^{T-1}\frac{\pi(A_{k}\mid S_{k})}{b(A_{k}\mid S_{k})}
 $$
 
