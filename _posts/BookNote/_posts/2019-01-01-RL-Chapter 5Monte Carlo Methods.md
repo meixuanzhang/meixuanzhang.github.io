@@ -62,7 +62,7 @@ $$\pi$$: \varepsilon$$-soft 策略
 任何关于$$q_{\pi}$$的$$\varepsilon$$-greedy 策略都是对$$\pi$$: \varepsilon$$-soft策略的改进，这是由策略改进定理保证的。对于任何$$s\in \widehat{S}$$有：  
 
 $$
-q_{\pi}(s,\pi)=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
+q_{\pi}(s,\pi(s))=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
 =\frac{\varepsilon}{ \mid \widehat{A}(s)\mid}\sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\\
 =\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\mathop{max}_{a}q_{\pi}(s,a)\\
 \ge \frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\sum_{a}\frac{\pi(a\mid s)-\frac{\varepsilon}{\mid \widehat{A}(s)\mid} }{1-\varepsilon}   \mathop{max}_{a}q_{\pi}(s,a)\\
