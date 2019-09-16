@@ -114,7 +114,7 @@ We apply importance sampling to off-policy learning by weighting returns accordi
 $$
 Pr{A_{t},S_{t+1},A_{t+1},...,S_{T}\mid S_{t},A_{t:T-1}\sim \pi}\\
 =\pi(A_{t}\mid S_{t})p(S_{t+1}\mid S_{t},A_{t)\pi(A_{t+1}\mid S_{t+1})...p(S_{T}\mid S_{T-1},A_{T-1})\\
-=\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k)
+=\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k})
 $$  
 
 上述计算使用了MDP‘s(Markov Decision Processes)   
@@ -166,7 +166,8 @@ weighted importance sampling:
 
 $$V_{\pi}(s)=\frac{\sum_{t\in \jmath(s)}\rho_{t:T(t)-1}G_{t}}{\sum_{t\in \jmath(s)}\rho_{t:T(t)-1}}$$    
 
-对于weighted importance sampling，如果单个return中(也就是s只出现了一次,其只有一个观测G)分子和分母的$$\rho_{t:T(t)-1}$$相互抵消，那么估计值会等于这个观测值，估计的state value更可能是$$V_{b}(s)$$而不是$$V_{\pi}(s)$$,而rdinary importance sampling则不存在这个问题，但是假设$$\rho_{t:T(t)-1}$$值为10，对于ordinary importance sampling 估计出的值将是观察值的10倍，也就是说，即使该轨迹被认为能一定代表目标策略的，它离观察到的回报仍有相当大的距离。(举例,假设s下有两个action,在b策略中action1和action2选择概率分别是99.9%,0.1%,$$\pi$$s是99%,1%,两者概率分布相似,在b采样下观测值跟估计值应该是相似的,当观测为action2时,两个策略的比率相差非常大)
+对于weighted importance sampling，如果单个return中(也就是s只出现了一次,其只有一个观测G)分子和分母的$$\rho_{t:T(t)-1}$$相互抵消，那么估计值会等于这个观测值，估计的state value更可能是$$V_{b}(s)$$而不是$$V_{\pi}(s)$$,而rdinary importance sampling则不存在这个问题.   
+如果$$\rho_{t:T(t)-1}$$值为10，对于ordinary importance sampling 估计出的值将是观察值的10倍，也就是说，即使该轨迹被认为能一定代表目标策略的，它离观察到的回报仍有相当大的距离。(举例,假设s下有两个action,在b策略中action1和action2选择概率分别是99.9%,0.1%,$$\pi$$s是99%,1%,两者概率分布相似,在b采样下观测值跟估计值应该是相似的,当观测为action2时,两个策略的比率相差非常大)
 
 
 
