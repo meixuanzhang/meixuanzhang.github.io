@@ -133,22 +133,22 @@ $$
 
 $$
 V_{b}(S_{t})=E_{b}[G_{t}\mid S_{t}]\\
-=\frac{\sum_{N} \prod_{k=t}^{T-1}b (A_{k}\mid S_{t}) G_{t}}{N}
+=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t}) G_{n,t}}{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})}
 $$  
 
 使用策略$$\pi$$得到的state value:  
 
 $$
 V_{\pi}(S_{t})=E_{\pi}[G_{t}\mid S_{t}]\\
-=\frac{\sum_{N} \prod_{k=t}^{T-1}\pi(A_{k}\mid S_{t}) G_{t}}{N}
+=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}\pi_{n}(A_{k}\mid S_{t}) G_{n,t}}{\sum_{n=1}^{N} \prod_{k=t}^{T-1}\pi_{n}(A_{k}\mid S_{t})}
 $$
 
 
 两者关系：  
 
 $$
-V_{\pi}(S_{t})=\frac{\sum_{N} \prod_{k=t}^{T-1}b(A_{k}\mid S_{t})  \frac{\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{t})}{\prod_{k=t}^{T-1}b(A_{k}\mid S_{t})} G_{t}}{N}\\
-=\frac{\sum_{N} \prod_{k=t}^{T-1}b(A_{k}\mid S_{t}) \rho_{t:T-1} G_{t}}{N} \\
+V_{\pi}(S_{t})=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})  \frac{\prod_{k=t}^{T-1}\pi_{n}(A_{k}\mid S_{t})}{\prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})} G_{n,t}}{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})}\\
+=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t}) \rho_{n,t:T-1} G_{n,t}}{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})} \\
 =E_{b}[\rho_{t:T-1}G_{t}\mid S_{t}]\\
 $$
 
