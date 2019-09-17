@@ -143,7 +143,7 @@ Asynchronous DP是 **in-place iterative** DP algorithms(第一段提及in-place)
 
 we can run an iterative DP algorithm at the same time that an agent is actually experiencing the MDP. The agent's experience can be used to determine the states to which the DP algorithm applies its updates. At the same time, the latest value and policy information from the DP algorithm can guide the agent's decision making.  
 
-**6、Generalized Policy Iteration**  
+**6、Generalized Policy Iteration(GPI)**  
 
 generalized policy iteration (GPI) refer to the general idea of letting policy evaluation and policy improvement processes interact,
 independent of the granularity and other details of the two processes.   

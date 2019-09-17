@@ -43,10 +43,13 @@ This is the general problem of **maintaining exploration.**
 
 **4、Monte Carlo Control without Exploring Starts**   
 
+
 在不使用exploring starts假设下，为了确保所有的action能经常被访问，可以使用on-policy 和 off-policy方法。   
 
 on-policy：由目标策略(target policy)$$\pi$$获得experience，同时使用experience更新$$\pi$$    
 off-policy：由behavior policy 获得experience，更新target policy(后面解释)
+
+The overall idea of on-policy Monte Carlo control is still that of GPI(第四章:GPI)
 
 In on-policy control methods the policy is generally soft, meaning that $$\pi(a\mid s)>0$$($$\varepsilon$$-soft) for all $$s\in \widehat{S},a\in \widehat{A}(s)$$, but gradually shifted closer and closer to a deterministic optimal policy.  
 
@@ -84,7 +87,7 @@ V_{*}(s)=\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{*}(s,a)+(1-\vare
 =\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}\sum_{s',r}p(s',r\mid s,a)[r+\gamma V_{*}(s')]    +(1-\varepsilon)\mathop{max}_{a}\sum_{s',r}p(s',r\mid s,a)[r+\gamma V_{*}(s')]
 $$
 
-original environment 则是以图中$$\varepsilon$$-soft策略不断更新$$\pi$$,通过experience不断更新tate value，当$$V_{\pi}(s)=V_{*}(s)$$时，策略不再更新，此时是最优策略：   
+original environment 则是以上图中$$\varepsilon$$-soft策略不断更新$$\pi$$,通过experience不断更新state value，当$$V_{\pi}(s)=V_{*}(s)$$时，策略不再更新，此时是最优策略：   
 
 
 $$
@@ -112,7 +115,7 @@ We apply importance sampling to off-policy learning by weighting returns accordi
 在策略$$\pi$$下，给定初始状态$$S_{t}$$,后续的state-action轨迹为$$A_{t},S_{t+1},A_{t+1},...,S_{T}$$的概率为：  
 
 $$
-Pr\A_{t},S_{t+1},A_{t+1},...,S_{T}\mid S_{t},A_{t:T-1}\sim \pi \}\\
+Pr\{A_{t},S_{t+1},A_{t+1},...,S_{T}\mid S_{t},A_{t:T-1}\sim \pi \}\\
 =\pi(A_{t}\mid S_{t})p(S_{t+1}\mid S_{t},A_{t})\pi(A_{t+1}\mid S_{t+1})...p(S_{T}\mid S_{T-1},A_{T-1})\\
 =\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k})
 $$  
@@ -203,8 +206,17 @@ $$
 对比与第二章不同这里state是不断变化的，$$Q(S_{t},A_{t}),C(S_{t},A_{t})$$更新时需要根据对应$$S_{t},A_{t}$$进行更新.
 
 
+ **7、Off-policy Monte Carlo Control**    
  
+ 
+Off-policy Monte Carlo control methods follow the behavior policy while learning about and improving the target policy. (通过行为策略学习目标策略)  
+These techniques require that the behavior policy has a nonzero probability of selecting all actions that might be selected by the target policy (coverage). To explore all possibilities, we require that the behavior policy be soft (i.e., that it select all actions in all states with nonzero probability). (行为策略所有action被选择概率应不为0,确保目标策略收敛于最优策略)     
 
+off-policy Monte Carlo control method, based on **** and weighted importance sampling, for estimating $$\pi_{*}$$ and $$q_{*}$$. The target policy $$\pi \approx \pi_{*}$$ is the greedy policy with respect to $$Q$$, which is an estimate of $$q_{\pi}$$   
+  
+![_config.yml]({{ site.baseurl }}/images/12RL/image22.png)    
+
+上图中$$W$$权重更新使用的是$$\frac{1}{b(A_{t}\mid S_{t})}$$,因为这里$$\pi$$是greedy policy,除了greedy action外,其他action被选概率为0。只有greedy action时更新$$W$$
 
 
  
