@@ -133,22 +133,22 @@ $$
 
 $$
 V_{b}(S_{t})=E_{b}[G_{t}\mid S_{t}]\\
-=\frac{\sum \prod_{k=t}^{T-1}\b(A_{k} G_{t}}{\sum \prod_{k=t}^{T-1}\b(A_{k}}
+=\frac{\sum \prod_{k=t}^{T-1}\b (A_{k}\mid S_{t}) G_{t}}{\sum \prod_{k=t}^{T-1}\b(A_{k}\mid S_{t})}
 $$  
 
 使用策略$$\pi$$得到的state value:  
 
 $$
 V_{\pi}(S_{t})=E_{\pi}[G_{t}\mid S_{t}]\\
-==\frac{\sum \prod_{k=t}^{T-1}\pi(A_{k} G_{t}}{\sum \prod_{k=t}^{T-1}\pi(A_{k} G_{t}}
+=\frac{\sum \prod_{k=t}^{T-1}\pi(A_{k}\mid S_{t}) G_{t}}{\sum \prod_{k=t}^{T-1}\pi(A_{k} G_{t}}
 $$
 
 
 两者关系：  
 
 $$
-V_{\pi}(S_{t})=\frac{\sum \prod_{k=t}^{T-1}\b(A_{k}  \frac{\prod_{k=t}^{T-1}\pi(A_{k}}{\prod_{k=t}^{T-1}\b(A_{k}} G_{t}}{\sum \prod_{k=t}^{T-1}\b(A_{k}}\\
-=\frac{\sum \prod_{k=t}^{T-1}\b(A_{k} \rho_{t:T-1} G_{t}}{\sum \prod_{k=t}^{T-1}\b(A_{k}} \\
+V_{\pi}(S_{t})=\frac{\sum \prod_{k=t}^{T-1}\b(A_{k}\mid S_{t})  \frac{\prod_{k=t}^{T-1}\pi(A_{k}}{\prod_{k=t}^{T-1}\b(A_{k}} G_{t}}{\sum \prod_{k=t}^{T-1}\b(A_{k}\mid S_{t})}\\
+=\frac{\sum \prod_{k=t}^{T-1}\b(A_{k}\mid S_{t}) \rho_{t:T-1} G_{t}}{\sum \prod_{k=t}^{T-1}\b(A_{k}\mid S_{t})} \\
 =E_{b}[\rho_{t:T-1}G_{t}\mid S_{t}]\\
 $$
 
