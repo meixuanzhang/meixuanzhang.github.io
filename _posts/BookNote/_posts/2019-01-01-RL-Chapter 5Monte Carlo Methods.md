@@ -112,7 +112,7 @@ We apply importance sampling to off-policy learning by weighting returns accordi
 在策略$$\pi$$下，给定初始状态$$S_{t}$$,后续的state-action轨迹为$$A_{t},S_{t+1},A_{t+1},...,S_{T}$$的概率为：  
 
 $$
-Pr{A_{t},S_{t+1},A_{t+1},...,S_{T}\mid S_{t},A_{t:T-1}\sim \pi }\\
+Pr\A_{t},S_{t+1},A_{t+1},...,S_{T}\mid S_{t},A_{t:T-1}\sim \pi \}\\
 =\pi(A_{t}\mid S_{t})p(S_{t+1}\mid S_{t},A_{t})\pi(A_{t+1}\mid S_{t+1})...p(S_{T}\mid S_{T-1},A_{T-1})\\
 =\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k})
 $$  
@@ -183,7 +183,7 @@ In practice, the weighted estimator usually has dramatically lower variance and 
 
 **6、Incremental Implementation**   
 
-假设有一系列的return$$G_{1},G_{2},...G_{n-1}$$,它们状态是一样的以及每个return有对应的随机权重$$W_{i}=\rho_{t:T(t)-1}$$则：     
+假设有一系列的return$$G_{1},G_{2},...G_{n-1}$$,它们起始状态是一样的以及每个return有对应的权重$$W_{i}=\rho_{t:T(t)-1}$$则：     
 
 $$
 V_{n+1}=\frac{\sum_{k=1}^{n}W_{k}G_{k}}{\sum_{k=1}^{n}W_{k}}\\
@@ -192,9 +192,16 @@ V_{n+1}=\frac{\sum_{k=1}^{n}W_{k}G_{k}}{\sum_{k=1}^{n}W_{k}}\\
 =\frac{1}{\sum_{k=1}^{n}W_{k}} (W_{n}G_{n}+\sum_{k=1}^{n-1}W_{k}(V_{n}))\\
 =\frac{1}{\sum_{k=1}^{n}W_{k}} (W_{n}G_{n}+V_{n}(\sum_{k=1}^{n}W_{k}-W_{n}))\\
 =\frac{1}{C_{n}} (W_{n}G_{n}+V_{n}(C_{n}-W_{n}))\\
-=V_{n}+\frac{W_{n}}{C_{n}}[G_{n}-V_{n}]
+=V_{n}+\frac{W_{n}}{C_{n}}[G_{n}-V_{n}] \qquad \qquad n \ge 1\\
+$$  
+   
 
-$$
+用同样方法估计$$Q$$:   
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image21.png)  
+
+对比与第二章不同这里state是不断变化的，$$Q(S_{t},A_{t}),C(S_{t},A_{t})$$更新时需要根据对应$$S_{t},A_{t}$$进行更新.
+
 
  
 
