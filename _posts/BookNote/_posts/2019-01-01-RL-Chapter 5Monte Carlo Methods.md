@@ -183,15 +183,20 @@ In practice, the weighted estimator usually has dramatically lower variance and 
 
 **6、Incremental Implementation**   
 
-使用第二章   
+假设有一系列的return$$G_{1},G_{2},...G_{n-1}$$,它们状态是一样的以及每个return有对应的随机权重$$W_{i}=\rho_{t:T(t)-1}$$则：     
 
 $$
 V_{n+1}=\frac{\sum_{k=1}^{n}W_{k}G_{k}}{\sum_{k=1}^{n}W_{k}}\\
 =\frac{1}{\sum_{k=1}^{n}W_{k}}  (W_{n}G_{n}+\sum_{k=1}^{n-1}W_{k}G_{k})\\
-=\frac{1}{\sum_{k=1}^{n}W_{k}} (W_{n}G_{n}+\sum_{k=1}^{n-1}W_{k} \frac{1}{\sum_{k=1}^{n-1}W_{k}} \sum_{k=1}^{n-1}W_{k}G_{k})\\
+=\frac{1}{\sum_{k=1}^{n}W_{k}} (W_{n}G_{n}+\sum_{k=1}^{n-1}W_{k} (\frac{1}{\sum_{k=1}^{n-1}W_{k}}) \sum_{k=1}^{n-1}W_{k}G_{k})\\
+=\frac{1}{\sum_{k=1}^{n}W_{k}} (W_{n}G_{n}+\sum_{k=1}^{n-1}W_{k}(V_{n}))\\
+=\frac{1}{\sum_{k=1}^{n}W_{k}} (W_{n}G_{n}+V_{n}(\sum_{k=1}^{n}W_{k}-W_{n}))\\
+=\frac{1}{C_{n}} (W_{n}G_{n}+V_{n}(C_{n}-W_{n}))\\
+=V_{n}+\frac{W_{n}}{C_{n}}[G_{n}-V_{n}]
+
 $$
 
-$$W_{i}=\rho_{t:T(t)-1}$$   
+ 
 
 
 
