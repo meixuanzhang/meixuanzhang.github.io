@@ -133,23 +133,22 @@ $$
 
 $$
 V_{b}(S_{t})=E_{b}[G_{t}\mid S_{t}]\\
-=\sum_{a}b(a\mid s)[R_{t+1}+\gamma G_{t+1}\mid S_{t}=s,A_{t}=a ]
+=\frac{\sum \prod_{k=t}^{T-1}\b(A_{k} G_{t}}{\sum \prod_{k=t}^{T-1}\b(A_{k}}
 $$  
 
 使用策略$$\pi$$得到的state value:  
 
 $$
-V_{\pi}(S_{t})=E_{b}[G_{t}\mid S_{t}]\\
-=\sum_{a}\pi(a\mid s)[R_{t+1}+\gamma G_{t+1}\mid S_{t}=s,A_{t}=a ]
+V_{\pi}(S_{t})=E_{\pi}[G_{t}\mid S_{t}]\\
+==\frac{\sum \prod_{k=t}^{T-1}\pi(A_{k} G_{t}}{\sum \prod_{k=t}^{T-1}\pi(A_{k} G_{t}}
 $$
 
 
 两者关系：  
 
 $$
-V_{\pi}(S_{t})=\sum_{a} b(a\mid s) \frac{\pi(a\mid s)}{b(a\mid s)} [R_{t+1}+\gamma G_{t+1}\mid S_{t}=s,A_{t}=a ]\\
-=\sum_{a}  \frac{\pi(a\mid s)}{b(a\mid s)} b(a\mid s) [R_{t+1}+\gamma G_{t+1}\mid S_{t}=s,A_{t}=a ]\\
-=\sum_{a} b(a\mid s) \rho_{t} [R_{t+1}+\gamma G_{t+1}\mid S_{t}=s,A_{t}=a ]\\
+V_{\pi}(S_{t})=\frac{\sum \prod_{k=t}^{T-1}\b(A_{k}  \frac{\prod_{k=t}^{T-1}\pi(A_{k}}{\prod_{k=t}^{T-1}\b(A_{k}} G_{t}}{\sum \prod_{k=t}^{T-1}\b(A_{k}}\\
+=\frac{\sum \prod_{k=t}^{T-1}\b(A_{k} \rho_{t:T-1} G_{t}}{\sum \prod_{k=t}^{T-1}\b(A_{k}} \\
 =E_{b}[\rho_{t:T-1}G_{t}\mid S_{t}]\\
 $$
 
@@ -216,7 +215,10 @@ off-policy Monte Carlo control method, based on **** and weighted importance sam
   
 ![_config.yml]({{ site.baseurl }}/images/12RL/image22.png)    
 
-上图中$$W$$权重更新使用的是$$\frac{1}{b(A_{t}\mid S_{t})}$$,因为这里$$\pi$$是greedy policy,除了greedy action外,其他action被选概率为0。只有greedy action时更新$$W$$
+上图中$$W$$权重更新使用的是$$\frac{1}{b(A_{t}\mid S_{t})}$$,因为这里$$\pi$$是greedy policy,除了greedy action外,其他action被选概率为0。只有greedy action时更新$$W$$   
+
+
+
 
 
  
