@@ -132,9 +132,7 @@ $$
 
 
 $$
-V_{\pi}(S_{t})=\frac{\sum \prod_{k=t}^{T-1}b(A_{k}\mid S_{t})  \frac{\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{t})}{\prod_{k=t}^{T-1}b(A_{k}\mid S_{t})} G_{t}}{\sum_{n=1}^{N}\rho_{t:T-1}}\\
-=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b(A_{k}\mid S_{t}) \rho_{t:T-1} G_{n,t}}{\sum \prod_{k=t}^{T-1}b(A_{k}\mid S_{t})\rho_{t:T-1}} \\
-
+V_{\pi}(S_{t})=\sum \prod_{k=t}^{T-1}b(A_{k}\mid S_{t})  \frac{\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{t})}{\prod_{k=t}^{T-1}b(A_{k}\mid S_{t})} G_{t}\\
 =E_{b}[\rho_{t:T-1}G_{t}\mid S_{t}]\\
 $$
 
