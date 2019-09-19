@@ -69,7 +69,7 @@ q_{\pi}(s,\pi '(s))=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
 =\frac{\varepsilon}{ \mid \widehat{A}(s)\mid}\sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\\
 =\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\mathop{max}_{a}q_{\pi}(s,a)\\
 \ge \frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\sum_{a}\frac{\pi(a\mid s)-\frac{\varepsilon}{\mid \widehat{A}(s)\mid} }{1-\varepsilon}   \mathop{max}_{a}q_{\pi}(s,a)\\
-=frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)-frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+\sum_{a}\pi (a\mid s)q_{\pi}(s,a)\\
+=\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)-\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+\sum_{a}\pi (a\mid s)q_{\pi}(s,a)\\
 =V_{\pi}(s)
 $$
 
@@ -129,28 +129,12 @@ $$
 =\prod_{k=t}^{T-1}\frac{\pi(A_{k}\mid S_{k})}{b(A_{k}\mid S_{k})}
 $$
 
-使用策略b得到的state value: 
+
 
 $$
-V_{b}(S_{t})=E_{b}[G_{t}\mid S_{t}]\\
-=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t}) G_{n,t}}{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})}
-$$  
+V_{\pi}(S_{t})=\frac{\sum \prod_{k=t}^{T-1}b(A_{k}\mid S_{t})  \frac{\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{t})}{\prod_{k=t}^{T-1}b(A_{k}\mid S_{t})} G_{t}}{\sum_{n=1}^{N}\rho_{t:T-1}}\\
+=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b(A_{k}\mid S_{t}) \rho_{t:T-1} G_{n,t}}{\sum \prod_{k=t}^{T-1}b(A_{k}\mid S_{t})\rho_{t:T-1}} \\
 
-使用策略$$\pi$$得到的state value:  
-
-$$
-V_{\pi}(S_{t})=E_{\pi}[G_{t}\mid S_{t}]\\
-=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}\pi_{n}(A_{k}\mid S_{t}) G_{n,t}}{\sum_{n=1}^{N} \prod_{k=t}^{T-1}\pi_{n}(A_{k}\mid S_{t})}
-$$
-
-
-两者关系：  
-
-$$
-V_{\pi}(S_{t})=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})  \frac{\prod_{k=t}^{T-1}\pi_{n}(A_{k}\mid S_{t})}{\prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})} G_{n,t}}{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})\rho_{n,t:T-1}}\\
-=\frac{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t}) \rho_{n,t:T-1} G_{n,t}}{\sum_{n=1}^{N} \prod_{k=t}^{T-1}b_{n}(A_{k}\mid S_{t})\rho_{n,t:T-1}} \\
-
-=
 =E_{b}[\rho_{t:T-1}G_{t}\mid S_{t}]\\
 $$
 
