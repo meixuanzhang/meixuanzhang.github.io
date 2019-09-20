@@ -9,6 +9,17 @@ Temporal-Difference(TD) learning is a combination of Monte Carlo ideas and dynam
 
 **1、TD Prediction**   
 
+对于nonstationary environments 可以使用every-visit Monte Carlo method估计value:  
+
+$$V(S_{t})\gets V(S_{t})+\alpha[G_{t}-V(S_{t})]$$     
+
+$$G_{t}$$:t时刻的实际return   
+$$\alpha$$:constant step-size parameter   
+
+上述$$constant-\alpha MC$$方法,为了计算$$G_{t}$$需要等待episode结束,而TD方法只需要等待到下个时间点，即在t+1时刻通过$$R_{t+1}$$和$$V(S_{t+1})$$更新$$V(S_{t})$$:   
+
+$$V(S_{t})\gets V(S_{t})+\alpha[R_{t+1}+\gammaV(S_{t+1}-V(S_{t})]$$     
+
 
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image23.png)  
