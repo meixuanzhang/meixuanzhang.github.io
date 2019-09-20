@@ -204,7 +204,7 @@ off-policy Monte Carlo control method, based on **** and weighted importance sam
 
 **8、Off-policy Monte Carlo Control**   
 
-当$$\gamma$$为0时,$$G_{0}=R_{1},G_{1}=R_{2}$$,return$$G_{t}$$的值不受其后发生的$$S_{t+1}...,A_{t+1}..,R_{t+2}...$$的影响,return$$G_{t}$$应该只与$$\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t})}$$相乘,但原来算法$$\rho_{t:T(t)-1}=\prod_{k=t}^{T-1}\frac{\pi(A_{k}\mid S_{k})}{b(A_{k}\mid S_{k})}$$是从当前一直累乘到本次互动终止,增大了方差。    
+当$$\gamma$$为0时,$$G_{0}=R_{1},G_{1}=R_{2}$$,return$$G_{t}$$的值不受其后发生的$$S_{t+1}...,A_{t+1}..,R_{t+2}...$$的影响,return$$G_{t}$$应该只与$$\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t})}$$相乘,但原来算法$$\rho_{t:T(t)-1}=\prod_{k=t}^{T-1}\frac{\pi(A_{k}\mid S_{k})}{b(A_{k}\mid S_{k})}$$是从当前一直累乘到本次互动终止,后面的项$$\prod_{k=t+1}^{T-1}\frac{\pi(A_{k}\mid S_{k})}{b(A_{k}\mid S_{k})}$$期望值始终为1,但增大了方差。      
 
 文中提出对于任何$$\gamma\in[0,1)$$，可以认为$$G_{t}$$部分终止于一步概率是$$1-\gamma$$,$$G_{t}=R_{t}$$,部分终止于两步概率是$$(1-\gamma)\gamma$$,$$G_{t}=R_{t}+R_{t+1}$$,$$1-\gamma$$表示单位时间终止概率，$$\gamma$$表示单位时间持续概率，部分终止于两步概率意味第一步持续，第二步终止。   
 
@@ -224,10 +224,21 @@ G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+..+ \gamma^{T-t-1} R_{T}\\
 +(1-\gamma)\gamma{T-t-2}(R_{t+1}+R_{t+2}+..+R_{T-1})\\
 +\gamma{T-t-1}(R_{t+1}+R_{t+2}+..+R_{T})\\
 =(1-\gamma)\sum_{h=t+1}^{T-1}\gamma^{h-t-1}\bar{G}_{t:h}+\gamma{T-t-1}\bar{G}_{t:T}
+$$  
+
+$$
+V(s)=\frac{\sum_{t\in \jmath(s)}((1-\gamma)\sum_{h=t+1}^{T-1}\gamma^{h-t-1}\rho_{t:h-1}\bar{G}_{t:h}+\gamma{T-t-1}\rho_{t:T(t)-1}\bar{G}_{t:T})}{\mid  \jmath(s) \mid}
+$$
+
+$$
+V(s)=\frac{\sum_{t\in \jmath(s)}((1-\gamma)\sum_{h=t+1}^{T-1}\gamma^{h-t-1}\rho_{t:h-1}\bar{G}_{t:h}+\gamma{T-t-1}\rho_{t:T(t)-1}\bar{G}_{t:T})}{\sum_{t\in \jmath(s)}((1-\gamma)\sum_{h=t+1}^{T-1}\gamma^{h-t-1}\rho_{t:h-1}+\gamma{T-t-1}\rho_{t:T(t)-1})}
 $$
 
 
+**9、**    
 
+
+$$$$
 
 
 
