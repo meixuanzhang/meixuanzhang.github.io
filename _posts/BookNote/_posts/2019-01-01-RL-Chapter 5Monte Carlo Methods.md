@@ -202,6 +202,33 @@ off-policy Monte Carlo control method, based on **** and weighted importance sam
 上图中$$W$$权重更新使用的是$$\frac{1}{b(A_{t}\mid S_{t})}$$,因为这里$$\pi$$是greedy policy,除了greedy action外,其他action被选概率为0。只有greedy action时更新$$W$$   
 
 
+**8、Off-policy Monte Carlo Control**   
+
+当$$\gamma$$为0时,$$G_{0}=R_{1},G_{1}=R_{2}$$,return$$G_{t}$$的值不受其后发生的$$S_{t+1}...,A_{t+1}..,R_{t+2}...$$的影响,return$$G_{t}$$应该只与$$\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t})}$$相乘,但原来算法$$\rho_{t:T(t)-1}=\prod_{k=t}^{T-1}\frac{\pi(A_{k}\mid S_{k})}{b(A_{k}\mid S_{k})}$$是从当前一直累乘到本次互动终止,增大了方差。    
+
+文中提出对于任何$$\gamma\in[0,1)$$，可以认为$$G_{t}$$部分终止于一步概率是$$1-\gamma$$,$$G_{t}=R_{t}$$,部分终止于两步概率是$$(1-\gamma)\gamma$$,$$G_{t}=R_{t}+R_{t+1}$$,$$1-\gamma$$表示单位时间终止概率，$$\gamma$$表示单位时间持续概率，部分终止于两步概率意味第一步持续，第二步终止。   
+
+**flat partial returns:**  
+
+$$\bar{G}_{t:h}=R_{t+1}+R_{t+2}+...+R_{h},\qquad \qquad 0\le t \le h \le T   $$   
+
+
+"flat" denotes the absence of discounting, and "partial" denotes that these returns do not extend all the way to termination but instead stop at h, called the horizon (and T is the time of termination of the episode).   
+
+$$
+G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+..+ \gamma^{T-t-1} R_{T}\\
+=(1-\gamma)R_{t+1}\\
++(1-\gamma)\gamma(R_{t+1}+R_{t+2})\\
+.\\
+.\\
++(1-\gamma)\gamma{T-t-2}(R_{t+1}+R_{t+2}+..+R_{T-1})\\
++\gamma{T-t-1}(R_{t+1}+R_{t+2}+..+R_{T})\\
+=(1-\gamma)\sum_{h=t+1}^{T-1}\gamma^{h-t-1}\bar{G}_{t:h}+\gamma{T-t-1}\bar{G}_{t:T}
+$$
+
+
+
+
 
 
 
