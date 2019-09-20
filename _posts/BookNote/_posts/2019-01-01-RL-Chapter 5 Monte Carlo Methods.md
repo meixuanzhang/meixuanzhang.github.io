@@ -248,7 +248,9 @@ $$
 \rho_{t:T-1}R_{t+1}=\frac{\pi(A_{t}\mid S_{t})  \pi(A_{t+1}\mid S_{t+1})  \pi(A_{t+2}\mid S_{t+2})..\pi(A_{T-1}\mid S_{T-1})}{b(A_{t}\mid S_{t})  b(A_{t+1}\mid S_{t+1})  b(A_{t+2}\mid S_{t+2})..b(A_{T-1}\mid S_{T-1})}R_{t+1}
 $$
 
-除了$$\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t}}R_{t+1}$$外，其他项之间是相互独立的因为：
+除了$$\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t}}R_{t+1}$$外，其他项之间是相互独立的。因为：
+
+因为：
 
 $$
 E[\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t})}]=\sum_{a}b(a\mid S_{k})\frac{\pi(a\mid S_{k})}{b(a\mid S_{k})}=\sum_{a}\pi(a\mid S_{k})=1 
