@@ -235,14 +235,43 @@ V(s)=\frac{\sum_{t\in \jmath(s)}((1-\gamma)\sum_{h=t+1}^{T-1}\gamma^{h-t-1}\rho_
 $$
 
 
-**9、**    
+**9、Per-decision Importance Sampling**    
 
+当$$\gamma=1$$仍能减少方差的方法：  
 
-$$$$
+$$
+\rho_{t:T-1}G_{t}=\rho_{t:T-1}(R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+..+ \gamma^{T-t-1} R_{T})\\
+=\rho_{t:T-1}R_{t+1}+\gamma\rho_{t:T-1} R_{t+2}+\gamma^2 R_{t+3}+..+ \gamma^{T-t-1}\rho_{t:T-1} R_{T}
+$$ 
 
+$$
+\rho_{t:T-1}R_{t+1}=\frac{\pi(A_{t}\mid S_{t})  \pi(A_{t+1}\mid S_{t+1})  \pi(A_{t+2}\mid S_{t+2})..\pi(A_{T-1}\mid S_{T-1})}{b(A_{t}\mid S_{t})  b(A_{t+1}\mid S_{t+1})  b(A_{t+2}\mid S_{t+2})..b(A_{T-1}\mid S_{T-1})}R_{t+1}
+$$
 
+除了$$\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t}}R_{t+1}$$外，其他项之间是相互独立的因为：
 
+$$
+E[\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t})}]=\sum_{a}b(a\mid S_{k})\frac{\pi(a\mid S_{k})}{b(a\mid S_{k})}=\sum_{a}\pi(a\mid S_{k})=1 
+$$
 
- 
+所以：   
+
+$$
+E[\rho_{t:T-1}R_{t+1}]=E[\rho_{t:t}R_{t+1}]\\
+E[\rho_{t:T-1}R_{t+k}]=E[\rho_{t:t+k-1}R_{t+k}]\\
+E[\rho_{t:T-1}G_{t}]=E(\tilde{G}_{t})
+$$ 
+
+$$
+\tilde{G}_{t}=\rho_{t:t}R_{t+1}+\gamma\rho_{t:t+1}R_{t+2}+...+\gamma^{T-t-1}\rho_{T:t}R_{T}
+$$
+
+We call this idea per-decision importance sampling,使用ordinary-importancesampling方法：  
+
+$$
+V(s)=\frac{\sum_{t\in \jmath(s)}\tilde{G}_{t}}{\mid \jmath(s) \mid}
+$$
+
+Is there a per-decision version of weighted importance sampling? This is less clear.
 
 
