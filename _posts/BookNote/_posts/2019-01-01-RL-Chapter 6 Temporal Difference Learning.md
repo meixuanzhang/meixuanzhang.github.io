@@ -18,9 +18,9 @@ $$\alpha$$:constant step-size parameter
 
 上述$$constant-\alpha MC$$方法,为了计算$$G_{t}$$需要等待episode结束,而TD方法只需要等待到下个时间点，即在t+1时刻通过$$R_{t+1}$$和$$V(S_{t+1})$$更新$$V(S_{t})$$:   
 
-$$V(S_{t})\gets V(S_{t})+\alpha[R_{t+1}+\gammaV(S_{t+1}-V(S_{t})]$$     
+$$V(S_{t})\gets V(S_{t})+\alpha[R_{t+1}+\gamma V(S_{t+1}-V(S_{t})]$$     
 
-Monte Carlo method 更新的是$$G_{t}$$,TD更新的是$$R_{t+1}+\gammaV(S_{t+1}$$,这个TD方法称为$$TD(0)$$,或者one-step TD,它是$$TD(\lambda)$$即n-step TD的特例   
+Monte Carlo method 更新的是$$G_{t}$$,TD更新的是$$R_{t+1}+\gamma V(S_{t+1}$$,这个TD方法称为$$TD(0)$$,或者one-step TD,它是$$TD(\lambda)$$即n-step TD的特例   
 
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image23.png)  
