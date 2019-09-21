@@ -44,6 +44,8 @@ $$\delta_{t}=R_{t+1}+\gamma V(S_{t+1})-V(S_{t})$$
 
 The TD error depends on the next state and next reward, it is not actually available until one time step later.
 
+The expected updates of TD method(Sample updates) differ from DP methods in that they are based on a single sample successor rather than on a complete distribution of all possible successors.
+
 Monte Carlo error can be written as a sum of TD errors:   
 
 $$
