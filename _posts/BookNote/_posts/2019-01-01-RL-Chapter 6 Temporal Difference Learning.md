@@ -46,12 +46,15 @@ The TD error depends on the next state and next reward, it is not actually avail
 
 Monte Carlo error can be written as a sum of TD errors:   
 
-$$G_{t}-V(S_{t})=R_{t+1}+\gamma G_{t+1}-V(S_{t})+\gamma V(S_{t+1})-\gamma V(S_{t+1})\\
+$$
+G_{t}-V(S_{t})=R_{t+1}+\gamma G_{t+1}-V(S_{t})+\gamma V(S_{t+1})-\gamma V(S_{t+1})\\
 =\delta_{t}+\gamma (G_{t+1}-V(S_{t+1}))\\
 =\delta_{t}+\gamma \delta_{t+1} +\gamma^2(G_{t+2}-V(S_{t+2}))\\
 =\delta_{t}+\gamma \delta_{t+1} +\gamma^2 \delta_{t+2}+...+\gamma^{T-t-1} \delta_{T-1} + \gamma^{T-t}(G_{T}-V(S_{T})) \\
 = \delta_{t}+\gamma \delta_{t+1} +\gamma^2 \delta_{t+2}+...+\gamma^{T-t-1} \delta_{T-1} + \gamma^{T-t}(0-0)\\
 =\sum_{k=t}^{T-1}\gamma^{k-t}\delta_{k}
+$$
+
 
 This identity is not exact if V is updated during the episode (as it is in TD(0)), but if the step size is small then it may still hold approximately
 
