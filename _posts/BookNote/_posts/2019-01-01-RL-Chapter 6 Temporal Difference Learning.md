@@ -18,9 +18,9 @@ $$\alpha$$:constant step-size parameter
 
 上述$$constant-\alpha MC$$方法,为了计算$$G_{t}$$需要等待episode结束,而TD方法只需要等待到下个时间点，即在t+1时刻通过$$R_{t+1}$$和$$V(S_{t+1})$$更新$$V(S_{t})$$:   
 
-$$V(S_{t})\gets V(S_{t})+\alpha[R_{t+1}+\gamma V(S_{t+1}-V(S_{t})]$$     
+$$V(S_{t})\gets V(S_{t})+\alpha[R_{t+1}+\gamma V(S_{t+1})-V(S_{t})]$$     
 
-Monte Carlo method 更新的是$$G_{t}$$,TD更新的是$$R_{t+1}+\gamma V(S_{t+1}$$,这个TD方法称为$$TD(0)$$,或者one-step TD,它是$$TD(\lambda)$$即n-step TD的特例   
+Monte Carlo method 更新的是$$G_{t}$$,TD更新的是$$R_{t+1}+\gamma V(S_{t+1})$$,这个TD方法称为$$TD(0)$$,或者one-step TD,它是$$TD(\lambda)$$即n-step TD的特例   
 
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image23.png)  
@@ -38,6 +38,21 @@ Monte Carlo 目标是一个估计，因为式子6.1期望值未知,用return($$G
 
 TD methods combine the sampling of Monte Carlo with the bootstrapping of DP.it samples the expected values in 6.2 and it uses the current estimate $$V$$ instead of the true $$V_{\pi}$$
 
+TD error:   
 
+$$\delta_{t}=R_{t+1}+\gamma V(S_{t+1})-V(S_{t})$$   
+
+The TD error depends on the next state and next reward, it is not actually available until one time step later.
+
+Monte Carlo error can be written as a sum of TD errors:   
+
+$$G_{t}-V(S_{t})=R_{t+1}+\gamma G_{t+1}-V(S_{t})+\gamma V(S_{t+1})-\gamma V(S_{t+1})\\
+=\delta_{t}+\gamma (G_{t+1}-V(S_{t+1}))\\
+=\delta_{t}+\gamma \delta_{t+1} +\gamma^2(G_{t+2}-V(S_{t+2}))\\
+=\delta_{t}+\gamma \delta_{t+1} +\gamma^2 \delta_{t+2}+...+\gamma^{T-t-1} \delta_{T-1} + \gamma^{T-t}(G_{T}-V(S_{T})) \\
+= \delta_{t}+\gamma \delta_{t+1} +\gamma^2 \delta_{t+2}+...+\gamma^{T-t-1} \delta_{T-1} + \gamma^{T-t}(0-0)\\
+=\sum_{k=t}^{T-1}\gamma^{k-t}\delta_{k}
+
+This identity is not exact if V is updated during the episode (as it is in TD(0)), but if the step size is small then it may still hold approximately
 
 **2、**   
