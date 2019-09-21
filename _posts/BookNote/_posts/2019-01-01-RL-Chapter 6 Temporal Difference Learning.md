@@ -20,8 +20,25 @@ $$\alpha$$:constant step-size parameter
 
 $$V(S_{t})\gets V(S_{t})+\alpha[R_{t+1}+\gammaV(S_{t+1}-V(S_{t})]$$     
 
+Monte Carlo method 更新的是$$G_{t}$$,TD更新的是$$R_{t+1}+\gammaV(S_{t+1}$$,这个TD方法称为$$TD(0)$$,或者one-step TD,它是$$TD(\lambda)$$即n-step TD的特例   
 
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image23.png)  
+
+$$TD(0)$$方法更新部分是基于现有的估算，称之为**bootstrapping**  
+
+Monte Carlo methods使用式子6.1的估计值(期望值)作为目标，DP methods 使用式子6.2的估计值作为目标
+
+$$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s] \qquad \qquad 6.1\\
+=E_{\pi}[R_{t+1}+\gamma G_{t}\mid S_{t}=s]\\
+=E_{\pi}[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s]  \qquad \qquad 6.2
+$$  
+
+粗略地说，Monte Carlo 方法以(6.1)的估计作为目标，而DP方法以(6.2)的估计作为目标。 Monte Carlo 目标是一个估计，因为期望值未知,用return$$G_{t}$$样本估计实际的期望值。 DP目标是一个估计，但不是因为期望值，是因为$$V_{\pi}(S_{t+1})$$未知,使用当前$$V(S_{t+1})$$作为估计。  
+
+TD methods combine the sampling of Monte Carlo with the bootstrapping of DP.it samples the expected values in (6.4)
+and it uses the current estimate $$V$$ instead of the true $$V_{\pi}$$
+
+
 
 **2、**   
