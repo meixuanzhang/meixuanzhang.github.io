@@ -34,7 +34,7 @@ $$V_{\pi}(s)=E_{\pi}[G_{t}\mid S_{t}=s] \qquad \qquad 6.1\\
 =E_{\pi}[R_{t+1}+\gamma V_{\pi}(S_{t+1})\mid S_{t}=s]  \qquad \qquad 6.2
 $$  
 
-Monte Carlo 目标是一个估计，因为式子6.1期望值未知,用return($$G_{t}$$)样本估计实际的$$G_{t}$$期望值。 DP目标是一个估计，但不是因为$$G_{t}$$期望值，是因为$$V_{\pi}(S_{t+1})$$未知,使用当前$$V(S_{t+1})$$作为估计。  
+Monte Carlo 目标是一个估计，因为式子6.1期望值未知,用return($$G_{t}$$)样本估计实际的$$G_{t}$$期望值。 DP目标是一个估计，但不是因为$$G_{t}$$期望值，是因为$$V_{\pi}(S_{t+1})$$未知,使用当前$$V(S_{t+1})$$替代。  
 
 TD methods combine the sampling of Monte Carlo with the bootstrapping of DP.it samples the expected values in 6.2 and it uses the current estimate $$V$$ instead of the true $$V_{\pi}$$
 
@@ -60,4 +60,14 @@ $$
 
 This identity is not exact if V is updated during the episode (as it is in TD(0)), but if the step size is small then it may still hold approximately
 
-**2、**   
+**2、Advantages of TD Prediction Methods**   
+
+TD methods have an advantage over DP methods in that they do not require a model of the environment, of its reward and next-state probability distributions.    
+
+The next most obvious advantage of TD methods over Monte Carlo methods is that they are naturally implemented in an on-line, fully incremental fashion.With Monte Carlo methods one must wait until the end of an episode, because only then is the return known, whereas with TD methods one need wait only one time step.     
+ 
+Some Monte Carlo methods must ignore or discount episodes on which experimental actions are taken, which can greatly slow learning. TD methods are much less susceptible to these problems because they learn from each transition regardless of what subsequent actions are taken.   
+
+For any fixed policy $$\pi$$, TD(0) has been proved to converge to $$V_{\pi}$$, in the mean for a constant step-size parameter if it is sufficiently small, and with probability 1 if the step-size parameter decreases according to the usual stochastic approximation conditions. Most convergence proofs apply only to the table-based case of the algorithm presented above, but some also apply to the case of general linear function approximation.   
+
+
