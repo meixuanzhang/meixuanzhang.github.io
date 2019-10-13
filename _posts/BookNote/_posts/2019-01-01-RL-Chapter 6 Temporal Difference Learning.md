@@ -70,4 +70,6 @@ Some Monte Carlo methods must ignore or discount episodes on which experimental 
 
 For any fixed policy $$\pi$$, TD(0) has been proved to converge to $$V_{\pi}$$, in the mean for a constant step-size parameter if it is sufficiently small, and with probability 1 if the step-size parameter decreases according to the usual stochastic approximation conditions. Most convergence proofs apply only to the table-based case of the algorithm presented above, but some also apply to the case of general linear function approximation.   
 
+**3、Optimality of TD(0)**   
 
+**4、Sarsa: On-policy TD Control**  
