@@ -42,4 +42,38 @@ $$
 
 MBE=\frac{1}{n}\sum_{i=1}^n (y_{i}-f(x_{i}))
 
+$$  
+
+
+# Binary Classification Loss Functions   
+
+**Binary Cross-Entropy**   
+
 $$
+Cross Entropy=\left\{ \begin{array}{rl}
+& -\int p(x)log q(x)dx &\mbox{x is continuous} \\
+& -\sum_{x}p(x)log q(x) &\mbox{x is discrete} \\
+\end{array} \right.
+
+$$
+
+$$
+L(y_{i},p_{i})=-y_{i}*log(p_{i})-(1-y_{i})*log(1-p_{i})=\left\{ \begin{array}{rl}
+& -log(1-p_{i}) &\mbox{y_{i}=0} \\
+& -log(p_{i})&\mbox{y_{i}=1} \\
+\end{array} \right.
+$$
+
+This is also called Log-Loss.   
+
+
+**Hinge Loss**  
+
+$$  
+
+L(y_{i},f(x_{i})) = max(0,1-y_{i}f(x_{i}))
+
+$$  
+
+# Multi-class Classification Loss Functions
+ 
