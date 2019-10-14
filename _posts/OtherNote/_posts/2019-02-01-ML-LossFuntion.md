@@ -52,10 +52,12 @@ $$
 
 L(y_{i},f(x_{i}))=\frac{1}{n}\sum_{i=1}^n(log(y_{i}+1)-log(f(x_{i})+1))
 
+$$  
+
+
+
 $$
 log(y_{i}+1)-log(f(x_{i})+1)=log\frac{y_{i}+1}{f(x_{i})+1}
-$$
-
 
 $$
 
@@ -71,7 +73,7 @@ Cross Entropy=\left\{ \begin{array}{rl}
 
 $$
 
-单个样本的loss:  
+单个样本的loss,$$y_{i}\in {1,0}$$:  
 
 $$
 L(y_{i},p_{i})=-y_{i}*log(p_{i})-(1-y_{i})*log(1-p_{i})=\left\{ \begin{array}{rl}
@@ -81,6 +83,20 @@ L(y_{i},p_{i})=-y_{i}*log(p_{i})-(1-y_{i})*log(1-p_{i})=\left\{ \begin{array}{rl
 $$
 
 This is also called Log-Loss.   
+
+$$y_{i}\in {1,0}$$ :  
+
+$$
+p(y_{i}=1\mid x_{i})=\frac{1}{1+exp(-f(x_{i}))}\\
+p(y_{i}=0\mid x_{i})=\frac{1}{1+exp(f(x_{i}))}\\
+$$
+
+$$y_{i}\in {1,-1}$$ :  
+
+
+$$
+p(y_{i}mid x_{i})=\frac{1}{1+exp(-y_{i}f(x_{i}))}\\
+$$
 
 
 **Hinge Loss**  
@@ -93,7 +109,24 @@ $$
 
 **Squared hinge**  
 
+$$  
+
 L(y_{i},f(x_{i})) = \sum_{i=1}^n (max(0,1-y_{i}f(x_{i})))^2  
+
+$$  
+
+**Exponential loss**   
+
+AdaBoost使用指数损失：  
+
+$$  
+
+L(y_{i},f(x_{i}))=\frac{1}{n}\sum_{i=1}^n exp(y_{i}f(x_{i}))   
+
+$$  
+
+其损失是分类错误的上限  
+
 
 # Multi-class Classification Loss Functions  
 
