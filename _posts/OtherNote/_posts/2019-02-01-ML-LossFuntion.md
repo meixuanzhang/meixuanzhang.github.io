@@ -7,7 +7,7 @@ categories: 其他
 
 # Regression Loss Functions 
 
-**Squared Error Loss(均方误差)**  
+**Mean Squared Error Loss(均方误差)**  
 
 $$
 
@@ -15,7 +15,7 @@ MSE=\frac{1}{n}\sum_{i=1}^n (y_{i}-f(x_{i}))^2
 
 $$
 
-**Absolute Error Loss**  
+**Mean Absolute Error Loss**  
 
 $$
 
@@ -44,6 +44,18 @@ MBE=\frac{1}{n}\sum_{i=1}^n (y_{i}-f(x_{i}))
 
 $$  
 
+**Mean squared logarithmic error**  
+
+$$
+
+L(y_{i},f(x_{i}))=\frac{1}{n}\sum_{n}(log(y_{i}+1)-log(f(x_{i})+1))
+
+$$
+log(y_{i}+1)-log(f(x_{i})+1)=\frac{y_{i}+1}{f(x_{i})+1}
+$$
+
+
+$$
 
 # Binary Classification Loss Functions   
 
@@ -51,16 +63,16 @@ $$
 
 $$
 Cross Entropy=\left\{ \begin{array}{rl}
-& -\int p(x)log q(x)dx &\mbox{x is continuous} \\
-& -\sum_{x}p(x)log q(x) &\mbox{x is discrete} \\
+& -\int p(x)log q(x)dx &\mbox{,x is continuous} \\
+& -\sum_{x}p(x)log q(x) &\mbox{,x is discrete} \\
 \end{array} \right.
 
 $$
 
 $$
 L(y_{i},p_{i})=-y_{i}*log(p_{i})-(1-y_{i})*log(1-p_{i})=\left\{ \begin{array}{rl}
-& -log(1-p_{i}) &\mbox{y_{i}=0} \\
-& -log(p_{i})&\mbox{y_{i}=1} \\
+& -log(1-p_{i}) &,y_{i}=0 \\
+& -log(p_{i})&,y_{i}=1\\
 \end{array} \right.
 $$
 
