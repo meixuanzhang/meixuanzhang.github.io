@@ -50,7 +50,7 @@ $$
 
 $$
 
-L(y_{i},f(x_{i}))=\frac{1}{n}\sum_{i=1}^n(log(y_{i}+1)-log(f(x_{i})+1))
+MSLE=\frac{1}{n}\sum_{i=1}^n(log(y_{i}+1)-log(f(x_{i})+1))
 
 $$  
 
@@ -103,7 +103,7 @@ $$
 
 $$  
 
-L(y_{i},f(x_{i})) = \sum_{i=1}^n max(0,1-y_{i}f(x_{i}))
+Hinge Loss= \sum_{i=1}^n max(0,1-y_{i}f(x_{i}))
 
 $$  
 
@@ -111,7 +111,7 @@ $$
 
 $$  
 
-L(y_{i},f(x_{i})) = \sum_{i=1}^n (max(0,1-y_{i}f(x_{i})))^2  
+Squared Hinge Loss = \sum_{i=1}^n (max(0,1-y_{i}f(x_{i})))^2  
 
 $$  
 
@@ -121,7 +121,7 @@ AdaBoost使用指数损失：
 
 $$  
 
-L(y_{i},f(x_{i}))=\frac{1}{n}\sum_{i=1}^n exp(y_{i}f(x_{i}))   
+L=\frac{1}{n}\sum_{i=1}^n exp(y_{i}f(x_{i}))   
 
 $$  
 
@@ -129,6 +129,59 @@ $$
 
 
 # Multi-class Classification Loss Functions  
+
+**Multi-class Cross Entropy Loss**  
+
+单个样本损失：  
+
+$$
+L(y_{i},f(x_{i}))=-sum_{j=e}^c y_{i}^j *log p_{i}^j
+$$ 
+
+$$y_{i}$$是one-hot encoded target vector$$(y_{i}^1,y_{i}^2,...,y_{i}^c)$$   
+
+
+$$  
+
+y_{i}^j=\left\{ \begin{array}{rl}
+& 1 &i_{th}\mbox{element is in class j} \\
+& 0 &\mbox{otherwise} \\
+\end{array} \right.
+$$  
+
+$$p_{i}^j=f(x_{i})$$=Probability that $$i_{th}$$ element is in class j. 
+
+softmax function:   
+
+$$
+\sigma(Z)_{i}\frac{e^{z_{i}}}{\sum_{j=1}^K e^{z_{j}}}
+
+$$
+
+$$
+Z=(z_{1},...z_{K})\in R^K
+$$
+
+
+**Kullback Leibler Divergence Loss**  
+
+Expectation of logaritmic difference between P and Q with respect to P(真实分布)  
+
+$$
+D_{KL}(P\mid \mid Q)\left\{ \begin{array}{rl}
+& -\sum_{x}P(x)log \frac{Q(x)}{P(x)}=\sum_{x}P(x)log\frac{P(x)}{Q(x)} &\mbox{discrete distributions} \\
+& -\int P(x) log\frac{Q(x)}{P(x)}= \int P(x)log\frac{P(x)}{Q(x)}dx&\mbox{continuous distributions} \\
+\end{array} \right.
+$$  
+
+
+$$
+D_{KL}(P\mid \mid Q)=-\sum_{x}(P(x)logQ(x)-P(x)logP(x))=H(P,Q)-H(P,P)
+
+$$
+
+
+
 
 
 
