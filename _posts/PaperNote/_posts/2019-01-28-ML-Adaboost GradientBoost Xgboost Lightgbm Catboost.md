@@ -1,0 +1,126 @@
+---
+layout: post
+title: Adaboost GradientBoost Xgboost LightGBM Catboost
+date:   2019-01-28
+categories: 机器学习
+---  
+
+提升方法（Boosting），是一种可以用来减小监督式学习中偏差的机器学习算法。
+
+# Adaboost  
+
+![_config.yml]({{ site.baseurl }}/images/86Boost/image1.png)   
+
+AdaBoost algorithm advantages:  
+很好地利用弱分类器进行组合
+可以将不同的分类算法作为弱分类器
+adaboost具有很高的精度 
+相对于bagging算法和随机森林算法，adaboost充分考虑了各分类器的权重；
+
+Adaboost algorithm disadvantages:  
+adaboost迭代次数也是弱分类器集合数目,需通过交叉验证来确定；
+数据不平衡导致分类精度下降；
+训练很费时,每次需要重新选择当前分类最好切分点；
+ 
+# Gradient Boosting    
+
+![_config.yml]({{ site.baseurl }}/images/86Boost/image2.png)   
+
+Gradient Boosting  advantages: 
+预测准确性高。
+由于树是通过优化目标函数得出的，因此基本上GBM可以用于求解几乎所有我们可以写出梯度的目标函数。
+
+Gradient Boosting disadvantages:   
+
+如果数据有噪声，GBM对过拟合更敏感。
+训练通常需要更长的时间，因为树是按顺序构建的。
+GBM比RF更难调谐。通常有三个参数：树的数量、树的深度和学习率，并且每棵树的构建通常都是浅层的。
+
+# LightGBM  
+
+**histogram-based algorithms**     
+
+LightGBM使用基于直方图的算法,该算法将连续特征（属性）值存储到离散的bin中。这样可以加快培训速度并减少内存使用量。 基于直方图的算法的优点包括:  
+降低了计算每个分割增益的成本,一旦构造了直方图，基于直方图的算法具有时间复杂度O(#bin)，比O(#data)小得多。
+使用直方图减法进一步加速,二叉树中获取子节点的直方图，只需要为一个子节点构造直方图， 然后可以使用父节点直方图减法刚构造的子节点直方图,获得另一个子节点的直方图
+减少内存使用，用离散的bin替换连续的值。 如果#bins较小，则可以使用较小的数据类型，例如 uint8_t，用于存储训练数据
+无需存储额外信息即可对特征值进行预排序 
+降低并行学习的通信成本
+
+**GOSS: reduce data size by rows**  
+
+**EFB: reduce data size by columns**  
+
+**Leaf-wise (Best-first) Tree Growth*8  
+
+大多数决策树学习算法都是按 level (depth)-wise来生长树，如下图所示：
+
+![_config.yml]({{ site.baseurl }}/images/86Boost/image8.png)  
+
+LightGBM以 leaf-wise的方式生长树。它将选择具有最大增量损失的叶子来生长。 保持#leaf固定，leaf-wise算法往往比level-wise算法获得更低的损失。
+当#data较小时，leaf-wise可能会导致过度拟合，因此LightGBM包含max_depth参数以限制树的深度。
+![_config.yml]({{ site.baseurl }}/images/86Boost/image9.png)  
+ 
+**Optimal Split for Categorical Features**  
+
+使用one-hot encoding来表示分类特征是很普遍的，但是这种方法对于树模型而言不是最理想的。 特别是对于高维度的分类特征，基于one-hot encoding表示分类特征的树倾向于不平衡，并且需要生长到非常深才能获得良好的精度。    
+
+相比起one-hot encoding，最佳解决方案是将类别特征进行拆分为2个子集。 如果特征具有$$k$$个类别，则存在$$2^{(k-1 )}-1$$个可能的分区。 但是对于回归树有一个有效的解决方案。它需要大约$$O(k*log(k))$$来找到最佳分区。基本思想是根据训练目标对类别进行分类。 LightGBM根据其累积值（sum_gradient / sum_hessian）对直方图（用于分类特征）进行排序，然后在排序的直方图上找到最佳分割。
+
+**Optimization in Parallel Learning**  
+
+**1、Feature Parallel**   
+
+特征并行旨在并行化决策树中的“查找最佳拆分”。 传统特征并行的过程是：  
+
+1、Partition data vertically (different machines have different feature set).垂直分区：把特定的列划分到特定的分区，减少表的宽度，每个分区都保存了其中列所在的行。  
+2、Workers find local best split point {feature, threshold} on local feature set.局部特征集上找到局部最佳分割点{特征，阈值}。  
+3、Communicate local best splits with each other and get the best one.相互交流局部最佳分割点并获得全局最佳分割点。  
+4、Worker with best split to perform split, then send the split result of data to other workers.根据最好分割点分割数据，并将分割数据结果(行索引分割结果)发送给其他工作程序。  
+5、Other workers split data according to received data.根据接收到的分割数据结果进行下一次分割。  
+
+传统功能并行的缺点：
+
+1、Has computation overhead, since it cannot speed up “split”, whose time complexity is O(#data). Thus, feature parallel cannot speed up well when #data is large.因为它不能加速“拆分”，其时间复杂度为O（#data）。 因此，当#data很大时，特征并行不能很好地加速。   
+2、Need communication of split result, which costs about O(#data / 8) (one bit for one data).  需要将分割结果的传递，其成本约为O（#data / 8）（一个数据一位）。
+
+**Feature Parallel in LightGBM：**  
+
+由于#data很大时，Feature Parallel无法很好地加速，LightGBM做了一些改动：不是垂直划分数据，而是每个Workers都保存了全部数据。LightGBM不需要就数据拆分结果进行交流，因为每个Workers都知道如何拆分数据。 而且#data不会更大，因此在每台计算机上保存完整数据是合理的。
+
+
+流程： 
+
+1、Workers find local best split point {feature, threshold} on local feature set.   
+2、Communicate local best splits with each other and get the best one.   
+3、Perform best split.   
+
+这种特征并行算法在数据量大的情况下仍然存在“分割”的计算开销。
+
+**2、Data Parallel**   
+
+传统数据并行化旨在并行化整个决策学习。 数据并行的过程是：  
+
+1、Partition data horizontally.水平分区：对表的行进行分区，不同分组中物理分隔的数据组合在一起，表中的所有列都可以在每个分区找到，维持了表的属性结构。  
+2、Workers use local data to construct local histograms.使用局部数据，构建局部直方图
+3、Merge global histograms from all local histograms.合并所有局部直方图获得全局直方图
+4、Find best split from merged global histograms, then perform splits.从合并的全局直方图中找到最佳分割，然后执行分割。
+
+**Data Parallel in LightGBM：**
+
+Instead of “Merge global histograms from all local histograms”, LightGBM uses “Reduce Scatter” to merge histograms of different (non-overlapping) features for different workers. Then workers find the local best split on local merged histograms and sync up the global best split.
+As aforementioned, LightGBM uses histogram subtraction to speed up training. Based on this, we can communicate histograms only for one leaf, and get its neighbor’s histograms by subtraction as well.
+All things considered, data parallel in LightGBM has time complexity O(0.5 * #feature * #bin).
+
+**Missing Value Handle**  
+
+LightGBM enables the missing value handle by default. Disable it by setting use_missing=false.
+LightGBM uses NA (NaN) to represent missing values by default. Change it to use zero by setting zero_as_missing=true.
+When zero_as_missing=false (default), the unshown values in sparse matrices (and LightSVM) are treated as zeros.
+When zero_as_missing=true, NA and zeros (including unshown values in sparse matrices (and LightSVM)) are treated as missing.
+
+# Catboost  
+
+
+
+ 
