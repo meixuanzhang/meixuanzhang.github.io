@@ -13,16 +13,16 @@ categories: 机器学习
 
 AdaBoost algorithm advantages:  
 
-很好地利用弱分类器进行组合   
-可以将不同的分类算法作为弱分类器   
-adaboost具有很高的精度   
-相对于bagging算法和随机森林算法，adaboost充分考虑了各分类器的权重；  
+1、很好地利用弱分类器进行组合   
+2、可以将不同的分类算法作为弱分类器   
+3、adaboost具有很高的精度   
+4、相对于bagging算法和随机森林算法，adaboost充分考虑了各分类器的权重；  
 
 Adaboost algorithm disadvantages:    
 
-adaboost迭代次数也是弱分类器集合数目,需通过交叉验证来确定；   
-数据不平衡导致分类精度下降；  
-训练很费时,每次需要重新选择当前分类最好切分点；   
+1、adaboost迭代次数也是弱分类器集合数目,需通过交叉验证来确定；   
+2、数据不平衡导致分类精度下降；  
+3、训练很费时,每次需要重新选择当前分类最好切分点；   
  
 # Gradient Boosting    
 
@@ -30,14 +30,14 @@ adaboost迭代次数也是弱分类器集合数目,需通过交叉验证来确�
 
 Gradient Boosting  advantages:     
 
-预测准确性高。   
-由于树是通过优化目标函数得出的，因此基本上GBM可以用于求解几乎所有我们可以写出梯度的目标函数。  
+1、预测准确性高。   
+2、由于树是通过优化目标函数得出的，因此基本上GBM可以用于求解几乎所有我们可以写出梯度的目标函数。  
 
 Gradient Boosting disadvantages:     
 
-如果数据有噪声，GBM对过拟合更敏感。   
-训练通常需要更长的时间，因为树是按顺序构建的。   
-GBM比RF更难调谐。通常有三个参数：树的数量、树的深度和学习率，并且每棵树的构建通常都是浅层的。   
+1、如果数据有噪声，GBM对过拟合更敏感。   
+2、训练通常需要更长的时间，因为树是按顺序构建的。   
+3、GBM比RF更难调谐。通常有三个参数：树的数量、树的深度和学习率，并且每棵树的构建通常都是浅层的。   
 
 # LightGBM    
 
@@ -47,11 +47,11 @@ GBM比RF更难调谐。通常有三个参数：树的数量、树的深度和学
 
 LightGBM使用基于直方图的算法,该算法将连续特征（属性）值存储到离散的bin中。这样可以加快培训速度并减少内存使用量。基于直方图的算法的优点包括:    
 
-1、降低了计算每个分割增益的成本,一旦构造了直方图，基于直方图的算法具有时间复杂度O(#bin)，比O(#data)小得多。
-2、使用直方图减法进一步加速,二叉树中获取子节点的直方图，只需要为一个子节点构造直方图， 然后可以使用父节点直方图减法刚构造的子节点直方图,获得另一个子节点的直方图
-3、减少内存使用，用离散的bin替换连续的值。 如果#bins较小，则可以使用较小的数据类型，例如 uint8_t，用于存储训练数据
-4、无需存储额外信息即可对特征值进行预排序 
-5、降低并行学习的通信成本
+1、降低了计算每个分割增益的成本,一旦构造了直方图，基于直方图的算法具有时间复杂度O(#bin)，比O(#data)小得多。   
+2、使用直方图减法进一步加速,二叉树中获取子节点的直方图，只需要为一个子节点构造直方图， 然后可以使用父节点直方图减法刚构造的子节点直方图,获得另一个子节点的直方图   
+3、减少内存使用，用离散的bin替换连续的值。 如果#bins较小，则可以使用较小的数据类型，例如 uint8_t，用于存储训练数据   
+4、无需存储额外信息即可对特征值进行预排序    
+5、降低并行学习的通信成本   
 
 ## GOSS: reduce data size by rows  
 
@@ -62,15 +62,28 @@ with small gradients.保留所有具有大梯度的实例，并对具有小梯�
 
 流程：  
 
-1、根据梯度绝对值以降序对样本进行排序
-2、选择排序前a* 100%的样本。
-3、从其余数据中随机抽样b * 100%个样本。 这将减少训练较好的样本的贡献。 
-4、如果没有第3点，则具有较小梯度的样本数将为1-a（当前为b）。 为了保持原始分布，LightGBM通过恒定(1-a)/b放大具有小梯度的样本的贡献，从而将更多精力放在训练不足的实例上，而不会太大地改变数据分布。
+1、根据梯度绝对值以降序对样本进行排序   
+2、选择排序前a* 100%的样本。  
+3、从其余数据中随机抽样b * 100%个样本。 这将减少训练较好的样本的贡献。   
+4、如果没有第3点，则具有较小梯度的样本数将为1-a（当前为b）。 为了保持原始分布，LightGBM通过恒定(1-a)/b放大具有小梯度的样本的贡献，从而将更多精力放在训练不足的实例上，而不会太大地改变数据分布。   
 
 
 ## EFB: reduce data size by columns  
 
+The sparsity of the feature space provides us a possibility of designing a nearly lossless approach to reduce the number of features. Specifically, in a sparse feature space, many features are mutually exclusive, i.e., they never take nonzero values simultaneously.特征之间若存在某特征取非零值时，部分特征取值一定为零，可以将这些特征合并。  
+
 ![_config.yml]({{ site.baseurl }}/images/86Boost/image7.png)  
+
+** Identifying features that could be bundled together**  
+
+1、Construct a graph with weighted (measure of conflict between features) edges. Conflict is measure of the fraction of exclusive features which have overlapping non zero values. 特征非零值重叠程度     
+2、Sort the features by count of non zero instances in descending order.  
+3、Loop over the ordered list of features and assign the feature to an existing bundle (if conflict < threshold) or create a new bundle (if conflict > threshold).   
+
+**Algorithm for merging features**  
+
+![_config.yml]({{ site.baseurl }}/images/86Boost/image10.png)  
+
 
 ## Leaf-wise (Best-first) Tree Growth
 
