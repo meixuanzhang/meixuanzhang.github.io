@@ -74,7 +74,7 @@ The sparsity of the feature space provides us a possibility of designing a nearl
 
 ![_config.yml]({{ site.baseurl }}/images/86Boost/image7.png)  
 
-** Identifying features that could be bundled together**  
+**Identifying features that could be bundled together**  
 
 1、Construct a graph with weighted (measure of conflict between features) edges. Conflict is measure of the fraction of exclusive features which have overlapping non zero values. 特征非零值重叠程度     
 2、Sort the features by count of non zero instances in descending order.  
@@ -97,13 +97,13 @@ LightGBM以 leaf-wise的方式生长树。它将选择具有最大增量损失�
  
 ## Optimal Split for Categorical Features  
 
-使用one-hot encoding来表示分类特征是很普遍的，但是这种方法对于树模型而言不是最理想的。 特别是对于高维度的分类特征，基于one-hot encoding表示分类特征的树倾向于不平衡，并且需要生长到非常深才能获得良好的精度。    
+使用one-hot encoding来表示分类特征是很普遍的，但是这种方法对于树模型而言不是最理想的。 特别是对于高维度的分类特征，基于one-hot encoding表示分类特征的树倾向于不平衡，并且需要生长到非常深才能获得良好的精度。     
 
 相比起one-hot encoding，最佳解决方案是将类别特征进行拆分为2个子集。 如果特征具有$$k$$个类别，则存在$$2^{(k-1 )}-1$$个可能的分区。 但是对于回归树有一个有效的解决方案。它需要大约$$O(k*log(k))$$来找到最佳分区。基本思想是根据训练目标对类别进行分类。 LightGBM根据其累积值（sum_gradient / sum_hessian）对直方图（用于分类特征）进行排序，然后在排序的直方图上找到最佳分割。
 
-**Optimization in Parallel Learning**  
+## Optimization in Parallel Learning
 
-**1、Feature Parallel**   
+**Feature Parallel**   
 
 特征并行旨在并行化决策树中的“查找最佳拆分”。 传统特征并行的过程是：  
 
@@ -131,7 +131,7 @@ LightGBM以 leaf-wise的方式生长树。它将选择具有最大增量损失�
 
 这种特征并行算法在数据量大的情况下仍然存在“分割”的计算开销。
 
-**2、Data Parallel**   
+**Data Parallel**   
 
 传统数据并行化旨在并行化整个决策学习。 数据并行的过程是：  
 
@@ -142,19 +142,68 @@ LightGBM以 leaf-wise的方式生长树。它将选择具有最大增量损失�
 
 **Data Parallel in LightGBM：**
 
-Instead of “Merge global histograms from all local histograms”, LightGBM uses “Reduce Scatter” to merge histograms of different (non-overlapping) features for different workers. Then workers find the local best split on local merged histograms and sync up the global best split.
+LightGBM uses “Reduce Scatter” to merge histograms of different (non-overlapping) features for different workers.Then workers find the local best split on local merged histograms and sync up the global best split.    
 As aforementioned, LightGBM uses histogram subtraction to speed up training. Based on this, we can communicate histograms only for one leaf, and get its neighbor’s histograms by subtraction as well.
-All things considered, data parallel in LightGBM has time complexity O(0.5 * #feature * #bin).
+
 
 **Missing Value Handle**  
 
-LightGBM enables the missing value handle by default. Disable it by setting use_missing=false.
-LightGBM uses NA (NaN) to represent missing values by default. Change it to use zero by setting zero_as_missing=true.
-When zero_as_missing=false (default), the unshown values in sparse matrices (and LightSVM) are treated as zeros.
-When zero_as_missing=true, NA and zeros (including unshown values in sparse matrices (and LightSVM)) are treated as missing.
+1、LightGBM enables the missing value handle by default. Disable it by setting use_missing=false.   
+2、LightGBM uses NA (NaN) to represent missing values by default. Change it to use zero by setting zero_as_missing=true.    
+3、When zero_as_missing=false (default), the unshown values in sparse matrices (and LightSVM) are treated as zeros.   
+4、When zero_as_missing=true, NA and zeros (including unshown values in sparse matrices (and LightSVM)) are treated as missing.   
 
-# Catboost  
+参考：  
+[ LightGBM Document](https://lightgbm.readthedocs.io/en/latest/Features.html#optimal-split-for-categorical-features)
+[What makes LightGBM lightning fast?](https://medium.com/@abhisheksharma_57055/what-makes-lightgbm-lightning-fast-a27cf0d9785e)  
+[Tree Series 2: GBDT, Lightgbm, XGBoost, Catboost](https://yanpuli.github.io/posts/2018/05/blog-post-13/)
 
 
 
+# Catboost   
+
+Prediction shift:预测靠近数据集中的数据远离真实值时，称为预测转移
+
+**Handling Categorical Features.**
+
+A categorical feature is one with a discrete set of values called categories that are not comparable to each other. One popular technique for dealing with categorical features in boosted trees is one-hot
+encoding ,for each category, adding a new binary feature indicating it.  
+However, in the case of high cardinality features (like, e.g., “user ID” feature), such technique leads to infeasibly large number of new features.   
+To address this issue, one can group categories into a limited number of clusters and then apply one-hot encoding. A popular method is to group categories by target statistics (TS) that estimate expected target value in each category.
+(对于高维度的分类特征，one-hot会产生很多新的稀疏特征，因此将分类变量转换为与目标变量相关的统计量)   
+
+这种方式会导致过拟合的问题，假设将分类变量转换为对应目标变量的均值，如果一个特征的一个取值只有一个样本，则它的值会完全等于目标变量，这导致目标泄露，训练时导致过拟合。
+
+Catboost使用ordered TS :   
+
+The values of TS for each example rely only on the observed history. Catboost introduce an artificial “time”, a random permutation $$\sigma$$ of the training examples.  对样本进行随机排序  
+Then, for each example, we use all the available “history” to compute its TS, i.e., take $$D_{k} = \{x_{j}:\sigma(j)<\sigma(k) \} $$in Equation:
+
+![_config.yml]({{ site.baseurl }}/images/86Boost/image11.png)  
+
+选择排在样本$$x_{j}$$前与其取值相等的样本，计算统计量。
+
+if we use only one random permutation,then preceding examples have TS with much higher variance than subsequent ones. To this end, CatBoost uses different permutations for different steps of gradient boosting
+
+**ordered boosting**   
+
+![_config.yml]({{ site.baseurl }}/images/86Boost/image13.png)  
+![_config.yml]({{ site.baseurl }}/images/86Boost/image12.png)  
+
+Step 1: Calculate residuals for each datapoint using a model that has been trained on all the other data points at that time (For Example, to calculate residual for x5 datapoint, we train one model using x1, x2, x3 and x4 ). Hence we train different models for different data points . At the end we are calculating residuals for each datapoint that it’s corresponding model has never seen that datapoint before.  
+Step 2: train the model using the residuals of each datapoint   
+Step 3: Repeat Step 1 & Step 2 (for n iterations)   
+
+这里有多少个样本就需要构建多少个M，为此对算法改进，构建的M个数为$$log_{2}^n$$.
+
+For the above toy dataset, we should train 9 different models to get residuals for 9 data points. This is computationally expensive when we have more number of data points. Hence by default, instead of training different model for each datapoint, it trains only log(num_of_datapoints) models. Now if a model has been trained on n data points then that model is used to calculate residuals for the next n data points.
+A model that has been trained on first data point is used for calculating residuals of second data point.第一个样本训练，计算第二个样本残差  
+An another model that has been trained on the first two data points is used for calculating residuals of third and fourth data points。前两个样本训练，计算第三、四样本残差
+and so on…   
+In the above toy dataset, now we calculate residuals of x5,x6,x7 and x8 using a model that has been trained on x1, x2,x3 and x4.前四个样本训练，计算后四个样本残差
+All this procedure that I have explained until now is known as ordered boosting.
+
+
+
+[What’s so special about CatBoost?](https://medium.com/@hanishsidhu/whats-so-special-about-catboost-335d64d754ae)
  
