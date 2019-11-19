@@ -18,9 +18,9 @@ categories: 深度学习
 
 $$a_{x,y}^i$$表示经kernel i 卷积后产生的feature map 位置为x,y对应的元素，局部标准化即，N个kernel会产生N个feature map,对在第i个feature map位置为($$x,y$$)元素标准化，选取同位置前后其他feature map元素进行标准化。
 
-$$b_{x,y}^i=\frac{a_{x,y}^i}{k+\alpha\sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)(a_{x,y}^j)^2}^{\beta}$$
+$$b_{x,y}^i=a_{x,y}^i / (k+\alpha\sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)(a_{x,y}^j)^2})^{\beta}$$
 
-式子中$$k,\eta,\alpha,\beta$$为超参数，论文中设置为$$k=2,\eta=5,\alpha=10^{-4},\beta=0.75$$,这里$$\eta$$越大local(局部)选取
+式子中$$k,\eta,\alpha,\beta$$为超参数，论文中设置为$$k=2,\eta=5,\alpha=10^{-4},\beta=0.75$$,这里$$\eta$$越大local(局部)选取越大。  
 
 
 
@@ -28,9 +28,9 @@ $$b_{x,y}^i=\frac{a_{x,y}^i}{k+\alpha\sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)(a_{x,
 
 模型使用了Overlapping max Pooling 图中下方的方式，Pooling参数设置stride=2,filter大小为3*3    
 
-![_config.yml]({{ site.baseurl }}/images/100Alexnet/image5.jpg)    
+![_config.yml]({{ site.baseurl }}/images/100Alexnet/image5.png)    
 
-模型在末尾两层 fully-connected layer 加入dropout防止过拟合，参数设置0.5，训练时只保留50%的神经元，测试时不加入dropout，为了使分布与训练时一致，输出需要乘以0.5。  
+模型在fully-connected layer 加入dropout防止过拟合，参数设置0.5，训练时只保留50%的神经元，测试时不加入dropout，为了使分布与训练时一致，输出需要乘以0.5。  
 
 At test time, we use all the neurons but multiply their outputs by 0.5, which is a reasonable approximation to taking the geometric mean of the predictive distributions produced by the exponentially-many dropout networks.  
 
