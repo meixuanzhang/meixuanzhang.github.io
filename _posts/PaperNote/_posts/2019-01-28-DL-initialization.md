@@ -97,7 +97,7 @@ Var[z^i] = Var[z_{k}^i]=Var[\sum_{j=1}^{n_{i-1}}z_{j}^{i-1}W_{j,k}^{i-1}]\\
 $$ 
 
 $$
-Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s^d}]\prod_{i'=i+1}^{d}n_{1'+1}Var[W^{i'}]
+Var[\frac{\partial Cost}{\partial s^i}]=Var[\frac{\partial Cost}{\partial s^d}]\prod_{i'=i+1}^{d}n_{i'+1}Var[W^{i'}]
 $$
 
 $$

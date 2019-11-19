@@ -53,6 +53,10 @@ $$
 \end{array} \right.
 $$
 
+
+An advantage to ReLU other than avoiding vanishing gradients problem(梯度消失) is that it has much lower run time. max(0,a) runs much faster than any sigmoid function (logistic function for example = 1/(1+e^(-a)) which uses an exponent which is computational slow when done often).
+
+
 ## Leaky ReLU  & PReLU(Parametric ReLU)
 
 
