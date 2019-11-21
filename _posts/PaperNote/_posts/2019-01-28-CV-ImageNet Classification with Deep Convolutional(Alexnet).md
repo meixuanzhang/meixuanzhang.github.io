@@ -18,7 +18,7 @@ categories: 深度学习
 
 $$a_{x,y}^i$$表示经kernel i 卷积后产生的feature map 位置为x,y对应的元素，局部标准化即，N个kernel会产生N个feature map,对在第i个feature map位置为($$x,y$$)元素标准化，选取同位置前后其他feature map元素进行标准化。
 
-$$b_{x,y}^i=a_{x,y}^i / (k+\alpha\sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)}}(a_{x,y}^j)^2)^{\beta}$$
+$$b_{x,y}^i=a_{x,y}^i / (k+\alpha \sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)}(a_{x,y}^j)^2)^{\beta}$$
 
 式子中$$k,\eta,\alpha,\beta$$为超参数，论文中设置为$$k=2,\eta=5,\alpha=10^{-4},\beta=0.75$$,这里$$\eta$$越大local(局部)选取越大。  
 
