@@ -11,7 +11,7 @@ categories: 深度学习
 
 模型由卷积层,Local Response Normalization,max pooling,全连接层(fully-connected layer),dropout组成,鉴于当时计算能力，模型在channel维度上分割成两部分，使用两个GPU进行计算  
 
-模型输入图片尺寸应为227*227  
+模型输入图片尺寸应为227 × 227  
 
 
 # Local Response Normalization  
