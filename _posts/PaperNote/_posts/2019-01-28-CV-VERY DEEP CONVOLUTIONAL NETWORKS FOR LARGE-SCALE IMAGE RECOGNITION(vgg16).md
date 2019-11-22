@@ -15,7 +15,7 @@ categories: 深度学习
 
 cov3-64表示使用3*3的卷积核，卷积核个数为64  
 
-对于卷积核选择，连续两层3*3卷积核(stride=1)，感受野面积等于一层5*5的卷积核感受野面积，三层3*3卷积核感受野面积等于一层7*7的卷积核感受野面积，获得同样感受野情况下，使用小的卷积参数比大的卷积核少：  
+对于卷积核选择，连续两层3*3卷积核(stride=1)，感受野面积等于一层5 × 5的卷积核感受野面积，三层3 × 3卷积核感受野面积等于一层7*7的卷积核感受野面积，获得同样感受野情况下，使用小的卷积参数比大的卷积核少：  
 
 1 layer of 11×11 filter, 参数 11×11=121   
 5 layer of 3×3 filter, 参数 3×3×5=45   
@@ -35,14 +35,14 @@ cov3-64表示使用3*3的卷积核，卷积核个数为64
 
 # Multi-Scale Training  
 
-论文模型的输入图像尺寸为224*224，对于尺寸为224*224原始图像可以直接进入模型，对于尺寸大于224*224$$()$$的原始图像则进行裁剪(crop)，使其尺寸为224*224，裁剪后图像可能包含目标或目标的一部分。  
+论文模型的输入图像尺寸为224 × 224，对于尺寸为224 × 224原始图像可以直接进入模型，对于尺寸大于224 × 224$$()$$的原始图像则进行裁剪(crop)，使其尺寸为224 × 224，裁剪后图像可能包含目标或目标的一部分。  
 
 对于使用哪种尺寸原始图像，文中提出两个方法： 
 
-1、single-scale training：使用固定尺寸的原始图像裁剪获得224*224尺寸图像，通过不同裁剪(crop)作为抽样(note that image content within the sampled crops can still represent multiscale image statistics).文中使用了两种固定尺寸的图像,首先使用S=256图像训练,然后使用S=384图像加速训练(以S=256训练好参数作为S=384初始参数)，同时使用的learning rate调整为$$10^{-3}$$
+1、single-scale training：使用固定尺寸的原始图像裁剪获得224 × 224尺寸图像，通过不同裁剪(crop)作为抽样(note that image content within the sampled crops can still represent multiscale image statistics).文中使用了两种固定尺寸的图像,首先使用S=256图像训练,然后使用S=384图像加速训练(以S=256训练好参数作为S=384初始参数)，同时使用的learning rate调整为$$10^{-3}$$
 
 
-2、multi-scale training：使用多种尺寸的原始图像裁剪获得224*224尺寸图像，原始图像尺寸范围为[256,512]。这种训练方式考虑了图像中目标具有不同尺寸的情况
+2、multi-scale training：使用多种尺寸的原始图像裁剪获得224 × 224尺寸图像，原始图像尺寸范围为[256,512]。这种训练方式考虑了图像中目标具有不同尺寸的情况
 
 ![_config.yml]({{ site.baseurl }}/images/101vgg16/image7.png)  
 
@@ -66,9 +66,9 @@ cov3-64表示使用3*3的卷积核，卷积核个数为64
 方法1: multi-crop，即对图像进行多样本的随机裁剪，然后通过网络预测每一个crop的结果，最终对所有结果平均
 方法2: dense， 将原图直接送到网络进行预测，将最后面全连接层改为卷积层，这样最后会得出一个预测的score map，再对结果求平均
 
-两种评估方法不需要更改模型结构，multi-crop测试时通过裁剪输入图片为224*224，最后一个maxpool输出是7*7*512，接第一个FC，参数个数是7*7*512*4096,输出4096，dense将原图直接送到网络，同时将原来FC改为卷积，卷积核是7*7*512,卷积核的个数是4096，结构其实是不变的，后面FC改卷积同理，但densely最后输出的是score map。  
+两种评估方法不需要更改模型结构，multi-crop测试时通过裁剪输入图片为224 × 224，最后一个maxpool输出是7 × 7 × 512，接第一个FC，参数个数是7 × 7 × 512 × 4096,输出4096，dense将原图直接送到网络，同时将原来FC改为卷积，卷积核是7*7*512,卷积核的个数是4096，结构其实是不变的，后面FC改卷积同理，但densely最后输出的是score map。  
 
-假如采用dense，将256*256图像输入网络，最后一个maxpool输出是8*8*512，经历三层卷积输出是2*2*1000。  
+假如采用dense，将256 × 256图像输入网络，最后一个maxpool输出是8 × 8 × 512，经历三层卷积输出是2 × 2 × 1000。  
 
 Multi-crop evaluation works slightly better than dense evaluation, but the methods are somewhat complementary as averaging scores from both did better than each of them individually. The authors hypothesize that this is probably because of the different boundary conditions: when applying a ConvNet to a crop, the convolved feature maps are padded with zeros, while in the case of dense evaluation the padding for the same crop naturally comes from the neighbouring parts of an image (due to both the convolutions and spatial pooling), which substantially increases the overall network receptive field, so more context is captured.
 
