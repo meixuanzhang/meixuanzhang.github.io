@@ -72,6 +72,6 @@ We used an equal learning rate for all layers, which we adjusted manually throug
 ![_config.yml]({{ site.baseurl }}/images/100Alexnet/image2.png)  
 
 
-参考： 
+
 
 

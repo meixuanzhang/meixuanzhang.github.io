@@ -11,9 +11,9 @@ categories: 深度学习
 
 ![_config.yml]({{ site.baseurl }}/images/101vgg16/image1.png)     
 
-![_config.yml]({{ site.baseurl }}/images/101vgg16/image10.png)    
+   ![_config.yml]({{ site.baseurl }}/images/101vgg16/image10.png)    
 
-cov3-64表示使用3*3的卷积核，卷积核个数为64  
+cov3-64表示使用3 × 3的卷积核，卷积核个数为64  
 
 对于卷积核选择，连续两层3 × 3卷积核(stride=1)，感受野面积等于一层5 × 5的卷积核感受野面积，三层3 × 3卷积核感受野面积等于一层7*7的卷积核感受野面积，获得同样感受野情况下，使用小的卷积参数比大的卷积核少：  
 
