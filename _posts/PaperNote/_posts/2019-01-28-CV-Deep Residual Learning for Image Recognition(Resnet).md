@@ -30,7 +30,7 @@ building block通过式子表示为：
 
 $$y=F(x,\{W_{i}\})+ x$$ 
 
-假如building block 为两层则，$$F=W_{2}\sigma(W_{1}x)$$, $$\sigma$$激活函数ReLU，这种shortcut connections既不增加参数也不增加计算复杂度，但要求$$F(x)$$输出与$$x$$维度一致，假如不一致可以通过$$W_{s}$$对x进行映射即：  
+假如building block 为两层则，$$F=W_{2}\sigma(W_{1}x)$$, $$\sigma$$激活函数ReLU，这种shortcut connections称为Identity shortcut既不增加参数也不增加计算复杂度，但要求$$F(x)$$输出与$$x$$维度一致，假如不一致可以通过$$W_{s}$$对x进行映射,这种shortcut connections称为Projection Shortcuts 即：  
 
 $$y=F(x,\{W_{i}\})+ W_{s}x$$ 
 
@@ -56,7 +56,19 @@ $$y=F(x,\{W_{i}\})+ W_{s}x$$
 
 使用0.0001的权重衰减(L2正则化)  
 
-在测试中，为了进行比较研究，采用Alexnet方法裁剪5个224 × 224的图像块(四个角上的图像块和中心的图像块)和它们的水平翻转(因此总共10个图像块)进行预测。为了得到最好的结果，采用vgg中fully convolutional以及Multi-Scale Testing方法平均多个尺寸下分数 (images are resized such that the shorter side is in {224,256,384,480,640})
+在测试中，为了进行比较研究，采用Alexnet方法裁剪5个224 × 224的图像块(四个角上的图像块和中心的图像块)和它们的水平翻转(因此总共10个图像块)进行预测。为了得到最好的结果，采用vgg中fully convolutional以及Multi-Scale Testing方法平均多个尺寸下分数 (images are resized such that the shorter side is in {224,256,384,480,640})   
+
+**处理模型shortcuts** 有三种方式：   
+
+(A) zero-padding shortcuts are used for increasing dimensions, and all shortcuts are parameter-free;对输入和输出维度不一致的shortcut，采用补零使输入和输出维度一致，一致则不需要改变。       
+
+(B) projection shortcuts are used for increasing dimensions, and other shortcuts are identity;对输入和输出维度不一致的shortcut，采用映射使输入和输出维度一致，一致则不需要改变。  
+
+(C) all shortcuts are projections.对所有的shortcut都进行映射.   
+
+对比三种处理方式效果：  
+
+![_config.yml]({{ site.baseurl }}/images/102Resnet/image6.png)   
 
 # Experiments  
 
@@ -65,7 +77,9 @@ $$y=F(x,\{W_{i}\})+ W_{s}x$$
 ![_config.yml]({{ site.baseurl }}/images/102Resnet/image5.png)  
 
 
-# Deeper Bottleneck Architectures
+# Deeper Bottleneck Architectures  
+
+考虑到训练时间，文中将building block 修改为了bottleneck，结构如图中右边所示，通过1 x 1减少chanel维度，又通过1 x 1 恢复chanel维度，这个结构参数少于左边结构
 
 ![_config.yml]({{ site.baseurl }}/images/102Resnet/image6.png)   
 
