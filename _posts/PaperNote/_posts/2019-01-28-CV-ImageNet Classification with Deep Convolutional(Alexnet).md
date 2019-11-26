@@ -72,6 +72,11 @@ We used an equal learning rate for all layers, which we adjusted manually throug
 ![_config.yml]({{ site.baseurl }}/images/100Alexnet/image2.png)  
 
 
+# Data Process  
+
+substract the mean activity over the training set from each pixel 
+
+
 
 
 
