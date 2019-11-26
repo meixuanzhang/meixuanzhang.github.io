@@ -58,7 +58,7 @@ $$y=F(x,\{W_{i}\})+ W_{s}x$$
 
 在测试中，为了进行比较研究，采用Alexnet方法裁剪5个224 × 224的图像块(四个角上的图像块和中心的图像块)和它们的水平翻转(因此总共10个图像块)进行预测。为了得到最好的结果，采用vgg中fully convolutional以及Multi-Scale Testing方法平均多个尺寸下分数 (images are resized such that the shorter side is in {224,256,384,480,640})   
 
-**处理模型shortcuts** 有三种方式：   
+**处理模型shortcuts三种方式**：   
 
 (A) zero-padding shortcuts are used for increasing dimensions, and all shortcuts are parameter-free;对输入和输出维度不一致的shortcut，采用补零使输入和输出维度一致，一致则不需要改变。       
 
@@ -66,9 +66,9 @@ $$y=F(x,\{W_{i}\})+ W_{s}x$$
 
 (C) all shortcuts are projections.对所有的shortcut都进行映射.   
 
-对比三种处理方式效果：  
+对比三种处理方式效果对比：  
 
-![_config.yml]({{ site.baseurl }}/images/102Resnet/image6.png)   
+![_config.yml]({{ site.baseurl }}/images/102Resnet/image7.png)   
 
 # Experiments  
 
@@ -79,7 +79,9 @@ $$y=F(x,\{W_{i}\})+ W_{s}x$$
 
 # Deeper Bottleneck Architectures  
 
-考虑到训练时间，文中将building block 修改为了bottleneck，结构如图中右边所示，通过1 x 1减少chanel维度，又通过1 x 1 恢复chanel维度，这个结构参数少于左边结构
+考虑到训练时间，文中将building block 修改为了bottleneck，结构如图中右边所示，通过1 x 1减少chanel维度，又通过1 x 1 恢复chanel维度。较深的non-bottleneck ResNets也可以从增加的深度获得同样精度,但计算不如bottleneck  ResNets经济，所以bottleneck设计的使用主要是出于实践考虑。    
+
+parameter-free(不增加参数) identity shortcuts 对于bottleneck结构非常重要，如果使用projection 取代identity shortcut，时间复杂度和模型尺寸将增加了一倍，当输入和输出两个高维度连接时，因此对于bottleneck，使用identity shortcuts模型更高效。      
 
 ![_config.yml]({{ site.baseurl }}/images/102Resnet/image6.png)   
 
