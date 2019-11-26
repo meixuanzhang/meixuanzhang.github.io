@@ -81,7 +81,7 @@ $$y=F(x,\{W_{i}\})+ W_{s}x$$
 
 考虑到训练时间，文中将building block 修改为了bottleneck，结构如图中右边所示，通过1 x 1减少chanel维度，又通过1 x 1 恢复chanel维度。较深的non-bottleneck ResNets也可以从增加的深度获得同样精度,但计算不如bottleneck  ResNets经济，所以bottleneck设计的使用主要是出于实践考虑。    
 
-parameter-free(不增加参数) identity shortcuts 对于bottleneck结构非常重要，如果使用projection 取代identity shortcut，时间复杂度和模型尺寸将增加了一倍，当输入和输出两个高维度连接时，因此对于bottleneck，使用identity shortcuts模型更高效。      
+parameter-free(不增加参数) identity shortcuts 对于bottleneck结构非常重要，如果使用projection 取代identity shortcut，当输入和输出两个高维度连接时，时间复杂度和模型尺寸将增加了一倍，因此对于bottleneck，使用identity shortcuts模型更高效。      
 
 ![_config.yml]({{ site.baseurl }}/images/102Resnet/image6.png)   
 
