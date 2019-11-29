@@ -61,21 +61,39 @@ Arora等人提出了一个层次结构，先分析前一层神经元输出的相
 
 下图图a“Inception模块”的一个大问题是随着堆叠channel维度不断增加，即使适量的5×5卷积也可能是非常昂贵的。池化单元添加，这个问题甚至会变得更明显：因为pooling输出的数量等于前一阶段滤波器的数量(所有尺度卷积核数)。池化层输出和卷积层输出的合并会导致这一阶段到下一阶段输出数量不可避免的增加。虽然这种架构可能会覆盖最优稀疏结构，但它会非常低效，导致在几个阶段内计算量爆炸。   
 
-这导致了Inception架构的第二个想法：使用1×1卷积实现计算降维    
-
 ![_config.yml]({{ site.baseurl }}/images/103GoogleNet/image1.png)   
 
+这导致了Inception架构的第二个想法,如上图图b：使用1x1卷积进行降维，减少了需要训练的参数个数，降低了计算复杂度。    
+
+举例：  
+
+Without the Use of 1×1 Convolution:    
+
+![_config.yml]({{ site.baseurl }}/images/103GoogleNet/image7.png)     
+
+Number of operations = (14×14×48)×(5×5×480) = 112.9M
+
+With the Use of 1×1 Convolution:   
+
+![_config.yml]({{ site.baseurl }}/images/103GoogleNet/image8.png)     
+
+Number of operations for 1×1 = (14×14×16)×(1×1×480) = 1.5M  
+Number of operations for 5×5 = (14×14×48)×(5×5×16) = 3.8M  
+Total number of operations = 1.5M + 3.8M = 5.3M   
 
 
+# Overall Architecture  
 
 
+通常，Inception网络是一个由上述类型的模块互相堆叠组成的网络，偶尔会有步长为2的最大池化层将网络分辨率减半。出于技术原因（训练过程中内存效率），只在更高层开始使用Inception模块而在更低层仍保持传统的卷积形式似乎是有益的。这不是绝对必要的，只是反映了目前实现模型中一些基础结构效率低下。
 
+给定深度相对较大的网络，有效传播梯度反向通过所有层的能力是一个问题。在这个任务上，更浅网络的强大性能表明网络中部层产生的特征应该是非常有识别力的。通过将辅助分类器添加到这些中间层，可以期望较低阶段分类器的判别力。这被认为是在提供正则化的同时克服梯度消失问题。这些分类器采用较小卷积网络的形式，放置在Inception (4a)和Inception (4b)模块的输出之上。在训练期间，它们的损失以折扣权重（辅助分类器损失的权重是0.3）加到网络的整个损失上。在推断时，这些辅助网络被丢弃。后面的控制实验表明辅助网络的影响相对较小（约0.5），只需要其中一个就能取得同样的效果。
 
-Inception Module
-The 1×1 Convolution
+![_config.yml]({{ site.baseurl }}/images/103GoogleNet/image9.png)    
 
-Global Average Pooling
+![_config.yml]({{ site.baseurl }}/images/103GoogleNet/image2.png)    
 
+在测试中，使用比Krizhevsky等人更积极的裁剪方法：将图像调整为四个尺度，分别为256，288，320和352，取这些调整后的图像的左，中，右方块（在肖像图片中，采用顶部，中心和底部方块）。对于每个方块，将采用4个角及中心224×224裁剪图像，方块调整尺寸为224×224的图像，这些图像镜像版本。那每张图像会得到4×3×6×2 = 144的张图像。在实际应用中，这种积极裁剪可能是不必要的，因为存在合理数量的裁剪图像后，更多裁剪图像的好处会变得很微小。    
 
 参考：
 
