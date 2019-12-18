@@ -82,6 +82,8 @@ N表示文本的单词数，V则是表示文本单词集合数(单词不重复�
 
 ## Tokenization: language issues   
 
+中文词之间是没有间隔的   
+
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image9.png)  
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image10.png)  
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image11.png)   
@@ -121,7 +123,7 @@ N表示文本的单词数，V则是表示文本单词集合数(单词不重复�
 
 ----------------------------------------------------------------------------------------------------------------
 
-# Defining Minimum Edit Distance  
+# 2.1 Defining Minimum Edit Distance  
 
 ## 如何评价两个字符串(strings)相似？  
 
@@ -157,7 +159,7 @@ N表示文本的单词数，V则是表示文本单词集合数(单词不重复�
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image25.png) 
 
-# Computing Mininun Edit Distance   
+# 2.2 Computing Mininun Edit Distance   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image26.png) 
 
@@ -189,19 +191,47 @@ Y轴"#I"变换为X轴"#E",有三条路径,即图中三个绿色圈：
 
 8就是将"INTENTION"变换为X轴"EXECUTION"所需最小操作数
 
-## Backtrace for Computiing Alignments计算路线  
+# 2.3 Backtrace for Computiing Alignments计算路线  
 
-通过Backtrace确定变换过程，从最右边顶点格子往前选择小于等于其的格子，最终路径有可能不止一条，黄色路径操作也是8
+通过Backtrace确定变换过程，从最右边顶点格子往前选择小于等于其的格子，最终路径有可能不止一条，图中黄色路径操作也是8，如何根据路径转换如图：  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image30.png)  
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image31.png)   
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image31.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image32.png)   
 
 ## Performance  
 
 Time: O(nm) 计算表格   
 Space: O(nm) 存储表格   
-Backtrace： O(n+m) 
+Backtrace： O(n+m)   
+
+# 2.4 Weighted Minimum Edit Distance  
+
+为什么需要添加权重？ 
+
+拼写纠正(spell correction) 中一些字母输入错误可能性高于其他字母  
+生物学中某些类型发生删除和插入的可能性高于其他类型  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image33.png)  
+
+# 2.5  Minimum Edit Distance in Computation Biology  
+
+## 为什么需要序列对比(sequence alignment)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image34.png)  
+
+## NLP和Biology在alignment方面差异 
+
+NLP使用distance描述 Edit Distance，希望减少distance和weights  
+Biology使用similarity描述 Edit Distance，希望增大similarity和scores  
+
+## 算法  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image35.png) 
+
+d表示插入操作成本(negative)，s是替换操作价值(positive)
 
 
 
