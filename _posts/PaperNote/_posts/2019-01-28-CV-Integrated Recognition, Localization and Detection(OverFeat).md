@@ -41,11 +41,11 @@ alexnet模型输入是单一尺寸的图像，为提高robustness,论文同一�
 
 论文中使用的模型，每个输出对应的是图像中6 x 6 尺寸的感受野(receptive field)，窗口可能存在对齐的问题，即窗口只包含了目标的一部分，为此采用以下方法(类似裁剪图像不同部分)获得候选区：  
 
-图中展示了模型第五层pooling前feature map 某个维度大小为20，3 x 3 pooling在这个维度上采用3个不同的位置作为起始，相当于裁掉了图像的一部分，进行pooling计算,如果在另一个维度上也是如此，那每一层feature map经过pooling后会有3 x 3 层feature map
+图中展示了模型第五层pooling前feature map 某个维度(长)大小为20，3 x 3 pooling在这个维度上采用3个不同的位置作为起始，相当于裁掉了图像的一部分，进行pooling计算,如果在另一个维度(宽)上也是如此，那每一层feature map经过pooling后会有3 x 3 层feature map
 
 ![_config.yml]({{ site.baseurl }}/images/110Overfeat/image4.png)    
 
-同一尺寸的图像，为了不同起始位置pooling，最后输出维度一致，对图像尺寸是有要求的。模型使用了下列的图像尺寸：  
+同一尺寸的图像，为了不同起始位置pooling，最后输出空间维度一致，对图像尺寸是有要求的。模型使用了下列的图像尺寸：  
 
 ![_config.yml]({{ site.baseurl }}/images/110Overfeat/image5.png)   
 
@@ -72,7 +72,7 @@ conv + max 表示使用了卷积和max pooling ,具体参数写在表格中， f
 
 ![_config.yml]({{ site.baseurl }}/images/110Overfeat/image6.png)   
 
-由于论文和不同起始的pooling会有多个输出，所以会有多个box。预测时需要处理重叠的box。
+由于有多个输出，所以会有多个box。预测时需要处理重叠的box。
 
 ![_config.yml]({{ site.baseurl }}/images/110Overfeat/image9.png)  
 
