@@ -78,3 +78,68 @@ Type 重复words算一个，如句子中"the"
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image8.png)   
 
 N表示文本的单词数，V则是表示文本单词集合数(单词不重复计算) 
+
+
+## Tokenization: language issues   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image9.png)  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image10.png)  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image11.png)   
+
+# Word Normalization and Stemming  
+
+根据不同需求对文本进行预处理  
+
+## Normalization   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image12.png)   
+
+## Case Folding(大小写转换)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image13.png)   
+
+## Lemmatization(词形还原)  
+
+找出词的原型 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image14.png)   
+
+## Morphology(词态学)
+
+研究各种语句的变化规律，各种词型（例如：动词，名词等）和语干的规则变化与不规则变化,(如名词复数，动词过去式变化)   
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image15.png)  
+
+## Stemming(词干)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image16.png)  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image17.png)  
+
+土耳其一个单词有很多的词干  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image18.png)  
+
+
+----------------------------------------------------------------------------------------------------------------
+
+# Defining Minimum Edit Distance  
+
+## 如何评价两个字符串(strings)相似？  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image19.png)  
+
+两个字符串相似评价对机器翻译,信息提取,语言识别等非常有用  
+
+## Edit Distance  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image20.png)  
+
+将一个单词转换成另一个单词所需的操作数(insertion 插入，deletion 删除，substitution替换)
+
+## Mininun Edit Distance  
+
+
+将I删除，N替换成E，T替换成X，插入C，N替换成U
+
+
+
+
