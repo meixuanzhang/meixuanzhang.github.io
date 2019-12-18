@@ -69,7 +69,12 @@ $$\bullet$$ NL任务中需要对文本进行标准化：
 "main-mainly"是片段(fragments) 
 "uh"表示停顿，需要计算 
  
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image6.png)  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image7.png)  
  
-将"San Francisco"作为一个words，则句子有14个words，将"San Francisco"作为两个个words，则句子有15个words，
- 
+将"San Francisco"作为一个words，则句子有14个words，将"San Francisco"作为两个个words，则句子有15个words.   
+Type 重复words算一个，如句子中"the"  
+
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image8.png)   
+
+N表示文本的单词数，V则是表示文本单词集合数(单词不重复计算) 
