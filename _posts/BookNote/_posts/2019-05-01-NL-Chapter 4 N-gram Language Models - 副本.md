@@ -173,17 +173,35 @@ Y轴表示待变换的单词，X轴表示目标单词
 
 如何计算剩下空格举例：  
 
-Y轴"#"变换为X轴"#",没有操作填0  
+Y轴"#"变换为X轴"#",相等没有操作填0  
 
-Y轴"#I"变换为X轴"#E",首先经过前个步骤已将Y轴"#"变换为X轴"#"(操作0),只需"I"变换为"E",需要替换(操作2)，整个变换操作为2  
+Y轴"#I"变换为X轴"#E",有三条路径,即图中三个绿色圈：
 
-Y轴"#I"变换为X轴"#EX",首先经过前面步骤已将Y轴"#I"变换为X轴"#E"(操作2),只需插入"X"(操作1),整个变换操作为3  
+上方路径：前面路径Y轴"#"等于X轴"#"(操作0),将"I"删除(操作1)，则此时Y轴"#I"变换成"#"，后面路径**插入**为"E"(操作1)，整个变换操作为2，即红色格子数=前方格子里数字+1   
+中间路径：前面路径Y轴"#"等于X轴"#"(操作0),则此时Y轴"#"变换成"#"，后面路径将"I" **替换** 为"E"(操作2)，整个变换操作为2 ，即红色格子数=对角格子里数字+2
+下方路径：前面路径Y轴"#"等于X轴"#"(操作0),插入"E"(操作1)，则此时Y轴"#"变换成"#E"，后面路径将"I" **删除**(操作1)，整个变换操作为2 ， 即红色格子数=下方格子里数字+1
+
+取最小值填入表中,每个空格都会有三条路径对应三个操作，但是值不一定相等  
 
 最后绘制出整张图：  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image29.png)  
 
 8就是将"INTENTION"变换为X轴"EXECUTION"所需最小操作数
+
+## Backtrace for Computiing Alignments计算路线  
+
+通过Backtrace确定变换过程，从最右边顶点格子往前选择小于等于其的格子，最终路径有可能不止一条，黄色路径操作也是8
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image30.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image31.png)   
+
+## Performance  
+
+Time: O(nm) 计算表格   
+Space: O(nm) 存储表格   
+Backtrace： O(n+m) 
 
 
 
