@@ -137,9 +137,53 @@ N表示文本的单词数，V则是表示文本单词集合数(单词不重复�
 
 ## Mininun Edit Distance  
 
+为了对齐插入了星号
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image21.png)  
 
 将I删除，N替换成E，T替换成X，插入C，N替换成U
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image22.png)  
+
+## Other uses of Edit Distance in NLP  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image23.png)  
+
+## 计算 Mininun Edit Distance  过程  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image24.png)  
+
+## 数学符号表示Min Edit Distance   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image25.png) 
+
+# Computing Mininun Edit Distance   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image26.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image27.png) 
+
+三条计算公式对应删除，插入，替换
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image28.png)  
+
+Y轴表示待变换的单词，X轴表示目标单词   
+
+图中"#"号表示位置0，根据算法初始化表格$$D(i,0)=i,D(0,j)=j$$，即表格两个轴填写的(1-9)   
+
+如何计算剩下空格举例：  
+
+Y轴"#"变换为X轴"#",没有操作填0  
+
+Y轴"#I"变换为X轴"#E",首先经过前个步骤已将Y轴"#"变换为X轴"#"(操作0),只需"I"变换为"E",需要替换(操作2)，整个变换操作为2  
+
+Y轴"#I"变换为X轴"#EX",首先经过前面步骤已将Y轴"#I"变换为X轴"#E"(操作2),只需插入"X"(操作1),整个变换操作为3  
+
+最后绘制出整张图：  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image29.png)  
+
+8就是将"INTENTION"变换为X轴"EXECUTION"所需最小操作数
 
 
 
