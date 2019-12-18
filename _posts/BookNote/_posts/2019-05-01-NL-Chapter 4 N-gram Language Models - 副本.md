@@ -13,6 +13,7 @@ woodchuck、woodchucks、Woodchuck、Woodchucks
 
 + Disjunctions(分离)
 
+
 $$\bullet$$ 下列括号表示匹配，括号内字母或数字表示可以选择的匹配范围      
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image1.png)  
@@ -51,26 +52,24 @@ $$.$$符号是有歧义的：它可以是句子的结束，可以是数字小数
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image5.png) 
 
 
-
-
 # Word Tokenization  
 
 + Text Normalization   
 
- $$\bullet$$ NL任务中需要对文本进行标准化：  
- 1、在运行文本中segmenting(分割）/tokenizing(标记)words 
- 2、标准化 words的格式
- 3、在运行文本中分割句子   
+
+$$\bullet$$ NL任务中需要对文本进行标准化：  
+1、在运行文本中segmenting(分割）/tokenizing(标记)words 
+2、标准化 words的格式
+3、在运行文本中分割句子   
  
- + 下列句子有多少words?   
++ 下列句子有多少words?   
  
- ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image6.png)  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image6.png)  
  
- "main-mainly"是片段(fragments) 
- "uh"表示停顿，需要计算 
+"main-mainly"是片段(fragments) 
+"uh"表示停顿，需要计算 
  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image6.png)  
  
- 
- word type:an element of the vocabulary  
- word token: an instance of that type in running text
+将"San Francisco"作为一个words，则句子有14个words，将"San Francisco"作为两个个words，则句子有15个words，
  
