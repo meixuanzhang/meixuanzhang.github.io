@@ -30,7 +30,7 @@ categories: From Languages to Information
 ## Markov Assumption 
 
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image50png)   
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image50.png)   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image51.png)   
 
