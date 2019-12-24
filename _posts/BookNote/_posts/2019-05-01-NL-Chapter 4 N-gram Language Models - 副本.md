@@ -180,7 +180,7 @@ Y轴"#"变换为X轴"#",相等没有操作填0
 Y轴"#I"变换为X轴"#E",有三条路径,即图中三个绿色圈：
 
 上方路径：前面路径Y轴"#"等于X轴"#"(操作0),将"I"删除(操作1)，则此时Y轴"#I"变换成"#"，后面路径**插入**为"E"(操作1)，整个变换操作为2，即红色格子数=前方格子里数字+1   
-中间路径：前面路径Y轴"#"等于X轴"#"(操作0),则此时Y轴"#"变换成"#"，后面路径将"I" **替换** 为"E"(操作2)，整个变换操作为2 ，即红色格子数=对角格子里数字+2
+中间路径：前面路径Y轴"#"等于X轴"#"(操作0),则此时Y轴"#"变换成"#"，后面路径将"I" **替换** 为"E"(操作2)，整个变换操作为2 ，即红色格子数=对角格子里数字+2   
 下方路径：前面路径Y轴"#"等于X轴"#"(操作0),插入"E"(操作1)，则此时Y轴"#"变换成"#E"，后面路径将"I" **删除**(操作1)，整个变换操作为2 ， 即红色格子数=下方格子里数字+1
 
 取最小值填入表中,每个空格都会有三条路径对应三个操作，但是值不一定相等  
@@ -218,9 +218,20 @@ Backtrace： O(n+m)
 
 # 2.5  Minimum Edit Distance in Computation Biology  
 
-## 为什么需要序列对比(sequence alignment)   
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image37.png)  
+
+序列比对是一种排列DNA，RNA或蛋白质序列以识别可能是序列之间功能，结构或进化关系的结果的相似区域的方法。
+
+## 为什么需要序列比对(sequence alignment)   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image34.png)  
+
+其可以找到区域在基因组位置？  
+其可以发现基因的功能  
+其可能会通过比较不同的物种来寻找进化的事物。   
+这对于组装DNA测序片段也很重要，通过序列比对我们将尝试组装碎片，我们想寻找重叠的碎片。我们将讨论重叠的部分并找到它们之间的一些匹配；找到这两个部分匹配。   
+通过比较个体(个体序列比对)并寻找突变，找到有相似和不同的地方
+
 
 ## NLP和Biology在alignment方面差异 
 
@@ -231,7 +242,28 @@ Biology使用similarity描述 Edit Distance，希望增大similarity和scores
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image35.png) 
 
-d表示插入操作成本(negative)，s是替换操作价值(positive)
+d表示插入/删除操作成本(negative)，s是匹配的价值(positive)  
 
+## 算法变种  
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image38.png)  
 
+匹配只惩罚重叠部分，不重叠部分不惩罚，所以下图初始化时删除惩罚是0,可以从任何点开始匹配
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image39.png) 
+
+局部匹配问题：
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image40.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image41.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image42.png)  
+
+X匹配Y:  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image43.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image44.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image45.png) 
