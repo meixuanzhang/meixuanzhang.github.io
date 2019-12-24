@@ -46,9 +46,11 @@ Notation:
 
 $$x \in R^n$$:序列输入   
 $$f:\{0,..,k-1\}\to R:$$卷积的filter  
-$$d:$$dilation factor   
+$$d:$$dilation factor，filter中两个元素间间隔，取2时间隔为1
 $$k:$$filter size  
-$$s-d \cdot i:$$解释了过去的方向
+$$s-d \cdot i:$$输入位置
+
+某层s位置输出： 
 
 $$F(s)=(x*_{d}f)(s)=\sum_{i=0}^{k-1}f(i)\cdot x_{s-d \cdot i}$$  
 

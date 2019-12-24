@@ -134,9 +134,7 @@ MADE相比起RNN autoregressive和Bayes autoregressive训练时可以进行平�
 
 ![_config.yml]({{ site.baseurl }}/images/30Deep Unsupervised Learning/image22.png)    
 
-7、
-
-valid autoregressive ordering
+7、valid autoregressive ordering
 
 
 可以处理长度可变的情况
