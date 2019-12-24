@@ -50,7 +50,7 @@ $$d:$$dilation factor
 $$k:$$filter size  
 $$s-d \cdot i:$$解释了过去的方向
 
-$$F(s)=(x*_{d}f)(s)=\sum_{i=0}^{k-1}x_{s-d \cdot i}$$  
+$$F(s)=(x*_{d}f)(s)=\sum_{i=0}^{k-1}f(i)\cdot x_{s-d \cdot i}$$  
 
 使用较大的dilation可以使输出表示更宽范围的输入，从而有效的扩展ConvNet的感受野。选择更大的filter以及增加dilation factor 可以增大感受野，每一层在前一层有效历史是(k-1)d
 

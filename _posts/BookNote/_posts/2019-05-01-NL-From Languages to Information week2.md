@@ -1,60 +1,85 @@
 ---
 layout: post
-title: week 1 
+title: week 2 Language Modeling and Spelling Correction
 date:   2019-05-01
 categories: From Languages to Information
 ---  
 
-# Regular expressions(正则化)
+# 3.1 Introduction to N grams  
 
-$$\bullet$$ 如何对下面单词进行查找? 
+## Probabilistic Language Models  
 
-woodchuck、woodchucks、Woodchuck、Woodchucks  
+计算句子的概率，对于多个句子，机器翻译选择概率更大句子作为翻译结果，拼写更正时选择更正后句子概率更大的更正方式，语音识别时选择概率更大句子作为识别句子
 
-## Disjunctions(分离)
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image46.png)  
 
+计算句子概率或条件概率称为 language model 也可以称为 the grammar
 
-$$\bullet$$ 下列括号表示匹配，括号内字母或数字表示可以选择的匹配范围      
+## Compute the probability of a sentence by  Chain Rule 
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image1.png)  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image47.png)  
 
-$$\bullet$$ 下列是匹配范围另一种表示  
-
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image2.png) 
-
-## Negation in Disjunctions  
-
-$$\bullet$$ 下列表示匹配的否定，使用$$^$$符号  
-
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image3.png) 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image48.png)   
 
 
-$$\bullet$$ Errors 
+##  无法通过频数计算句子概率，句子组成形式过多  
 
-正则化两类错误：False positives: 匹配了不想匹配的，False negative： 没有匹配到想匹配的
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image49.png)   
 
-通过以下两个方面减少错误率：  
-
-提升accracy和precision(减少False positives)   
-提升coverage和recall(减少False negative)    
+ 
+## Markov Assumption 
 
 
-# Sentence Segmentation  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image50png)   
 
-$$"!,?"$$符号相对来说没有什么歧义
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image51.png)   
 
-$$"."$$符号是有歧义的：它可以是句子的结束，可以是数字小数点如4.5 
+**Unigram model**  
 
-需要建立模型(hand-writter rules,regular expressions,or machine-learning)进行区分如：  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image52.png)   
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image4.png) 
+**Bigram model**
+  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image53.png)   
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image5.png) 
+**N-gram models** 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image54.png)  
+
+一般不使用N很大的models,效率低，使用2,3,4-gram models基本能解决问题
 
 
-# Word Tokenization  
+# 3.2 Estimating N gram Probability  
 
-## Text Normalization   
+## Estimating bigram probabilities  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image55.png)  
+
+Example 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image56.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image57.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image58.png)   
+
+"i"后面跟随"want" 次数为827
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image59.png)  
+
+**使用Bigram 估计句子概率**  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image60.png)   
+
+## Practical issues 实际应用问题  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image61.png)  
+
+多个小数相乘接近0，会出现下溢问题  
+
+## Evaluation and Perplexity  
+
+
 
 
 $$\bullet$$ NL任务中需要对文本进行标准化：  
