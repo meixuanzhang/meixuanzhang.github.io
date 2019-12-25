@@ -251,13 +251,80 @@ Held out set $$N_{0}$$实际为training set$$N_{1}$$,其占training set的$$(1)N
 
 则一个训练集中没有出现的word占比为$$(1)N_{1}/c$$，出现了k次的占比为$$(k+1)N_{k+1}/c$$，则训练集中出现了k次的不同的word，每个word平均出现概率为$$(k+1)N_{k+1}/c/N_{k}$$。   
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image94.png)  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image94.png)   
+
+上述方法有可能出现中间某些频次$N_{k}$$$不存在问题导致无法计算，为此提出Simple Good-Turing   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image95.png)   
 
-# 3.8 Kneser-Ney Smoothing
+# 3.8 Kneser-Ney Smoothing   
+
+在实践中通常原始的count和经过Good-Turing计算的count，它们之间的间隔$$d$$是一个固定的很小的数，如上图间隔约是0.75  
+
+## Absolute Discounting Information  
+
+使用Absolute Discounting Information 计算语言模型，式子$$d$$表示间隔
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image96.png)
+
+## Kneser-Ney Smoothing   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image97.png)
+
+上图 Shannon game 估计句子下一个单词时，往往先使用bigrams(有部分词的组合没有在训练集中出现$$P(w_{i}\mid w_{i-1})$$=0),无法计算时使用unigram代替$$P(w_{i})=P(w_{i}\mid w_{i-1})$$,这样估计不准确，如下图例子"Francisco"出现概率往往比"glasses"高，但其通常搭配"San",当前面没有"San"时，"glasses"出现概率应该更高，为此提出了$$P_{continuation}(w)$$   
+
+首先计算文本$$(w_{i-1},w_{i})$$类别组合数(有多少中组合)作为分母,其中$$w_{i}=w$$的组合的个数，即：$$\mid\{w_{i-1}:c(w_{i-1},w)\}\mid$$ 作为分子
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image98.png)
+
+也可以计算$$(w_{i-1},w)$$类别组合中，$$w_{i-1}$$有哪些取值，每个取值有多少种类别组合$$(w_{i-1},w_{i})$$,将每个取值类别组合数求和作为分母   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image99.png)  
+
+bigram formulation for Kneser-Ney：     
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image100.png)   
+
+the general recursive formulation for n grams：  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image101.png)   
+
+---------------------------------------------------------------------------------------- 
+
+# 4.1 The Spelling Correction Task  错误拼写更正
+
+## Spelling Tasks  
+
+$$\bullet$$ 拼写错误检测(检测出错误的拼写)
+$$\bullet$$ 拼写错误更正: 
+自动更正($$hte \to the$$)
+提供一个更正建议
+提供多个更正(Suggestions lists) 
+
+## Types of spelling errors  
+
+$$\bullet$$ Non-word Errors(错误单词不存在)
+
+$$graffe \to giraffe$$  
+
+$$\bullet$$ Real-word Errors(错误单词存在)  
+
+Typographical Errors排字错误:$$three \to there$$  
+
+Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to two $$ 
+
+## Rate of spelling errors 
 
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image102.png)   
+
+## Non-word spelling Errors
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image103.png)   
+
+## Real word spelling Errors  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image104.png)   
 
 
 
