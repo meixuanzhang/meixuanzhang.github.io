@@ -217,6 +217,42 @@ Intrinsic 评估通常在可重现的实验室环境中根据已定义的标准�
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image86.png) 
 
 
+# 3.7 Good-Turing Smoothing    
+
+## More general formulations :Add-k(Smoothing) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image87.png) 
+
+**Unigram prior smoothing**  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image88.png)  
+
+## Advanced smoothing algorithms  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image89.png)  
+
+## Notation: $$N_{c}$$=Frequency of frequency c  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image90.png)   
+
+$$N_{c}$$:文本资料中频数为$$c$$的词的个数  
+
+## Good-Turing smoothing intuition  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image91.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image92.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image93.png)   
+
+假设training set 有 c 个 word ，从training set中每次取一个word，直到所有word都被取了一遍，组成图中Held out set 共有c个word,从training set 取出一个W后计算剩下word中这个W的频数，如果为0，则在Held out set中归为$$N_{0}$$,如果为1归为$$N_{1}$$，以此类推。   
+
+Held out set $$N_{0}$$实际为training set$$N_{1}$$,其占training set的$$(1)N_{1}/c$$,Held out set $$N_{k}$$实际为training set$$N_{k+1}$$,其占training set的$$(k+1)N_{k+1}/c$$,有$$N_{k+1}$$个不同的word，每个word频数是$$(k+1)$$,总数量为$$(k+1)N_{k+1}$$。  
+
+则一个训练集中没有出现的word占比为$$(1)N_{1}/c$$，出现了k次的占比为$$(k+1)N_{k+1}/c$$，出现了k次的不同的word，每个word平均出现概率为$$(k+1)N_{k+1}/c/N_{k}$$。   
+
+
+
 
 
 
