@@ -9,7 +9,7 @@ categories: From Languages to Information
 
 ## Probabilistic Language Models  
 
-计算句子的概率，对于多个句子，机器翻译选择概率更大句子作为翻译结果，拼写更正时选择更正后句子概率更大的更正方式，语音识别时选择概率更大句子作为识别句子
+计算句子的概率，对于多个句子，机器翻译选择概率更大句子作为翻译结果，拼写更正时选择句子更正后概率更大的更正方式，语音识别时选择概率更大的句子作为识别句子
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image46.png)  
 
@@ -55,7 +55,7 @@ categories: From Languages to Information
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image55.png)  
 
-Example 
+## Example 
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image56.png)  
 
@@ -79,20 +79,21 @@ Example
 
 # 3.3Evaluation and Perplexity   
 
-##  如何评估一个模型？  
- 
-使用训练集训练模型参数  
-使用测试集测试模型的表现  
+评估一个模型:使用训练集训练模型参数,使用测试集测试模型的表现   
+
+## Extrinsic(外部) evaluation of N-gram models
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image62.png)  
 
-## Extrinsic(外部) and Intrinsic(内部) evaluation  
+## Intrinsic(内部) evaluation  
 
 Extrinsic 评估需要花费大量时间 
 
 Intrinsic 评估通常在可重现的实验室环境中根据已定义的标准来衡量NLP组件在已定义的子任务上的性能。这里常用的评估方法perplexity  
 
 当测试集和训练集不是来自同一个分布时(不一样时)，perplexity不是很好的评估，所以通常仅在试验性实验中有用   
+
+**perplexity**   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image63.png)  
 
@@ -109,9 +110,9 @@ Intrinsic 评估通常在可重现的实验室环境中根据已定义的标准�
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image67.png)  
 
 
-# Generalization and Zeros  
+# 3.4Generalization and Zeros  
 
-生成句子：  
+**句子生成：**  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image68.png)   
 
@@ -121,9 +122,52 @@ Intrinsic 评估通常在可重现的实验室环境中根据已定义的标准�
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image69.png)   
 
-有部分词组合没有在训练集出现过概率为0，但测试集实际是存在这样组合概率不应该为0
+有部分词组合没有在训练集出现过概率为0，但测试集实际是存在这样组合概率不应该为0  
+
+## Zero probability bigrams
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image70.png)  
 
-在bigram模型中，在测试集中如果存在条件概率为零，无法计算Perplexity   
+在bigram模型中，在测试集中如果存在条件概率$$P(w_{1}\mid w_{2})$$为零，无法计算Perplexity   
+
+# 3.5 Smoothing Add One   
+
+## The intuition of smoothing(from Dan Klein)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image71.png)  
+
+每个词都增加同样的频次    
+
+## Add-one estimation  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image72.png) 
+
+每个词都增加1个频次  
+
+##Maximum Likelihood Estimate  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image73.png)  
+
+最大似然估计的目的就是：利用已知的样本结果，反推最有可能（最大概率）导致这样结果的参数值
+
+通过原本训练集估计的概率是最大似然估计如图中0.0004，修改频次后则不再是  
+
+## Add-one estimation例子  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image74.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image75.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image76.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image77.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image78.png)  
+
+
+
+
+
+
+
 
