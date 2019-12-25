@@ -144,7 +144,7 @@ Intrinsic 评估通常在可重现的实验室环境中根据已定义的标准�
 
 每个词都增加1个频次  
 
-##Maximum Likelihood Estimate  
+## Maximum Likelihood Estimate  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image73.png)  
 
@@ -164,7 +164,57 @@ Intrinsic 评估通常在可重现的实验室环境中根据已定义的标准�
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image78.png)  
 
+#3.6 Interpolation    
 
+## Backoff and Interpolation 
+
+计算语言模型两种方式Backoff和Interpolation： 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image79.png)  
+
+**Linear Interpolation **  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image80.png) 
+
+第二个式子$$\lambda$$会根据$$w_{n-1}w_{n-2}$$取值  
+
+**How to set lambdas?**  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image81.png) 
+
+将数据分成三份，训练集训练模型，Held-Out集确定$$\lambda$$取值？？  
+
+## Unknown words:Open versus closed vocabulary tasks   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image82.png) 
+
+词汇表确定后，有些词并不在表里，使用<UNK>代表   
+
+## Huge web-scale n-grams   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image83.png) 
+
+词汇表过大，可以进行修减，删去只出现一次的词或通过测试集计算entropy和perplexity，对概率贡献少的词删除
+
+使用更有效的数据结构tries前缀树，Bloom filter等  
+
+ 
+## Smoothing for Web-scale N-grams  
+
+使用"backoff"方法计算语言模型  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image84.png) 
+
+先用trigram计算，如果分母为0，使用加权bigram
+
+
+## N-grams Smoothing Summary  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image85.png)   
+
+## Advanced Language Modeling  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image86.png) 
 
 
 
