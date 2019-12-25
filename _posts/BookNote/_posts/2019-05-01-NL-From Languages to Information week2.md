@@ -249,7 +249,14 @@ $$N_{c}$$:文本资料中频数为$$c$$的词的个数
 
 Held out set $$N_{0}$$实际为training set$$N_{1}$$,其占training set的$$(1)N_{1}/c$$,Held out set $$N_{k}$$实际为training set$$N_{k+1}$$,其占training set的$$(k+1)N_{k+1}/c$$,有$$N_{k+1}$$个不同的word，每个word频数是$$(k+1)$$,总数量为$$(k+1)N_{k+1}$$。  
 
-则一个训练集中没有出现的word占比为$$(1)N_{1}/c$$，出现了k次的占比为$$(k+1)N_{k+1}/c$$，出现了k次的不同的word，每个word平均出现概率为$$(k+1)N_{k+1}/c/N_{k}$$。   
+则一个训练集中没有出现的word占比为$$(1)N_{1}/c$$，出现了k次的占比为$$(k+1)N_{k+1}/c$$，则训练集中出现了k次的不同的word，每个word平均出现概率为$$(k+1)N_{k+1}/c/N_{k}$$。   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image94.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image95.png)   
+
+# 3.8 Kneser-Ney Smoothing
+
 
 
 
