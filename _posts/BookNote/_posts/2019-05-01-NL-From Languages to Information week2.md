@@ -412,9 +412,12 @@ Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to tw
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image124.png)  
 
-## 对候选进行选择  
+## 使用Noisy Channel Model对候选进行选择  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image125.png)  
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image126.png)  
 
-Meaning that 95% of the time the word is correct as typed,
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image127.png)  
+
+$$P(thew \mid the)$$表示语料中the被错误输入为thew的概率，%%P(thew \mid thew)%%表示语料中thew被正确输入为thew的概率  
