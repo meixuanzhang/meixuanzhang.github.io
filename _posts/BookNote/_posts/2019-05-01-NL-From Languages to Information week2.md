@@ -333,19 +333,19 @@ Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to tw
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image105.png) 
 
-词可能拼写成不同错误的词，反过来通过错误词可以推出其原本应该的词是什么  
+词可能拼写成不同错误的词，反过来通过错误词可以推出其原本最可能是什么词  
 
 ## Noisy Channel Model 
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image106.png) 
 
-通过贝叶斯找到拼写错误词最大可能对应正确的词是什么  
+通过贝叶斯找到拼写错误的词最大可能是什么词 
 
-## History:Noisy channel for spelling proposed around 1990  
+### History:Noisy channel for spelling proposed around 1990  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image107.png)  
 
-## 拼写错误的词正确候选  
+### 生成更正候选词  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image108.png)  
 
@@ -355,9 +355,8 @@ Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to tw
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image110.png)  
 
-## 对候选进行选择  
 
-**根据语言模型选择**  
+### 根据语言模型计算$$P(w)$$  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image112.png)   
 
@@ -365,11 +364,7 @@ Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to tw
 
 使用Unigram语言模型，直接选择候选词中在语料库出现频率高的词  
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image119.png)   
-
-使用bigram语言模型，选择更正后能使句子概率最大的候选词  
-
-**根据Channel model选择**   
+### 计算Channel model概率$$P(x\mid w)$$  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image114.png)  
 
@@ -385,6 +380,10 @@ Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to tw
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image118.png)  
 
+根据noisy channel probability 应该选择across，实际上actress才是正确选择，应结合bigram语言模型，分别计算两个词与其前后位置两个词搭配概率，选择概率更大的词作为更正词
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image119.png)   
+ 
 ## Evaluation  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image120.png)  
