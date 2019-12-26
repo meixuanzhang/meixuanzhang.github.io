@@ -355,7 +355,7 @@ Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to tw
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image110.png)  
 
-## 对正确候选进行选择  
+## 对候选进行选择  
 
 **根据语言模型选择**  
 
@@ -385,5 +385,37 @@ Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to tw
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image118.png)  
 
+## Evaluation  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image120.png)  
+
+# 4.3Real-Word Spelling Correction  
+
+大概有25-40%拼写错误属于Real-Word类型  
+
+## Solving real-world spelling errors   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image121.png)  
+
+产生候选词方法：输入的词本身，与输入词有单位编辑距离正确的词，同音词  
+
+## Noisy channel for real-world spell correction  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image122.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image123.png)  
+
+输入句子的每个词都产生候选词，候选词相互组合产生句子中选择概率最大的句子作为结果 
+
+## Simplification: One error per sentence 
+
+实际情况中，句子中只有一个词是输入错误的，只需对这个词产生候选词，然后计算不同候选词下句子概率，选择能使句子概率最大的候选词作为替换  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image124.png)  
+
+## 对候选进行选择  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image125.png)  
 
 
+Meaning that 95% of the time the word is correct as typed,
