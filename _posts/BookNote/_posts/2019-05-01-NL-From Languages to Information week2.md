@@ -327,7 +327,63 @@ Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to tw
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image104.png)   
 
 
+# 4.2The Noisy Channel Model of Spelling   
 
+## Noisy Channel Intuition  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image105.png) 
+
+词可能拼写成不同错误的词，反过来通过错误词可以推出其原本应该的词是什么  
+
+## Noisy Channel Model 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image106.png) 
+
+通过贝叶斯找到拼写错误词最大可能对应正确的词是什么  
+
+## History:Noisy channel for spelling proposed around 1990  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image107.png)  
+
+## 拼写错误的词正确候选  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image108.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image111.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image109.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image110.png)  
+
+## 对正确候选进行选择  
+
+**根据语言模型选择**  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image112.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image113.png)  
+
+使用Unigram语言模型，直接选择候选词中在语料库出现频率高的词  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image119.png)   
+
+使用bigram语言模型，选择更正后能使句子概率最大的候选词  
+
+**根据Channel model选择**   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image114.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image115.png)  
+
+对错误词更正为正确词需要操作进行统计，如acrss更正为across,进行了插入，则在矩阵表中，横轴找到r(表示插入字母前面字母)，纵轴找到o，频次加1,下图是替换操作统计矩阵：  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image116.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image117.png)  
+
+上图$$w_{i}$$表示一个字母，错误词通过某个操作更正为正确的词，计算操作对应概率作为$$P(x \mid w)$$  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image118.png)  
 
 
 
