@@ -424,11 +424,30 @@ $$P(thew \mid the)$$表示语料中the被错误输入为thew的概率，$$P(thew
 
 # 4.4State of the Art Systems  
 
-we're pretty sure we saw an error, we just don't know how to fix it,
-00:45
-then we might just flag what does the user type doesn't error.
+## HCI issues in spelling  
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image128.png) 
 
-Something else that's used in the state of the art systems, is to use not just
-02:09
-the spelling, but the pronunciation of the word to help us find errors.
+Unconfident 对于有错但系统不知道如何解决的错误，只是标记一个错误  
+
+## State of the art noisy channel  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image129.png) 
+
+## Phonetic error model  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image130.png)   
+
+将发音相似的单词作为候选   
+
+## Improvements to channel model
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image131.png)  
+
+## 影响计算channel model $$P(x \mid w)$$   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image132.png)  
+
+## Classifier-based methods for real-world spelling correction  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image133.png) 
