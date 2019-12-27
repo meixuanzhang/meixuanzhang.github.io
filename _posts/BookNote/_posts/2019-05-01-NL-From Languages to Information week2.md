@@ -420,4 +420,15 @@ Cognitive Errors认知错误(homophones同音字):$$piece \to peace , too \to tw
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image127.png)  
 
-$$P(thew \mid the)$$表示语料中the被错误输入为thew的概率，%%P(thew \mid thew)%%表示语料中thew被正确输入为thew的概率  
+$$P(thew \mid the)$$表示语料中the被错误输入为thew的概率，$$P(thew \mid thew)$$表示语料中thew被正确输入为thew的概率   
+
+# 4.4State of the Art Systems  
+
+we're pretty sure we saw an error, we just don't know how to fix it,
+00:45
+then we might just flag what does the user type doesn't error.
+
+
+Something else that's used in the state of the art systems, is to use not just
+02:09
+the spelling, but the pronunciation of the word to help us find errors.
