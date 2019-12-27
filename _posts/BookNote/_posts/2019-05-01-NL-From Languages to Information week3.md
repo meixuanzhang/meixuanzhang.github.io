@@ -9,11 +9,11 @@ categories: From Languages to Information
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image134.png) 
 
-判断一篇邮件是否为垃圾邮件？
-判断一篇信件是谁写的？
-判断一本书作者是男是女？
-判断一部电影评价是 positive还是negative?(sentiment analysis)
-判断 scientific articles 属于什么主题？
+判断一篇邮件是否为垃圾邮件？  
+判断一篇信件是谁写的？   
+判断一本书作者是男是女？  
+判断一部电影评价是 positive还是negative?(sentiment analysis)  
+判断 scientific articles 属于什么主题？  
 
 ## Text Classification：definition  
 
@@ -54,11 +54,9 @@ categories: From Languages to Information
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image144.png)  
 
-式子分母不影响c的选择  
+式子的分母不影响c的选择  
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image145.png)  
-
-$$d=(x_{1},x_{2}...,x_{n})$$每个位置代表一个word，当文本含有这个word，标记为1，否则为0   
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image145.png)    
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image146.png)  
 
@@ -80,8 +78,8 @@ $$d=(x_{1},x_{2}...,x_{n})$$每个位置代表一个word，当文本含有这个
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image150.png)   
 
-$$C$$表示文本主题，$$C=c_{j}$$表示文本属于$$c_{j}$$主题 
-$$count(w_{i},c_{j})$$表示含有$$w_{i}$$词且主题为$$c_{j}$$文本的个数 
+$$C$$表示文本主题，$$C=c_{j}$$表示文本属于$$c_{j}$$主题    
+$$count(w_{i},c_{j})$$表示主题为$$c_{j}$$的所有文本共含有$$w_{i}$$词的数量
 
 ## Parameter estimation  
 
@@ -119,7 +117,15 @@ $$count(w_{i},c_{j})$$表示含有$$w_{i}$$词且主题为$$c_{j}$$文本的个�
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image159.png)  
 
-# 5.6 Multinomial Naive Bayes: A Worked Example  
+# 5.6 Multinomial Naive Bayes: A Worked Example   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image160.png)   
+
+## Summary: Naive Bayes is Not So Naive 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image161.png)   
+
+以上介绍了Multinomial Naive Bayes，也称为多项式事件模型，注意与Naive Bayes model(朴素贝叶斯模型)区别   
 
 
 
