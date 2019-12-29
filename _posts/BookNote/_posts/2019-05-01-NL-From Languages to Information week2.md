@@ -263,7 +263,7 @@ Held out set $$N_{0}$$实际为training set$$N_{1}$$,其占training set的$$(1)N
 
 ## Absolute Discounting Information  
 
-使用Absolute Discounting Information 计算语言模型，式子$$d$$表示间隔
+使用Absolute Discounting Information 计算语言模型，式子中的$$d$$表示间隔
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image96.png)
 
@@ -444,7 +444,7 @@ Unconfident 对于有错但系统不知道如何解决的错误，只是标记�
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image131.png)  
 
-## 影响计算channel model $$P(x \mid w)$$   
+## 影响计算channel model $$P(x \mid w)$$的因素 
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image132.png)  
 
