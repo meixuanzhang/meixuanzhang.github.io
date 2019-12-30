@@ -178,3 +178,71 @@ In macro-averaging, each class is going to participate equally.
 
 
 -----------------------------------------------------------------------------------------------
+
+# 6.1  What is Sentiment Analysis?  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image176.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image177.png)  
+
+
+# 6.2 Sentiment Analysis: A Baseline Algorithm    
+
+##Baseline Algorithm(adapted from Pang and Lee)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image178.png)   
+
+## Sentiment Tokenization Issues  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image179.png)  
+
+Emoticons:表情   
+
+## Extracting Features for Sentiment Classification  
+
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image180.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image181.png)  
+
+
+## Naive Bayes  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image182.png)  
+
+## Binarized(Boolean feature)Multinomial Naive Bayes  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image183.png)  
+
+一个词在句子中重复出现，可能并没有携带更多的信息，相比起统计词出现频率，word occurrence(只统计出现过哪些词，不统计词出现频次)可能更有。   
+
+为此提出 Boolean Multinomial Naive Bayes 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image184.png)  
+
+## Boolean Multinomial Naive Bayes on a test document d  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image185.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image186.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image187.png) 
+
+
+## Cross-Validation 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image188.png)  
+
+##Promblem  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image189.png)  
+
+有些句子无法区分是positive还是negative   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image190.png)  
+
+上述句子表达我希望电影是好的，但实际电影不是好的，这种顺序影响，需要更高级算法处理
+
+
+
+
