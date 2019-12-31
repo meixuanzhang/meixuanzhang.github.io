@@ -346,69 +346,52 @@ negation words (no, not, never )出现在低分评论可能性高于高分评论
 
 # 6.5 Other Sentiment Tasks   
 
-This whole sentence doesn't really have a sentiment.
-00:27
-It has a positive sentiment about food and a negative sentiment about service.
-00:33
-So we'd like to be able to deal with this kind of micro sentiment where we have
-00:37
-a sentiment about one attribute and
-00:39
-a different sentiment about a different attribute or aspect.
+## Finding sentiment of a sentence   
 
-We can automatically find frequent phrases, so we can find phrases.
-03:39
-And then we can build up a set of phrases that occur frequently, and decide those
-03:44
-are good phrases that we'd like to know about for this particular product.
-03:49
-Or, we can decide the aspects in advance,
-03:54
-aspects come in advance, like we know what they are for restaurants.
-03:59
-And then our job is just to build a little classifier to find them in the reviews so
-04:03
-we can decide if what a person said about the food was positive or negative.
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image220.png) 
 
 
+首先找出sentiment描述的对象  
 
-We assumed that the classes, positive and negative occurred with equal frequency.
-05:57
-And that's of course not usually true in the real world and it turns out that
-06:02
-when the classes are not balanced, we can't use accuracies as an evaluation.
-06:06
-And the F-score can deal well and when evaluating classes where there's many more
-06:12
-positive than negative or maybe there's many more negative than positive reviews.
-06:16
-It turns out that this, if there's a severe imbalance in class frequencies,
-06:22
-that can actually degrade the classifier performance.
-06:24
-And there are two standard things we do to deal with that.
-06:27
-One is we just resampled before we train.
-06:30
-So for example, if one class has a million reviews and
-06:35
-one class has 10,000 reviews, then we might just dance down sample and
-06:41
-take only ten to the fourth of these reviews to match with these reviews.
-06:48
-Instead of resampling we can use cost sensitive learning.
-06:50
-Cost sensitive learning, we actually change the classifier and
-06:54
-we tell the classifier even though you've seen a lot of this frequent thing,
-06:59
-penalize it for misclassifying the really rare thing.
-07:03
-And so that'll force it to focus a little more on the rarer
-07:06
-things than on the very frequent things.
+## Finding aspect/attribute/target of sentiment  
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image221.png)  
 
-there's lots of other kinds of affective state classification that come up and
-09:07
-they are computational problems that are similar to sentiment analysis.
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image222.png)  
+
+有时候想要评价的对象并不直接出现在句子中，如酒店评价，但可以通过句子中对食物、服务等各方面评价总和获得
+
+## Putting it all together:Finding sentiment for aspects   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image223.png) 
+
+提取句子，进行sentiment classifier,提取aspect(描述的对象),整合
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image224.png)  
+
+## 	Baseline methods assume classs have equal frequencies  
+
+样本类别间不平衡时，评估使用F-score,或使用下采样获得更多样本，或对类别少的样本误分是给更重的惩罚   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image225.png)  
+  
+##  How to deal with 7 stars?
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image226.png)  
+
+## Summary on Sentiment  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image227.png)  
+
+## Scherer Typology of Affective States  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image228.png)  
+
+其他类似分类问题
+
+## Computational work on other affective states  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image229.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image230.png)  
+
