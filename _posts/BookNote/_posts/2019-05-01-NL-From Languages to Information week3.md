@@ -128,7 +128,7 @@ $$p(Chinese\mid c)$$，c类句子共有8个词，其中5个是"Chinese"，1,6是
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image161.png)   
 
-以上介绍了Multinomial Naive Bayes，也称为多项式事件模型，注意与Naive Bayes model(朴素贝叶斯模型)区别   
+以上介绍了Multinomial Naive Bayes，也称为多项式事件模型，注意与Boolean Multinomial Naive Bayes(也称朴素贝叶斯模型)区别   
 
 # 5.7 Precision  
 
@@ -214,7 +214,7 @@ Emoticons:表情
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image183.png)  
 
-一个词在句子中重复出现，可能并没有携带更多的信息，相比起统计词出现频率，word occurrence(只统计出现过哪些词，不统计词出现频次)可能更有。   
+一个词在句子中重复出现，可能并没有携带更多的信息，相比起统计词出现频率，word occurrence(只统计出现过哪些词，不统计词出现频次)可能更有用。   
 
 为此提出 Boolean Multinomial Naive Bayes 
 
@@ -228,12 +228,13 @@ Emoticons:表情
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image187.png) 
 
+Multinomial Naive Bayes，Boolean Multinomial Naive Bayes，Multinomial Bernoulli Naive Bayes 是三种不同的贝叶斯模型  
 
 ## Cross-Validation 
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image188.png)  
 
-##Promblem  
+## Promblem  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image189.png)  
 
@@ -243,6 +244,171 @@ Emoticons:表情
 
 上述句子表达我希望电影是好的，但实际电影不是好的，这种顺序影响，需要更高级算法处理
 
+# 6.3 Sentiment Lexicons(情感词汇表)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image191.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image192.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image193.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image194.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image195.png)   
+
+一个词在不同的词汇表(Lexicons)中，是否会有相同的极性(polarity),是否同为positive或negative，从上图看大多数时候 the Opinion Lexicon, the General Inquirer lexicon, LIWC,MPQA在判断polarity时，词具有非常相似的情绪。  
+
+## Analyzing the polarity of each word in IMDB  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image196.png)  
+
+图中表格展示不同等级评价中，"bad"出现频次，发现10分的评论出现"bad"的频次高于2分的评论，这是由于人们更倾向于打积极的分数   
+
+因此要观察词出现在不同评分类别中可能性时使用，likelihood式子，为了对比不同词出现可能性使用scaled likelihood  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image197.png)  
+
+## 关于否定词  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image199.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image198.png)  
+
+negation words (no, not, never )出现在低分评论可能性高于高分评论，这种逻辑否定也是一种很好的情感判断提示。
+
+# 6.4Learning Sentiment Lexicons (学习情绪词汇)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image200.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image201.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image202.png)   
+
+对一部分word标记为positive或negative  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image203.png)  
+
+通过已经标记的词，查找与其通过"and"连接的词，这些词往往与其具有相同的polarity,而与其通过"but"连接的词往往与其具有相反的polarity  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image204.png)  
+
+计算两个word相似性，句子中两个word之间出现"and"的频率或出现"but"频率
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image205.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image206.png)  
+
+从使用这种方法输出结果看，有部分词polarity会误判 
+
+## Turney Algorithm   
+
+上述算法对处理短语polarity效果不是很好，Turney Algorithm 是另一种半监督式构建词汇方式  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image208.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image209.png) 
+
+根据词性标记(Part-of-speech) 提取短语    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image210.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image211.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image212.png) 
+
+计算两个词一起出现可能性  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image213.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image214.png)   
+
+计算短语与积极词一起出现可能性更大还是与消极词出现可能性更大
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image215.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image216.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image217.png) 
+
+对于有些短语direct deposit、virtual monopoly等的polarity可能并不在online polarity dictionary 或 online web中，通过半监督学习它们的polarity 
+
+##  Using WordNet to learn polarity   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image218.png) 
+
+将已经标记的positive词的同义词和已经标记的negative词反义词标记为positive，将已经标记的negative词的同义词和已经标记的positive词反义词标记为negative  
+
+## Summary on Learning Lexicons
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image219.png) 
+
+学习词汇可以帮助我们处理特定领域的问题。
+
+# 6.5 Other Sentiment Tasks   
+
+This whole sentence doesn't really have a sentiment.
+00:27
+It has a positive sentiment about food and a negative sentiment about service.
+00:33
+So we'd like to be able to deal with this kind of micro sentiment where we have
+00:37
+a sentiment about one attribute and
+00:39
+a different sentiment about a different attribute or aspect.
+
+We can automatically find frequent phrases, so we can find phrases.
+03:39
+And then we can build up a set of phrases that occur frequently, and decide those
+03:44
+are good phrases that we'd like to know about for this particular product.
+03:49
+Or, we can decide the aspects in advance,
+03:54
+aspects come in advance, like we know what they are for restaurants.
+03:59
+And then our job is just to build a little classifier to find them in the reviews so
+04:03
+we can decide if what a person said about the food was positive or negative.
 
 
 
+We assumed that the classes, positive and negative occurred with equal frequency.
+05:57
+And that's of course not usually true in the real world and it turns out that
+06:02
+when the classes are not balanced, we can't use accuracies as an evaluation.
+06:06
+And the F-score can deal well and when evaluating classes where there's many more
+06:12
+positive than negative or maybe there's many more negative than positive reviews.
+06:16
+It turns out that this, if there's a severe imbalance in class frequencies,
+06:22
+that can actually degrade the classifier performance.
+06:24
+And there are two standard things we do to deal with that.
+06:27
+One is we just resampled before we train.
+06:30
+So for example, if one class has a million reviews and
+06:35
+one class has 10,000 reviews, then we might just dance down sample and
+06:41
+take only ten to the fourth of these reviews to match with these reviews.
+06:48
+Instead of resampling we can use cost sensitive learning.
+06:50
+Cost sensitive learning, we actually change the classifier and
+06:54
+we tell the classifier even though you've seen a lot of this frequent thing,
+06:59
+penalize it for misclassifying the really rare thing.
+07:03
+And so that'll force it to focus a little more on the rarer
+07:06
+things than on the very frequent things.
+
+
+there's lots of other kinds of affective state classification that come up and
+09:07
+they are computational problems that are similar to sentiment analysis.
