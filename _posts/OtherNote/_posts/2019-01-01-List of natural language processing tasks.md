@@ -11,12 +11,17 @@ categories:
 
 生成正式的语法规则(grammar)描述语言的句法(syntax)。句法是研究句子的个个组成部分和它们的排列顺序   
 
-**Lemmatization(词形还原)**
-The task of removing inflectional endings only and to return the base dictionary form of a word which is also known as a lemma.
-Morphological segmentation
-Separate words into individual morphemes and identify the class of the morphemes. The difficulty of this task depends greatly on the complexity of the morphology (i.e. the structure of words) of the language being considered. English has fairly simple morphology, especially inflectional morphology, and thus it is often possible to ignore this task entirely and simply model all possible forms of a word (e.g. "open, opens, opened, opening") as separate words. In languages such as Turkish or Meitei,[14] a highly agglutinated Indian language, however, such an approach is not possible, as each dictionary entry has thousands of possible word forms.
+**Lemmatization(词形还原)**  
 
-词形还原就是去掉单词的词缀，提取单词的主干部分，通常提取后的单词会是字典中的单词，不同于词干提取（stemming），提取后的单词不一定会出现在单词中。比如，单词“cars”词形还原后的单词为“car”，单词“ate”词形还原后的单词为“eat”。
+词形还原就是去掉单词的词缀，提取单词的主干部分，通常提取后的单词会是字典中的单词，不同于词干提取（stemming），词干提取后的单词不一定会出现在单词中。比如，单词“cars”词形还原后的单词为“car”，单词“ate”词形还原后的单词为“eat”。
+
+**Morphological segmentation(语素切分)**  
+
+将单词分成单独的词素(individual morphemes)，并识别词素的类别。英语的形态(morphology)非常简单，尤其是屈折形态(inflectional morphology)语言，因此通常可以完全忽略此任务，而可以将单词的所有可能形式（例如“ open，opens，opened，opening”）建模为单独的单词。在语言如土耳其或Meitei，高度凝集的印度语言是不可能的，因为每个字典条目都有成千上万种可能的单词形式。    
+语素，语言学术语，是指语言中最小的音义结合体。也就是说一个语言单位必须同时满足三个条件——“最小、有音、有义”才能被称作语素，尤其是“最小”和“有义”。   
+(A morpheme is the smallest meaningful unit in a language. A morpheme is not identical to a word. The main difference between them is that a morpheme sometimes does not stand alone, but a word, by definition, always stands alone.)   
+
+[英语中的词素](https://wenku.baidu.com/view/8cb7f95477a20029bd64783e0912a21614797fec.html) 
 
 **Part-of-speech tagging(词性标记)**  
 
@@ -28,6 +33,7 @@ Parsing
 Determine the parse tree (grammatical analysis) of a given sentence. The grammar for natural languages is ambiguous and typical sentences have multiple possible analyses. Perhaps surprisingly, for a typical sentence, there may be thousands of potential parses (most of which will seem completely nonsensical to a human). There are two primary types of parsing, Dependency Parsing, and Constituency Parsing. Dependency Parsing focuses on the relationships between words in a sentence (marking things like Primary Objects and predicates), whereas Constituency Parsing focuses on building out the Parse Tree using a Probabilistic Context-Free Grammar (PCFG). See also: Stochastic grammar.
 Sentence breaking (also known as sentence boundary disambiguation)
 Given a chunk of text, find the sentence boundaries. Sentence boundaries are often marked by periods or other punctuation marks, but these same characters can serve other purposes (e.g. marking abbreviations).
+
 Stemming
 The process of reducing inflected (or sometimes derived) words to their root form. (e.g. "close" will be the root for "closed", "closing", "close", "closer" etc.).
 Word segmentation
