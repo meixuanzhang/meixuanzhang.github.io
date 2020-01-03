@@ -55,4 +55,82 @@ grep搜索是匹配搜索，搜索出特定模式(词结构)的词，语料量�
 
 假设有大量文档，每个文档word都不同，矩阵中会存在大量0，这会浪费大量储存空间
 
+# 7.3 The Inverted Index  
+
+## Inverted index  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image241.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image242.png)   
+
+使用类似字典结构存储，“word”是键，"文档"是值  
+
+## Inverted index  construction  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image243.png)   
+
+将文档中句子进行分词(Tokenizer),对词进行处理(规范化)，构建索引   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image244.png)   
+
+## Indexer steps   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image245.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image246.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image247.png) 
+
+## Where do we play in storage?
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image248.png)   
+
+
+# 7.4 Query Processing with the Inverted Index
+
+## Query processing :AND  
+
+查找同时含有单词"Brutus"和"Caesar"的文档  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image249.png)   
+
+## The merge  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image250.png)   
+
+NIL 是list结尾
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image251.png)   
+
+# 7.5 The Boolean Retrieval Model  
+
+## Boolean queries:Exact match   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image252.png)  
+
+通过AND,OR ,NOT组织检索问题  
+
+## Example：WestLaw  
+
+使用Boolean queries检索的系统  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image253.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image254.png)  
+
+## Boolean queries:More general "merges"   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image255.png)  
+ 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image256.png)  
+
+## Query optimization  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image257.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image259.png)  
+
+先从 document frequency 少的单词开始，"Calpurnia"和"Brutus"执行merge 算法，有相同文档id则与"Caesar"执行merge 算法,有相同则将同时有三个词的文档id保存，然后回到"Calpurnia"和"Brutus"执行merge 算法，不断循环   
+
+
 
