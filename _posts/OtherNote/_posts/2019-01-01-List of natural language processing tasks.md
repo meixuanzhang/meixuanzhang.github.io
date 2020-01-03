@@ -58,8 +58,17 @@ Optical character recognition (OCR)
 Given an image representing printed text, determine the corresponding text.
 Question answering
 Given a human-language question, determine its answer. Typical questions have a specific right answer (such as "What is the capital of Canada?"), but sometimes open-ended questions are also considered (such as "What is the meaning of life?"). Recent works have looked at even more complex questions.[16]
-Recognizing Textual entailment
-Given two text fragments, determine if one being true entails the other, entails the other's negation, or allows the other to be either true or false.[17]
+
+
+**Recognizing Textual entailment(识别文字蕴含RTE)**    
+
+给定两个文本片段，一个文本的所描述内容能推论出另一个文本所描述的内容则表示蕴含返回True。如下列蕴含成立的例子:    
+
+T: Parviz Davudi was representing Iran at a meeting of the Shanghai Co-operation Organisation (SCO), the fledgling association that binds Russia, China and four former Soviet republics of central Asia together to fight terrorism.
+H: China is a member of SCO.
+
+
+
 Relationship extraction
 Given a chunk of text, identify the relationships among named entities (e.g. who is married to whom).
 Sentiment analysis (see also multimodal sentiment analysis)

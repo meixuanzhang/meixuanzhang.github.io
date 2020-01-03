@@ -33,7 +33,7 @@ finite MDP 下，states,actions,rewards($$\widehat{S},\widehat{A},\widehat{R}$$)
 
 $$P(s',r\mid s,a)=Pr\{S_{t}=s',R_{t}=r\mid S_{t-1}=s,A_{t-1}=a\}\qquad s',s \in\widehat{S},r \in \widehat{R},a\in\widehat{A} $$   
 
-$$\sum_{s'\in \widehat{S}}\sum_{r\in\widehat{R}}=1,for\ all \ s \in\widehat{S},a\in\widehat{A}(s)$$
+$$\sum_{s'\in \widehat{S}}\sum_{r\in\widehat{R}}P(s',r\mid s,a)=1,for\ all \ s \in\widehat{S},a\in\widehat{A}(s)$$
 
 $$P(s'\mid s,a)=Pr\{S_{t}=s'\mid S_{t-1}=s,A_{t-1}=a\}=\sum_{r \in \widehat{R}}P(s',r\mid s,a)$$
 
