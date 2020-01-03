@@ -91,7 +91,7 @@ policy($$\pi$$) 是将状态映射到actions被选择概率分布，如果在t�
 
 $$V_{\pi}(s)$$：the value of a state under a policy $$\pi$$     
 $$V_{\pi}$$:the state-value function for policy $$\pi$$   
-$$q_{\pi}(s,a)$$: the value of taking action s under a policy $$\pi$$     
+$$q_{\pi}(s,a)$$: the value of taking action a in state s under a policy $$\pi$$     
 $$q_{\pi}$$:the action-value function for policy $$\pi$$  
 $$E_{\pi}[\cdot]$$agent 使用策略$$\pi$$下，随机变量的期望值  
 
