@@ -190,4 +190,107 @@ Positional index 长度几乎是原始文本长度的35%-50%
 
 将Positional index和Biword indexes结合，对于有些两词短语不再是拆分成单个单词。
 
-----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------   
+
+# 8.1 Introducing Ranked Retrieval   
+
+## Ranked retrieval  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image271.png)   
+
+boolean queries 返回结果不是太多就是太少，不利于大部分用户使用   
+
+## Promblem with Boolean search: feast or famine(过少或过多)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image272.png)   
+
+## Ranked retrieval models  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image273.png)  
+
+## Feast or famine: not a promblem in ranked retrieval  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image274.png)  
+
+## Scoring as the basis of ranked retrieval  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image275.png) 
+
+根据query对文档进行打分,分越高说明与query越匹配  
+
+## Query-document matching scores  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image276.png) 
+
+# 8.2 Scoring with the Jaccard Coefficient  
+
+## Take 1: Jaccard coefficient  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image277.png) 
+
+## Jaccard coefficient:Scoring example  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image278.png)  
+
+## Issues with Jaccard for scoring  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image279.png)  
+
+Jaccard coefficient没有考虑频次，频次少的词带有信息往往高于频次高的词    
+
+计算时分母开根可以减少文档长度对Jaccard coefficient的影响  
+
+# 8.3 Term Frequency Weighting 
+
+## Term-documnent count matrices  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image281.png)  
+
+## Bag of words model  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image282.png)  
+
+## Term frequency tf  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image283.png)  
+
+假设搜索词为"squirrels",出现10次"squirrels"的文档的评分应该高于出现1次"squirrels"的文档，但其评分并不是出现1次"squirrels"的文档的10倍  
+
+## Log-frequency weighting  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image284.png)   
+
+# 8.4 Inverse Document Frequency Weighting   
+
+## Document frequency  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image285.png)   
+
+希望检索词中，在文档中频次更低的词可以有更大的权重   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image286.png)  
+
+## idf weight  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image287.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image288.png)  
+
+计算检索词的权重，根据文档中这些词出现与否计算每个文档的评分   
+
+## Effect of idf on ranking  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image289.png)  
+
+## Collection vs Document frequency  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image290.png)  
+
+Collection frequency:计算词在所有文档中出现的频次  
+
+Document frequency:计算包含词的文档数   
+
+图中"insurance"可能在某个文档中高频率出现导致Collection frequency高于"try",但实际上"try"信息量少于"insurance"
+
+# 8.5 TF IDF Weighting 
+
