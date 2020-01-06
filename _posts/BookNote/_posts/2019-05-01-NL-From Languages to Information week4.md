@@ -33,7 +33,7 @@ grep （缩写来自Globally search a Regular Expression and Print）一种强�
  
 grep搜索是匹配搜索，搜索出特定模式(词结构)的词，语料量大时速度慢，输入"Caesar"只能搜索出"Caesar",对于文档不包含"Calpurnia"词需要遍历文档所有词确定，同时无法进行更复杂的操作，如发现"Romans"与"countrymen"位置相近,对检索结果排序返回   
 
-## Term-documnent incidence matrices   
+## Term-document incidence matrices   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image236.png) 
 
@@ -242,7 +242,7 @@ Jaccard coefficient没有考虑频次，频次少的词带有信息往往高于�
 
 # 8.3 Term Frequency Weighting 
 
-## Term-documnent count matrices  
+## Term-document count matrices  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image281.png)  
 
@@ -293,4 +293,104 @@ Document frequency:计算包含词的文档数
 图中"insurance"可能在某个文档中高频率出现导致Collection frequency高于"try",但实际上"try"信息量少于"insurance"
 
 # 8.5 TF IDF Weighting 
+
+## tf-idf weighting  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image291.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image292.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image293.png)  
+
+# 8.6 The Vector Space Model  
+
+## Documents as vectors   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image294.png)   
+
+## Queries as vectors   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image295.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image296.png)  
+
+欧式距离,q与d2距离(d2含有更多q不含有的词)大于q与d1或q与d3距离,但从信息检索看,q表示检索词(gossip,jealous)应该与d2距离更近,d1和d3只有其中一个词。 
+
+## Use angle instead of distance  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image297.png)   
+
+## From angle to cosines  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image298.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image299.png) 
+
+## Length normalization  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image300.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image301.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image302.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image303.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image304.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image305.png)  
+
+# 8.7 Calculating TF IDF Cosine Scores 
+
+## tf-idf weighting has many variants  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image306.png)  
+
+## Weighting may differ in queries vs document  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image307.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image308.png)  
+
+wt(logarithmic scaling)  
+
+## Computing cosine scores  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image309.png)  
+
+length normalization of the query is actually unnecessary
+
+## Summary-vector space ranking 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image310.png) 
+
+# 8.8 Evaluating Search Engines  
+
+## Measures for a search engine  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image311.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image312.png)
+
+## Evaluating an IR system  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image313.png)  
+
+## Evaluating ranked results  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image314.png)  
+
+## Recall/Precision 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image315.png)  
+
+对一个检索问题，获得topN结果，计算Recall\Precision  
+
+## Two current evaluation measures   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image316.png)  
+
+AP:每一个检索问题，平均topN结果中计算预测为R(正)的文档的precision。
+MAP:平均所有检索问题的AP
+
 

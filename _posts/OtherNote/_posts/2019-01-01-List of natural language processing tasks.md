@@ -67,10 +67,11 @@ Given a human-language question, determine its answer. Typical questions have a 
 T: Parviz Davudi was representing Iran at a meeting of the Shanghai Co-operation Organisation (SCO), the fledgling association that binds Russia, China and four former Soviet republics of central Asia together to fight terrorism.
 H: China is a member of SCO.
 
+**Relationship extraction(关系提取)**
+
+给定大量文本，请确定命名实体之间的关系 (e.g. who is married to whom).属于information extraction其中一个任务。  
 
 
-Relationship extraction
-Given a chunk of text, identify the relationships among named entities (e.g. who is married to whom).
 Sentiment analysis (see also multimodal sentiment analysis)
 Extract subjective information usually from a set of documents, often using online reviews to determine "polarity" about specific objects. It is especially useful for identifying trends of public opinion in social media, for marketing.
 Topic segmentation and recognition
@@ -95,4 +96,6 @@ Dialogue
 The first published work by an artificial intelligence was published in 2018, 1 the Road, marketed as a novel, contains sixty million words.
 
 
-![_config.yml]({{ site.baseurl }}/images/Java program/image59.jpg)   
+-------------------------------------------------
+
+
