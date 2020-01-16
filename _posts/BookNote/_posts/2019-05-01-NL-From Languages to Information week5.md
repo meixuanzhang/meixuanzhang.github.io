@@ -29,9 +29,9 @@ categories: From Languages to Information
 
 Entity Recognition用途之一：sentiment classifier中除了获得评价正负外，有时候还需要获得这是"谁"的评价，评价的"什么"。question answering中有时候回答的是命名实体。  
 
-entity recognition-- of simply picking out concrete(具体的) names of objects, people, organizations, et cetera, or quantities, dates, times, and things 
+Entity Recognition simply pick out concrete(具体的) names of objects, people, organizations, et cetera, or quantities, dates, times, and things 
 
-information extraction where the goal is to pick out particular relations, rows in a database table, from pieces of unstructured, natural language text.  
+Information Extraction where the goal is to pick out particular relations from pieces of unstructured natural language text.  
 
 # 9.2 What is Relation Extraction  
 
@@ -78,6 +78,38 @@ information extraction where the goal is to pick out particular relations, rows 
 ## How to build relation extractors 
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image334.png)
+
+
+# 9.3 Using Patterns to Extract Relations   
+
+## Rules for extracting IS-A relation  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image335.png)  
+
+## Hearst's Patterns for extracting IS-A relation  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image336.png)
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image337.png)  
+
+## Extracting Richer Relations Using Rules  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image338.png)
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image339.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image340.png)  
+
+## Extracting Richer Relations Using Rules and Named Entities   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image341.png)  
+
+## Hand-built patterns for relation  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image342.png)  
+
+
+# 9.4 Supervised Relation Extraction  
 
 
 
