@@ -170,87 +170,52 @@ trigger 触发词
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image355.png)  
 
-the extra intuition of snowball was the requirement that X and Y be named entities. So in the, in the Dipre algorithm, X and Y could beand string. 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image356.png) 
 
-the Snowball algorithm also computed a confidence value for each pattern, so that's kind of a new intuition.
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image357.png) 
 
+## Dipre:Extract<author,book>pairs  
 
-Now from those huge number of seeds we have a
-04:20
-big database. We could have hundreds of thousands of examples. We create lots and
-04:25
-lots of features and now instead of iterating. We simply take all of those
-04:29
-features and build a big supervise classifier, supervised by all these facts
-04:33
-that we know are true in our large database
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image358.png)
 
+## Snowball   
 
- For each relation. Let's see. We're trying to distract the born in
-05:11
-relation. We go to each tuple in some big database of the Bornin relations, we have
-05:16
-lots of Bornin relations. Edward Hubble, born in Marshfield, Albert Einstein, born
-05:21
-in Ulm. We find sentences in some large corpus, let's say we're using the web,
-05:26
-that have both entities, and here's a bunch of sentences we might find, Hubble
-05:30
-was born in Marshfield, Einstein born 1879, Ulm, Hubble's birthplace in
-05:35
-Marshfield, and so on. Lot's of sentences. And now from all of those sentences, for
-05:39
-all of those different entities we extract frequent features, so we might parse the
-05:44
-sentences, we might just use the words in between. We might have some [inaudible] entities,
-05:48
-we might have part of speech tags, all sort of things, we extract lots amounts of
-05:53
-features. And now, we take all those features and do exactly what we did for
-05:57
-supervised classification.
+Dipre算法和Snowball算法区别
 
-We extract our positive instances from what we've seen in the
-06:15
-database. So person, a particular person Albert Einstein born in Ulm is a
-06:19
-positive instance. So from our supervised classifier we can get a probability of the
-06:24
-born in relation for a particular data point and now what we can condition that
-06:28
-on all sorts of features we can extract from each sentence, so a huge number of
-06:33
-features.
+The extra intuition of snowball was the requirement that X and Y be named entities. So in the, in the Dipre algorithm, X and Y could beand string. 
+the Snowball algorithm also computed a confidence value for each pattern
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image359.png)   
 
-They first used,
-07:02
-parsed data to train a classifier to decide if a particular relation [inaudible] or tuple is
-07:06
-trustworthy or not. And so they have a small amount of parse data where they can
-07:10
-use very expensive parse features to decide that a subject and a verb and an
-07:14
-object are in a, likely to be in a relation. Train a classifier that can do
-07:18
-that can do that for any relation. And now, they walk through the very large corpus,
-07:22
-let's say it's the web, in a single pass, and they just extract any relation between
-07:27
-NPs. And we keep them if the trustworthy classifier says this is likely to be a
-07:31
-relation between the two entities. And then we rank these relations based on
-07:35
-redundancy. If we. Relation occur and a lot of times between 2's and 3's in
-07:39
-different websites when we guess this is a real relation. extraction algorithm extracts relations like, FCI specializes in software
-07:48
-development or Tesla invented coil transformer, and so on, where we can
-07:53
-extract a virtually infinite number of possible relations between any entities.
-07:58
-All we have to do is see them often enough times on the web. 
+## Distant supervision  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image360.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image361.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image362.png)   
+
+We extract our positive instances from what we've seen in the database. So person, a particular person Albert Einstein born in Ulm is a positive instance.   
+
+So from our supervised classifier we can get a probability of the born in relation for a particular data point and now what we can condition that on all sorts of features we can extract from each sentence
+
+需要先判断两个主体是否存在某种关系？   
+
+## Unsupervised relation extraction  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image363.png)   
+
+They first used  parsed data to train a classifier to decide if a particular relation or tuple is trustworthy or not.   
+
+And so they have a small amount of parse data where they can use very expensive parse features to decide that a subject and a verb and an object are likely to be in a relation.    
+
+Train a classifier that can do that can do that for any relation. And now, they walk through the very large corpus,let's say it's the web, in a single pass, and they just extract any relation between NPs. And we keep them if the trustworthy classifier says this is likely to be a relation between the two entities.   
+
+we rank these relations based on redundancy. If Relation occur and a lot of times between 2's and 3's in different websites when we guess this is a real relation. extraction algorithm extracts relations like, FCI specializes in software development or Tesla invented coil transformer, and so on, where we can extract a virtually infinite number of possible relations between any entities.   
+
 
 ## Evaluation of Semi-supervised and Unsupervised Relation Extraction  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image364.png)  
+
+
