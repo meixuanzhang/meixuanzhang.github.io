@@ -218,4 +218,9 @@ we rank these relations based on redundancy. If Relation occur and a lot of time
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image364.png)  
 
+----------------------------------------------------------------------------------------------------------   
+
+
+
+
 
