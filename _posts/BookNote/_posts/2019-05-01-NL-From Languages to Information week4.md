@@ -2,7 +2,7 @@
 layout: post
 title: Week 4 Information Retrieval
 date:   2019-05-01
-categories: From Languages to Information
+categories: ["From Languages to Information"]
 ---  
 
 # 7.1 Introduction to Information Retrieval 信息检索 

@@ -2,7 +2,7 @@
 layout: post
 title: week 1 Basic Text Processing and Edit Distance
 date:   2019-05-01
-categories: From Languages to Information
+categories: ["From Languages to Information"]
 ---  
 
 # Regular expressions(正则化)

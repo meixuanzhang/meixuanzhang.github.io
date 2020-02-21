@@ -2,7 +2,7 @@
 layout: post
 title: week 3 Text Classification and Sentiment Analysis
 date:   2019-05-01
-categories: From Languages to Information
+categories: ["From Languages to Information"]
 ---  
 
 # 5.1 What is Text Classification?  

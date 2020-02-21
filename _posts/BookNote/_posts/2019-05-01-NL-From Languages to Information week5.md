@@ -2,7 +2,7 @@
 layout: post
 title: Week 5 Relation Extraction and Question Answering
 date:   2019-05-01
-categories: From Languages to Information
+categories: ["From Languages to Information"]
 ---  
 
 # 9.1 Information Extraction and Named Entity Recognition Introducing the tasks

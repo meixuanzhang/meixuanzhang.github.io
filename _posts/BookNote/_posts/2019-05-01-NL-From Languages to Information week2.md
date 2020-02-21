@@ -2,7 +2,7 @@
 layout: post
 title: week 2 Language Modeling and Spelling Correction
 date:   2019-05-01
-categories: From Languages to Information
+categories: ["From Languages to Information"]
 ---  
 
 # 3.1 Introduction to N grams  
