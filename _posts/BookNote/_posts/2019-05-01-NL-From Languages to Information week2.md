@@ -164,7 +164,7 @@ Intrinsic 评估通常在可重现的实验室环境中根据已定义的标准�
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image78.png)  
 
-#3.6 Interpolation    
+# 3.6 Interpolation    
 
 ## Backoff and Interpolation 
 
@@ -172,11 +172,11 @@ Intrinsic 评估通常在可重现的实验室环境中根据已定义的标准�
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image79.png)  
 
-**Linear Interpolation **  
+**Linear Interpolation**  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image80.png) 
 
-第二个式子$$\lambda$$会根据$$w_{n-1}w_{n-2}$$取值  
+第二个式子$$\lambda$$会根据$$w_{n-1},w_{n-2}$$取值  
 
 **How to set lambdas?**  
 
@@ -188,7 +188,7 @@ Intrinsic 评估通常在可重现的实验室环境中根据已定义的标准�
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image82.png) 
 
-词汇表确定后，有些词并不在表里，使用<UNK>代表   
+词汇表确定后，有些词并不在表里，使用$$<UNK>$$代表   
 
 ## Huge web-scale n-grams   
 
@@ -253,7 +253,7 @@ Held out set $$N_{0}$$实际为training set$$N_{1}$$,其占training set的$$(1)N
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image94.png)   
 
-上述方法有可能出现中间某些频次$N_{k}$$$不存在问题导致无法计算，为此提出Simple Good-Turing   
+上述方法有可能出现中间某些频次$$N_{k}$$不存在问题导致无法计算，为此提出Simple Good-Turing   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image95.png)   
 
