@@ -182,7 +182,7 @@ trigger 触发词
 
 Dipre算法和Snowball算法区别
 
-The extra intuition of snowball was the requirement that X and Y be named entities. So in the, in the Dipre algorithm, X and Y could beand string. 
+The extra intuition of snowball was the requirement that X and Y be named entities. So in the Dipre algorithm, X and Y could be any string. 
 the Snowball algorithm also computed a confidence value for each pattern
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image359.png)   
@@ -195,7 +195,7 @@ the Snowball algorithm also computed a confidence value for each pattern
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image362.png)   
 
-We extract our positive instances from what we've seen in the database. So person, a particular person Albert Einstein born in Ulm is a positive instance.   
+We extract our positive instances from what we've seen in the database. So a particular person Albert Einstein born in Ulm is a positive instance.   
 
 So from our supervised classifier we can get a probability of the born in relation for a particular data point and now what we can condition that on all sorts of features we can extract from each sentence
 
@@ -205,13 +205,13 @@ So from our supervised classifier we can get a probability of the born in relati
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image363.png)   
 
-They first used  parsed data to train a classifier to decide if a particular relation or tuple is trustworthy or not.   
+They first used  parsed data to train a classifier to decide if a particular relation or tuple is trustworthy(值得信赖) or not.   
 
 And so they have a small amount of parse data where they can use very expensive parse features to decide that a subject and a verb and an object are likely to be in a relation.    
 
-Train a classifier that can do that can do that for any relation. And now, they walk through the very large corpus,let's say it's the web, in a single pass, and they just extract any relation between NPs. And we keep them if the trustworthy classifier says this is likely to be a relation between the two entities.   
+Train a classifier that can do that for any relation. And now, they walk through the very large corpus,let's say it's the web, in a single pass, and they just extract any relation between NPs. And we keep them if the trustworthy classifier says this is likely to be a relation between the two entities.   
 
-we rank these relations based on redundancy. If Relation occur and a lot of times between 2's and 3's in different websites when we guess this is a real relation. extraction algorithm extracts relations like, FCI specializes in software development or Tesla invented coil transformer, and so on, where we can extract a virtually infinite number of possible relations between any entities.   
+we rank these relations based on redundancy. If Relation occur and a lot of times between 2's and 3's in different websites when we guess this is a real relation. extraction algorithm extracts relations like, FCI specializes in software development or Tesla invented coil transformer(特斯拉发明了线圈变压器), and so on, where we can extract a virtually infinite(几乎无限) number of possible relations between any entities.   
 
 
 ## Evaluation of Semi-supervised and Unsupervised Relation Extraction  
