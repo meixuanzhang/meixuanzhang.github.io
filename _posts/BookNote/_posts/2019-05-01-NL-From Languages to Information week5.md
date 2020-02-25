@@ -220,7 +220,70 @@ we rank these relations based on redundancy. If Relation occur and a lot of time
 
 ----------------------------------------------------------------------------------------------------------   
 
+# 10.1 What is Question Answering  
 
+## Question Answering  
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image365.png)  
 
+worms：蠕虫    
+paradigms：范式    
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image366.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image367.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image368.png)   
+
+## Types of Questions in Modern Systems  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image369.png)  
+
+Complex questions are generally answered more in research systems.  
+
+Factoid question(事实问题) answering is a widely used commercial application.    
+
+## Commerical systems:mainly factoid question  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image370.png)  
+
+## Paradigms for QA   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image371.png)    
+
+The IR based approach is go find the answer in some string on the web.    
+
+The knowledge based approach is build an answer from understanding a parse of the question.     
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image372.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image373.png)    
+
+## IR-based Factoid QA  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image374.png)     
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image375.png)    
+
+ 
+The general algorithm for IR-based factoid question answering starts with a question, and begins by extracting information from the question itself.  
+
+And the two most important and common things to extract from the question are a **query** that's going to be sent to an IR engine, and the type of the **answer** that tells us what kind of named entity we're looking for   
+
+we take a whole lot of documents, we index them, so that when we have a query we can return a whole lot of  documents. From those documents we extract passages, so parts of those documents.   
+
+And then, those passages are then processed, in answer processing, looking for the type of the answer that we know we're looking for. And then returning an actual answer.
+
+## Knowledge-based approaches(Siri)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image376.png)   
+
+builds a pure semantic representation of the query, and this is true of Siri or Wolfram Alpha, where they're gonna come up with a semantic representation language for questions that they understand.   
+
+And you might pick some sub-domain that you're able to build a perfect semantic representation for: times, dates, locations, scientific questions, mathematical questions.   
+
+And from this semantics, we can then map to structured databases or structured resources, geospatial databases, or ontologies, or restaurant review systems;these things where we can build up pure semantics of the approach.   
+
+Hybrid approaches, and IBM Watson is a good example of this  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image377.png)   
