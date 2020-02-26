@@ -364,5 +364,38 @@ We could try just sending the things of rank one.Or we could send, go until we h
 
 what we do with these ranking of queries depends on exactly what database were querying, whether it's the web or a smaller database and so on
 
+# 10.3 Passage Retrieval and Answer Extraction   
 
+The next step in question answering is passage retrieval(检索) and answer extraction.   
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image393.png)    
+
+we've decided what queries to send to the IR engine. And our job now is to do document retrieval, find all documents that have those query words, extract some documents and pull passages out of those that might have relevant answer fragments in them.  
+
+## Passage Retrieval  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image394.png)  
+
+reranking the passages depending on how well they are likely to contain an answer to the question.  
+
+## Features for Passage Ranking   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image395.png)   
+
+## Answer Extraction  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image396.png)    
+
+Deciding which of these named entities is the correct  
+
+##  Ranking Candidate Answers   
+
+Deciding which of these named entities is the correct answer  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image397.png)  
+
+## Use machine learning: Features for ranking candidate answers
+
+now we're, we're in this machine learning problem where we need lots of features that will tell us which of the named entities is the correct, likely to be the correct answer to extract. And we can use machine learning and lots of rich features for ranking these candidate answers  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image398.png)  
