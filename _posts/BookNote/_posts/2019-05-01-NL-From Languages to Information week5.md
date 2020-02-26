@@ -227,7 +227,7 @@ we rank these relations based on redundancy. If Relation occur and a lot of time
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image365.png)  
 
 worms：蠕虫    
-paradigms：范式    
+  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image366.png)    
 
@@ -248,6 +248,8 @@ Factoid question(事实问题) answering is a widely used commercial application
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image370.png)  
 
 ## Paradigms for QA   
+
+paradigms：范式  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image371.png)    
 
@@ -287,3 +289,80 @@ And from this semantics, we can then map to structured databases or structured r
 Hybrid approaches, and IBM Watson is a good example of this  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image377.png)   
+
+# 10.2 Answer Types and Query Formulation  
+
+
+
+## Factoid Q/A  
+
+The first thing we're going to do in question processing is understand what's being asked here.   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image378.png)  
+
+## Question Processing Thing to extract from the question  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image379.png)   
+
+## Question Processing  
+
+Here's an example of the kind of things we might extract from a question.   
+
+border: 边境  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image380.png)   
+
+## Answer Type Detection:Named Entities  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image381.png)    
+
+## Answer Type Taxonomy
+
+taxonomy:分类法    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image382.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image383.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image384.png)     
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image385.png)   
+
+The Jeopardy system also used a lot of answer types and they did a nice analysis   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image386.png)   
+
+## Answer Type Detection  
+
+How do we do answer type detection?   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image387.png)  
+
+if we see who, and then a form of to be a named entity person  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image388.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image389.png)  
+
+机器学习使用的特征   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image390.png)   
+
+##  Keyword Selection Algorithm 
+
+The next step is query formulation. How do we decide what words to send to the IR engine to return documents and then passages. (Query Formulation)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image378.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image391.png)   
+
+## Choosing keywords from the query  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image392.png) 
+
+We could try just sending the things of rank one.Or we could send, go until we have enough query words to make a long query, or we can send the things that rank one, see how many queries we get back, and if there's not enough, add in more query terms and so on.    
+
+what we do with these ranking of queries depends on exactly what database were querying, whether it's the web or a smaller database and so on
+
+
+
