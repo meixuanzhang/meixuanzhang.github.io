@@ -289,6 +289,8 @@ the general recursive formulation for n grams：
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image101.png)   
 
+When we get down to the bigrams and unigrams, we’ll be using the continuation count,后面的$$P_{KN}=P_{CONTINUATION}$$
+
 ---------------------------------------------------------------------------------------- 
 
 # 4.1 The Spelling Correction Task  错误拼写更正
