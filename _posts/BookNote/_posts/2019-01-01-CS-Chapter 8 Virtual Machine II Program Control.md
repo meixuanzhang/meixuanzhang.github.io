@@ -101,11 +101,17 @@ nArgs是将多少个参数传入函数，nvars是函数有多少个local variabl
 
 # 实现    
 
-将address指向地址,将LCL,ARG,THIS,THAT地址指向的内容按顺序加入到stack,修改LCL,ARG地址     
+将LCL,ARG,THIS,THAT地址指向的内容按顺序加入到stack,修改LCL,ARG地址     
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image55.png) 
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image89.png)  
+
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image56.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image90.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image91.png)   
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image57.png) 
 
