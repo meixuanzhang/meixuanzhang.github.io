@@ -83,6 +83,21 @@ nArgs是将多少个参数传入函数，nvars是函数有多少个local variabl
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image80.png)  
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image81.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image82.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image83.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image84.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image85.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image86.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image87.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image88.png)  
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image55.png) 
 
