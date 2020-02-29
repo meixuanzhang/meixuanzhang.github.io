@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Chapter 8 Virtual Machine II Program Control
+title: Chapter 10 Compiler I Syntax Analysis
 date:   2019-03-25
 categories: ["The Elements Of Computing Systems"]
 ---   
@@ -33,11 +33,7 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image53.png) 
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image54.png)  
-
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image60.png)  
-
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image61.png)  
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image54.png)   
 
 nArgs是将多少个参数传入函数，nvars是函数有多少个local variable 两个值不一定相等   
 

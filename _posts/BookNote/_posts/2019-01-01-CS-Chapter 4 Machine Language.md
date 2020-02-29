@@ -109,7 +109,7 @@ $$
 
 ## 流程控制  
 
-程序通常i线性方式，一个命令接着一个命令执行，但偶尔也包含分支，执行其他地方的命令。分支能够实现好几种结构，repetition、conditional execution、subroutine calling，为了支持这些程序结构，机器语言可以有条件或无条件跳转到程序指定的地址。汇编语言中，程序位置可以用符号表示。
+程序通常以线性方式，一个命令接着一个命令执行，但偶尔也包含分支，执行其他地方的命令。分支能够实现好几种结构，repetition、conditional execution、subroutine calling，为了支持这些程序结构，机器语言可以有条件或无条件跳转到程序指定的地址。汇编语言中，程序位置可以用符号表示。
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image66.png) 
 
