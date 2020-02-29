@@ -39,7 +39,50 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image61.png)  
 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image611.png)  
+
 nArgs是将多少个参数传入函数，nvars是函数有多少个local variable 两个值不一定相等   
+
+# 运行例子   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image62.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image63.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image64.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image65.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image66.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image67.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image68.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image69.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image70.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image71.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image72.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image73.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image74.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image75.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image76.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image77.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image78.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image79.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image80.png)  
+
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image55.png) 
 
