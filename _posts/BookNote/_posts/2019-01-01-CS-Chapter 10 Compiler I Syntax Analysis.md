@@ -1,48 +1,62 @@
 ---
 layout: post
 title: Chapter 10 Compiler I Syntax Analysis
-date:   2019-03-25
+date:   2019-03-26
 categories: ["The Elements Of Computing Systems"]
 ---   
 
-# 程序控制  
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image92.png)    
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image44.png)
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image93.png)    
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image45.png) 
+# Tokenizing  
 
-# 条件分支  
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image94.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image46.png)
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image95.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image47.png)
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image96.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image48.png)
+# Grammar   
 
-如果值不为0则跳
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image97.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image49.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image98.png)  
 
-# 函数  
+# Parse  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image50.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image99.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image51.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image100.png)    
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image52.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image101.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image53.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image102.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image54.png)   
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image103.png)  
 
-nArgs是将多少个参数传入函数，nvars是函数有多少个local variable 两个值不一定相等   
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image104.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image55.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image105.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image56.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image106.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image57.png) 
+# Parsing Jack programs  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image58.png)   
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image107.png)  
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image59.png) 
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image108.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image109.png)  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image110.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image111.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image112.png)   
+
+
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image110.png)   
+
+
