@@ -55,8 +55,42 @@ categories: ["The Elements Of Computing Systems"]
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image112.png)   
 
+# Jack analyzer
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image113.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image114.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image115.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image116.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image117.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image118.png)   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image119.png)   
 
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image110.png)   
+## JackTokenizer  
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image120.png)    
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image121.png)    
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image122.png)   
 
 
+## CompilationEngine   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image123.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image124.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image125.png) 
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image126.png) 
+
+## JackAnalyzer   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image127.png) 
