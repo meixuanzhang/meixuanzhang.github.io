@@ -93,13 +93,17 @@ p1所在位置是local 0,值返回给p1的赋值是地址，alloc分配的地址
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image162.png)   
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image163.png)   
+method 的参数放在argument,第一个参数argument 0，是p1,即前面分配给对象的地址。  
+
+x,y是构建时用到的参数放在this0和this1   
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image163.png)  
+
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image164.png)   
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image165.png)   
 
-method 的参数放在argument,第一个参数argument 0，是p1,即前面分配给对象的地址  
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems2/image166.png)   
 
