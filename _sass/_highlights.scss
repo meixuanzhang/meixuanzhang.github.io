@@ -8,11 +8,12 @@
   box-shadow: 3px 3px rgba(0,0,0,0.1);
   margin: 20px 0 20px 0;
   overflow: scroll;
+  font-size: $type-size-7;
 }
 
 code {
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
-  font-size: $type-size-7;
+
 }
 
 .highlight .c { color: #586E75 } /* Comment */
