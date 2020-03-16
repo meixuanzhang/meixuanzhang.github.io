@@ -292,8 +292,6 @@ Hybrid approaches, and IBM Watson is a good example of this
 
 # 10.2 Answer Types and Query Formulation  
 
-
-
 ## Factoid Q/A  
 
 The first thing we're going to do in question processing is understand what's being asked here.   
@@ -396,6 +394,21 @@ Deciding which of these named entities is the correct answer
 
 ## Use machine learning: Features for ranking candidate answers
 
-now we're, we're in this machine learning problem where we need lots of features that will tell us which of the named entities is the correct, likely to be the correct answer to extract. And we can use machine learning and lots of rich features for ranking these candidate answers  
+we're in this machine learning problem where we need lots of features that will tell us which of the named entities is the correct, likely to be the correct answer to extract. And we can use machine learning and lots of rich features for ranking these candidate answers  
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image398.png)  
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image398.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image399.png)  
+
+In IBM Watson the answer is actually scored by a whole lot of rich knowledge sources, more than 50 components.  
+
+## Common Evaluation Metrics    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image400.png)  
+
+Accuracy针对返还一个答案的模型    
+$$rank_{i}$$第一个对的答案所在位置(rank)     
+
+# 10.4 Using Knowledge in QA     
+
+# 10.5 Advanced Answering Complex Questions 
