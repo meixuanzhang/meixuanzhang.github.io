@@ -17,6 +17,10 @@ categories: ["From Languages to Information"]
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image413.png)  
 
-## Classification Methods   
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image414.png)  
 
+## Conditional vs.Joint Likelihood  
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image415.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image415.png) 
