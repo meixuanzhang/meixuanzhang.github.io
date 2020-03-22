@@ -5,7 +5,7 @@ date:   2019-05-01
 categories: ["From Languages to Information"]
 ---  
 
-# Regular expressions(正则化)
+# 1.1 Regular expressions(正则化)
 
 $$\bullet$$ 如何对下面单词进行查找? 
 
@@ -39,7 +39,7 @@ $$\bullet$$ Errors
 提升coverage和recall(减少False negative)    
 
 
-# Sentence Segmentation  
+# 1.2 Sentence Segmentation  
 
 $$"!,?"$$符号相对来说没有什么歧义
 
@@ -52,7 +52,7 @@ $$"."$$符号是有歧义的：它可以是句子的结束，可以是数字小�
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image5.png) 
 
 
-# Word Tokenization  
+# 1.3 Word Tokenization  
 
 ## Text Normalization   
 
@@ -88,7 +88,7 @@ N表示文本的单词数，V则是表示文本单词集合数(单词不重复�
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image10.png)  
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image11.png)   
 
-# Word Normalization and Stemming  
+# 1.4 Word Normalization and Stemming  
 
 根据不同需求对文本进行预处理  
 
