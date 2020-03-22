@@ -411,4 +411,46 @@ $$rank_{i}$$第一个对的答案所在位置(rank)
 
 # 10.4 Using Knowledge in QA     
 
-# 10.5 Advanced Answering Complex Questions 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image401.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image402.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image403.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image404.png)  
+
+Many question answering systems are simply one shot questions. You ask a question, you get an answer
+
+# 10.5 Advanced Answering Complex Questions    
+
+## Answering harder questions  
+
+we'd like to be able to build that kind of question not by just looking it up on the web, but by merging together possible snippets we might get from different sources.    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image405.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image406.png)    
+
+## Answering harder questions via query-focused summarization  
+
+Query focused summarization means that we're applying a natural language summarization algorithm. We're going to summarize multiple documents, pull information from multiple documents. But it's query focused. It's not just a summary of everything that's in those documents. It's the parts that are relevant for a query
+
+There are two kinds of algorithms for query focused summarization.   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image407.png)    
+
+## The Information Extraction method   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image408.png)   
+
+## Information that should be in the answer for 3 kinds of questions  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image409.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image410.png)   
+
+we'd like to search twenty documents and extract an answer of about eight sentences.      
+
+we're going to build classifiers whose job is to pull out genus species sentences. a classifier that pulls on other non-specific kinds of definition sentences     
+
+we're gonna cluster these and order these and produce as the response an answer of about eight sentences, that summarizes a good response to the question.    
