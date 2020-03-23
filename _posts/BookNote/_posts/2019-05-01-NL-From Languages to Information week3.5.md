@@ -49,3 +49,10 @@ $$P$$: distribution
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image421.png) 
 
+## Example:Text Categorization   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image422.png)   
+
+## Other Maxent Classifier Examples  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image423.png) 
