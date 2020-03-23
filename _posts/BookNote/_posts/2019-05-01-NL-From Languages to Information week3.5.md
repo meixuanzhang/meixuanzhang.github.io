@@ -40,3 +40,12 @@ categories: ["From Languages to Information"]
 $$P$$: distribution
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image419.png) 
+
+## Features  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image420.png) 
+
+## Feature-Based Models  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image421.png) 
+
