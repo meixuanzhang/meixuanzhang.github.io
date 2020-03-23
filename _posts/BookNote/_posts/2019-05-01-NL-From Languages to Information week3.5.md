@@ -23,4 +23,20 @@ categories: ["From Languages to Information"]
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image415.png) 
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image415.png) 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image416.png) 
+
+# 8.2 Making features from text for discriminative NLP models  
+
+## Features  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image417.png)
+ 
+## Example features   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image418.png)   
+
+## Feature Expectations      
+
+$$P$$: distribution
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image419.png) 
