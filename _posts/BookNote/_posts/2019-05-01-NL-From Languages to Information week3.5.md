@@ -96,4 +96,19 @@ if it gets some performance level like it might be fifty seven percent and we'd 
 
 derivative:导数   
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image434.png)
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image434.png)   
+
+# 8.5 Generative vs Discriminative models   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image435.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image436.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image437.png)  
+
+we should say that this document is equally likely to be a document about Europe or Asia but again we don't get that effect because the two tokens(Hong Kong) here are wrongly being treated as independent sources of  evidence and so therefore we think we still have a three to one odds ratio in favor of the document being about Asia     
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image438.png)  
+
+# 8.6 Maximizing the Likelihood
+ 
