@@ -56,3 +56,26 @@ $$P$$: distribution
 ## Other Maxent Classifier Examples  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image423.png) 
+
+# 8.3 Feature Based Linear Classifiers  
+
+## Feature-Based Linear Classifiers   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image423.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image424.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image425.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image426.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image427.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image429.png)  
+
+## Aside:logistic regression 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image428.png)   
+
+
+
