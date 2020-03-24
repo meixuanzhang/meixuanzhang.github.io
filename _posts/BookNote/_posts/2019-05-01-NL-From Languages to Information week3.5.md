@@ -78,4 +78,22 @@ $$P$$: distribution
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image428.png)   
 
 
+# 8.4 Building a Maxent Model The Nuts and Bolts   
 
+datum:数据   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image430.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image431.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image432.png) 
+
+we build one model with some features we test it on some development data (not our final test data) and we see how it does. 
+
+if it gets some performance level like it might be fifty seven percent and we'd like to do a bit better and then we're going to come up with a refine second model ,repeat it over and we'll commonly do this a number of times until we've tried to come up with the best model that we think we can and so the question is what do we do for this next model,in general you can look at the features and see which ones are useful
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image433.png)
+
+derivative:导数   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image434.png)
