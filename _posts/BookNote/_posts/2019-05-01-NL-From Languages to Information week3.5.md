@@ -88,9 +88,7 @@ datum:数据
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image432.png) 
 
-we build one model with some features we test it on some development data (not our final test data) and we see how it does. 
-
-if it gets some performance level like it might be fifty seven percent and we'd like to do a bit better and then we're going to come up with a refine second model ,repeat it over and we'll commonly do this a number of times until we've tried to come up with the best model that we think we can and so the question is what do we do for this next model,in general you can look at the features and see which ones are useful
+we build one model with some features we test it on some development data (not our final test data),if it gets some performance level like it might be fifty seven percent and we'd like to do a bit better and then we're going to come up with a refine second model ,repeat it over and we'll commonly do this a number of times until we've tried to come up with the best model that we think we can and so the question is what do we do for this next model,in general you can look at the features and see which ones are useful
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image433.png)
 
@@ -110,5 +108,27 @@ we should say that this document is equally likely to be a document about Europe
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image438.png)  
 
-# 8.6 Maximizing the Likelihood
+# 8.6 Maximizing the Likelihood   
+
+## The Likelihood Value  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image439.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image440.png)  
+
+## Derivative   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image441.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image442.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image443.png)  
+
+## Finding the optimal parameters  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image444.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image445.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image446.png)   
  
