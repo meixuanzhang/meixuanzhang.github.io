@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Week 6 Relation Extraction and Question Answering
+title: Week 6 Maxent Models
 date:   2019-05-01
 categories: ["From Languages to Information"]
 ---  
@@ -46,13 +46,24 @@ Feature Interaction
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image460.png)   
 
+## Feature Overlap
+
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image455.png) 
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image456.png) 
 
+## Feature Interaction  
+
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image457.png) 
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image458.png) 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image458.png)  
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image459.png) 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image459.png)  
 
+# 11.3 Conditional Maxent Models for Classification
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image461.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image462.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image463.png)
