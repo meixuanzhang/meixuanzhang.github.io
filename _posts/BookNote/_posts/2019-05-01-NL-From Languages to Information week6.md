@@ -35,4 +35,24 @@ so if we add that constraint and then say what's the maximum Trippi distribution
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image453.png)  
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image454.png)  
+a convex function if we then take a sum of convex functions that's always convex
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image454.png)    
+
+
+# 11.2 Feature Overlap Feature Interaction   
+
+Feature Interaction 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image460.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image455.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image456.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image457.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image458.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image459.png) 
+
