@@ -66,4 +66,24 @@ Feature Interaction
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image462.png)  
 
-![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image463.png)
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image463.png)   
+
+## 11.4 Smoothing Regularization Priors for Maxent Models   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image464.png)  
+
+每组数据包含$$h,t$$,模型根据$$h,t$$得出此时使用的硬币Heads和Tails的分布   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image465.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image466.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image467.png)   
+
+通过设定参数先验分布，对参数取值范围做限制。     
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image468.png)   
+
+we take this mean to be zero which is saying that the feature is irrelevant to the classification zero weight features have no influence on the classification there's this extra parameter down here a hyper parameter as to how big is the variance and this is going to control how easy it is for the parameter to move away from zero if the variance is very small the optimization will keep the parameter values clustered close to zero if the variance is very weak they'll be allowed to walk far away as a starting off point   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image469.png)  
