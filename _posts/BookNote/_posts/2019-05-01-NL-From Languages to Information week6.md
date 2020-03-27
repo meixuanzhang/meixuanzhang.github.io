@@ -87,3 +87,31 @@ Feature Interaction
 we take this mean to be zero which is saying that the feature is irrelevant to the classification zero weight features have no influence on the classification there's this extra parameter down here a hyper parameter as to how big is the variance and this is going to control how easy it is for the parameter to move away from zero if the variance is very small the optimization will keep the parameter values clustered close to zero if the variance is very weak they'll be allowed to walk far away as a starting off point   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image469.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image470.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image471.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image472.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image473.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image474.png)    
+
+That's not practical for models with millions of parameters is it becomes almost impossible to know how to create artificial data in such a way that every parameter has a nonzero value without creating enormous(巨大) amounts of artificial data so that the amount of artificial data overwhelms the amount of real data
+
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image475.png)    
+
+对于出现频率少的特征去除，类似：  
+
+we're going to estimate the weight of all rare features as 0 which you can also think of assigning them a Gaussian prior with zero variance and mean zero so that their weights can never move away from zero so dropping low counts does remove the features which are most in need of smoothing and it does speed up estimation of the model by reducing the model size but it's a very crude method of doing smoothing ,count cut-offs generally hurt accuracy
+
+
+
+
+
+
+
+
+
