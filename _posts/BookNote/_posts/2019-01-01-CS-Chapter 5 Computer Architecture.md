@@ -137,7 +137,9 @@ CPU输入和输出
 
 **Hack CPU 实现**
 
-![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image104.png)   
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image104.png)    
+
+![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image147.png)  
 
 **Instruction handling**  
 
@@ -171,7 +173,9 @@ C指令：指令解码成4个方面，op-code，ALU control bit,Destination load
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image110.png)  
 
-Program Counter输出的address,将由C指令码 jjj 、ALU输出和reset决定。 
+Program Counter输出的下一条指令的address,当前C指令码 jjj用来指定什么条件下才执行jump ,ALU的输出状态位，用来指示jump条件是否满足，如果要执行jump,就应该将A寄存器的输出值加载给PC.否则PC应该加1.       
+
+如果希望计算机重新去执行程序，将程序计数器置为0(reset)   
 
 ![_config.yml]({{ site.baseurl }}/images/87TheElementsOfComputingSystems/image111.png)  
 
