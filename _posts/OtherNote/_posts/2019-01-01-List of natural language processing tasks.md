@@ -29,14 +29,17 @@ categories:
 
 给定一个句子，为每个单词确定词性（POS）。许多单词，尤其是普通单词，可以有多种词性。例如，“ book” 可以是名词("the book on the table") 或动词("to book a flight")； "set" 可以是名词，动词或形容词; "out" 至少有五个不同的词性；一些语言比其他语言具有更多的歧义。词形态( inflectional morphology)变化很少的语言，例如英语，尤其容易产生歧义。汉语之所以容易产生这种歧义，是因为它是一种声调语言。这种变化不容易通过正字法传达预期的意义。同一个字需要加上音才能辨别，单有字存在歧义(正字法，乃关于文字使用的规范性法则，是确定正规使用的、书写和语法符合相关规范的文字。)
 
-Parsing
-Determine the parse tree (grammatical analysis) of a given sentence. The grammar for natural languages is ambiguous and typical sentences have multiple possible analyses. Perhaps surprisingly, for a typical sentence, there may be thousands of potential parses (most of which will seem completely nonsensical to a human). There are two primary types of parsing, Dependency Parsing, and Constituency Parsing. Dependency Parsing focuses on the relationships between words in a sentence (marking things like Primary Objects and predicates), whereas Constituency Parsing focuses on building out the Parse Tree using a Probabilistic Context-Free Grammar (PCFG). See also: Stochastic grammar.
-Sentence breaking (also known as sentence boundary disambiguation)
-Given a chunk of text, find the sentence boundaries. Sentence boundaries are often marked by periods or other punctuation marks, but these same characters can serve other purposes (e.g. marking abbreviations).
+**Parsing(解析)**    
+
+确定给定句子的语法分析树(parse tree)(语法分析)。该语法对自然语言是模糊(ambiguous)的和典型的句子有多种可能的分析。也许令人惊讶的是，对于一个典型的句子来说，可能有成千上万个潜在的语法分析（其中大多数对于人类来说似乎完全是毫无意义的）。解析有两种主要类型，即依存句法分析(Dependency Parsing)和成分句法分析(Constituency Parsing)。依存句法分析着重于句子中单词之间的关系（标记诸如主要对象和谓词之类的事物），而成分句法分析着重于使用概率上下文无关语法（Probabilistic Context-Free Grammar PCFG）来构建解析树(Parse Tree)。另请参阅：随机语法。
+
+**Sentence breaking(断句)(also known as sentence boundary disambiguation)(又称句子边界消歧)**    
+
+给定一段文本，找到句子边界。句子边界通常用句点或其他标点符号标记，但是这些相同的字符(characters)可以用于其他目的（例如标记缩写）。
 
 **Stemming(词干提取)**   
 
-The process of reducing inflected (or sometimes derived) words to their root form. (e.g. "close" will be the root for "closed", "closing", "close", "closer" etc.).
+将屈折的(inflected)(或有时派生的(derived)))单词还原为其词根形式的过程。(e.g. "close" will be the root for "closed", "closing", "close", "closer" etc.).    
 
 **Word segmentation(分词)**   
 
@@ -48,24 +51,36 @@ The process of reducing inflected (or sometimes derived) words to their root for
 
 术语抽取的目的是从给定的语料库(corpus)中自动抽取相关术语。
 
-# Semantics
-Lexical semantics
+# Semantics(语义学)   
+
+**Lexical semantics(词汇语义学)**  
+
 What is the computational meaning of individual words in context?
+
+
 Distributional semantics
 How can we learn semantic representations from data?
-Machine translation
+
+**Machine translation(机器翻译)p**  
+
+自动将文本从一种人类语言翻译成另一种人类语言。这是最困难的问题之一，并且“AI-complete” 问题中的一个问题，即需要人类拥有的所有不同类型的知识（语法，语义，关于现实世界的事实等） 。）正确解决。
+
 Automatically translate text from one human language to another. This is one of the most difficult problems, and is a member of a class of problems colloquially termed "AI-complete", i.e. requiring all of the different types of knowledge that humans possess (grammar, semantics, facts about the real world, etc.) to solve properly.
+
 Named entity recognition (NER)
 Given a stream of text, determine which items in the text map to proper names, such as people or places, and what the type of each such name is (e.g. person, location, organization). Although capitalization can aid in recognizing named entities in languages such as English, this information cannot aid in determining the type of named entity, and in any case, is often inaccurate or insufficient. For example, the first letter of a sentence is also capitalized, and named entities often span several words, only some of which are capitalized. Furthermore, many other languages in non-Western scripts (e.g. Chinese or Arabic) do not have any capitalization at all, and even languages with capitalization may not consistently use it to distinguish names. For example, German capitalizes all nouns, regardless of whether they are names, and French and Spanish do not capitalize names that serve as adjectives.
 Natural language generation
 Convert information from computer databases or semantic intents into readable human language.
 Natural language understanding
 Convert chunks of text into more formal representations such as first-order logic structures that are easier for computer programs to manipulate. Natural language understanding involves the identification of the intended semantic from the multiple possible semantics which can be derived from a natural language expression which usually takes the form of organized notations of natural language concepts. Introduction and creation of language metamodel and ontology are efficient however empirical solutions. An explicit formalization of natural language semantics without confusions with implicit assumptions such as closed-world assumption (CWA) vs. open-world assumption, or subjective Yes/No vs. objective True/False is expected for the construction of a basis of semantics formalization.[15]
-Optical character recognition (OCR)
-Given an image representing printed text, determine the corresponding text.
-Question answering
-Given a human-language question, determine its answer. Typical questions have a specific right answer (such as "What is the capital of Canada?"), but sometimes open-ended questions are also considered (such as "What is the meaning of life?"). Recent works have looked at even more complex questions.[16]
 
+**Optical character recognition (光学字符识别)(OCR)** 
+
+给定含有打印文本的图像，请确定相应的文本。
+
+**Question answering(回答问题)**   
+
+给定一个人类语言问题，确定其答案。典型的问题有特定的正确答案（例如“加拿大的首都是什么？”），但有时也会考虑开放性问题（例如“生活的意义是什么？”）。最近研究了甚至更复杂的问题。[16]
 
 **Recognizing Textual entailment(识别文字蕴含RTE)**    
 
@@ -78,28 +93,51 @@ H: China is a member of SCO.
 
 给定大量文本，请确定命名实体之间的关系 (e.g. who is married to whom).属于information extraction其中一个任务。  
 
+**Sentiment analysis(情感分析) (see also multimodal sentiment analysis)**  
 
-Sentiment analysis (see also multimodal sentiment analysis)
-Extract subjective information usually from a set of documents, often using online reviews to determine "polarity" about specific objects. It is especially useful for identifying trends of public opinion in social media, for marketing.
-Topic segmentation and recognition
-Given a chunk of text, separate it into segments each of which is devoted to a topic, and identify the topic of the segment.
-Word sense disambiguation
-Many words have more than one meaning; we have to select the meaning which makes the most sense in context. For this problem, we are typically given a list of words and associated word senses, e.g. from a dictionary or an online resource such as WordNet.
-# Discourse
-Automatic summarization
-Produce a readable summary of a chunk of text. Often used to provide summaries of the text of a known type, such as research papers, articles in the financial section of a newspaper.
-Coreference resolution
+通常从一组文档中提取主观信息，通常使用在线评论来确定特定对象的“极性(polarity)”。它对于识别社交媒体中的舆论趋势和市场营销尤其有用。
+
+**Topic segmentation and recognition(主题划分与识别)**   
+
+给定一段文本，将其分成若干段，每一段都对应一个主题，确定每一段的主题。
+
+**Word sense disambiguation(词义消歧)**   
+
+许多单词具有不止一种含义 ; 我们必须选择在上下文中最有意义的含义。对于这个问题，通常会给我们一个单词列表和相关的词义，例如从词典或在线资源中
+
+# Discourse(话语)   
+
+**Automatic summarization(自动汇总)**  
+
+产生一段可读的文本摘要。通常用于提供已知类型文本的摘要，例如研究论文，报纸财务版块中的文章。
+
+**Coreference resolution(共指消解)p**       
+
 Given a sentence or larger chunk of text, determine which words ("mentions") refer to the same objects ("entities"). Anaphora resolution is a specific example of this task, and is specifically concerned with matching up pronouns with the nouns or names to which they refer. The more general task of coreference resolution also includes identifying so-called "bridging relationships" involving referring expressions. For example, in a sentence such as "He entered John's house through the front door", "the front door" is a referring expression and the bridging relationship to be identified is the fact that the door being referred to is the front door of John's house (rather than of some other structure that might also be referred to).
-Discourse analysis
-This rubric includes several related tasks. One task is identifying the discourse structure of a connected text, i.e. the nature of the discourse relationships between sentences (e.g. elaboration, explanation, contrast). Another possible task is recognizing and classifying the speech acts in a chunk of text (e.g. yes-no question, content question, statement, assertion, etc.).
-# Speech
-Speech recognition
+
+**Discourse analysis(话语分析)**  
+
+该主题包括几个相关任务。一项任务是识别关联文本的话语结构，即句子之间话语关系的性质（例如阐述，解释，对比）。另一个可能的任务是在一段文本中识别和分类文本块中的言语行为（如是非问题、内容问题、陈述、断言等）。
+
+# Speech(语音)   
+
+**Speech recognition(语音识别)p**  
+
+给定一个人讲话的声音片段，确定语音的文本表示形式。这是文本与语音的对立面，并且是通称为“AI-complete”（见上文）的极其困难的问题之一。在自然语音中，连续单词之间几乎没有任何停顿，因此语音分段是语音识别的必要子任务（请参见下文）。在大多数的语言，代表连续的字母混合成的处理彼此的声音称为协同发音，所以转换的模拟信号离散字符可能是一个非常困难的过程。同样，假定具有不同口音的人说相同语言的单词，则语音识别软件必须能够识别多种输入，因为它们的文本等效性彼此相同。
+
 Given a sound clip of a person or people speaking, determine the textual representation of the speech. This is the opposite of text to speech and is one of the extremely difficult problems colloquially termed "AI-complete" (see above). In natural speech there are hardly any pauses between successive words, and thus speech segmentation is a necessary subtask of speech recognition (see below). In most spoken languages, the sounds representing successive letters blend into each other in a process termed coarticulation, so the conversion of the analog signal to discrete characters can be a very difficult process. Also, given that words in the same language are spoken by people with different accents, the speech recognition software must be able to recognize the wide variety of input as being identical to each other in terms of its textual equivalent.
-Speech segmentation
-Given a sound clip of a person or people speaking, separate it into words. A subtask of speech recognition and typically grouped with it.
-Text-to-speech
-Given a text, transform those units and produce a spoken representation. Text-to-speech can be used to aid the visually impaired.[18]
-Dialogue
+
+
+**Speech segmentation(语音分割)**  
+
+给定一个人讲话的声音片段，请将其分成单词。语音识别的子任务，通常与语音识别组合。
+
+**Text-to-speech(文字转语音)**  
+
+给定文本，将文本转换成声音表达。文字转语音可以帮助视障人士。
+
+**Dialogue(对话)**  
+
 The first published work by an artificial intelligence was published in 2018, 1 the Road, marketed as a novel, contains sixty million words.
 
 
