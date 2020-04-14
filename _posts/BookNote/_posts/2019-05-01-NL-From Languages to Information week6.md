@@ -107,7 +107,9 @@ That's not practical for models with millions of parameters is it becomes almost
 
 we're going to estimate the weight of all rare features as 0 which you can also think of assigning them a Gaussian prior with zero variance and mean zero so that their weights can never move away from zero so dropping low counts does remove the features which are most in need of smoothing and it does speed up estimation of the model by reducing the model size but it's a very crude method of doing smoothing ,count cut-offs generally hurt accuracy
 
+------------------------------------------------------------------------------------------------
 
+# 12.1 An Intro to Parts of Speech and POS Tagging
 
 
 

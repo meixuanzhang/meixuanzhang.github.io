@@ -34,12 +34,19 @@ Determine the parse tree (grammatical analysis) of a given sentence. The grammar
 Sentence breaking (also known as sentence boundary disambiguation)
 Given a chunk of text, find the sentence boundaries. Sentence boundaries are often marked by periods or other punctuation marks, but these same characters can serve other purposes (e.g. marking abbreviations).
 
-Stemming
+**Stemming(词干提取)**   
+
 The process of reducing inflected (or sometimes derived) words to their root form. (e.g. "close" will be the root for "closed", "closing", "close", "closer" etc.).
-Word segmentation
-Separate a chunk of continuous text into separate words. For a language like English, this is fairly trivial, since words are usually separated by spaces. However, some written languages like Chinese, Japanese and Thai do not mark word boundaries in such a fashion, and in those languages text segmentation is a significant task requiring knowledge of the vocabulary and morphology of words in the language. Sometimes this process is also used in cases like Bag of Words (BOW) creation in data mining.
-Terminology extraction
-The goal of terminology extraction is to automatically extract relevant terms from a given corpus.
+
+**Word segmentation(分词)**   
+
+把一段连续的文本分成几个词。对于像英语这样的语言来说，这是相当微不足道的，因为单词通常由空格隔开。然而，一些书面语言如汉语、日语和泰语并没有以这种方式标记单词边界，在这些语言中，文本分割是一项重要的任务，需要了解语言中单词的词汇和词形(morphology)。有时这个过程也用于数据挖掘中的单词袋（BOW）创建等情况。  
+
+形态学(morphology)是词素的研究。语素被定义为“语言中最小的意思单位”。由于所有单词都具有含义，因此它们至少具有1个词素，但是一个单词可以具有多个词素。 例如，单词“ cat”只有一个词素，而单词“ cats”有2个词素，-s表示多个。
+
+**Terminology extraction(术语抽取)**   
+
+术语抽取的目的是从给定的语料库(corpus)中自动抽取相关术语。
 
 # Semantics
 Lexical semantics
