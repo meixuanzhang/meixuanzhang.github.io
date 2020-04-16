@@ -58,20 +58,24 @@ categories:
 What is the computational meaning of individual words in context?
 
 
-Distributional semantics
-How can we learn semantic representations from data?
+**Distributional semantics(分布语义学)**  
+
+如何从数据中学习语义表示(semantic representations)？
 
 **Machine translation(机器翻译)p**  
 
-自动将文本从一种人类语言翻译成另一种人类语言。这是最困难的问题之一，并且“AI-complete” 问题中的一个问题，即需要人类拥有的所有不同类型的知识（语法，语义，关于现实世界的事实等） 。）正确解决。
+自动将文本从一种人类语言翻译成另一种人类语言。这是最困难的问题之一，并且通常属于“AI-complete” 这类问题之一，这需要人类拥有的所有不同类型的知识(语法，语义，关于现实世界的事实等)来解决。   
 
-Automatically translate text from one human language to another. This is one of the most difficult problems, and is a member of a class of problems colloquially termed "AI-complete", i.e. requiring all of the different types of knowledge that humans possess (grammar, semantics, facts about the real world, etc.) to solve properly.
+**Named entity recognition(命名实体识别) (NER)**   
 
-Named entity recognition (NER)
 Given a stream of text, determine which items in the text map to proper names, such as people or places, and what the type of each such name is (e.g. person, location, organization). Although capitalization can aid in recognizing named entities in languages such as English, this information cannot aid in determining the type of named entity, and in any case, is often inaccurate or insufficient. For example, the first letter of a sentence is also capitalized, and named entities often span several words, only some of which are capitalized. Furthermore, many other languages in non-Western scripts (e.g. Chinese or Arabic) do not have any capitalization at all, and even languages with capitalization may not consistently use it to distinguish names. For example, German capitalizes all nouns, regardless of whether they are names, and French and Spanish do not capitalize names that serve as adjectives.
-Natural language generation
-Convert information from computer databases or semantic intents into readable human language.
-Natural language understanding
+
+**Natural language generation(自然语言生成)**  
+
+Convert information from computer databases or semantic intents into readable human language.  
+
+**Natural language understanding(自然语言理解)**
+
 Convert chunks of text into more formal representations such as first-order logic structures that are easier for computer programs to manipulate. Natural language understanding involves the identification of the intended semantic from the multiple possible semantics which can be derived from a natural language expression which usually takes the form of organized notations of natural language concepts. Introduction and creation of language metamodel and ontology are efficient however empirical solutions. An explicit formalization of natural language semantics without confusions with implicit assumptions such as closed-world assumption (CWA) vs. open-world assumption, or subjective Yes/No vs. objective True/False is expected for the construction of a basis of semantics formalization.[15]
 
 **Optical character recognition (光学字符识别)(OCR)** 

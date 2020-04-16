@@ -109,11 +109,69 @@ we're going to estimate the weight of all rare features as 0 which you can also 
 
 ------------------------------------------------------------------------------------------------
 
-# 12.1 An Intro to Parts of Speech and POS Tagging
+# 12.1 An Intro to Parts of Speech and POS Tagging   
+
+## Parts of Speech(词性标记)
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image476.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image477.png)    
+
+## Open vs Closed classes  
+
+closed classes don't get new members  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image478.png)  
+
+## POS Tagging   
+
+lots of words have more than one part of speech   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image479.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image480.png)    
+
+Penn Treebank是一个项目的名称，项目目的是对语料进行标注，标注内容包括词性标注以及句法分析。   
+
+## POS tagging performance   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image481.png)    
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image482.png)  
+
+## Deciding on the correct part of speech can be difficult even for people  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image483.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image484.png)  
+
+# 12.2 Some Methods and Results on Sequence Models for POS Tagging  
+
+you can build a part
+
+of speech tagger that
+
+all gets 93.7% of words right
 
 
-
-
-
-
-
+if one wants to
+07:37
+keep on working on improving things
+07:40
+normally the way one goes about that is
+07:42
+by staring hard at the output of your
+07:45
+part of speech tag or whatever it is and
+07:47
+looking at where it makes errors and
+07:49
+thinking of ways in which you could
+07:51
+encode some information into features
+07:54
+that would let you detect that something
+07:56
+has gone wrong and get the system to
+07:58
+prefer some other configuration 
