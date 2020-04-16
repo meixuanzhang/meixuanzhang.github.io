@@ -147,31 +147,44 @@ Penn Treebank是一个项目的名称，项目目的是对语料进行标注，�
 
 # 12.2 Some Methods and Results on Sequence Models for POS Tagging  
 
-you can build a part
+## Source of information   
 
-of speech tagger that
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image485.png)  
 
-all gets 93.7% of words right
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image486.png)    
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image487.png)    
 
-if one wants to
-07:37
-keep on working on improving things
-07:40
-normally the way one goes about that is
-07:42
-by staring hard at the output of your
-07:45
-part of speech tag or whatever it is and
-07:47
-looking at where it makes errors and
-07:49
-thinking of ways in which you could
-07:51
-encode some information into features
-07:54
-that would let you detect that something
-07:56
-has gone wrong and get the system to
-07:58
-prefer some other configuration 
+you can build a part of speech tagger that all gets 93.7% of words right
+
+## Overview:POS Tagging Accuracies  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image488.png)    
+
+## How to improve supervised result ?
+
+if one wants to keep on working on improving things,normally the way one goes about that is by staring hard(凝视) at the output of your part of speech tag or whatever it is and looking at where it makes errors and thinking of ways in which you could encode some information into features that would let you detect that something has gone wrong and get the system to prefer some other configuration 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image489.png)   
+
+## Tagging Without Sequence  Information   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image490.png)   
+
+## Summary of POS Tagging  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image491.png)   
+
+----------------------------------------------------------------------------------------  
+
+# 13.1 Syntactic Structure Constituency vs Dependency  
+
+syntactic constructions组合规则  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image492.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image493.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image494.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image495.png)  
