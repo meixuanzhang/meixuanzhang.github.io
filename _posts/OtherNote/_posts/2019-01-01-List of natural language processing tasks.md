@@ -72,11 +72,12 @@ Given a stream of text, determine which items in the text map to proper names, s
 
 **Natural language generation(自然语言生成)**  
 
-Convert information from computer databases or semantic intents into readable human language.  
+将来自计算机数据库的信息或语义意图(semantic intents)转换为可读的人类语言   
 
-**Natural language understanding(自然语言理解)**
+**Natural language understanding(自然语言理解)**  
 
-Convert chunks of text into more formal representations such as first-order logic structures that are easier for computer programs to manipulate. Natural language understanding involves the identification of the intended semantic from the multiple possible semantics which can be derived from a natural language expression which usually takes the form of organized notations of natural language concepts. Introduction and creation of language metamodel and ontology are efficient however empirical solutions. An explicit formalization of natural language semantics without confusions with implicit assumptions such as closed-world assumption (CWA) vs. open-world assumption, or subjective Yes/No vs. objective True/False is expected for the construction of a basis of semantics formalization.[15]
+将文本块转换为更为形式化的表示形式，如更易于计算机程序操作的一阶逻辑结构。自然语言理解涉及到从多种可能的语义中识别出预期的语义，这些语义可以从自然语言表达式中派生出来，自然语言表达式通常采用自然语言概念的有组织符号的形式( the form of organized notations of natural language concepts)。 Introduction and creation of language metamodel and ontology are efficient however empirical solutions。自然语言语义的显式形式化不会与与隐含假设的混淆，如closed-world assumption（CWA）与open world assumption 或主观是/否与客观真/假）是语义形式化的基础
+
 
 **Optical character recognition (光学字符识别)(OCR)** 
 
