@@ -66,9 +66,9 @@ What is the computational meaning of individual words in context?
 
 自动将文本从一种人类语言翻译成另一种人类语言。这是最困难的问题之一，并且通常属于“AI-complete” 这类问题之一，这需要人类拥有的所有不同类型的知识(语法，语义，关于现实世界的事实等)来解决。   
 
-**Named entity recognition(命名实体识别) (NER)**   
+**Named entity recognition(命名实体识别) (NER)**    
 
-Given a stream of text, determine which items in the text map to proper names, such as people or places, and what the type of each such name is (e.g. person, location, organization). Although capitalization can aid in recognizing named entities in languages such as English, this information cannot aid in determining the type of named entity, and in any case, is often inaccurate or insufficient. For example, the first letter of a sentence is also capitalized, and named entities often span several words, only some of which are capitalized. Furthermore, many other languages in non-Western scripts (e.g. Chinese or Arabic) do not have any capitalization at all, and even languages with capitalization may not consistently use it to distinguish names. For example, German capitalizes all nouns, regardless of whether they are names, and French and Spanish do not capitalize names that serve as adjectives.
+给定一个文本流，确定文本中的哪些项映射到专有名称，例如人员或地点，以及每个此类名称的类型（例如人员、位置、组织）。尽管大写可以帮助识别英语等语言中的命名实体，但这些信息无法帮助确定命名实体的类型，而且在任何情况下，这些信息往往不准确或不充分。例如，句子的第一个字母也是大写的，命名实体通常跨越几个单词，只有一些单词是大写的。此外，非西方文字中的许多其他语言（如中文或阿拉伯语）根本没有大写，即使是有大写的语言也可能无法一致地使用它来区分名称。例如，德语将所有名词大写，而不管它们是否是名称，法语和西班牙语不将用作形容词的名称大写。    
 
 **Natural language generation(自然语言生成)**  
 
@@ -76,8 +76,7 @@ Given a stream of text, determine which items in the text map to proper names, s
 
 **Natural language understanding(自然语言理解)**  
 
-将文本块转换为更为形式化的表示形式，如更易于计算机程序操作的一阶逻辑结构。自然语言理解涉及到从多种可能的语义中识别出预期的语义，这些语义可以从自然语言表达式中派生出来，自然语言表达式通常采用自然语言概念的有组织符号的形式( the form of organized notations of natural language concepts)。 Introduction and creation of language metamodel and ontology are efficient however empirical solutions。自然语言语义的显式形式化不会与与隐含假设的混淆，如closed-world assumption（CWA）与open world assumption 或主观是/否与客观真/假）是语义形式化的基础
-
+将文本块转换为更为形式化的表示形式，如更易于计算机程序操作的一阶逻辑结构。自然语言理解涉及到从多种可能的语义中识别出预期的语义，这些语义可以从自然语言表达式中派生出来，自然语言表达式通常采用自然语言概念的有组织符号的形式( the form of organized notations of natural language concepts)。 Introduction and creation of language metamodel and ontology are efficient however empirical solutions。自然语言语义的显式形式化不会与与隐含假设的混淆，如closed-world assumption（CWA）与open world assumption 或 subjective Yes/No vs. objective True/False是语义形式化基础的构建的基础
 
 **Optical character recognition (光学字符识别)(OCR)** 
 
