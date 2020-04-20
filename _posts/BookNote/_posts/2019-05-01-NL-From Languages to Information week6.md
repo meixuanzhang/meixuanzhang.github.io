@@ -188,3 +188,21 @@ syntactic constructions组合规则
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image494.png)  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image495.png)  
+
+# 13.2 Empirical Data Driven Approach to Parsing  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image496.png)  
+
+millions of parses(这句话有数百万的解析)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image497.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image498.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image499.png)  
+
+# 13.3 The Exponential Problem in Parsing 
+
+## Attachment ambiguities(依恋歧义)  
+
+图中展示介词短语修饰(依恋)对象  
