@@ -117,7 +117,7 @@ H: China is a member of SCO.
 
 **Coreference resolution(共指消解)p**       
 
-Given a sentence or larger chunk of text, determine which words ("mentions") refer to the same objects ("entities"). Anaphora resolution is a specific example of this task, and is specifically concerned with matching up pronouns with the nouns or names to which they refer. The more general task of coreference resolution also includes identifying so-called "bridging relationships" involving referring expressions. For example, in a sentence such as "He entered John's house through the front door", "the front door" is a referring expression and the bridging relationship to be identified is the fact that the door being referred to is the front door of John's house (rather than of some other structure that might also be referred to).
+给定一个句子或更大的文本块，确定哪些单词（“提及”）引用相同的对象（“实体”）。指代消解(Anaphora resolution)是这项任务的一个具体例子，它特别关注代词与它们所指的名词或名称的匹配。更一般的共指消解任务还包括识别所谓“桥接关系(bridging relationships)”其涉及引用表达式。例如，在“He entered John’s house through the front door”这样的句子中，“front door”是指代表达，要确定的桥接关系是指被指代的门是约翰家的前门（而不是其他可能被指代的结构）。    
 
 **Discourse analysis(话语分析)**  
 
@@ -125,12 +125,9 @@ Given a sentence or larger chunk of text, determine which words ("mentions") ref
 
 # Speech(语音)   
 
-**Speech recognition(语音识别)p**  
+**Speech recognition(语音识别)**  
 
-给定一个人讲话的声音片段，确定语音的文本表示形式。这是文本与语音的对立面，并且是通称为“AI-complete”（见上文）的极其困难的问题之一。在自然语音中，连续单词之间几乎没有任何停顿，因此语音分段是语音识别的必要子任务（请参见下文）。在大多数的语言，代表连续的字母混合成的处理彼此的声音称为协同发音，所以转换的模拟信号离散字符可能是一个非常困难的过程。同样，假定具有不同口音的人说相同语言的单词，则语音识别软件必须能够识别多种输入，因为它们的文本等效性彼此相同。
-
-Given a sound clip of a person or people speaking, determine the textual representation of the speech. This is the opposite of text to speech and is one of the extremely difficult problems colloquially termed "AI-complete" (see above). In natural speech there are hardly any pauses between successive words, and thus speech segmentation is a necessary subtask of speech recognition (see below). In most spoken languages, the sounds representing successive letters blend into each other in a process termed coarticulation, so the conversion of the analog signal to discrete characters can be a very difficult process. Also, given that words in the same language are spoken by people with different accents, the speech recognition software must be able to recognize the wide variety of input as being identical to each other in terms of its textual equivalent.
-
+给定一个人讲话的声音片段，确定语音的文本表示形式。这是文本与语音的对立面，并且是通称为“AI-complete”（见上文）的极其困难的问题之一。在自然语音中，连续单词之间几乎没有任何停顿，因此语音分段是语音识别的必要子任务（请参见下文）。在大多数的语言，连续的字母在一个过程相互融合表示的声音称为协同发音，所以将模拟信号转换成离散字符可能是一个非常困难的过程。同样，假定具有不同口音的人说相同语言的单词，则语音识别软件必须能够从文本等价性的角度将各种各样的输入识别为彼此相同。  
 
 **Speech segmentation(语音分割)**  
 
