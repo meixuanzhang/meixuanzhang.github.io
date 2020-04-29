@@ -206,3 +206,23 @@ millions of parses(这句话有数百万的解析)
 ## Attachment ambiguities(依恋歧义)  
 
 图中展示介词短语修饰(依恋)对象  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image500.png)   
+
+the number of possible structures  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image501.png)    
+
+two prepositional phrases the number of possible structures is 5  
+
+so the secret to building efficient parsers and getting away from doing an exponential amount of work is to avoid doing the same work twice we only want to find possible pieces of structure for a sentence precisely once and then we'll be able to turn parsing from an exponential problem into a polynomial time problem problem
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image502.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image503.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image504.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image505.png)  
+ 
+we'll do our statistical parsers will try and exploit such statistics about word combination which kind of preposition is likely to go with which nouns and which verbs to be able to choose the correct parses of sentences without having full understanding of them
