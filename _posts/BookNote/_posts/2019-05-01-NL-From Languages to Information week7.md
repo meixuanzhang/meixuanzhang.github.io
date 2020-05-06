@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Week 6 Maxent Models
+title: Week 7 Parsing
 date:   2019-05-01
 categories: ["From Languages to Information"]
 ---  
