@@ -39,7 +39,7 @@ binary rules:   one category rewrites as another two category
 
 $$P(s)$$language model score  
 
-## 15.2 Grammar Transforms   
+# 15.2 Grammar Transforms   
 
 Restricting the grammar form for efficient parsing 
 
@@ -75,4 +75,5 @@ there have been a rule that has an NP on the right-hand side we're going to spli
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image528.png)  
 
+# 15.3 CKY Parsing 
  
