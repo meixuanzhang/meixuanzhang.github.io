@@ -99,6 +99,68 @@ this is basically half a square the number of squares that we have is order N sq
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image533.png)  
 
-two ways of making an S and here their probabilities0.0189 versus 0.0007 so the S Coast where NP VP is the higher probability way of making an S and so I keep that one and I just don't store this one
+two ways of making an S and here their probabilities0.0189 versus 0.0007 so the S Coast where NP VP is the higher probability way of making an S and so I keep that one and I just don't store this one  
 
- 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image534.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image535.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image536.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image537.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image538.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image539.png)  
+
+# 15.4 CKY Example
+
+here's the grammar that we're going to use :  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image540.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image541.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image542.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image543.png)  
+
+we also have to apply the unary rules and so the way we'll do that is for each cell will find unary rules that apply and if they create a category that isn't there before or one with higher probability than what was there before then we'll put it into our chart and in this case the relevant unary rules here
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image544.png)  
+
+build a binary constituent:  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image545.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image546.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image547.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image548.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image549.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image550.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image551.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image552.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image553.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image554.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image555.png)  
+
+# 15.5 Constituency Parser Evaluation   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image556.png)  
+
+yesterday should be this kind of weird kind of temporal noun phrase in English hares where you have be a noun phrase like yes yesterday or next week to express a time and otherwise if it expresses a prepositional phrase like on Sunday in
+
+the spring but the parser is wrongly just stuck it on as an extra noun at the end of the noun phrase great care and so that's an error so how are we going to go about measuring that well 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image557.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image558.png)  
