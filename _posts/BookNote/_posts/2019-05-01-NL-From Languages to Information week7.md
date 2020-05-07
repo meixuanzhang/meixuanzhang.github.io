@@ -164,3 +164,25 @@ the spring but the parser is wrongly just stuck it on as an extra noun at the en
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image557.png)   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image558.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image559.png)  
+
+------------------------------------------------------------------------------------------------
+
+16.1 Lexicalization of PCFGs
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image560.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image561.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image562.png) 
+
+if we want to work out for a prepositional phrase(for january) whether it is modifying announce of precedes or modifying a verb that perceives 
+
+we can capture quite a lot of that inside a pcfg once we lexicalize ,now we'll have a rule where an NP-rates is taking on its right-hand side a PP-for and we can ask whether that is a likely thing to happen or not or we can say we have a VP-announce is taking expanding on its right-hand side to a PP-in is that a reasonable thing to happen or not
+
+# 16.2 Charniak's Model
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image563.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image564.png)  
