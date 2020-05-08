@@ -186,3 +186,11 @@ we can capture quite a lot of that inside a pcfg once we lexicalize ,now we'll h
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image563.png)  
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image564.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image565.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image566.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image567.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image568.png)  
