@@ -224,3 +224,32 @@ we're going to split out noun phrases that are possessive and pull them an NP-po
 we have a couple of statistics one is our performance level which will be our usual if one of label precision recall and then the other one is the size of our grammar that as we make more state splits the grammar will be bigger in terms of its number of non-terminals and if this number gets too big that's both dangerous for two reasons it'll both slow down the parser and we'll start to get problems with sparseness 
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image574.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image575.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image576.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image577.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image578.png)   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image579.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image580.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image581.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image582.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image583.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image584.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image585.png) 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image586.png)  
+
+# 16.5 Latent Variable PCFGs  
+
+
+
