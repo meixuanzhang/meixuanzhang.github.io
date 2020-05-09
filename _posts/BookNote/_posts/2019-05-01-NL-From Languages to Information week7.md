@@ -169,7 +169,7 @@ the spring but the parser is wrongly just stuck it on as an extra noun at the en
 
 ------------------------------------------------------------------------------------------------
 
-16.1 Lexicalization of PCFGs
+# 16.1 Lexicalization of PCFGs
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image560.png)  
 
@@ -194,3 +194,33 @@ we can capture quite a lot of that inside a pcfg once we lexicalize ,now we'll h
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image567.png)   
 
 ![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image568.png)  
+
+# 16.3 PCFG Independence Assumptions   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image569.png)  
+
+you can work out the probabilities of things inside here(图中绿色)  knowing only that this is a noun phrase(NP)   
+
+you can work out the probabilities of things up here(图中红色) knowing only this is a noun phrase(NP) that's a very strong independence assumption   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image570.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image571.png)  
+
+右边两个结构上半部分是一样的，根据独立假设，第二NP下内容只需要根据第二NP预测，第二NP下内容应该一样，明显独立假设过强   
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image572.png)  
+
+we can relax independence assumptions of a pcfg by encoding more information into the non terminals cymbals the process that's often referred to as state splitting：  
+
+you can improve a probabilistic context-free grammar quite a lot by encoding as part of each non-terminal also what was the parent category 
+
+we're going to split out noun phrases that are possessive and pull them an NP-pos and then that information will also be captured in the grammar   
+
+# 16.4 The Return of Unlexicalized PCFGs  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image573.png) 
+
+we have a couple of statistics one is our performance level which will be our usual if one of label precision recall and then the other one is the size of our grammar that as we make more state splits the grammar will be bigger in terms of its number of non-terminals and if this number gets too big that's both dangerous for two reasons it'll both slow down the parser and we'll start to get problems with sparseness 
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image574.png) 
