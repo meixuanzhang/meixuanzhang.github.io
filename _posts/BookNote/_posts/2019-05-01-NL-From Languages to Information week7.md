@@ -251,5 +251,18 @@ we have a couple of statistics one is our performance level which will be our us
 
 # 16.5 Latent Variable PCFGs  
 
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image587.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image588.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image589.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image590.png)  
+
+![_config.yml]({{ site.baseurl }}/images/9From Languages to Information/image591.png)  
+
+---------------------------------------------------------------------------------------------
+
+# 17.1 Dependency Parsing Introduction  
 
 
