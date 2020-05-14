@@ -71,5 +71,24 @@ CFG所使用的符号分为两类，与语言中单词对应的符号((“the”
 
 CFG定义的形式语言从指定的初始符号(start symbol)开始推导出字符串集合。每一个语法必须指定一个初始符号，初始符号通常为$$S$$。由于上下文无关语法通常用来定义句子，所以$$“S”$$通常解释为"句子"的结点。简化英语语法中，用$$S$$推导出的字符串的集合就是句子的集合。   
 
-形式语言（英语：Formal language）是用精确的数学或机器可处理的公式定义的语言。
+形式语言（英语：Formal language）是用精确的数学或机器可处理的公式定义的语言。 
+
+例子：  
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image13.png)     
+
+$$PP$$不一定总是表示方位，$$PP$$经常还可以表示时间和日期，也可以使用其他名词。ATIS语料库中的例子：  
+
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image14.png)   
+
+词表和语法样例，$$\mid$$表示“或者”：  
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image15.png)   
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image16.png) 
+
+根据语法生成的句子：  
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image17.png) 
 
