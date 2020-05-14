@@ -57,7 +57,7 @@ CFG所使用的符号分为两类，与语言中单词对应的符号((“the”
 
 箭头$$\to$$右边的项是一个或者多个终极符号或非终极符号构成的有序表，左边是一个单独的非终极符号，表示某种聚类或概括性的符号。  
 
-词表中，与每个单词相关联的非终极符号是它们词汇类别或词x性(part-of-speech)  
+词表中，与每个单词相关联的非终极符号是它们词汇类别或词性(part-of-speech)  
 
 可以通过两种方式考虑CFG：作为生成句子的装置，作为给给定句子分配结构的装置。箭头$$\to$$读为“用右边的符号串重写左边的符号串”    
 
@@ -82,7 +82,7 @@ $$PP$$不一定总是表示方位，$$PP$$经常还可以表示时间和日期�
 
 ![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image14.png)   
 
-词表和语法样例，$$\mid$$表示“或者”：  
+词表和语法规则样例，“$$\mid$$”表示“或者”：  
 
 ![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image15.png)   
 
@@ -91,4 +91,20 @@ $$PP$$不一定总是表示方位，$$PP$$经常还可以表示时间和日期�
 根据语法生成的句子：  
 
 ![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image17.png) 
+
+可以将剖析树用括号表示(bracketed notation),即树的LISP,结果如下：  
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image18.png)   
+
+形式语言是符号串的集合。如果由一个语法推导出的句子处于该语法定义的形式语言之中，那么这个句子是合语法的(grammatical).不能被给定的形式语法推导出的句子不处于由该语法定义的形式语言之中，这个句子是不合语法的(ungrammatical).   
+
+确定一个给定的句子是不是给定的自然语言(如英语)的一部分通常要依赖于上下文。在语言学中，使用形式语言来模拟自然语言的语法称为生成语法(generative grammar),因为语言是通过由语法"生成"的一切可能的句子的集合来确定的。 
+
+## 上下文无关语法的形式定义  
+
+一个上下文无关语法$$G$$由4个参数：$$N,\sum,R,S$$[技术上称为“4-tuple”]:   
+
+![_config.yml]({{ site.baseurl }}/images/18SpeechAndLanguageProcessing/image19.png)     
+
+
 
