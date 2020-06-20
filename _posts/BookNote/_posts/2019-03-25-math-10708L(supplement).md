@@ -29,6 +29,13 @@ $$\Theta$$为参数空间
 
 有仅包含两个二元变量$$X,Y$$的网络，网络结构为$$X \to Y$$.网络由一个参数向量$$\mathbf{\theta}$$参数化,这个参数向量定义了网络中所有CPD的参数集合。示例中参数化包含了如下参数：$$\theta_{x^1},\theta_{x^2}$$,指定了$$X$$两个值的概率;$$\theta_{y^1\mid x^1},\theta_{y^0\mid x^1}$$,指定了当$$X=x^1$$时 $$Y$$的概率;$$\theta_{y^1\mid x^0},\theta_{y^0\mid x^0}$$,指定了当$$X=x^0$$时 $$Y$$的概率.简单起见，用$$\mathbf{\theta}_{Y \mid x^0}$$表示$$\{\theta_{y^1\mid x^0},\theta_{y^0\mid x^0}\}$$,$$\mathbf{\theta}_{Y \mid X}$$表示$$\mathbf{\theta}_{Y \mid x^1}\bigcup \mathbf{\theta}_{Y \mid x^0}$$  
 
+示例中，每个训练实例是一个描述$$X$$与$$Y$$的一个特定赋值的元组$$(x[m],y[m])$$,似然函数为  
+
+$$L(\mathbf{\theta};\mathcal{D})= \prod_{m}P(x[m],y[m];\mathbf{\theta})\\
+=\prod_{m}P(x[m];\mathbf{\theta})P(y[m]\mid x[m];\mathbf{\theta})\\
+=(\prod_{m}P(x[m];\mathbf{\theta}))(\prod_{m}P(y[m]\mid x[m];\mathbf{\theta}))
+=$$  
+
 # 贝叶斯参数估计
 
    
