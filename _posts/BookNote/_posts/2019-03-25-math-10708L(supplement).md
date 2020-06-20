@@ -15,7 +15,11 @@ categories: ["Probabilistic Graphical Models"]
 
 对于给定$$\mathbf{\theta}$$下，似然函数是模型关于训练数据的概率(或密度)   
 
-$$L(\mathbf{\theta};\mathcal{D})$$  
+$$L(\mathbf{\theta};\mathcal{D})= \prod_{m}P(\xi[m];\mathbf{\theta})$$  
+
+最大似然估计：给定数据集$$\mathcal{D}$$,选择满足下式的参数$$\hat{\mathbf{\theta})}$$   
+
+$$L(\hat{\mathbf{\theta})};\mathcal{D})=\mathop{max}_{\mathbf{\theta}) \in \Theta} L(\mathbf{\theta};\mathcal{D})$$
 
    
 
