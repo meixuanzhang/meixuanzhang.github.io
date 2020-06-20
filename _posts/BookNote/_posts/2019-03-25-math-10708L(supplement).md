@@ -1,152 +1,24 @@
 ---
 layout: post
-title: 译Lecture 6 Learning Partially Observed GM and the EM Algorithm
+title: 17章 参数估计(补充)   
 date:   2019-03-25
 categories: ["Probabilistic Graphical Models"]
 ---  
 
+处理参数估计任务的主要方法有两种：一种基于最大似然的估计，另一种是使用贝叶斯方法   
 
-介绍了利用EM（Baum-Welch）算法从数据中估计图模型参数的过程。
+# 最大似然估计  
 
-# 介绍  
+假设从一个未知的分布$$P^*(\chi)$$观测到随机变量集$$\chi$$中的一些IDD(独立同分布)样本，并且假定事先知道将要处理的样本空间(有哪些随机变量，以及它们可以取值)。样本训练集表示为$$D$$,并且假定它包含了$$\chi$$中的$$M$$个实例：$$\xi[1],..,\xi[M]$$。
 
-在之前的讲座中，我们介绍了从数据中学习图模型的概念，其中学习是估计参数的过程，在某些情况下，还包括从数据中估计网络结构的过程。第五讲在完全观测GMs的背景下介绍了这个概念。对于每个条件概率分布，在完全观测的节点和全局独立参数的设置中的最大似然估计非常简单，因为似然函数可以完全分解为独立项的乘积，每个项对应于网络中的条件概率分布。这意味着我们可以独立于网络的其余部分最大化每个局部似然函数，然后组合解决方案以获得MLE解决方案。
+假定有一个参数模型，我们希望估计该模型的参数，一个参数模型是由关于参数集合的函数$$P(\xi;\mathbf{\theta})$$.当给定参数值的一个特定集合$$\mathbf{\theta}$$和$$\chi$$,这个模型为$$\xi$$分配了一个概率(或密度)   
 
-在本讲座中，我们将注意力转向部分观测的图模型，这是同等重要的一类模型，包括隐马尔可夫模型和高斯混合模型。 我们将看到，在部分观测的数据下，我们失去了似然函数的重要属性：其单峰性，闭式表示以及分解为不同参数的似然的乘积。因此，学习问题变得更加复杂，我们转向Expectation-Maximization算法来估计模型参数。
+对于给定$$\mathbf{\theta}$$下，似然函数是模型关于训练数据的概率(或密度)   
 
-# 部分观测的图模型(Partially Observed GMs)    
+$$L(\mathbf{\theta};\mathcal{D})$$  
 
-## 有向但部分观测的图模型(Directed but partially observed GM)  
+   
 
-首先考虑完全观测的有向图模型的情况：  
-
-![_config.yml]({{ site.baseurl }}/images/10708/image133.png)   
-
-完全观测的有向图模型对数似然函数可分解为局部项的总和。我们可以独立地最大化每个局部似然函数。  
-
-![_config.yml]({{ site.baseurl }}/images/10708/image136.png)  
-
-
-将此与有向但部分观测的GM进行比较。 假设现在有一个变量没有观测到，但是我们仍然想写下数据的似然( likelihood)。 为此，为此，我们将不可观测概率边缘化(即积分或求和)。  
-
-![_config.yml]({{ site.baseurl }}/images/10708/image134.png)  
-
-部分观测的有向图模型。对于未观测(unobserved)或潜在变量(latent variables)，对数似然函数不再分解为局部项之和。所有参数通过边缘化耦合在一起。
-
-![_config.yml]({{ site.baseurl }}/images/10708/image137.png) 
-
-**为观测变量(UNOBSERVED VARIABLES)**   
-
-+ 变量可以是未观测的(unobserved)或潜在的(latent），因为它是一个：  
-
-1、抽象变量(Abstract)或虚拟变量(imaginary quantity )，用于简化数据生成过程例如语音识别模型、混合模型。
-
-2、难以或不可能测量的真实对象，如恒星的温度、疾病的起因、进化的祖先。  
-
-3、由于样本丢失而无法测量的真实对象，例如传感器故障。  
-
-+ 离散潜在变量(Discrete latent variables)可用于将数据划分或分组  
-
-+ 连续潜在变量(Continuous latent variables)(因子)可用于降维(如因子分析等)   
-
-**示例：用于语音识别(SPEECH RECOGNITION)的HMMS**
-
-我们的手机能够识别语音并将其转换为文本。解决这一问题的最初方法是基于隐马尔可夫模型(HMMs)。我们假设存在一种潜在的状态( latent state )，它会产生带噪声信号的语音，这些语音可以被“分块”成不同的成分或音素(phonemes)。我们为不同的语言创建不同音素的词典，然后我们试图推断出生成语音的音素序列。
-
-![_config.yml]({{ site.baseurl }}/images/10708/image135.png) 
-
-**示例：用于生物进化的贝叶斯网络**   
-
-无法测量地球上不再存在的进化祖先的数据，但它们仍然是模型的一个有用的潜在变量。
-
-![_config.yml]({{ site.baseurl }}/images/10708/image138.png)    
-
-## 概率推断(Probabilistic Inference)  
-
-GM的$$M$$描述了一个唯一的概率分布$$P$$。为了学习部分可观测的GMs，我们必须在由$$P$$描述的推断关系和从数据$$D$$估计一个可信的模型$$M$$之间迭代。这样推理就可以被视为学习问题的一个子例程(子程序)：  
-
-任务一.我们如何回答关于$$P$$的问题,例如$$P(X\mid Y)$$  
-
-+ 我们使用推理(inference)作为计算这些问题答案的过程的名称。  
-
-任务二.我们如何从数据$$D$$估计一个可信的模型$$M$$   
-
-+ 我们使用学习(learning)作为$$M$$的点估计的获得过程的名称。对于贝叶斯方法，我们寻求$$P(M\mid D)$$,这也是一个推理(inference)问题。  
-
-GMs中有许多推理方法。它们可以分为两类： 
-
-+ **Exact inference algorithms**.包括消元算法(elimination algorithm)、信息传递算法(message-passing algorithm)（和积、信念传播(sum-product, belief propagation)）、连接树算法(junction tree algorithms)。这些算法可以给出问题的精确结果。本课程的主要主题是精确推理算法。
-
-+ **Approximate inference techniques**. 包括随机模拟/抽样方法(stochastic simulation / sampling methods)、马尔可夫链蒙特卡罗方法(Markov chain Monte Carlo (MCMC) methods)、变分算法(variational algorithms)。这些算法只给出了推理问题(inference query)的近似答案。我们将在以后的讲座中介绍这些方法。  
-
-## 混合模型(Mixture Models)  
-
-一个密度模型(density model)$$p(x)$$可以是多峰的(multi-modal),但是我们可以将其建模为单峰分布(uni-modal)的混合.(例如高斯分布).假设我们有数据集$$x_{n}\in R^D,n=1,..,N$$,我们认为数据是由$$K$$个高斯分布的混合生成的。让$$z\in 1,...K$$为未观测随机变量，$$P(z=k)=\pi_{k},k=1,...,K$$,为了$$P(z)$$是有效的概率分布,$$0\le \pi \ge 1$$并且$$\sum_{k=1}^K \pi_{k} = 1$$ ,我们称$$\pi_{k}$$为混合比例，我们假设对给定混合标签$$k$$的高斯分量表示为$$p(x\mid z=k)=N(x\mid \mu_{k},\Sigma_{k})$$,$$\mu_{k},\Sigma_{k}$$是每个高斯分量的参数  
-
-
-$$p(x_{n})=\sum_{z}P(x_{n}\mid z)P(z)=\sum_{k=1}^K N(x_{n} ; \mu_{k},\Sigma_{k})\pi_{k}$$   
-
-$$Z$$是潜在类别指标向量：  
-
-$$p(z_{n})=multi(z_{n} ;\pi)=\prod_{k}(\pi_{k})^{z_{n}^k}$$   
-
-Multinoulli distribution  
-
-$$X$$是具有类特定均值/协方差的条件高斯变量:  
-
-$$p(x_{n}\mid z_{n}^k =1)=p(x_{n} ; \mu_{k},\Sigma_{k})\\
-=\frac{1}{(2\pi)^{m/2} \mid \Sigma_{k} \mid^{1/2}} exp(-\frac{1}{2}(x_{n}-\mu_{k})^T \Sigma_{k}^{-1} (x_{n}-\mu_{k}))$$
-
-高斯混合模型是部分观测图模型的示例。 引入潜在变量$$Z$$作为类指标，以将多峰分布分成更简单的单峰分布。  
-
-![_config.yml]({{ site.baseurl }}/images/10708/image139.png) 
-
-The likelihood of a sample:   
-
-$$p(x_{n}) = \sum_{k}p(z^k =1\ ; \pi)p(x_{n}\mid z^k =1)\\
-=\sum_{z_{n}} \prod_{k}(\pi_{k})^{z_{n}^k} N(x ; \mu_{k},\Sigma_{k})^{z_{n}^k}\\
-=\sum_{k=1}^K N(x_{n}; \mu_{k},\Sigma_{k})\pi_{k} $$
-
-**全观测高斯混合模型的MLE解**  
-
-当能观察到潜在变量$$Z$$时，数据对数似然可以分解： 
-
-![_config.yml]({{ site.baseurl }}/images/10708/image140.png) 
-
-因此，可以针对以下参数分别找到参数的MLE解决方案：
-
-![_config.yml]({{ site.baseurl }}/images/10708/image141.png)  
-
-我们通常不了解类标签$$z_{n}^k$$。如果是知道，计算模型参数将非常容易。 如果我们不知道$$z_{n}^k$$，则无法将数据对数似然分解或独立地找到参数（注意这里的参数都取决于$$z_{n}^k$$）  
-
-## 部分观测高斯混合模型(Gaussian Mixture Model)的参数估计(Estimating the Parameters of a Partially-Observed GMM)  
-
-# Expectation-Maximization (E-M) Algorithm  
-
-## 完全和不完全对数似然(Complete and Incomplete Log Likelihood) 
-
-**完全对数似然**   
-
-**不完全对数似然**  
-
-## 期望完全对数似然(Expected Complete Log Likelihood)    
-
-
-## Lower Bounds and Free Energy   
-
-## 示例：隐马尔可夫模型和Baum-Welch算法
-
-
-## 示例：常规BN的EM(EM for a general BN )  
-
-# 总结  
-
-# 其他资源 
-
-Jordan textbook, Ch. 11   
-Koller textbook, Ch. 19.1-19.4  
-Borman, The EM algorithm (A short tutorial)   
-Variations on EM algorithm by Neal and Hinton   
 
 参考：
 [Lecture 6: Learning Partially Observed GM and the EM Algorithm](https://sailinglab.github.io/pgm-spring-2019/notes/lecture-06/)
