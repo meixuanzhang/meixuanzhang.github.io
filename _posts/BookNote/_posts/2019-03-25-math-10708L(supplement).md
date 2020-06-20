@@ -41,6 +41,8 @@ $$\prod_{m}P(x[m];\mathbf{\theta})=\prod_{m}P(x[m];\mathbf{\theta}_{X})$$
 $$\prod_{m}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})=\prod_{m:x[m]=x^0}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})\prod_{m:x[m]=x^1}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})\\
 =\prod_{m:x[m]=x^0}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^0})\prod_{m:x[m]=x^1}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^1})$$
 
+进一步简化如每个单独项$$P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^0})$$都可以根据$$y[m]$$的取值在两个不同的值中任取其一。如$$y[m]=y^0$$,那么值为$$\theta_{y^0\mid x^0})$$ 
+
 # 贝叶斯参数估计
 
    
