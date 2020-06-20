@@ -63,6 +63,12 @@ $$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\
 
 这个公式在参数集$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$不相交时特别有用。即，每个CPD由不重叠的参数的分离集参数化。   
 
+结论：  
+
+令$$\mathcal{D}$$为$$X_{1},..,X_{n}$$的一个完备数据集，$$g$$为这些变量上的一个网络结构，并假定对于所有的$$j\ne i$$,参数$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$与$$\mathbf{\theta}_{X_{j}\mid pa_{x_{j}}}$$不相交。令$$\hat{\mathbf{\theta}}_{X_{i}\mid pa_{x_{i}}}$$是最大化$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})$$的参数，那么$$\hat{\mathbf{\theta}}=<\hat{\mathbf{\theta}}_{X_{1}\mid pa_{x_{1}}},..,\hat{\mathbf{\theta}}_{X_{n}\mid pa_{x_{n}}}>$$最大化$$L_{i}(\mathbf{\theta};\mathcal{D})$$   
+
+换句话说，可以独立于其他的网络来对每个局部似然函数最大化，然后合并这些结构得到一个MLE的解
+
 # 贝叶斯参数估计
 
    
