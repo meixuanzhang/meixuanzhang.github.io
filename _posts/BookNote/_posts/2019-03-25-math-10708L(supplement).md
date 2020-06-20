@@ -49,19 +49,19 @@ $$\prod_{m}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})=\prod_{m:x[m]=x^0}P(y[m]\m
 
 $$
 L(\mathbf{\theta};\mathcal{D}) = \prod_{m} P_{g}(\xi[m];\mathbf{\theta})\\
-=\prod_{m}\prod_{i}P(x_{i}[m]\mid pa_{X_{i}}[m];\mathbf{\theta})\\
-=\prod_{i}[\prod_{m}P(x_{i}[m]\mid pa_{X_{i}}[m];\mathbf{\theta})]  
+=\prod_{m}\prod_{i}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta})\\
+=\prod_{i}[\prod_{m}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta})]  
 $$
 
-用$$\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}}$$来表示模型中确定$$P(X_{i}\mid pa_{X_{i}})$$的参数的子集。那么，有如下表示： 
+用$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$来表示模型中确定$$P(X_{i}\mid pa_{x_{i}})$$的参数的子集。那么，有如下表示： 
 
-$$L(\mathbf{\theta};\mathcal{D})= \prod_{i} L(\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}};\mathcal{D})=$$
+$$L(\mathbf{\theta};\mathcal{D})= \prod_{i} L(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})$$
 
 其中$$X_{i}$$的局部似然函数是：  
 
-$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\mid pa_{X_{i}}[m];\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}})$$   
+$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$   
 
-这个公式在参数集$$\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}}$$不相交时特别有用。即，每个CPD由不重叠的参数的分离集参数化。   
+这个公式在参数集$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$不相交时特别有用。即，每个CPD由不重叠的参数的分离集参数化。   
 
 # 贝叶斯参数估计
 
