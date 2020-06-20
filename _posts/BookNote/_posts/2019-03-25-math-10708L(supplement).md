@@ -41,7 +41,19 @@ $$\prod_{m}P(x[m];\mathbf{\theta})=\prod_{m}P(x[m];\mathbf{\theta}_{X})$$
 $$\prod_{m}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})=\prod_{m:x[m]=x^0}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})\prod_{m:x[m]=x^1}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})\\
 =\prod_{m:x[m]=x^0}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^0})\prod_{m:x[m]=x^1}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^1})$$
 
-进一步简化如每个单独项$$P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^0})$$都可以根据$$y[m]$$的取值在两个不同的值中任取其一。如$$y[m]=y^0$$,那么值为$$\theta_{y^0\mid x^0})$$ 
+进一步简化如每个单独项$$P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^0})$$都可以根据$$y[m]$$的取值在两个不同的值中任取其一。如$$y[m]=y^0$$,那么值为$$\theta_{y^0\mid x^0}$$   
+
+## 全局似然分解  
+
+假设我们的目标是对一个具有结构$$g$$和参数$$\mathbf{\theta}$$的贝叶斯网进行参数学习。给定一个包含样本$$\chi[1],..,\chi[M]$$的数据集$$\mathcal{D}$$。将似然函数写下来，并重复在例子中的步骤，得到：  
+
+$$
+L(\mathbf{\theta};\mathcal{D}) = \prod_{m} P_{g}(\chi[m];\mathbf{\theta})\\
+=\prod_{m}\prod_{i}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta})  
+=\prod_{i}\prod_{m}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta})  
+$$
+
+$$$$
 
 # 贝叶斯参数估计
 
