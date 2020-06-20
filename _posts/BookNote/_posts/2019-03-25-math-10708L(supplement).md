@@ -59,7 +59,9 @@ $$L(\mathbf{\theta};\mathcal{D})= \prod_{i} L(\mathbf{\theta}_{X_{i}\mid pa_{X_{
 
 其中$$X_{i}$$的局部似然函数是：  
 
-$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\mid pa_{X_{i}}[m];\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}})$$
+$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\mid pa_{X_{i}}[m];\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}})$$   
+
+这个公式在参数集$$\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}}$$不相交时特别有用。即，每个CPD由不重叠的参数的分离集参数化。   
 
 # 贝叶斯参数估计
 
