@@ -48,12 +48,18 @@ $$\prod_{m}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})=\prod_{m:x[m]=x^0}P(y[m]\m
 假设我们的目标是对一个具有结构$$g$$和参数$$\mathbf{\theta}$$的贝叶斯网进行参数学习。给定一个包含样本$$\chi[1],..,\chi[M]$$的数据集$$\mathcal{D}$$。将似然函数写下来，并重复在例子中的步骤，得到：  
 
 $$
-L(\mathbf{\theta};\mathcal{D}) = \prod_{m} P_{g}(\chi[m];\mathbf{\theta})\\
-=\prod_{m}\prod_{i}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta})  
-=\prod_{i}\prod_{m}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta})  
+L(\mathbf{\theta};\mathcal{D}) = \prod_{m} P_{g}(\xi[m];\mathbf{\theta})\\
+=\prod_{m}\prod_{i}P(x_{i}[m]\mid pa_{X_{i}}[m];\mathbf{\theta})\\
+=\prod_{i}[\prod_{m}P(x_{i}[m]\mid pa_{X_{i}}[m];\mathbf{\theta})]  
 $$
 
-$$$$
+用$$\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}}$$来表示模型中确定$$P(X_{i}\mid pa_{X_{i}})$$的参数的子集。那么，有如下表示： 
+
+$$L(\mathbf{\theta};\mathcal{D})= \prod_{i} L(\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}};\mathcal{D})=$$
+
+其中$$X_{i}$$的局部似然函数是：  
+
+$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\mid pa_{X_{i}}[m];\mathbf{\theta}_{X_{i}\mid pa_{X_{i}}})$$
 
 # 贝叶斯参数估计
 
