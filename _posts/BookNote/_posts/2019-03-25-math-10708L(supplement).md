@@ -34,7 +34,9 @@ $$\Theta$$为参数空间
 $$L(\mathbf{\theta};\mathcal{D})= \prod_{m}P(x[m],y[m];\mathbf{\theta})\\
 =\prod_{m}P(x[m];\mathbf{\theta})P(y[m]\mid x[m];\mathbf{\theta})\\
 =(\prod_{m}P(x[m];\mathbf{\theta}))(\prod_{m}P(y[m]\mid x[m];\mathbf{\theta}))
-=$$  
+$$  
+
+$$
 
 # 贝叶斯参数估计
 
