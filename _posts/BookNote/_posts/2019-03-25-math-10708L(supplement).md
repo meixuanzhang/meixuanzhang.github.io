@@ -93,7 +93,13 @@ $$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\
 
 令$$g$$是一个具有参数$$\mathbf{\theta}=(\mathbf{\theta}_{X_{1}\mid pa_{x_{1}}},...,\mathbf{\theta}_{X_{n}\mid pa_{x_{n}}})$$的贝叶斯网结构。先验$$P(\mathbf{\theta})$$称为满足全局的参数独立性(global parameter independence),假如它具有如下形式:  
 
-$$P(\mathbf{\theta})=\prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$
+$$P(\mathbf{\theta})=\prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$  
+
+对于路径$$\mathbf{\theta}_{X} \to X[m] \to Y[m] \gets \mathbf{\theta}_{Y\mid X} $$，$$X[m]$$观测同样会阻断这条路径。如果这两个参数变量是独立的先验，那么它们也是独立的后验。
+
+$$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\theta}_{X}\mid D)P(\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})$$
+
+完整的数据可以d-separates 不同$$CPD$$的参数。如，如果对于所有的$$m$$，$$X[m],Y[m]$$是可观测的，那么$$\mathbf{\theta}_{X}$$和$$\mathbf{\theta}_{Y\mid X} $$是d-separates的。
 
 
 参考：
