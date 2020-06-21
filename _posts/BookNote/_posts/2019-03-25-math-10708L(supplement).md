@@ -99,7 +99,7 @@ $$P(\mathbf{\theta})=\prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$
 
 $$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\theta}_{X}\mid D)P(\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})$$
 
-完整的数据可以d-separates 不同$$CPD$$的参数。如，如果对于所有的$$m$$，$$X[m],Y[m]$$是可观测的，那么$$\mathbf{\theta}_{X}$$和$$\mathbf{\theta}_{Y\mid X} $$是d-separates的。
+完整的数据可以d-separates 不同CPD的参数。如，如果对于所有的$$m$$，$$X[m],Y[m]$$是可观测的，那么$$\mathbf{\theta}_{X}$$和$$\mathbf{\theta}_{Y\mid X} $$是d-separates的。
 
 **一般情况下的网络**  
 
@@ -119,7 +119,11 @@ $$P(\mathbf{\theta})=\prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$
 
 将两个分解结合起来。得到:    
 
-$$P()=\frac{1}{P(\mathcal{D})}\prod_{i}[ L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})]$$    
+$$P(\mathbf{\theta}\mid \mathcal{D})=\frac{1}{P(\mathcal{D})}\prod_{i}[ L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})]$$    
+
+命题：假定$$ \mathcal{D}$$是$$\chi$$的一个完整数据集，令$$g$$是这些变量上的一个网络结构。如果$$P(\mathbf{\theta})$$满足全局的参数独立性，那么  
+
+$$P(\mathbf{\theta}\mid \mathcal{D})= \prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}\mid \mathcal{D})$$     
 
 
 
