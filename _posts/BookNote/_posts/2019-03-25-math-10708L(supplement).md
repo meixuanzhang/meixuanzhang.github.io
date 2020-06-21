@@ -99,7 +99,7 @@ $$P(\mathbf{\theta})=\prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$
 
 $$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\theta}_{X}\mid D)P(\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})$$
 
-完整的数据可以d-separates 不同CPD的参数。如，如果对于所有的$$m$$，$$X[m],Y[m]$$是可观测的，那么$$\mathbf{\theta}_{X}$$和$$\mathbf{\theta}_{Y\mid X} $$是d-separates的。
+完整的数据可以d-分离不同CPD的参数。如，如果对于所有的$$m$$，$$X[m],Y[m]$$是可观测的，那么$$\mathbf{\theta}_{X}$$和$$\mathbf{\theta}_{Y\mid X} $$是d-分离的。
 
 **一般情况下的网络**  
 
@@ -149,7 +149,12 @@ $$P(\mathbf{\theta}_{Y\mid X})=P(\mathbf{\theta}_{Y\mid x^1})P(\mathbf{\theta}_{
 
 ![_config.yml]({{ site.baseurl }}/images/10708s/image4.png)  
 
-当$$x[m]=x^1$$,$$y[m]$$并不依赖于$$\mathbf{\theta}_{Y\mid x^0}$$,通过删除那些在特定上下文中无效的(inactive)弧，执行一个更精确的d-separation
+当$$x[m]=x^1$$,$$y[m]$$并不依赖于$$\mathbf{\theta}_{Y\mid x^0}$$,通过删除那些在特定上下文中无效的(inactive)弧，执行一个更精确的d-separation检验  
+
+对于$$y[m]$$CPD，如果观测到$$x[m]=x^0$$,那么弧$$\mathbf{\theta}_{Y\mid x^1}$$是无效的，如果观测到$$x[m]=x^1$$,那么弧$$\mathbf{\theta}_{Y\mid x^0}$$是无效的。无论哪种情况，v-structure $$\mathbf{\theta}_{Y\mid x^0} \to  Y[m] \gets \mathbf{\theta}_{Y\mid x^1}$$都会被删除。所以$$\mathbf{\theta}_{Y\mid x^0} , \mathbf{\theta}_{Y\mid x^1}$$没有active路径，则：  
+
+$$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\theta}_{Y\mid x^1}\mid D)P(\mathbf{\theta}_{Y\mid x^0}\mid \mathcal{D})$$  
+
 
 参考：
 [Lecture 6: Learning Partially Observed GM and the EM Algorithm](https://sailinglab.github.io/pgm-spring-2019/notes/lecture-06/)
