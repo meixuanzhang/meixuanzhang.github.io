@@ -65,13 +65,19 @@ $$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\
 
 结论：  
 
-令$$\mathcal{D}$$为$$X_{1},..,X_{n}$$的一个完备数据集，$$g$$为这些变量上的一个网络结构，并假定对于所有的$$j\ne i$$,参数$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$与$$\mathbf{\theta}_{X_{j}\mid pa_{x_{j}}}$$不相交。令$$\hat{\mathbf{\theta}}_{X_{i}\mid pa_{x_{i}}}$$是最大化$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})$$的参数，那么$$\hat{\mathbf{\theta}}=<\hat{\mathbf{\theta}}_{X_{1}\mid pa_{x_{1}}},..,\hat{\mathbf{\theta}}_{X_{n}\mid pa_{x_{n}}}>$$最大化$$L_{i}(\mathbf{\theta};\mathcal{D})$$   
+令$$\mathcal{D}$$为$$X_{1},..,X_{n}$$的一个完备数据集，$$g$$为这些变量上的一个网络结构，并假定对于所有的$$j\ne i$$,参数$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$与$$\mathbf{\theta}_{X_{j}\mid pa_{x_{j}}}$$不相交。令$$\hat{\mathbf{\theta}}_{X_{i}\mid pa_{x_{i}}}$$是最大化$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})$$的参数，那么$$\hat{\mathbf{\theta}}=<\hat{\mathbf{\theta}}_{X_{1}\mid pa_{x_{1}}},..,\hat{\mathbf{\theta}}_{X_{n}\mid pa_{x_{n}}}>$$最大化$$L(\mathbf{\theta};\mathcal{D})$$   
 
 换句话说，可以独立于其他的网络来对每个局部似然函数最大化，然后合并这些结构得到一个MLE的解
 
 # 贝叶斯参数估计
 
-   
+用一个概率分布表示参数$$\theta$$的先验知识，这个分布代表了我们先验地相信参数的不同选择的可能性有多大。一旦关于$$\theta$$的可能取值有了可量化的信息，我们就可以在$$\theta$$和观测数据$$X[1],..X[M]$$上建立一个联合分布。 
+
+似然估计中假设硬币不同的抛掷之间是相互独立的，这个假设是$$\theta$$固定时做出的。如果我们不知道$$\theta$$,那么这些抛掷的边缘独立性不存在，每次抛掷都可以传递给我们一些有关参数$$\theta$$的信息，并且因此传递给我们下一次抛掷的概率。一旦我们已知$$\theta$$，就不能通过观测其他抛掷的结果来了解一次抛掷的结果。我们假定，这些抛掷在给定条件下独立。使用图描述：      
+
+![_config.yml]({{ site.baseurl }}/images/10708s/image1.png)   
+
+这里$$\theta$$是一个随机变量   
 
 
 参考：
