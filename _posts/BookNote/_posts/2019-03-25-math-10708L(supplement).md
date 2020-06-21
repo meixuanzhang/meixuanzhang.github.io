@@ -105,7 +105,7 @@ $$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\th
 
 假设已经给定一个具有参数$$\mathbf{\theta}$$的网络结构$$g$$。在贝叶斯框架下，我们需要在网络的所有可能参数化上指定一个先验$$P(\mathbf{\theta})$$。在给定数据样本$$\mathcal{D}$$的情况下，参数上的后验分布：  
 
-$$P(\mathbf{\theta}\mid \mathcal{D}) = /frac{P(\mathcal{D} \mid \mathbf{\theta})P(\mathbf{\theta})}{P(\mathcal{D})}$$  
+$$P(\mathbf{\theta}\mid \mathcal{D}) = \frac{P(\mathcal{D} \mid \mathbf{\theta})P(\mathbf{\theta})}{P(\mathcal{D})}$$  
 
 $$P(\mathbf{\theta})$$是先验分布，$$P(\mathcal{D} \mid \mathbf{\theta})$$是给定一个特定的参数环境时数据的概率，也就是似然函数。最后，$$P(\mathcal{D})$$是归一化尝试,这一项称为边缘似然(marginal likelihood),它并不依赖于$$\mathbf{\theta}$$，仅仅用于规范后验。   
 
@@ -121,11 +121,28 @@ $$P(\mathbf{\theta})=\prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$
 
 $$P(\mathbf{\theta}\mid \mathcal{D})=\frac{1}{P(\mathcal{D})}\prod_{i}[ L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})]$$    
 
+每个$$\mathbf{\theta}$$的子集$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$仅仅在乘积的一项中出现。因此，后验可以被表示为局部项的乘积。  
+
 命题：假定$$ \mathcal{D}$$是$$\chi$$的一个完整数据集，令$$g$$是这些变量上的一个网络结构。如果$$P(\mathbf{\theta})$$满足全局的参数独立性，那么  
 
 $$P(\mathbf{\theta}\mid \mathcal{D})= \prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}\mid \mathcal{D})$$     
 
+## 局部分解  
 
+示例中图17.7所描述的设置，假设$$X$$和$$Y$$都是二元的。我们需要在给定数据时表示$$\mathbf{\theta},\mathbf{\theta}_{Y\mid X}$$上的后验。 
+
+$$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\theta}_{X}\mid D)P(\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})$$  
+
+前面已经说明如何处理$$\mathbf{\theta}_{X}$$，下面将说明如何处理$$\mathbf{\theta}_{Y\mid X}\mid \mathcal{D}$$,从似然分解中可以发现$$\mathbf{\theta}_{Y\mid X}$$可以分解为$$\mathbf{\theta}_{Y\mid x^0}$$和$$\mathbf{\theta}_{Y\mid x^1}$$    
+
+将图中$$\mathbf{\theta}_{Y\mid X}$$替换为$$\mathbf{\theta}_{Y\mid x^1},\mathbf{\theta}_{Y\mid x^0}$$如图：  
+
+![_config.yml]({{ site.baseurl }}/images/10708s/image3.png)   
+
+
+$$P(\mathbf{\theta}_{Y\mid X})=P(\mathbf{\theta}_{Y\mid x^1})P(\mathbf{\theta}_{Y\mid x^0})$$
+
+$$P()$$
 
 参考：
 [Lecture 6: Learning Partially Observed GM and the EM Algorithm](https://sailinglab.github.io/pgm-spring-2019/notes/lecture-06/)
