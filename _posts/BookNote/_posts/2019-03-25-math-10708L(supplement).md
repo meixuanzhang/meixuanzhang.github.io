@@ -135,14 +135,21 @@ $$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\th
 
 前面已经说明如何处理$$\mathbf{\theta}_{X}$$，下面将说明如何处理$$\mathbf{\theta}_{Y\mid X}\mid \mathcal{D}$$,从似然分解中可以发现$$\mathbf{\theta}_{Y\mid X}$$可以分解为$$\mathbf{\theta}_{Y\mid x^0}$$和$$\mathbf{\theta}_{Y\mid x^1}$$    
 
-将图中$$\mathbf{\theta}_{Y\mid X}$$替换为$$\mathbf{\theta}_{Y\mid x^1},\mathbf{\theta}_{Y\mid x^0}$$如图：  
+将图中$$\mathbf{\theta}_{Y\mid X}$$替换为$$\mathbf{\theta}_{Y\mid x^1},\mathbf{\theta}_{Y\mid x^0}$$：   
 
 ![_config.yml]({{ site.baseurl }}/images/10708s/image3.png)   
 
+从图中可知，$$\mathbf{\theta}_{Y\mid x^1},\mathbf{\theta}_{Y\mid x^0}$$是相互独立，有
 
-$$P(\mathbf{\theta}_{Y\mid X})=P(\mathbf{\theta}_{Y\mid x^1})P(\mathbf{\theta}_{Y\mid x^0})$$
+$$P(\mathbf{\theta}_{Y\mid X})=P(\mathbf{\theta}_{Y\mid x^1})P(\mathbf{\theta}_{Y\mid x^0})$$  
 
-$$P()$$
+但给定数据情况下,$$\mathbf{\theta}_{Y\mid x^1},\mathbf{\theta}_{Y\mid x^0}$$似乎是相互关联的。给定$$y[m]$$的一个观测，路径 $$\mathbf{\theta}_{Y\mid x^0} \to  Y[m] \gets \mathbf{\theta}_{Y\mid x^1}$$是active(因为v-structure)  
+
+通过检查$$y[m]$$如何依赖这两个参数，则可以获得：  
+
+![_config.yml]({{ site.baseurl }}/images/10708s/image4.png)  
+
+当$$x[m]=x^1$$,$$y[m]$$并不依赖于$$\mathbf{\theta}_{Y\mid x^0}$$,通过删除那些在特定上下文中无效的(inactive)弧，执行一个更精确的d-separation
 
 参考：
 [Lecture 6: Learning Partially Observed GM and the EM Algorithm](https://sailinglab.github.io/pgm-spring-2019/notes/lecture-06/)
