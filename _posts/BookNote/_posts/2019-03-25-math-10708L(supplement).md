@@ -55,7 +55,7 @@ $$
 
 用$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$来表示模型中确定$$P(X_{i}\mid pa_{x_{i}})$$的参数的子集。那么，有如下表示： 
 
-$$L(\mathbf{\theta};\mathcal{D})= \prod_{i} L(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})$$
+$$L(\mathbf{\theta};\mathcal{D})= \prod_{i} L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})$$
 
 其中$$X_{i}$$的局部似然函数是：  
 
@@ -100,6 +100,27 @@ $$P(\mathbf{\theta})=\prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$
 $$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\theta}_{X}\mid D)P(\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})$$
 
 完整的数据可以d-separates 不同$$CPD$$的参数。如，如果对于所有的$$m$$，$$X[m],Y[m]$$是可观测的，那么$$\mathbf{\theta}_{X}$$和$$\mathbf{\theta}_{Y\mid X} $$是d-separates的。
+
+**一般情况下的网络**  
+
+假设已经给定一个具有参数$$\mathbf{\theta}$$的网络结构$$g$$。在贝叶斯框架下，我们需要在网络的所有可能参数化上指定一个先验$$P(\mathbf{\theta})$$。在给定数据样本$$\mathcal{D}$$的情况下，参数上的后验分布：  
+
+$$P(\mathbf{\theta}\mid \mathcal{D}) = /frac{P(\mathcal{D} \mid \mathbf{\theta})P(\mathbf{\theta})}{P(\mathcal{D})}$$  
+
+$$P(\mathbf{\theta})$$是先验分布，$$P(\mathcal{D} \mid \mathbf{\theta})$$是给定一个特定的参数环境时数据的概率，也就是似然函数。最后，$$P(\mathcal{D})$$是归一化尝试,这一项称为边缘似然(marginal likelihood),它并不依赖于$$\mathbf{\theta}$$，仅仅用于规范后验。   
+
+前面将似然分解为一些局部的似然：  
+
+$$P(\mathcal{D} \mid \mathbf{\theta}) = \prod_{i} L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})$$
+
+假定全局的参数独立性成立，那么   
+
+$$P(\mathbf{\theta})=\prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$   
+
+将两个分解结合起来。得到:    
+
+$$P()=\frac{1}{P(\mathcal{D})}\prod_{i}[ L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})]$$    
+
 
 
 参考：
