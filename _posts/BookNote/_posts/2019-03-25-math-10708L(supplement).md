@@ -93,7 +93,7 @@ $$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\
 
 令$$g$$是一个具有参数$$\mathbf{\theta}=(\mathbf{\theta}_{X_{1}\mid pa_{x_{1}}},...,\mathbf{\theta}_{X_{n}\mid pa_{x_{n}}})$$的贝叶斯网结构。先验$$P(\mathbf{\theta})$$称为满足全局的参数独立性(global parameter independence),假如它具有如下形式:  
 
-$$P(\mathbf{\theta})=$$
+$$P(\mathbf{\theta})=\prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$
 
 
 参考：
