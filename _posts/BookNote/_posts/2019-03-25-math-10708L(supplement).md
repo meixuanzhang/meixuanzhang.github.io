@@ -79,6 +79,14 @@ $$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\
 
 这里$$\theta$$是一个随机变量   
 
+## 参数独立性和全局分解  
+
+**示例**  
+
+假设对包含两个变量$$X$$和$$Y$$的简单网络估计参数，$$X$$是$$Y$$的父节点。训练数据由观测到的$$X[m],Y[m]$$组成，其中$$m=1,..,M$$。有未知的参数向量$$\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}$$,变量之间依赖关系如图所示：  
+
+![_config.yml]({{ site.baseurl }}/images/10708s/image2.png)   
+
 
 参考：
 [Lecture 6: Learning Partially Observed GM and the EM Algorithm](https://sailinglab.github.io/pgm-spring-2019/notes/lecture-06/)
