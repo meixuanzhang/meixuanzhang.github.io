@@ -133,7 +133,7 @@ $$P(\mathbf{\theta}\mid \mathcal{D})= \prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{
 
 $$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\theta}_{X}\mid D)P(\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})$$  
 
-前面已经说明如何处理$$\mathbf{\theta}_{X}$$，下面将说明如何处理$$\mathbf{\theta}_{Y\mid X}\mid \mathcal{D}$$,从似然分解中可以发现$$\mathbf{\theta}_{Y\mid X}$$可以分解为$$\mathbf{\theta}_{Y\mid x^0}$$和$$\mathbf{\theta}_{Y\mid x^1}$$    
+前面已经说明如何处理$$\mathbf{\theta}_{X}$$，下面将说明如何处理$$\mathbf{\theta}_{Y\mid X}$,从似然分解中可以发现$$\mathbf{\theta}_{Y\mid X}$$可以分解为$$\mathbf{\theta}_{Y\mid x^0}$$和$$\mathbf{\theta}_{Y\mid x^1}$$    
 
 将图中$$\mathbf{\theta}_{Y\mid X}$$替换为$$\mathbf{\theta}_{Y\mid x^1},\mathbf{\theta}_{Y\mid x^0}$$：   
 
