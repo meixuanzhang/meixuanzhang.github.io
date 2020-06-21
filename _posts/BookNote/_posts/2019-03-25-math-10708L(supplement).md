@@ -85,7 +85,15 @@ $$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\
 
 假设对包含两个变量$$X$$和$$Y$$的简单网络估计参数，$$X$$是$$Y$$的父节点。训练数据由观测到的$$X[m],Y[m]$$组成，其中$$m=1,..,M$$。有未知的参数向量$$\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}$$,变量之间依赖关系如图所示：  
 
-![_config.yml]({{ site.baseurl }}/images/10708s/image2.png)   
+![_config.yml]({{ site.baseurl }}/images/10708s/image2.png)  
+
+从网络结构可知，当给定未知参数时，实例之间是相互独立的,即一旦观测到参数变量，$$(X[m],Y[m])$$与$$(X[m'],Y[m'])$$是相互独立   
+
+此外，网络结构还体现出单个参数变量的先验是先验独立的假设，即知道其中一个参数的参数值并不能告诉我们另一个参数的任何信息。定义：  
+
+令$$g$$是一个具有参数$$\mathbf{\theta}=(\mathbf{\theta}_{X_{1}\mid pa_{x_{1}}},...,\mathbf{\theta}_{X_{n}\mid pa_{x_{n}}})$$的贝叶斯网结构。先验$$P(\mathbf{\theta})$$称为满足全局的参数独立性(global parameter independence),假如它具有如下形式:  
+
+$$P(\mathbf{\theta})=$$
 
 
 参考：
