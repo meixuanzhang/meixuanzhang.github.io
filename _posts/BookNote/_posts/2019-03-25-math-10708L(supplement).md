@@ -155,6 +155,13 @@ $$P(\mathbf{\theta}_{Y\mid X})=P(\mathbf{\theta}_{Y\mid x^1})P(\mathbf{\theta}_{
 
 $$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\theta}_{Y\mid x^1}\mid D)P(\mathbf{\theta}_{Y\mid x^0}\mid \mathcal{D})$$  
 
+定义：令$$X$$是一个父节点为$$U$$的变量。称先验$$P(\mathbf{\theta}_{X\mid U})$$满足局部的参数独立性，如果存在：  
+
+$$P(\mathbf{\theta}_{X\mid U})= \prod_{u}P(\mathbf{\theta}_{X\mid u})$$  
+
+命题：令$$\mathcal{D}$$是$$\chi$$上的一个完整数据集，$$g$$是一个具有CPD表的这些变量上的一个网络结构图。如果先验$$P(\mathbf{\theta)$$满足全局和局部的参数独立性，那么 
+
+$$P(\mathbf{\theta}\mid \mathcal{D})= \prod_{i} \prod_{pa_{x_{i}}}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}\mid \mathcal{D})$$
 
 参考：
 [Lecture 6: Learning Partially Observed GM and the EM Algorithm](https://sailinglab.github.io/pgm-spring-2019/notes/lecture-06/)
