@@ -133,7 +133,7 @@ $$P(\mathbf{\theta}\mid \mathcal{D})= \prod_{i}P(\mathbf{\theta}_{X_{i}\mid pa_{
 
 $$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\theta}_{X}\mid D)P(\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})$$  
 
-前面已经说明如何处理$$\mathbf{\theta}_{X}$$，下面将说明如何处理$$\mathbf{\theta}_{Y\mid X}$,从似然分解中可以发现$$\mathbf{\theta}_{Y\mid X}$$可以分解为$$\mathbf{\theta}_{Y\mid x^0}$$和$$\mathbf{\theta}_{Y\mid x^1}$$    
+前面已经说明如何处理$$\mathbf{\theta}_{X}$$，下面将说明如何处理$$\mathbf{\theta}_{Y\mid X}$$,从似然分解中可以发现$$\mathbf{\theta}_{Y\mid X}$$可以分解为$$\mathbf{\theta}_{Y\mid x^0}$$和$$\mathbf{\theta}_{Y\mid x^1}$$    
 
 将图中$$\mathbf{\theta}_{Y\mid X}$$替换为$$\mathbf{\theta}_{Y\mid x^1},\mathbf{\theta}_{Y\mid x^0}$$：   
 
@@ -159,7 +159,7 @@ $$P(\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}\mid \mathcal{D})=P(\mathbf{\th
 
 $$P(\mathbf{\theta}_{X\mid U})= \prod_{u}P(\mathbf{\theta}_{X\mid u})$$  
 
-命题：令$$\mathcal{D}$$是$$\chi$$上的一个完整数据集，$$g$$是一个具有CPD表的这些变量上的一个网络结构图。如果先验$$P(\mathbf{\theta)$$满足全局和局部的参数独立性，那么 
+命题：令$$\mathcal{D}$$是$$\chi$$上的一个完整数据集，$$g$$是一个具有CPD表的这些变量上的一个网络结构图。如果先验$$P(\mathbf{\theta}$$满足全局和局部的参数独立性，那么 
 
 $$P(\mathbf{\theta}\mid \mathcal{D})= \prod_{i} \prod_{pa_{x_{i}}}P(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}\mid \mathcal{D})$$
 
