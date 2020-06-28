@@ -5,85 +5,19 @@ date:   2019-03-25
 categories: ["Probabilistic Graphical Models"]
 ---  
 
-处理参数估计任务的主要方法有两种：一种基于最大似然的估计，另一种是使用贝叶斯方法   
+所有个体都可以用相同的属性集进行描述，只是属性的值因个体的不同而不同。由于这种表示的关注点是随机变量的集合，因此这类模型称为基于变量的模型。  
 
-# 最大似然估计  
+构建一个单一、紧凑的模型，为同一类型的整个分布类提供模板：不同长度的轨迹，不同谱系。本章中定义了表示形式(representation)，允许我们在丰富结构空间上定义分布，结构由多个对象组成，并以各种方式互相关联。这是基于模板表示方法。  
 
-假设从一个未知的分布$$P^*(\chi)$$观测到随机变量集$$\chi$$中的一些IDD(独立同分布)样本，并且假定事先知道将要处理的样本空间(有哪些随机变量，以及它们可以取值)。样本训练集表示为$$D$$,并且假定它包含了$$\chi$$中的$$M$$个实例：$$\xi[1],..,\xi[M]$$。
+# 时间模型(Temporal Models)    
 
-假定有一个参数模型，我们希望估计该模型的参数，一个参数模型是由关于参数集合的函数$$P(\xi;\mathbf{\theta})$$.当给定参数值的一个特定集合$$\mathbf{\theta}$$和$$\chi$$,这个模型为$$\xi$$分配了一个概率(或密度)   
+对动态环境建模，对随着时间变化的世界状态进行推理。我们可以根据系统状态对此类环境进行建模，其在t时刻的值是系统的相关属性(隐藏或可观测)在t时刻的值。假定系统状态可以通过一组随机变量(随机变量集)$$\chi$$里的变量的赋值来表示。令$$X_{i}^{(t)}$$表示变量$$X_{i}$$在时刻t的实例化。$$X_{i}$$不再是去某个值的变量，而是一个模板变量(template variable).该模板在不同时刻t被实例化，每个$$X_{i}^{(t)}$$是变量，取值为$$Val(X_{i})$$.  
 
-对于给定$$\mathbf{\theta}$$下，似然函数是模型关于训练数据的概率(或密度)   
+对变量集$$\mathbf{X}\subseteq \chi$$，使用$$\mathbf{X}^{t_{1}:t_{2}}(t_{1} < t_{2})$$定义变量集合$$\{\mathbf{X}^{t}:t\in [t_{1},t_{2}]\}$$ ，使用$$\mathbf{x}^{t:t'}$$表示对这个变量集合的一个赋值
 
-$$L(\mathbf{\theta};\mathcal{D})= \prod_{m}P(\xi[m];\mathbf{\theta})$$  
+现在，每一个“可能世界”在概率空间中是一条轨迹(trajectory)：对每个相关的时刻t,为每个变量$$X_{i}^{t}$$赋值  
 
-最大似然估计：给定数据集$$\mathcal{D}$$,选择满足下式的参数$$\hat{\mathbf{\theta}}$$   
 
-$$L(\hat{\mathbf{\theta}};\mathcal{D})=\mathop{max}_{\mathbf{\theta} \in \Theta} L(\mathbf{\theta};\mathcal{D})$$  
-
-$$\Theta$$为参数空间  
-
-# 贝叶斯网的MLE  
-
-**简单示例**  
-
-有仅包含两个二元变量$$X,Y$$的网络，网络结构为$$X \to Y$$.网络由一个参数向量$$\mathbf{\theta}$$参数化,这个参数向量定义了网络中所有CPD的参数集合。示例中参数化包含了如下参数：$$\theta_{x^1},\theta_{x^2}$$,指定了$$X$$两个值的概率;$$\theta_{y^1\mid x^1},\theta_{y^0\mid x^1}$$,指定了当$$X=x^1$$时 $$Y$$的概率;$$\theta_{y^1\mid x^0},\theta_{y^0\mid x^0}$$,指定了当$$X=x^0$$时 $$Y$$的概率.简单起见，用$$\mathbf{\theta}_{Y \mid x^0}$$表示$$\{\theta_{y^1\mid x^0},\theta_{y^0\mid x^0}\}$$,$$\mathbf{\theta}_{Y \mid X}$$表示$$\mathbf{\theta}_{Y \mid x^1}\bigcup \mathbf{\theta}_{Y \mid x^0}$$  
-
-示例中，每个训练实例是一个描述$$X$$与$$Y$$的一个特定赋值的元组$$(x[m],y[m])$$,似然函数为  
-
-$$L(\mathbf{\theta};\mathcal{D})= \prod_{m}P(x[m],y[m];\mathbf{\theta})\\
-=\prod_{m}P(x[m];\mathbf{\theta})P(y[m]\mid x[m];\mathbf{\theta})\\
-=(\prod_{m}P(x[m];\mathbf{\theta}))(\prod_{m}P(y[m]\mid x[m];\mathbf{\theta}))
-$$  
-
-$$\prod_{m}P(x[m];\mathbf{\theta})=\prod_{m}P(x[m];\mathbf{\theta}_{X})$$  
-
-$$\prod_{m}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})=\prod_{m:x[m]=x^0}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})\prod_{m:x[m]=x^1}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid X})\\
-=\prod_{m:x[m]=x^0}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^0})\prod_{m:x[m]=x^1}P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^1})$$
-
-进一步简化如每个单独项$$P(y[m]\mid x[m];\mathbf{\theta}_{Y\mid x^0})$$都可以根据$$y[m]$$的取值在两个不同的值中任取其一。如$$y[m]=y^0$$,那么值为$$\theta_{y^0\mid x^0}$$   
-
-## 全局似然分解  
-
-假设我们的目标是对一个具有结构$$g$$和参数$$\mathbf{\theta}$$的贝叶斯网进行参数学习。给定一个包含样本$$\chi[1],..,\chi[M]$$的数据集$$\mathcal{D}$$。将似然函数写下来，并重复在例子中的步骤，得到：  
-
-$$
-L(\mathbf{\theta};\mathcal{D}) = \prod_{m} P_{g}(\xi[m];\mathbf{\theta})\\
-=\prod_{m}\prod_{i}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta})\\
-=\prod_{i}[\prod_{m}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta})]  
-$$
-
-用$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$来表示模型中确定$$P(X_{i}\mid pa_{x_{i}})$$的参数的子集。那么，有如下表示： 
-
-$$L(\mathbf{\theta};\mathcal{D})= \prod_{i} L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})$$
-
-其中$$X_{i}$$的局部似然函数是：  
-
-$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})=\prod_{m}P(x_{i}[m]\mid pa_{x_{i}}[m];\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}})$$   
-
-这个公式在参数集$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$不相交时特别有用。即，每个CPD由不重叠的参数的分离集参数化。   
-
-结论：  
-
-令$$\mathcal{D}$$为$$X_{1},..,X_{n}$$的一个完备数据集，$$g$$为这些变量上的一个网络结构，并假定对于所有的$$j\ne i$$,参数$$\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}}$$与$$\mathbf{\theta}_{X_{j}\mid pa_{x_{j}}}$$不相交。令$$\hat{\mathbf{\theta}}_{X_{i}\mid pa_{x_{i}}}$$是最大化$$L_{i}(\mathbf{\theta}_{X_{i}\mid pa_{x_{i}}};\mathcal{D})$$的参数，那么$$\hat{\mathbf{\theta}}=<\hat{\mathbf{\theta}}_{X_{1}\mid pa_{x_{1}}},..,\hat{\mathbf{\theta}}_{X_{n}\mid pa_{x_{n}}}>$$最大化$$L(\mathbf{\theta};\mathcal{D})$$   
-
-换句话说，可以独立于其他的网络来对每个局部似然函数最大化，然后合并这些结构得到一个MLE的解
-
-# 贝叶斯参数估计
-
-用一个概率分布表示参数$$\theta$$的先验知识，这个分布代表了我们先验地相信参数的不同选择的可能性有多大。一旦关于$$\theta$$的可能取值有了可量化的信息，我们就可以在$$\theta$$和观测数据$$X[1],..X[M]$$上建立一个联合分布。 
-
-似然估计中假设硬币不同的抛掷之间是相互独立的，这个假设是$$\theta$$固定时做出的。如果我们不知道$$\theta$$,那么这些抛掷的边缘独立性不存在，每次抛掷都可以传递给我们一些有关参数$$\theta$$的信息，并且因此传递给我们下一次抛掷的概率。一旦我们已知$$\theta$$，就不能通过观测其他抛掷的结果来了解一次抛掷的结果。我们假定，这些抛掷在给定条件下独立。使用图描述：      
-
-![_config.yml]({{ site.baseurl }}/images/10708s/image1.png)   
-
-这里$$\theta$$是一个随机变量   
-
-## 参数独立性和全局分解  
-
-**示例**  
-
-假设对包含两个变量$$X$$和$$Y$$的简单网络估计参数，$$X$$是$$Y$$的父节点。训练数据由观测到的$$X[m],Y[m]$$组成，其中$$m=1,..,M$$。有未知的参数向量$$\mathbf{\theta}_{X},\mathbf{\theta}_{Y\mid X}$$,变量之间依赖关系如图所示：  
 
 ![_config.yml]({{ site.baseurl }}/images/10708s/image2.png)  
 
