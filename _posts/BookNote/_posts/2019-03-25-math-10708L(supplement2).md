@@ -50,19 +50,31 @@ $$P(\chi^{(t+1)}= \xi^{'} \mid \chi^{(t)}= \xi)=P(\chi^{'} = \xi^{'} \mid \chi =
 
 ![_config.yml]({{ site.baseurl }}/images/10708s/image5.png)  
 
-![_config.yml]({{ site.baseurl }}/images/10708s/image6.png)  
-
 总之，2-TBN表示如下条件分布：  
 
 $$P(\chi^{'} \mid \chi)=P(\chi^{'} \mid \chi_{I})=\prod_{i=1}^{n}P(X_{i}^{'}\mid Pa_{X_{i}^{'}})$$    
 
 对每个模板变量$$X_{i}$$,CPD $$P(\chi^{'} \mid  Pa_{X_{i}^{'}})$$是一个模板因子(template factor):对于多个$$X_{i}^{(t)}$$(以及它们的父节点),它会在模型中被多次实例化   
 
+![_config.yml]({{ site.baseurl }}/images/10708s/image6.png)   
 
+隐马尔可夫模型(hidden Markov model)是这类时序模型的一个简单的例子，将HMM视为一个DBN(动态贝叶斯网)，那么HMM有下图所示结构：   
 
+![_config.yml]({{ site.baseurl }}/images/10708s/image6.png)  
 
+在2-TBN中，位于时间片之间的边称为时间片间的边(inter-time-slice edge),而连接同一时间片中变量的边称为时间片内的边(intra-time-slice edge)   
 
+动态贝叶斯网(dynamic Bayesian network,DBN)是一对$$<\beta_{0},\beta_{\to}>$$,其中$$\beta_{0}$$是$$\chi^{(0)}$$上表示状态的初始分布的贝叶斯网，$$\beta_{\to}$$是过程的一个2-TBN。对任意需要时间跨度$$T\ge 0$$,$$\chi^{(0:T)}$$上的分布定义为展开的贝叶斯网(unrolled Bayesian network),其中，对任意的$$i=1,..,n$$:   
 
++ $$X_{i}^{(0)}$$的结构和CPD与$$X_{i}$$在$$\beta_{0}$$中的一致  
+
++ 对$$t>0$$,$$X_{i}^{(t)}$$的结构和CPD与$$X_{i}^{(')}$$在$$\beta_{\to}$$中的一致   
+
+这样，可以把DBN视为一种紧凑的表示，并通过它可以产生贝叶斯网(对每个$$T>0$$)的一个无限集。  
+
+下图显示了两类由HMM构造的有用的DBN。左边因子HMM，它的2-TBN具有一系列链式结构$$X_{i} \to X_{i}^{'},(i=1,...,n)$$,具有一个单一的(通常)观测变量$$Y'$$,它是所有变量$$X_{i}^{'}$$的子节点。右边耦合的HMM同一由一系列$$X^{'}$$链构造，但每条链是有其自己私有观测变量$$Y_{i}$$的一个HMM.
+
+![_config.yml]({{ site.baseurl }}/images/10708s/image7.png)  
 
 参考：
 
