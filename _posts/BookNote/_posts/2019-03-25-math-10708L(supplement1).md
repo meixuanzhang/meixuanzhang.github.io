@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 17章 参数估计(补充)   
+title: 第17章 参数估计(补充)   
 date:   2019-03-25
 categories: ["Probabilistic Graphical Models"]
 ---  
