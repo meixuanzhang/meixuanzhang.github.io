@@ -55,6 +55,9 @@ $$P(\chi^{'} \mid \chi)=P(\chi^{'} \mid \chi_{I})=\prod_{i=1}^{n}P(X_{i}^{'}\mid
 
 
 
+
+
+
 参考：
 
 
