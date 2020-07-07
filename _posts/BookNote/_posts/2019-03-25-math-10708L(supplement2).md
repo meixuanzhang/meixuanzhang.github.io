@@ -76,6 +76,20 @@ $$P(\chi^{'} \mid \chi)=P(\chi^{'} \mid \chi_{I})=\prod_{i=1}^{n}P(X_{i}^{'}\mid
 
 ![_config.yml]({{ site.baseurl }}/images/10708s/image7.png)  
 
+## 状态-观测模型  
+
+另一种考虑时序过程的方法是状态-观测模型(state-observation model).  
+
+状态-观测模型利用了两个独立性假设：状态以马尔可夫方式进化，所以： 
+
+$$(X^{(t+1)} \perp X^{(0:(t+1))} \mid X^{(t)})$$  
+
+并且当给定$$t$$时刻的状态，$$t$$时刻的观测变量与整个状态序列条件独立：  
+
+$$(O^{(t)} \perp X^{(0:(t-1))} , X^{(t+1:\infty)}\mid X^{(t)})$$
+
+现在可以认为概率模型由两部分组成：转移模型(transition model)$$P(X'\mid X)$$和观测模型(observation model)$$P(O\mid X)$$
+
 参考：
 
 
