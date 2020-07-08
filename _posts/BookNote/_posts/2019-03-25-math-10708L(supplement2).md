@@ -126,6 +126,8 @@ $$(O^{(t)} \perp X^{(0:(t-1))} , X^{(t+1:\infty)}\mid X^{(t)})$$
 
 ![_config.yml]({{ site.baseurl }}/images/10708s/image14.png)   
 
+$$B$$是父节点
+
 参考：
 
 
