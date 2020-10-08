@@ -2,7 +2,7 @@
 layout: post
 title: List of natural language processing tasks
 date:   2019-01-01
-categories: 
+categories: NLP
 ---  
 
 # Syntax(语法)  

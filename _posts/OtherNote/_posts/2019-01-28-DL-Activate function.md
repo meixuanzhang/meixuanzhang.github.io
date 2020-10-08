@@ -2,7 +2,7 @@
 layout: post
 title: 激活函数(Activate function)
 date:   2019-01-28
-categories: 深度学习
+categories: 函数
 ---  
 
 # 饱和激活函数与非饱和激活函数    

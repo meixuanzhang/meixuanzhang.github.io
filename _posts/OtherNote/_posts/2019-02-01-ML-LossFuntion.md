@@ -2,7 +2,7 @@
 layout: post
 title: Loss Function
 date:   2019-01-01
-categories: 其他
+categories: 函数
 ---
 
 # Regression Loss Functions 
