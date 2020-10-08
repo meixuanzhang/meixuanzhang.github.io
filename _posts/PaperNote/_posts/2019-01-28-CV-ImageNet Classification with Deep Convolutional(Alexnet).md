@@ -2,7 +2,7 @@
 layout: post
 title: 读《ImageNet Classification with Deep Convolutional Neural Networks》(Alexnet)
 date:   2019-01-28
-categories: 深度学习
+categories: 深度学习(CV)
 ---  
 
 # The Architecture   

@@ -2,7 +2,7 @@
 layout: post
 title: 读《Visualizing and Understanding Convolutional Networks》(ZFNet)  
 date:   2019-01-28
-categories: 深度学习
+categories: 深度学习(CV)
 ---  
 
 # 概述  

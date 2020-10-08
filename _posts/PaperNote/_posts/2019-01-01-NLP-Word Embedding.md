@@ -2,7 +2,7 @@
 layout: post
 title: 读《Word Embedding》相关论文(word2vec、Glove)
 date:   2019-01-01
-categories: 深度学习
+categories: 深度学习(NLP)
 ---  
 
 **涉及论文：**  

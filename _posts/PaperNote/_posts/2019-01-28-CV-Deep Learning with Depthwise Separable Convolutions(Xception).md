@@ -2,7 +2,7 @@
 layout: post
 title: 读《Deep Learning with Depthwise Separable Convolutions》(Xception)
 date:   2019-01-28
-categories: 深度学习
+categories: 深度学习(CV)
 ---  
 
 # 概述  

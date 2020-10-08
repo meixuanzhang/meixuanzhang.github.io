@@ -2,7 +2,7 @@
 layout: post
 title: 读《Learned in Translation Contextualized Word Vectors》
 date:   2019-01-25
-categories: 深度学习
+categories: 深度学习(NLP)
 ---  
 
 # 概述  

@@ -2,7 +2,7 @@
 layout: post
 title: RNN、LSTM、GRU
 date:   2019-01-24
-categories: 深度学习
+categories: 深度学习(NLP)
 ---  
 
 **来源论文**    

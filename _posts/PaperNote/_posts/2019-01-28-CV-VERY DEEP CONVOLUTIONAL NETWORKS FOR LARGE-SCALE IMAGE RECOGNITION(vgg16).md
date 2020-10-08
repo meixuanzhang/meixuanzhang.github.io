@@ -2,7 +2,7 @@
 layout: post
 title: 读《Very Deep Convolutional Networks For Large-Scale Image Recognition》(vgg16)
 date:   2019-01-28
-categories: 深度学习
+categories: 深度学习(CV)
 ---  
 
 # The Architecture   

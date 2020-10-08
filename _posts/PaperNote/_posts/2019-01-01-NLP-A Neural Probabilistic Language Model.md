@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 《A Neural Probabilistic Language Model》
+title: 读《A Neural Probabilistic Language Model》
 date:   2019-01-01
-categories: 深度学习
+categories: 深度学习(NLP)
 ---  
 
 # 概述    

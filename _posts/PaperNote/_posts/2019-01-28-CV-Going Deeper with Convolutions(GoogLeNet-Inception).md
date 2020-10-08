@@ -2,7 +2,7 @@
 layout: post
 title: 读《Going Deeper with Convolutions》(GoogLeNet-Inception)
 date:   2019-01-28
-categories: 深度学习
+categories: 深度学习(CV)
 ---  
 
 # 概述  
