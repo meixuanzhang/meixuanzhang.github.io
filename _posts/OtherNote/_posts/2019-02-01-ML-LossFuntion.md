@@ -127,7 +127,7 @@ L=\frac{1}{n}\sum_{i=1}^n exp(-y_{i}f(x_{i}))
 
 $$  
 
-$$f(x_{i}) = log(\frac_{p(1\mid x_{i})}{1-p(1\mid x_{i})}) = \theta^{T}x_{i}$$
+$$f(x_{i}) = log(\frac{p(1\mid x_{i})}{1-p(1\mid x_{i})}) = \theta^{T}x_{i}$$
 
 $$p(1\mid x_{i})=\frac{1}{1+e^{-\theta^{T}x_{i}}}$$
 
