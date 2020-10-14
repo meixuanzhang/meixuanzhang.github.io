@@ -75,16 +75,14 @@ Cross Entropy=\left\{ \begin{array}{rl}
 
 $$
 
-单个样本的loss,$$y_{i}\in {1,0}$$:  
+单个样本的loss,$$y_{i}\in {1,0}$$(**注意这里loss使用的是概率**):  
 
 $$
 L(y_{i},p_{i})=-y_{i}*log(p_{i})-(1-y_{i})*log(1-p_{i})=\left\{ \begin{array}{rl}
 & -log(1-p_{i}) &,y_{i}=0 \\
 & -log(p_{i})&,y_{i}=1\\
 \end{array} \right.
-$$
-
-This is also called Log-Loss.   
+$$  
 
 $$y_{i}\in {1,0}$$ :  
 
@@ -97,11 +95,30 @@ $$y_{i}\in {1,-1}$$ :
 
 
 $$
-p(y_{i}\mid x_{i})=\frac{1}{1+exp(-y_{i}f(x_{i}))}\\
+p(y_{i}\mid x_{i})=\frac{1}{1+exp(-y_{i}f(x_{i}))}\\ 
 $$
 
 
+This is also called Log-Loss(Logistic loss). 
+
+单个样本的loss,$$y_{i}\in {1,-1}$$ :  
+
+$$
+
+L = \frac{1}{log(2)}log(1+e^{-y_{i}f(x_{i})})\\
+=-\frac{1}{log(2)}log(p(y_{i})/x_{i})
+
+$$
+
+$$f(x_{i}) = log(\frac{p(1\mid x_{i})}{1-p(1\mid x_{i})}) = \theta^{T}x_{i}$$
+
+$$p(1\mid x_{i})=\frac{1}{1+e^{-\theta^{T}x_{i}}}$$
+
+
+
 **Hinge Loss**  
+
+$$y_{i} \in 1,-1$$
 
 $$  
 
@@ -109,7 +126,27 @@ Hinge Loss= \sum_{i=1}^n max(0,1-y_{i}f(x_{i}))
 
 $$  
 
+$$
+
+f(x_{i}) = \theta^{T}x_{i} + b
+
+$$
+
+**Square loss**  
+
+
+
+$$
+\sum_{i=1}^n (1-y_{i}f(x_{i}))^2
+$$
+
+$$
+f(x_{i}) = 
+$$
+
 **Squared hinge**  
+
+$$y_{i} \in 1,-1$$
 
 $$  
 
