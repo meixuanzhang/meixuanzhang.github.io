@@ -63,6 +63,8 @@ $$
 
 # Binary Classification Loss Functions   
 
+考虑到分类的二进制性质，损失函数(假设假正和假负的成本相等)将是0-1损失函数(0-1指标函数)，预测的分类等于true类的值，则取0；预测的分类与true类不匹配，则取1。
+
 **Binary Cross-Entropy**   
 
 $$
@@ -95,7 +97,7 @@ $$y_{i}\in {1,-1}$$ :
 
 
 $$
-p(y_{i}mid x_{i})=\frac{1}{1+exp(-y_{i}f(x_{i}))}\\
+p(y_{i}\mid x_{i})=\frac{1}{1+exp(-y_{i}f(x_{i}))}\\
 $$
 
 
@@ -121,7 +123,7 @@ AdaBoost使用指数损失：
 
 $$  
 
-L=\frac{1}{n}\sum_{i=1}^n exp(y_{i}f(x_{i}))   
+L=\frac{1}{n}\sum_{i=1}^n exp(-y_{i}f(x_{i}))   
 
 $$  
 
