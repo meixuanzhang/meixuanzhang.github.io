@@ -106,7 +106,7 @@ This is also called Log-Loss(Logistic loss).
 $$
 
 L = \frac{1}{log(2)}log(1+e^{-y_{i}f(x_{i})})\\
-=-\frac{1}{log(2)}log(p(y_{i})/x_{i})
+=-\frac{1}{log(2)}log(p(y_{i}/x_{i})
 
 $$
 
@@ -128,20 +128,20 @@ $$
 
 $$
 
-f(x_{i}) = \theta^{T}x_{i} + b
+f(x_{i}) = sign(\theta^{T}x_{i} + b )
+
+f(x_{i}) = sign[p(y=1\mid x_{i}) - \frac{1}{2}]
 
 $$
 
 **Square loss**  
-
-
 
 $$
 \sum_{i=1}^n (1-y_{i}f(x_{i}))^2
 $$
 
 $$
-f(x_{i}) = 
+f(x_{i}) = 2p(y=1\mid x_{i})-1
 $$
 
 **Squared hinge**  
