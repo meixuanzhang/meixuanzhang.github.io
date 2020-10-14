@@ -106,11 +106,11 @@ This is also called Log-Loss(Logistic loss).
 $$
 
 L = \frac{1}{log(2)}log(1+e^{-y_{i}f(x_{i})})\\
-=-\frac{1}{log(2)}log(p(y_{i}/x_{i})
+=-\frac{1}{log(2)}log(p(y_{i}\mid x_{i})
 
 $$
 
-$$f(x_{i}) = log(\frac{p(1\mid x_{i})}{1-p(1\mid x_{i})}) = \theta^{T}x_{i}$$
+$$f(x_{i}) = log(\frac{p(1\mid x_{i})}{1-p(1\mid x_{i})}) = \theta^{T}x_{i}$$\\
 
 $$p(1\mid x_{i})=\frac{1}{1+e^{-\theta^{T}x_{i}}}$$
 
@@ -136,8 +136,10 @@ $$
 
 **Square loss**  
 
+$$y_{i} \in 1,-1$$
+
 $$
-\sum_{i=1}^n (1-y_{i}f(x_{i}))^2
+L = \sum_{i=1}^n (1-y_{i}f(x_{i}))^2
 $$
 
 $$
@@ -170,6 +172,26 @@ $$p(1\mid x_{i})=\frac{1}{1+e^{-\theta^{T}x_{i}}}$$
 
 其损失是分类错误的上限  
 
+**Savage loss** 
+
+
+$$  
+
+L=\sum_{i=1}^n \frac{1}{(1+e^{y_{i}f(x_{i})})^2}
+
+$$  
+
+$$f(x_{i}) = log(\frac{p(1\mid x_{i})}{1-p(1\mid x_{i})}) = \theta^{T}x_{i}$$
+
+**Tangent loss**  
+
+$$  
+
+L=\sum_{i=1}^n (2 arctan(y_{i}f_{x_{i}})-1)^2
+
+$$  
+
+$$f(x_{i})=tan(p(1\mid x)-\frac{1}{2})$$
 
 # Multi-class Classification Loss Functions  
 
