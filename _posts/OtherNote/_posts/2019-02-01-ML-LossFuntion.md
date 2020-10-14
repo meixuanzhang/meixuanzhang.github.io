@@ -127,6 +127,10 @@ L=\frac{1}{n}\sum_{i=1}^n exp(-y_{i}f(x_{i}))
 
 $$  
 
+$$f(x_{i}) = log(\frac_{p(1\mid x_{i})}{1-p(1\mid x_{i})}) = \theta^{T}x_{i}$$
+
+$$p(1\mid x_{i})=\frac{1}{1+e^{-\theta^{T}x_{i}}}$$
+
 其损失是分类错误的上限  
 
 
@@ -137,7 +141,7 @@ $$
 单个样本损失：  
 
 $$
-L(y_{i},f(x_{i}))=-sum_{j=e}^c y_{i}^j *log p_{i}^j
+L(y_{i},f(x_{i}))=-\sum_{j=e}^c y_{i}^j *log p_{i}^j
 $$ 
 
 $$y_{i}$$是one-hot encoded target vector$$(y_{i}^1,y_{i}^2,...,y_{i}^c)$$   
