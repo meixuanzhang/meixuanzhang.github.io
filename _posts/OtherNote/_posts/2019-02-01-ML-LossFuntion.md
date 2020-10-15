@@ -87,7 +87,7 @@ $$
 $$y_{i}\in {1,0}$$ :  
 
 $$
-p(y_{i}=1\mid x_{i})=\frac{1}{1+exp(-f(x_{i}))}\\
+p(y_{i}=1\mid x_{i})=\frac{1}{1+exp(-f(x_{i}))}=\frac{exp(f(x_{i})}{1+exp(f(x_{i}))}\\
 p(y_{i}=0\mid x_{i})=\frac{1}{1+exp(f(x_{i}))}\\
 $$
 
@@ -105,12 +105,12 @@ This is also called Log-Loss(Logistic loss).
 
 $$
 
-L = \frac{1}{log(2)}log(1+e^{-y_{i}f(x_{i})})\\
-=-\frac{1}{log(2)}log(p(y_{i}\mid x_{i})
+L = log(1+e^{-y_{i}f(x_{i})})\\
+=-log(p(y_{i}\mid x_{i})
 
 $$
 
-$$f(x_{i}) = log(\frac{p(1\mid x_{i})}{1-p(1\mid x_{i})}) = \theta^{T}x_{i}$$\\
+$$f(x_{i}) = log(\frac{p(1\mid x_{i})}{1-p(1\mid x_{i})}) = \theta^{T}x_{i}$$
 
 $$p(1\mid x_{i})=\frac{1}{1+e^{-\theta^{T}x_{i}}}$$
 

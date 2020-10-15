@@ -37,7 +37,26 @@ Gradient Boosting disadvantages:
 
 1、如果数据有噪声，GBM对过拟合更敏感。   
 2、训练通常需要更长的时间，因为树是按顺序构建的。   
-3、GBM比RF更难调谐。通常有三个参数：树的数量、树的深度和学习率，并且每棵树的构建通常都是浅层的。   
+3、GBM比RF更难调谐。通常有三个参数：树的数量、树的深度和学习率，并且每棵树的构建通常都是浅层的。  
+
+criterion(分枝标准)
+
+‘mse’：mean squared error   
+
+‘mae’：mean squared error    
+
+**‘friedman_mse’**   
+
+$$p_{k} \in [0,1)$$   
+
+$$w_{left}=\sum_{i\in R_{l}}w_{l}(x_{i})=\sum_{i\in R_{l}}p_{k}(x_{i})(1-p_{k}(x_{i}))$$  
+
+每个$$x_{i}$$属于一个特定的类别 k-class  
+
+Least-Squares Improvement Criterion：  
+
+$$i^2(R_{l},R_{r})=\frac{w_{left}w_{right}}{w_{left}+w_{right}}(y_{lmean}-y_{rmean})$$
+
 
 # LightGBM    
 
