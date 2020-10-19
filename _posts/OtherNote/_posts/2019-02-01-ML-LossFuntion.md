@@ -71,6 +71,13 @@ $$cosh = \frac{exp(x)+exp(-x)}{2}$$
 ![_config.yml]({{ site.baseurl }}/images/4LossFunction/image1.png) 
 
 
+**Quantile regression**  
+
+$$L = \sum_{i=y_{i}< f(x_{i})}(\gamma - 1)\mid y_{i}-f(x_{i}) \mid +  \sum_{i=y_{i} \geq f(x_{i})} (\gamma)\mid y_{i}-f(x_{i}) \mid$$
+
+![_config.yml]({{ site.baseurl }}/images/4LossFunction/image2.png)  
+
+通过$$\gamma$$设置获得取值区间
 
 # Binary Classification Loss Functions   
 
