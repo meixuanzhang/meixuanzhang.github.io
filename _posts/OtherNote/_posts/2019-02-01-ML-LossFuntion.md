@@ -61,6 +61,17 @@ log(y_{i}+1)-log(f(x_{i})+1)=log\frac{y_{i}+1}{f(x_{i})+1}
 
 $$
 
+
+**Log-Cosh Loss**  
+
+$$L = \sum_{i=1}^n log(cosh(f(x_{i})-y_{i}))$$
+
+$$cosh = \frac{exp(x)+exp(-x)}{2}$$  
+
+![_config.yml]({{ site.baseurl }}/images/4LossFunction/image1.png) 
+
+
+
 # Binary Classification Loss Functions   
 
 考虑到分类的二进制性质，损失函数(假设假正和假负的成本相等)将是0-1损失函数(0-1指标函数)，预测的分类等于true类的值，则取0；预测的分类与true类不匹配，则取1。
@@ -87,7 +98,7 @@ $$
 $$y_{i}\in {1,0}$$ :  
 
 $$
-p(y_{i}=1\mid x_{i})=\frac{1}{1+exp(-f(x_{i}))}=\frac{exp(f(x_{i})}{1+exp(f(x_{i}))}\\
+p(y_{i}=1\mid x_{i})=\frac{1}{1+exp(-f(x_{i}))}=\frac{exp(f(x_{i}))}{1+exp(f(x_{i}))}\\
 p(y_{i}=0\mid x_{i})=\frac{1}{1+exp(f(x_{i}))}\\
 $$
 
@@ -192,6 +203,8 @@ L=\sum_{i=1}^n (2 arctan(y_{i}f_{x_{i}})-1)^2
 $$  
 
 $$f(x_{i})=tan(p(1\mid x)-\frac{1}{2})$$
+
+**Focal Loss**
 
 # Multi-class Classification Loss Functions  
 
