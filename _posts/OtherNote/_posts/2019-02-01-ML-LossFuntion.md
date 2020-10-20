@@ -93,7 +93,7 @@ Cross Entropy=\left\{ \begin{array}{rl}
 
 $$
 
-单个样本的loss,$$y_{i}\in {1,0}$$(**注意这里loss使用的是概率**):  
+单个样本的loss,$$y_{i}\in {1,0}$$(**注意这里loss使用的是概率而不是$$f(x_{i})$$**):  
 
 $$
 L(y_{i},p_{i})=-y_{i}*log(p_{i})-(1-y_{i})*log(1-p_{i})=\left\{ \begin{array}{rl}
@@ -146,7 +146,7 @@ $$
 
 $$
 
-f(x_{i}) = sign(\theta^{T}x_{i} + b )
+f(x_{i}) = sign(\theta^{T}x_{i} + b )\\
 
 f(x_{i}) = sign[p(y=1\mid x_{i}) - \frac{1}{2}]
 

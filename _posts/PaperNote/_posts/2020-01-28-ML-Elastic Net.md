@@ -24,4 +24,24 @@ Lasso 同时进行连续收缩和特征自动选择。但它具有一些局限�
 
 # Naive elastic net  
 
+假设有$$n$$个样本和$$p$$个特征，$$\texbf{y}=(y_{1},y_{2},...,y_{n})^T , \texbf{X}=(\texbf{x_{1}}\mid ....\mid \texbf{x_{p}}),\texbf{x_{j}}=(x_{1j},...x_{nj})^T,j=1,..p$$   
 
+经过对$$\texbf{y}$$进行中心化和对$$\texbf{x_{j}}$$进行标准化有：   
+
+$$\sum_{i=1}^n y_{i}=0,\sum_{i=1}^n x_{ij}=0,\sum_{i=1}^n x_{ij}^2=1,for j = 1,2,3...p$$
+
+
+对于固定非负的$$\lambda_{1},\lambda_{2}$$,可以定义Naive elastic net损失函数为：  
+
+$$L(\lambda_{1},\lambda_{2},\texbf{\beta}) = \mid \texbf{y} -  \texbf{X}\texbf{\beta} \mid^2+\lambda_{2}\mid \texbf{\beta} \mid^2+\lambda_{1} \mid \texbf{\beta} \mid_{1}$$   
+
+$$\mid \texbf{\beta} \mid^2 = \sum_{j=1}^p \beta_{j}^2$$   
+
+$$\mid \texbf{\beta} \mid_{1} = \sum_{j=1}^p \mid \beta_{j}\mid$$
+
+Naive elastic net 估计$$\hat{\texbf{\beta}}$$最小化式子$$L$$:  
+
+$$\hat{\texbf{\beta} }= \mathop{\arg\max}_{\texbf{\beta}} \{ L(\lambda_{1},\lambda_{2},\texbf{\beta}) \}$$   
+
+
+# Elastic net

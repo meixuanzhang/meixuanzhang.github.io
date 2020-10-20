@@ -55,10 +55,9 @@ $$w_{left}=\sum_{i\in R_{l}}w_{l}(x_{i})=\sum_{i\in R_{l}}p_{k}(x_{i})(1-p_{k}(x
 
 Least-Squares Improvement Criterion：  
 
-$$i^2(R_{l},R_{r})=\frac{w_{left}w_{right}}{w_{left}+w_{right}}(y_{lmean}-y_{rmean})$$
+$$i^2(R_{l},R_{r})=\frac{w_{left}w_{right}}{w_{left}+w_{right}}(y_{lmean}-y_{rmean})$$   
 
-
-
+支持当前估计响应方差之和更相等的拆分
 
 # LightGBM    
 
