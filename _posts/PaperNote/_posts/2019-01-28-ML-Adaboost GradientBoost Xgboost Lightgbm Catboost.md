@@ -59,6 +59,11 @@ $$i^2(R_{l},R_{r})=\frac{w_{left}w_{right}}{w_{left}+w_{right}}(y_{lmean}-y_{rme
 
 支持当前估计响应方差之和更相等的拆分
 
+# xgboost  
+
+
+
+
 # LightGBM    
 
 ## histogram-based algorithms    
