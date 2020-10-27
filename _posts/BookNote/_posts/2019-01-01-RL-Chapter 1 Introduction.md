@@ -30,7 +30,7 @@ action不仅影响immediate reward，也影响下一个情境，甚至所有subs
 
 所有例子都包含目标，agent需要通过与不确定性环境互动去完成目标   
 
-agent行动会影响环境未来状态，进而友影响后面agent决策，agent应具有预判和计划能力。  
+agent行动会影响环境未来状态，进而又影响后面agent决策，agent应具有预判和计划能力。  
 
 行动造成的影响不能完全被预测，因此agent需要频繁监测环境做出相应的反应。   
 
@@ -61,7 +61,7 @@ to be made about how the environment will behave.  如，基于情境和行动�
 
 5、Models are used for planning, by which we mean any way of deciding on a course of action by considering possible future situations before they are actually experienced. 
 
-Methods for solving reinforcement learning problems that use models and planning are called model-based methods, as opposed to simpler model-free methods that are explicitly trial-anderror learners viewed as almost the opposite of planning.model-based就是对环境建模，描述环境是如何工作，使用规划算法找到最优策略 
+Methods for solving reinforcement learning problems that use models and planning are called model-based methods, as opposed to simpler model-free methods that are explicitly trial-and error learners viewed as almost the opposite of planning.model-based就是对环境建模，描述环境是如何工作，使用规划算法找到最优策略 
 
 
 **4、Limitations and Scope** 
