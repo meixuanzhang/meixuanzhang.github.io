@@ -13,7 +13,7 @@ $$R_{t}:$$t时刻选action返回的reward
 
 $$q\ast (a):$$选择action a 期望reward   
 
-$$Q_{t}(a):$$t时间步,动作a的value估计值  
+$$Q_{t}(a):$$t时刻,选择action a的value估计值  
 
 $$q\ast (a)=E[R_{t}\mid A_{t}=a]$$    
 
