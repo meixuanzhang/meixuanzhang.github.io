@@ -59,7 +59,7 @@ $$R_{t}$$的值通过均值为$$q\ast (A_{t})$$,方差为1的高斯分布产生
 $$\varepsilon=0$$，action的选择困在了局部最优action，，从长远看表现比较差    
 $$\varepsilon=0.1$$，很快找到了最优action   
 $$\varepsilon=0.01$$,找到最优action速度较慢    
-reward方差越大，$$\varepsilon$$应越大，更多的取探索  
+reward方差越大，$$\varepsilon$$应越小，更多的取探索  
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image2.png)  
 
@@ -106,7 +106,9 @@ $$Q_{n+1}=Q_{n}+\alpha[R_{n}-Q_{n}]\\
 =(1-\alpha)^n Q_{1}+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}R_{i} \qquad \qquad\qquad (2.2)$$  
 
 $$\alpha$$取值范围$$(0,1]$$   
+
 $$(1-\alpha)^n+\sum_{i=1}^n \alpha(1-\alpha)^{n-i}=1$$   
+
 (2.2)式子称为：exponential recency-weighted average,$$R_{i}$$权重随着奖励次数增加而衰减  
 
 有时可以在各个步骤之间更改步长参数，将$$\alpha_{n}(a)$$定义第n次游戏选择动作$$a$$获得reward的步长参数，在sample -average method中$$\alpha_{n}(a)=\frac{1}{n}$$，根据大数定律保证其能收敛于真实的action values。但不是所有{$$\alpha_{n}(a)$$}序列都能保证收敛的，根据stochastic approximation theory以概率1收敛(converge to
