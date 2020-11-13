@@ -66,7 +66,6 @@ $$\pi: \varepsilon$$-soft 策略
 
 $$
 q_{\pi}(s,\pi '(s))=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
-=\frac{\varepsilon}{ \mid \widehat{A}(s)\mid}\sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\\
 =\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\mathop{max}_{a}q_{\pi}(s,a)\\
 \ge \frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+(1-\varepsilon)\sum_{a}\frac{\pi(a\mid s)-\frac{\varepsilon}{\mid \widehat{A}(s)\mid} }{1-\varepsilon}   \mathop{max}_{a}q_{\pi}(s,a)\\
 =\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)-\frac{\varepsilon}{\mid \widehat{A}(s)\mid} \sum_{a}q_{\pi}(s,a)+\sum_{a}\pi (a\mid s)q_{\pi}(s,a)\\
