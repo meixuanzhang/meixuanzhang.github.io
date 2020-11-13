@@ -55,7 +55,11 @@ In on-policy control methods the policy is generally soft, meaning that $$\pi(a\
 
 下面展示采用$$\varepsilon$$-greedy策略的on-policy methods，即对于nongreedy action(解释在第二章)访问概率设置为$$\frac{\varepsilon}{\mid \widehat{A}(s)\mid}$$,对于greedy action访问概率设置为$$1-\varepsilon+\frac{\varepsilon}{\mid \widehat{A}(s)\mid}$$,   
 
-可以看出$$\varepsilon$$-greedy是$$\varepsilon$$-soft的一个例子     
+可以看出$$\varepsilon$$-greedy是$$\varepsilon$$-soft的一个例子  
+
+$$\mid \widehat{A}(s)\mid$$ : 状态$$s$$下可以采取的行动数
+
+$$1-\varepsilon+\frac{\varepsilon}{\mid \widehat{A}(s)\mid} + (\mid \widehat{A}(s)\mid - 1)\frac{\varepsilon}{\mid \widehat{A}(s)\mid}=1$$
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image18.png)   
 
@@ -63,6 +67,9 @@ $$\pi ':\varepsilon$$-greedy 策略
 $$\pi: \varepsilon$$-soft 策略  
 
 任何关于$$q_{\pi}$$的$$\varepsilon$$-greedy 策略都是对$$\varepsilon$$-soft策略的改进，这是由策略改进定理保证的。对于任何$$s\in \widehat{S}$$有：  
+
+
+
 
 $$
 q_{\pi}(s,\pi '(s))=\sum_{a}\pi '(a\mid s)q_{\pi}(s,a)\\
