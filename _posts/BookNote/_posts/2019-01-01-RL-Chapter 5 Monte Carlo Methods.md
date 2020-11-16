@@ -174,7 +174,7 @@ In practice, the weighted estimator usually has dramatically lower variance and 
 
 **6、Incremental Implementation**   
 
-假设有一系列的return$$G_{1},G_{2},...G_{n-1}$$,它们起始状态是一样的以及每个return有对应的权重$$W_{i}=\rho_{t:T(t)-1}$$则：     
+假设有一系列的return $$G_{1},G_{2},...G_{n-1}$$,它们起始状态是一样的以及每个return有对应的权重$$W_{i}=\rho_{t:T(t)-1}$$则：     
 
 $$
 V_{n+1}=\frac{\sum_{k=1}^{n}W_{k}G_{k}}{\sum_{k=1}^{n}W_{k}}\\
