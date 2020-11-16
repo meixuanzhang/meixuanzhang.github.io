@@ -197,7 +197,7 @@ $$
  **7、Off-policy Monte Carlo Control**    
  
  
-Off-policy Monte Carlo control methods follow the behavior policy while learning about and improving the target policy. (通过行为策略学习目标策略)  
+Off-policy Monte Carlo control methods follow the behavior policy while learning about and improving the target policy. (学习和改进目标策略的同时遵循行为策略)  
 These techniques require that the behavior policy has a nonzero probability of selecting all actions that might be selected by the target policy (coverage). To explore all possibilities, we require that the behavior policy be soft (i.e., that it select all actions in all states with nonzero probability). (行为策略所有action被选择概率应不为0,确保目标策略收敛于最优策略)     
 
 off-policy Monte Carlo control method, based on GPI and weighted importance sampling, for estimating $$\pi_{*}$$ and $$q_{*}$$. The target policy $$\pi \approx \pi_{*}$$ is the greedy policy with respect to $$Q$$, which is an estimate of $$q_{\pi}$$   
@@ -246,14 +246,16 @@ $$
 
 $$
 \rho_{t:T-1}G_{t}=\rho_{t:T-1}(R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+3}+..+ \gamma^{T-t-1} R_{T})\\
-=\rho_{t:T-1}R_{t+1}+\gamma\rho_{t:T-1} R_{t+2}+\gamma^2 R_{t+3}+..+ \gamma^{T-t-1}\rho_{t:T-1} R_{T}
+=\rho_{t:T-1}R_{t+1}+\gamma\rho_{t:T-1} R_{t+2}+\gamma^2 \rho_{t:T-1}R_{t+3}+..+ \gamma^{T-t-1}\rho_{t:T-1} R_{T}
 $$ 
 
 $$
 \rho_{t:T-1}R_{t+1}=\frac{\pi(A_{t}\mid S_{t})  \pi(A_{t+1}\mid S_{t+1})  \pi(A_{t+2}\mid S_{t+2})..\pi(A_{T-1}\mid S_{T-1})}{b(A_{t}\mid S_{t})  b(A_{t+1}\mid S_{t+1})  b(A_{t+2}\mid S_{t+2})..b(A_{T-1}\mid S_{T-1})}R_{t+1}
 $$
 
-除了$$\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t}}R_{t+1}$$外，其他项之间是相互独立的。因为：
+除了$$\frac{\pi(A_{t}\mid S_{t})}{b(A_{t}\mid S_{t}}R_{t+1}$$外，其他项之间是相互独立的。对于独立的项有：
+
+$$E[XY]=E(X)E(Y)$$
 
 因为：
 
