@@ -65,13 +65,13 @@ This identity is not exact if $$V$$ is updated during the episode (as it is in T
 
 **2、Advantages of TD Prediction Methods**   
 
-TD methods have an advantage over DP methods in that they do not require a model of the environment, of its reward and next-state probability distributions.    
+TD methods have an advantage over DP methods in that they do not require a model of the environment, of its reward and next-state probability distributions.(他们不需要关于环境，奖励和下一状态概率分布的模型。)  
 
-The next most obvious advantage of TD methods over Monte Carlo methods is that they are naturally implemented in an on-line, fully incremental fashion.With Monte Carlo methods one must wait until the end of an episode, because only then is the return known, whereas with TD methods one need wait only one time step.     
+The next most obvious advantage of TD methods over Monte Carlo methods is that they are naturally implemented in an on-line, fully incremental fashion.With Monte Carlo methods one must wait until the end of an episode, because only then is the return known, whereas with TD methods one need wait only one time step.(使用Monte Carlo方法，必须等到情节结束，因为只有这样才能知道收益， 而使用TD方法时，只需等待一个时间步。)   
  
 Some Monte Carlo methods must ignore or discount episodes on which experimental actions are taken, which can greatly slow learning. TD methods are much less susceptible to these problems because they learn from each transition regardless of what subsequent actions are taken.   
 
-For any fixed policy $$\pi$$, TD(0) has been proved to converge to $$V_{\pi}$$, in the mean for a constant step-size parameter if it is sufficiently small, and with probability 1 if the step-size parameter decreases according to the usual stochastic approximation conditions. Most convergence proofs apply only to the table-based case of the algorithm presented above, but some also apply to the case of general linear function approximation.   
+For any fixed policy $$\pi$$, TD(0) has been proved to converge to $$V_{\pi}$$, in the mean for a constant step-size parameter if it is sufficiently small, and with probability 1 if the step-size parameter decreases according to the usual stochastic approximation conditions(书 2.7). Most convergence proofs apply only to the table-based case of the algorithm presented above, but some also apply to the case of general linear function approximation.   
 
 **3、Optimality of TD(0)**   
 
