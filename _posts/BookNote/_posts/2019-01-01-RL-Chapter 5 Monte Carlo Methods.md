@@ -137,7 +137,7 @@ $$
 
 
 $$
-V_{\pi}(S_{t})=\sum \prod_{k=t}^{T-1}b(A_{k}\mid S_{t})p(S_{k+1}\mid S_{k},A_{k})  \frac{\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{t})}{\prod_{k=t}^{T-1}b(A_{k}\mid S_{t})} G_{t}\\
+V_{\pi}(S_{t})=\sum_{t\in \jmath(s)} \prod_{k=t}^{T-1}b(A_{k}\mid S_{k})p(S_{k+1}\mid S_{k},A_{k})  \frac{\prod_{k=t}^{T-1}\pi(A_{k}\mid S_{k})}{\prod_{k=t}^{T-1}b(A_{k}\mid S_{k})} G_{t}\\
 =E_{b}[\rho_{t:T-1}G_{t}\mid S_{t}]\\
 $$
 
@@ -204,8 +204,9 @@ off-policy Monte Carlo control method, based on GPI and weighted importance samp
   
 ![_config.yml]({{ site.baseurl }}/images/12RL/image22.png)    
 
-上图中$$W$$权重更新使用的是$$\frac{1}{b(A_{t}\mid S_{t})}$$,因为这里$$\pi$$是greedy policy,除了greedy action外,其他action被选概率为0。只有greedy action时更新$$W$$   
+上图中$$W$$权重更新使用的是$$\frac{1}{b(A_{t}\mid S_{t})}$$,因为这里$$\pi$$是greedy policy,除了greedy action外,其他action被选概率为0，导致后面的$$W$$都为0,$$Q$$不再进行更新，跳出循环，只有greedy action时更新$$W$$   
 
+A potential problem is that this method learns only from the tails of episodes, when all of the remaining actions in the episode are greedy. If nongreedy actions are common, then learning will be slow, particularly for states appearing in the early portions of long episodes.
 
 **8、Off-policy Monte Carlo Control**   
 

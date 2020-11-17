@@ -59,7 +59,7 @@ $$R_{t}$$的值通过均值为$$q\ast (A_{t})$$,方差为1的高斯分布产生
 $$\varepsilon=0$$，action的选择困在了局部最优action，，从长远看表现比较差    
 $$\varepsilon=0.1$$，很快找到了最优action   
 $$\varepsilon=0.01$$,找到最优action速度较慢    
-reward方差越大，$$\varepsilon$$应越小，更多的取探索  
+reward方差越大，$$\varepsilon$$应越大，更多的取探索  
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image2.png)  
 
@@ -125,7 +125,7 @@ $$\alpha_{n}(a)=\frac{1}{n}$$满足这两个条件，设置为常数则不满足
 
  (2.2)更新方法估计的Q是永远存在bias的，因为会一直受到初始Q影响，(2.1)方法当所有action都被选过一次后，估计的Q则不再受初始Q的影响。初始状态Q作为参数需要人为确定，对初始Q设定可以根据人的先验知识。  
  
- 初始Q可以作为一种方法鼓励exploration,上面案例中，若将所有action初始Q设为常数(如+5)，无论选择哪个action,reward很大可能会小于初始Q($$q\ast (a)$$是服从均值为0，方差为1的分布),意味被选取的action的Q更新后，会小于其他action的Q，根据learner会倾向于选择其他的action,所以最终在估计值Q收敛前所有的action可能都会被选择几次。尽管每次都是选择greedy actions,这种设置会使action有大量公平机会被选取。把这种方法称为：optimistic initial values  
+ 初始Q可以作为一种方法鼓励exploration,上面案例中，若将所有action初始Q设为常数(如+5)，无论选择哪个action,reward很大可能会小于初始Q，$$q\ast (a)$$是服从均值为0，方差为1的分布),意味被选取的action的Q更新后，会小于其他action的Q，根据learner会倾向于选择其他的action,所以最终在估计值Q收敛前所有的action可能都会被选择几次。尽管每次都是选择greedy actions,这种设置会使action有大量公平机会被选取。把这种方法称为：optimistic initial values  
 
 optimistic initial values对于stationary问题是非常有效的，但对于nonstationary问题没有效果，因为探索只发生在刚开始一段时间。如果任务发生变化，应该需要加入新的探索，这种方法没办法处理。
 
@@ -168,7 +168,7 @@ $$Pr\{A_{t}=a\}=\frac{e^{H_{t}(a)}}{\sum_{b=1}^k e^{H_{t}(b)}}=\pi_{t}(a)$$
 偏好值更新方法：  
 
 $$H_{t+1}(A_{t})=H_{t}(A_{t})+\alpha (R_{t}-\bar{R_{t}})(1-\pi_{t}(A_{t}))\\
-H_{t+1}(a)=H_{t}(a)-\alpha(R_{t}-\bar{R_{t}})\pi_{t}(a),for all \  a\ne A_{t}$$ 
+H_{t+1}(a)=H_{t}(a)-\alpha(R_{t}-\bar{R_{t}})\pi_{t}(a),for \  all \  a\ne A_{t}$$ 
 
 这里$$R_{t}$$是t时刻选择$$A_{t}$$返回的reward,$$\bar{R_{t}}$$则是估计的$$Q_{t}(A_{t})$$，估计方法参考前面。$$\bar{R_{t}}$$相当于基准(baseline),当$$R_{t}>\bar{R_{t}}$$,选择$$A_{t}$$的概率提升，当$$R_{t}<\bar{R_{t}}$$选择$$A_{t}$$的概率下降，在t时刻没有被选择的action则往相反方向更新。
 
