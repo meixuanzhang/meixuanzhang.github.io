@@ -38,7 +38,11 @@ Monte Carlo 目标是一个估计，因为式子6.1期望值未知,用return($$G
 
 TD methods combine the sampling of Monte Carlo with the bootstrapping of DP.it samples the expected values in 6.2 and it uses the current estimate $$V$$ instead of the true $$V_{\pi}$$
 
-TD error:   
+我们将TD和Monte Carlo更新称为Sample updates，因为它们涉及到预测样本后续状态（或状态-操作对），使用后续状态的值和沿途的奖励来计算备份值，然后相应地更新original state（or state-action pair）的值。样本更新不同于DP方法的预期更新，因为它们基于单个样本后继，而不是基于所有可能后续样本的完整分布。
+
+
+
+TD error(measuring the diﬀerence between the estimated value of $$S_{t}$$ tand the better estimate $$R_{t+1} + \gammaV(S_{t+1})$$:   
 
 $$\delta_{t}=R_{t+1}+\gamma V(S_{t+1})-V(S_{t})$$   
 
