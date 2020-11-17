@@ -41,16 +41,15 @@ TD methods combine the sampling of Monte Carlo with the bootstrapping of DP.it s
 我们将TD和Monte Carlo更新称为Sample updates，因为它们涉及到预测样本后续状态（或状态-操作对），使用后续状态的值和沿途的奖励来计算备份值，然后相应地更新original state（or state-action pair）的值。样本更新不同于DP方法的预期更新，因为它们基于单个样本后继，而不是基于所有可能后续样本的完整分布。
 
 
-
-TD error(measuring the diﬀerence between the estimated value of $$S_{t}$$ tand the better estimate $$R_{t+1} + \gammaV(S_{t+1})$$:   
+TD error(measuring the diﬀerence between the estimated value of $$S_{t}$$ tand the better estimate $$R_{t+1} + \gamma V(S_{t+1})$$:   
 
 $$\delta_{t}=R_{t+1}+\gamma V(S_{t+1})-V(S_{t})$$   
 
 The TD error depends on the next state and next reward, it is not actually available until one time step later.
 
-The expected updates of TD method(Sample updates) differ from DP methods in that they are based on a single sample successor rather than on a complete distribution of all possible successors.
+if the array $$V$$ does not change during the episode (as it does not in Monte Carlo methods),Monte Carlo error can be written as a sum of TD errors:  
 
-Monte Carlo error can be written as a sum of TD errors:   
+[为什么需要$$V$$不改变？](https://amreis.github.io/ml/reinf-learn/2019/10/14/reinforcement-learning-an-introduction-exercise-6-1.html)
 
 $$
 G_{t}-V(S_{t})=R_{t+1}+\gamma G_{t+1}-V(S_{t})+\gamma V(S_{t+1})-\gamma V(S_{t+1})\\
@@ -62,7 +61,7 @@ G_{t}-V(S_{t})=R_{t+1}+\gamma G_{t+1}-V(S_{t})+\gamma V(S_{t+1})-\gamma V(S_{t+1
 $$
 
 
-This identity is not exact if V is updated during the episode (as it is in TD(0)), but if the step size is small then it may still hold approximately
+This identity is not exact if $$V$$ is updated during the episode (as it is in TD(0)), but if the step size is small then it may still hold approximately
 
 **2、Advantages of TD Prediction Methods**   
 
