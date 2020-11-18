@@ -157,6 +157,7 @@ $$
 
 Expected Sarsa can safely set $$\alpha = 1 $$ without suﬀering any degradation of asymptotic performance, whereas Sarsa can only perform well in the long run at a small value of $$\alpha$$ at which short-term performance is poor.
 
+在cliﬀ walking中，Expected Sarsa使用了on-policy，但通常它可以使用与目标策略$$\pi$$不同的策略来生成action，在这种情况下，它成为 oﬀ-policy 算法。例如，假设$$\pi$$是贪婪策略，而行为则更具探索性。那么Expected Sarsa正是$$Q-learning$$。 从这个意义上说，Expected Sarsa包含并推广了$$Q-learning$$，同时可靠地对Sarsa进行了改进。 除了少量的额外计算成本外，Expects Sarsa可能会完全主导其他两个更为著名的TD control algorithms。
 
 **7、 Maximization Bias and Double Learning**
 
