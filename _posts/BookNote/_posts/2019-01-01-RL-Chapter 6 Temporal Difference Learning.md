@@ -132,13 +132,20 @@ $$Q(S_{t},A_{t})\gets Q(S_{t},A_{t})+\alpha[R_{t+1}+\gamma \mathop{max}_{a}  Q(S
 
 在这种情况下，学习到的action-value function $$Q$$,直接近似于optimal action-value function $$q_{∗}$$，而与遵循的策略无关。 这极大地简化了算法的分析，并使用了早期收敛证明。 该策略仍然具有效果，因为它可以确定访问和更新了哪些状态操作对。
 
-然而，正确收敛所需的全部条件是所有state–action pairs都要持续更新。正如我们在第5章中所观察到的，这是一个最低限度的要求，任何保证在一般情况下找到最佳行为的方法都必须要求它。在这一假设下，在步长参数序列常用的随机逼近条件下，已证明Q以概率1收敛于$$q_{*}。
+然而，正确收敛所需的全部条件是所有state–action pairs都要持续更新。正如我们在第5章中所观察到的，这是一个最低限度的要求，任何保证在一般情况下找到最佳行为的方法都必须要求它。在这一假设下，在步长参数序列常用的随机逼近条件下，已证明Q以概率1收敛于$$q_{*}$$。
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image28.png)  
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image29.png)  
 
 **6、 Expected Sarsa**  
+
+比起最大化下一state–action 对的$$Q$$，Expected Sarsa 使用 value的期望。考虑每一个action在当前策略下发生的可能性，这是考虑了update rule的算法  
+
+$$
+Q(S_{t},A_{t})\gets Q(S_{t},A_{t})+\alpha[R_{t+1}+\gamma E[Q(S_{t+1},A_{t+1}\mid S_{t+1})]-Q(S_{t},A_{t})]\\
+\gets Q(S_{t},A_{t})+\alpha[R_{t+1}+\gamma \sum_{a}\pi(a\mid S_{t+1})Q(S_{t},a)-Q(S_{t},A_{t})]
+$$
 
 **7、 Maximization Bias and Double Learning**
 
