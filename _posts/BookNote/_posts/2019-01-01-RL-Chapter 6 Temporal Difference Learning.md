@@ -75,4 +75,36 @@ For any fixed policy $$\pi$$, TD(0) has been proved to converge to $$V_{\pi}$$, 
 
 **3、Optimality of TD(0)**   
 
+给定一个近似值函数$$V$$，对于访问非终态的每个时间步长$$t$$计算由(6.1)或(6.2)指定的增量(increment)，但该值函数仅更改一次，即所有增量的总和 。 然后，使用新的值函数再次处理所有可用的数据(experience)，以产生新的总体增量(increment)，依此类推，直到值函数收敛为止。 之所以称为批量更新(batch updating)，是因为仅在处理完每批训练数据之后才进行更新。
+
+在批处理更新中，只要将$$\alpha$$选为足够小，TD(0)就确定性地收敛到单个答案，而与步长参数$$\alpha$$无关。 $$constant- \alpha MC$$在相同条件下也可以确定地收敛，但是答案不同。
+
+
+batch TD method was able to perform better according to the root mean-squared error measure shown in Figure 6.2. How is it that batch TD was able to perform better than this optimal method? The answer is that the Monte Carlo method is optimal only in a limited way, and that TD is optimal in a way that is more relevant to predicting returns.
+
+Under batch training, $$constant-α MC$$ converges to values, V (s), that are sample averages of the actual returns experienced after visiting each state s. These are optimal estimates in the sense that they minimize the mean-squared error from the actual returns in the training set.
+
+the batch TD method was able to perform better according to the root mean-squared error measure shown in Figure 6.2,Monte Carlo method is optimal only in a limited way, and that TD is optimal in a way that is more relevant to predicting returns   
+
+例子：
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image24.png)  
+
+Batch Monte Carlo总是在训练集上找到使均方误差(mean squared erroe)最小化的估计值，而batch TD(0)总是找到对于马尔可夫过程的最大似然模型来说正确的估计值。一般来说，参数的最大似然估计值(maximumlikelihood estimate)是使生成数据的概率最大的参数值。
+
+在这种情况下，最大似然估计是从观察到的事件(observed episodes)以明显的方式形成的马尔可夫过程的模型：从$$i$$到$$j$$的估计转移概率是观察到$$i$$到$$j$$的转移的比例，并且相关联奖励的期望是在这些过渡中观察到的奖励的平均值。 给定该模型，我们可以计算出值函数(value function)的估计值，如果模型完全正确，则该估计值将完全正确。 这被称为确定性等价估计(certainty-equivalence estimate)，因为它相当于假设基础过程的估计是确定的，而不是近似的。 通常batch TD(0) 收敛到确定性等价估计(certainty-equivalence estimate)。
+
+在批处理形式(batch form)中，TD(0)比Monte Carlo法更快，因为它可以计算真实的certainty-equivalence estimate。尽管nonbatch方法既不能实现certainty-equivalence estimate也不能实现minimum squared-error estimates,，但可以将其理解为大致往这些方向上移动。 Nonbatch TD(0)可能比$$constant-\alpha MC$$快，因为它正在朝着更好的估计方向发展，即使它并没有一步到达。 目前，关于在线TD和Monte Carlo方法的相对效率尚无定论。
+
+尽管certainty-equivalence estimate在某种意义上是一个最优解，但直接计算它几乎永远不可行。如果$$n=\mid S \mid 是状态数，那么最大似然估计的过程可能需要$$n^2$$个数量级的存储器，而计算相应的值函数(value function)则需要$$n^3$$个计算步骤。在这些方面，TD方法确实可以使用不超过n阶的内存和在训练集上重复计算来近似相同的解。对于具有大状态空间的任务，TD方法可能是唯一可行的逼近确定性等价解的方法。
+
 **4、Sarsa: On-policy TD Control**  
+
+
+**5、 Q-learning: Oﬀ-policy TD Control**  
+
+**6、 Expected Sarsa**  
+
+**7、 Maximization Bias and Double Learning**
+
+**8、Games, Afterstates, and Other Special Cases**
