@@ -122,9 +122,13 @@ Sarsa control algorithm 的一般形式在下面的框中给出:
 
 ![_config.yml]({{ site.baseurl }}/images/12RL/image27.png)  
 
-Sarsa算法的收敛性取决于策略对$$Q$$的依赖性。例如，可以使用$$\varepsilon-greedy$$或$$\varepsilon-soft$$策略。 只要无限次访问所有state–action对，并且策略收敛于贪婪策略的极限，Sarsa就会以概率1收敛到optimal policy 和 action-value function（例如，可以通过设置$$\varepsilon-= 1/t$$来实现$$\varepsilon-greedy$$）。
+Sarsa算法的收敛性取决于策略对$$Q$$的依赖性。例如，可以使用$$\varepsilon-greedy$$或$$\varepsilon-soft$$策略。 只要无限次访问所有state–action对，并且策略收敛于贪婪策略的极限，Sarsa就会以概率1收敛到optimal policy 和 action-value function（例如，可以通过设置$$\varepsilon = 1/t$$来实现$$\varepsilon-greedy$$）。
 
 **5、 Q-learning: Oﬀ-policy TD Control**  
+
+强化学习的早期突破之一是开发一种称为$$Q-learning$$的off-policy TD控制算法（Watkins，1989），定义如下：   
+
+$$Q(S_{t},A_{t})\gets Q(S_{t},A_{t})+\alpha[R_{t+1}+\gamma \mathop{max}_{a}  Q(S_{t+1},a)-Q(S_{t},A_{t})]$$
 
 **6、 Expected Sarsa**  
 
