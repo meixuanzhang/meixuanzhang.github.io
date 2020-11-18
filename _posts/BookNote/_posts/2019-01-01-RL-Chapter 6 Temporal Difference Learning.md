@@ -96,7 +96,7 @@ Batch Monte Carlo总是在训练集上找到使均方误差(mean squared erroe)�
 
 在批处理形式(batch form)中，TD(0)比Monte Carlo法更快，因为它可以计算真实的certainty-equivalence estimate。尽管nonbatch方法既不能实现certainty-equivalence estimate也不能实现minimum squared-error estimates,，但可以将其理解为大致往这些方向上移动。 Nonbatch TD(0)可能比$$constant-\alpha MC$$快，因为它正在朝着更好的估计方向发展，即使它并没有一步到达。 目前，关于在线TD和Monte Carlo方法的相对效率尚无定论。
 
-尽管certainty-equivalence estimate在某种意义上是一个最优解，但直接计算它几乎永远不可行。如果$$n=\mid S \mid 是状态数，那么最大似然估计的过程可能需要$$n^2$$个数量级的存储器，而计算相应的值函数(value function)则需要$$n^3$$个计算步骤。在这些方面，TD方法确实可以使用不超过n阶的内存和在训练集上重复计算来近似相同的解。对于具有大状态空间的任务，TD方法可能是唯一可行的逼近确定性等价解的方法。
+尽管certainty-equivalence estimate在某种意义上是一个最优解，但直接计算它几乎永远不可行。如果$$n=\mid S \mid 是状态数，那么最大似然估计的过程可能需要$$n^2$$阶个存储器，而计算相应的值函数(value function)则需要$$n^3$$阶个计算步骤。在这些方面，TD方法确实可以使用不超过$$n$$阶的内存和在训练集上重复计算来近似相同的解。对于具有大状态空间的任务，TD方法可能是唯一可行的逼近确定性等价解的方法。
 
 **4、Sarsa: On-policy TD Control**  
 
