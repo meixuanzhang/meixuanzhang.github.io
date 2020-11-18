@@ -147,6 +147,17 @@ Q(S_{t},A_{t})\gets Q(S_{t},A_{t})+\alpha[R_{t+1}+\gamma E[Q(S_{t+1},A_{t+1}\mid
 \gets Q(S_{t},A_{t})+\alpha[R_{t+1}+\gamma \sum_{a}\pi(a\mid S_{t+1})Q(S_{t},a)-Q(S_{t},A_{t})]
 $$
 
+但这也遵循了$$Q-learning$$的模式。该算法与Sarsa在期望中的运动方向一致,它的backup diagram 在Figure 6.5   
+
+算法消除了由于随机选择$$A_{t+1}$$带来的方差，如果有相同的样本，我们可能会期望它的性能比Sarsa好一些，并且确实如此。  
+
+下图显示了与Sarsa和$$Q-learning$$相比，使用Expected Sarsa进行的cli-walking任务的摘要结果。
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image30.png)  
+
+Expected Sarsa can safely set $$\alpha = 1 $$ without suﬀering any degradation of asymptotic performance, whereas Sarsa can only perform well in the long run at a small value of $$\alpha$$ at which short-term performance is poor.
+
+
 **7、 Maximization Bias and Double Learning**
 
 **8、Games, Afterstates, and Other Special Cases**
