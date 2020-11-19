@@ -159,6 +159,12 @@ Expected Sarsa can safely set $$\alpha = 1 $$ without suﬀering any degradation
 
 在cliﬀ walking中，Expected Sarsa使用了on-policy，但通常它可以使用与目标策略$$\pi$$不同的策略来生成action，在这种情况下，它成为 oﬀ-policy 算法。例如，假设$$\pi$$是贪婪策略，而行为则更具探索性。那么Expected Sarsa正是$$Q-learning$$。 从这个意义上说，Expected Sarsa包含并推广了$$Q-learning$$，同时可靠地对Sarsa进行了改进。 除了少量的额外计算成本外，Expects Sarsa可能会完全主导其他两个更为著名的TD control algorithms。
 
+$$Q-learning$$ 是 off-policy 的原因是它使用下一状态$$S'$$的$$Q-values$$和贪婪动作$$a$$,更新其$$Q-values$$。 换句话说，它估计假设遵循贪婪策略的state-action pairs的回报，尽管事实是它没有遵循贪婪策略。
+
+SARSA 是on-policy 的原因是它使用下一个状态$$S'$$的$$Q-values$$和当前策略的操作$$a$$更新其$$Q-values$$。它将估算继续遵循当前策略的state-action pairs的return。
+
+如果当前策略是贪婪策略，则区别消失。 但是，这样的agent不会很好，因为它从来没有探索过。
+
 **7、 Maximization Bias and Double Learning**
 
 **8、Games, Afterstates, and Other Special Cases**
