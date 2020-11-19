@@ -179,6 +179,8 @@ $$Q-learning$$和Sarsa这些算法，使用估计值中最大值作为最大valu
 
 Double Q-learning:
 
+$$Q_{1}(S_{t},A_{t})\gets Q_{1}(S_{t},A_{t})+\alpha[R_{t+1}+\gamma Q_{2}(S_{t+1},\mathop{a}Q_{1}(S_{t+1},a)-Q_{1}(S_{t},A_{t})]$$
 
+![_config.yml]({{ site.baseurl }}/images/12RL/image32.png)  
 
 **8、Games, Afterstates, and Other Special Cases**
