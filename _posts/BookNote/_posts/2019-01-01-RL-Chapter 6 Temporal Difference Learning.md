@@ -165,6 +165,20 @@ SARSA 是on-policy 的原因是它使用下一个状态$$S'$$的$$Q-values$$和�
 
 如果当前策略是贪婪策略，则区别消失。 但是，这样的agent不会很好，因为它从来没有探索过。
 
-**7、 Maximization Bias and Double Learning**
+**7、 Maximization Bias and Double Learning**  
+
+$$Q-learning$$和Sarsa这些算法，使用估计值中最大值作为最大value的估计值，这会导致显著positive bias，考虑单个state $$s$$，其中有许多action$$a$$，其true values $$q(s,a)$$均为零，但其估计值$$q(s,a)$$是不确定的，因此估计值一些分布在高于零的位置，一些分布在低于零的位置。真实$$q$$的最大值为零，但估计$$q$$的最大值为正，一个正偏差。我们称之为maximization bias。  
+
+例子：  
+
+这个马尔可夫决策过程有两个 non-terminal states A和B，A有两个action，左和右，往右则转变为terminal state，reward和return都为0，往左则转变为B，reward为0，B有多个action，action的reward服从正态分布N(-0.1,1.0),从左开始的任何轨迹，expected return 都是-0.1,因此在状态A下往左走总是一个错误，然而，由于maximization bias使B看起来具有正值，我们的控制方法可能偏向左。
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image31.png)  
+
+如果我们使用估计的最大值估计真实值的最大值，则会有一个positive maximization bias。解决问题的一种方法是，由于使用了相同的样本来确定最大化动作并估计其value。假设我们将游戏分为两组，并使用它们学习两个独立的估计，将它们分别称为$$Q_{1}(a)和Q_{2}(a)$$，对于所有$$a\in A$$，它们分别是真实值$$q(a)$$的估计。然后使用$$Q_{1}$$来确定最大化动作$$A^{∗} = \mathop{argmax}_{a} Q_{1}(a）$$，使用$$Q_{2}$$来提供其值的估计值$$Q_{2}(A^{*})=Q_{2}(\mathop{a} Q_{1}(a))$$。$$E[Q_{2}(A^{∗})] = q(A^{∗}）$$此估计将是无偏的。我们也可以重复此过程，将两个估计的作用颠倒过来，得出第二个无偏估计$$Q_{1}(\mathop{a} Q_{2}(a))$$。这就是double learning的想法。请注意，尽管我们学习了两个估算值，但是每次播放都只会更新一个估算值。双重学习会使内存需求增加一倍，但不会增加每步的计算量。
+
+Double Q-learning:
+
+
 
 **8、Games, Afterstates, and Other Special Cases**
