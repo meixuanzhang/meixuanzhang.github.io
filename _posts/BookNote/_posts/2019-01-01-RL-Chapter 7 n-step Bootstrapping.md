@@ -60,3 +60,13 @@ $$V_{t+n}(S_{t}) = V_{t+n-1}(S_{t})+ \alpha[G_{t:t+n-V_{t+n-1}(S_{t})}], \ 0 \le
 ![_config.yml]({{ site.baseurl }}/images/12RL/image35.png)  
 
 计算当前state的value需要涉及到后面的n步的R，value更新需要等待   
+
+**2、n-step Sarsa**
+
+**3、n-step Oﬀ-policy Learning by Importance Sampling**
+
+**4、*Per-decision Oﬀ-policy Methods with Control Variates**
+
+**5、Oﬀ-policy Learning Without Importance Sampling:The n-step Tree Backup Algorithm**
+
+**.6 *A Unifying Algorithm: n-step $$Q(\sigma)$$**
