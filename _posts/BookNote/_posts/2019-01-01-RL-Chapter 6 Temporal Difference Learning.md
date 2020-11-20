@@ -187,4 +187,10 @@ there are also double versions of Sarsa and Expected Sarsa
 
 **8、Games, Afterstates, and Other Special Cases**
 
-传统的state-value function根据states可以选择的所有actions估计value,但是井字游戏(tic-tac-toe)中使用 state-value function是对agent行动后的state评估value。 这称为afterstate，其值函数称为afterstate value functions。 当我们知道环境动态的一个初始部分，但不一定了解整个动态时，afterstates是非常有用的。 例如，在游戏中，我们通常知道阿action的即时的效果。 我们知道每一次可能的国际象棋移动的位置结果是什么，但是我们不知道对手的反应。 afterstate是利用此类知识并从而产生更有效的学习方法的自然方法。
+传统的state-value function (V) 根据states可以选择的所有actions估计value,但是井字游戏(tic-tac-toe)中使用 state-value function是对agent行动后的state评估value。 这称为afterstate，其值函数称为afterstate value functions。 当我们知道环境动态的一个初始部分，但不一定了解整个动态时，afterstates是非常有用的。 例如，在游戏中，我们通常知道阿action的即时的效果。 我们知道每一次可能的国际象棋移动的位置结果是什么，但是我们不知道对手的反应。 afterstate是利用此类知识并从而产生更有效的学习方法的自然方法。
+
+以 tic-tac-toe 为例：   
+
+传统的action-value function (Q)将从位置和移动映射到值的估计值。但是position–move pairs 会产生相同的位置结果，如本例所示：
+
+![_config.yml]({{ site.baseurl }}/images/12RL/image33.png)  
