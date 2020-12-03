@@ -146,9 +146,8 @@ $$
 
 $$
 
-f(x_{i}) = sign(\theta^{T}x_{i} + b )\\
+f(x_{i}) = \theta^{T}x_{i} + b \\
 
-f(x_{i}) = sign[p(y=1\mid x_{i}) - \frac{1}{2}]
 
 $$
 
