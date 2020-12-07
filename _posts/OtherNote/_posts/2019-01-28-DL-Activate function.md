@@ -29,9 +29,9 @@ $$\mathop{lim}_{x\to -\infty }h'(x)=0$$
 
 ## sigmoid  
 
-$$\sigma(x)=\frac{1}{1+e^{-x}}$$
+$$\hat{p} = \sigma(x)=\frac{1}{1+e^{-x}}$$
 
-**导数**：  $$\sigma(x)\cdot(1-\sigma(x))$$
+**导数**：  $$\frac{\ud \hat{p} }{\ud x} = \sigma(x)\cdot(1-\sigma(x))$$
 
 ## tanh双曲正切
 
